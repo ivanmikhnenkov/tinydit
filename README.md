@@ -6,6 +6,9 @@ understand how modern image generation actually works rather than to compete wit
 Frozen pretrained autoencoder + frozen pretrained text encoder + a **custom DiT trained
 from scratch** on rectified flow.
 
+## Results
+COCO 2017 - is a good dataset. Many others which have >1M images are of mediocre quality corresponding to random internet scraping. I believe it spoilt training. So, next time work more on quality of dataset.
+
 ---
 
 ## Architecture
