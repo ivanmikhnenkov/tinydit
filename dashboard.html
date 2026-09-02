@@ -103,11 +103,13 @@ line-height:1.55;font-family:var(--d);z-index:60;text-align:left;font-weight:400
 .evsec{margin-top:14px}
 .evhd{display:flex;justify-content:space-between;align-items:baseline;background:var(--accent);
 color:#fff;padding:6px 11px;font-family:var(--m);font-size:11px;letter-spacing:.04em;gap:12px;flex-wrap:wrap}
-.evgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:9px;margin-top:9px}
+.evgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(256px,1fr));gap:9px;margin-top:9px}
 .evcard{background:var(--surf);border:1px solid var(--line);display:flex;flex-direction:column}
-.evcard img{width:100%;aspect-ratio:1;object-fit:contain;display:block;background:var(--surf2);cursor:zoom-in}
-.evcard figcaption{padding:6px 8px 8px;font-size:11.5px;line-height:1.4;color:var(--tx2);
-display:flex;flex-direction:column;gap:4px}
+.evcard img{width:100%;height:auto;display:block;background:var(--surf2);cursor:zoom-in}
+.evcard figcaption{padding:6px 8px 8px;font-size:11.5px;line-height:1.4;color:var(--tx2);display:flex;flex-direction:column;gap:4px}
+.evcard .cap{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.evcard .cap.open{display:block;-webkit-line-clamp:unset}
+.evcard .meta{display:flex;justify-content:space-between;gap:8px;font-family:var(--m);font-size:10.5px;color:var(--tx3)}
 .evcard .sc{font-family:var(--m);font-size:10px;color:var(--ok);display:flex;gap:8px;flex-wrap:wrap}
 .evcard a{color:var(--tx3);font-family:var(--m);font-size:9.5px;text-decoration:none}
 .evcard a:hover{color:var(--accent)}
@@ -116,6 +118,7 @@ display:flex;flex-direction:column;gap:4px}
 padding:3px 8px;border-radius:3px;color:var(--tx2)}
 .kv b{color:var(--tx);font-weight:500}
 .hint{font-family:var(--m);font-size:10px;color:var(--tx3);margin-top:8px}
+
 </style>
 
 <header><div class="wrap"><div class="hd">
@@ -342,12 +345,13 @@ function draw(c,rows){
       g.beginPath();g.moveTo(px,PT);g.lineTo(px,H-PB);g.stroke();g.setLineDash([]);
       near.forEach(({si,q})=>{const s=c.series[si];g.fillStyle=s.c?col(s.c):col(stageVar(q.res));
         g.beginPath();g.arc(X(q.x),Y(q.y),3,0,7);g.fill();});
-      const vals=near.map(({si,q})=>{const raw=log?Math.pow(10,q.y):q.y;return c.series[si].label+' '+fmtV(c,raw);});
-      const txt='step '+near[0].q.x.toLocaleString()+'  ·  '+vals.join('  ·  ');
-      g.font='10px monospace';const tw=g.measureText(txt).width+10;
-      let tx=Math.min(Math.max(px-tw/2,PL),Math.max(PL,W-PR-tw));
-      g.fillStyle=col('--tx');g.fillRect(tx,PT,tw,16);
-      g.fillStyle=col('--bg');g.fillText(txt,tx+5,PT+11);
+      // one line per series, in a box that sits on whichever side of the crosshair has room
+      const lines=['step '+near[0].q.x.toLocaleString()].concat(near.map(({si,q})=>{const raw=log?Math.pow(10,q.y):q.y;return c.series[si].label+'  '+fmtV(c,raw);}));
+      g.font='10px monospace';const LH=13,bw=Math.max(...lines.map(l=>g.measureText(l).width))+12,bh=lines.length*LH+6;
+      let bx=px+8; if(bx+bw>W-PR) bx=px-8-bw; if(bx<PL) bx=PL;
+      let by=PT; if(by+bh>H-PB) by=Math.max(PT,H-PB-bh);
+      g.fillStyle=col('--tx');g.fillRect(bx,by,bw,bh);
+      lines.forEach((l,i)=>{g.fillStyle=i?(c.series[near[i-1].si].c?col(c.series[near[i-1].si].c):col('--bg')):col('--bg');g.fillText(l,bx+6,by+LH*(i+1)-2);});
     }
   }
 }
@@ -441,18 +445,21 @@ function paintEv(){
     .then(man=>{
       $('evfallback').style.display='none';
       const scores=o=>SCORE_KEYS.filter(([k])=>o[k]!=null).map(([k,l,d])=>`<span>${l} ${(+o[k]).toFixed(d)}</span>`).join('');
-      $('evgrid').innerHTML=man.sets.map(sec=>{
+      $('evgrid').innerHTML=(man.sets||man.sections||[]).map(sec=>{
+        const colw=parseInt((sec.items[0]||{}).shape)||256;          // cards at least as wide as the image
         const cards=sec.items.map(it=>{
           const u=`out/runs/${RUN}/evals/${st}/${it.file}`;
-          const sc=scores(it);
+          const words=String(it.prompt||'').split(/\s+/).filter(Boolean);
+          const shown=words.slice(0,95).join(' ')+(words.length>95?' …':'');   // ~128 T5 tokens: what the model saw
+          const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
           return `<figure class="evcard"><a href="${u}" target="_blank"><img loading="lazy" src="${u}" alt=""></a>`
-               + `<figcaption>${sc?`<span class="sc">${sc}</span>`:''}`
-               + `<span>${String(it.prompt||'').replace(/</g,'&lt;')}${it.shape?` <span class="mono" style="color:var(--tx3)">· ${it.shape}</span>`:''}</span>`
-               + `<a href="${u}" download>download</a></figcaption></figure>`;}).join('');
+               + `<figcaption><span class="meta"><span>${scores(it)||''}</span><span>${it.shape||''}</span></span>`
+               + `<span class="cap" title="${esc(shown)}">${esc(shown)}</span></figcaption></figure>`;}).join('');
         const summ=SCORE_KEYS.filter(([k])=>sec[k]!=null).map(([k,l,d])=>`${l} ${(+sec[k]).toFixed(d)}`).join(' · ');
         return `<div class="evsec"><div class="evhd"><span>${sec.label}</span>`
              + `<span>${summ}${sec.n!=null?` · n=${sec.n}`:''}</span></div>`
-             + `<div class="evgrid">${cards}</div></div>`;}).join('');
+             + `<div class="evgrid" style="grid-template-columns:repeat(auto-fill,minmax(${colw}px,1fr))">${cards}</div></div>`;}).join('');
+      [...$('evgrid').querySelectorAll('.cap')].forEach(el=>el.onclick=()=>el.classList.toggle('open'));
     })
     .catch(()=>{   // older evals only have the composite PNG
       $('evgrid').innerHTML='';
