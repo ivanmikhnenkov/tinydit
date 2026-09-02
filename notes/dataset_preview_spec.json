@@ -1,0 +1,246 @@
+[
+ {
+  "name": "COCO recap (Recap-COCO-30K)",
+  "repo": "UCSC-VLAA/Recap-COCO-30K",
+  "file": "new_data.parquet",
+  "image_col": "image",
+  "caption_cols": [
+   "caption",
+   "recaption"
+  ],
+  "extra_cols": [
+   "image_id"
+  ],
+  "note": "COCO val2014 images (30k) with original human caption + LLaVA-1.5 recaption. Shows what 'recaptioned COCO' looks like."
+ },
+ {
+  "name": "COCO/LVIS GPT-4V 220k",
+  "repo": "laion/220k-GPT4Vision-captions-from-LIVIS",
+  "file": "lvis_caption_url.parquet",
+  "url_col": "url",
+  "caption_cols": [
+   "caption",
+   "short_caption"
+  ],
+  "note": "218k COCO images (LVIS split) captioned by GPT-4V. URLs point at images.cocodataset.org (stable)."
+ },
+ {
+  "name": "PixMo-Cap (Ai2)",
+  "repo": "allenai/pixmo-cap",
+  "file": "data/train-00000-of-00004.parquet",
+  "url_col": "image_url",
+  "caption_cols": [
+   "caption"
+  ],
+  "note": "717k images, dense captions built from human spoken descriptions (Molmo). URL list, mixed hosts."
+ },
+ {
+  "name": "PD12M (Spawning)",
+  "repo": "Spawning/PD12M",
+  "file": "metadata/pd12m.000.parquet",
+  "url_col": "url",
+  "caption_cols": [
+   "caption"
+  ],
+  "extra_cols": [
+   "source",
+   "width",
+   "height"
+  ],
+  "note": "12.4M public-domain/CC0 images, Florence-2 captions, images on Spawning's own S3 (stable)."
+ },
+ {
+  "name": "Megalith-10M + ShareCaptioner",
+  "kind": "tar_json",
+  "repo": "drawthingsai/megalith-10m-sharecap",
+  "url": "https://huggingface.co/datasets/drawthingsai/megalith-10m-sharecap/resolve/main/00000.tar",
+  "head_mb": 0.3,
+  "url_col": "url",
+  "caption_cols": [
+   "sharecap_caption"
+  ],
+  "extra_cols": [
+   "width",
+   "height"
+  ],
+  "note": "10M Flickr 'photo'-class CC/PD images (Megalith), ShareCaptioner dense captions. Images fetched from Flickr URLs."
+ },
+ {
+  "name": "Pexels photo-concept-bucket",
+  "repo": "ptx0/photo-concept-bucket",
+  "file": "photo-concept-bucket.parquet",
+  "url_col": "url",
+  "caption_cols": [
+   "cogvlm_caption",
+   "title"
+  ],
+  "extra_cols": [
+   "width",
+   "height",
+   "type"
+  ],
+  "note": "568k Pexels stock photos with CogVLM captions. URL list to pexels.com."
+ },
+ {
+  "name": "CommonCatalog CC-BY (YFCC)",
+  "repo": "common-canvas/commoncatalog-cc-by",
+  "file": "3/least_dim_range=256-512/aspect_ratio_bucket=5-3/part-00000-tid-7451828826343701843-f24d4cfd-3466-4a22-a94f-bd1ec48483d2-249307-1-c000.parquet",
+  "image_col": "jpg",
+  "caption_cols": [
+   "blip2_caption",
+   "title"
+  ],
+  "extra_cols": [
+   "width",
+   "height"
+  ],
+  "note": "~26M Flickr CC-BY photos (YFCC100M) with BLIP-2 captions, image bytes in parquet (21 TB total)."
+ },
+ {
+  "name": "ImageNet-1k VL-enriched",
+  "repo": "visual-layer/imagenet-1k-vl-enriched",
+  "file": "data/validation-00001-of-00008.parquet",
+  "image_col": "image",
+  "caption_cols": [
+   "caption_enriched"
+  ],
+  "extra_cols": [
+   "label"
+  ],
+  "note": "ImageNet-1k (1.28M) with BLIP-2 captions and bboxes. Object-centric. Bytes in parquet, gated (accept terms)."
+ },
+ {
+  "name": "LLaVA-ReCap-CC12M",
+  "repo": "lmms-lab/LLaVA-ReCap-CC12M",
+  "file": "data/train-00257-of-00943.parquet",
+  "image_col": "image",
+  "caption_cols": [
+   "conversations.1.value"
+  ],
+  "note": "CC12M web images recaptioned with LLaVA-NeXT (the closest relative of the dataset that disappointed before). Bytes in parquet, 465 GB."
+ },
+ {
+  "name": "PixelProse (RedCaps shard)",
+  "repo": "tomg-group-umd/pixelprose",
+  "file": "data/vlm_captions_redcaps_00.parquet",
+  "url_col": "url",
+  "caption_cols": [
+   "vlm_caption",
+   "original_caption"
+  ],
+  "extra_cols": [
+   "aesthetic_score",
+   "width",
+   "height"
+  ],
+  "note": "16M web images (CommonPool/CC12M/RedCaps) with Gemini captions. URL list; this shard is the Reddit (RedCaps) part."
+ },
+ {
+  "name": "DenseFusion-1M (LAION)",
+  "kind": "jsonl_head",
+  "repo": "BAAI/DenseFusion-1M",
+  "url": "https://huggingface.co/datasets/BAAI/DenseFusion-1M/resolve/main/DenseFusion-1M/DenseFusion-1M.jsonl",
+  "head_mb": 0.5,
+  "url_col": "url",
+  "caption_cols": [
+   "caption"
+  ],
+  "note": "1M LAION images with very long multi-paragraph captions. Images also shipped as zips."
+ },
+ {
+  "name": "text-to-image-2M (synthetic)",
+  "kind": "tar_head",
+  "repo": "jackyhate/text-to-image-2M",
+  "url": "https://huggingface.co/datasets/jackyhate/text-to-image-2M/resolve/main/data_512_2M/data_000014.tar",
+  "head_mb": 8,
+  "image_col": "image",
+  "caption_cols": [
+   "prompt"
+  ],
+  "note": "2M AI-generated 512px images (DALL-E 3 / FLUX style) with the generating prompt. Perfect caption fit, synthetic look."
+ },
+ {
+  "name": "FLUX-Reason-6M (synthetic)",
+  "repo": "LucasFang/FLUX-Reason-6M",
+  "file": "Aesthetics-Part01/fluxdb-aesthetics-part01-00194-of-00415.parquet",
+  "image_col": "image",
+  "caption_cols": [
+   "caption_composition",
+   "caption_entity"
+  ],
+  "note": "6M FLUX.1-dev images with multi-facet captions. Synthetic; this shard is the 'Aesthetics' part."
+ },
+ {
+  "name": "DOCCI (Google)",
+  "kind": "targz_head",
+  "repo": "google/docci",
+  "url": "https://storage.googleapis.com/docci/data/docci_images.tar.gz",
+  "head_mb": 12,
+  "image_col": "image",
+  "key_col": "key",
+  "join": {
+   "url": "https://storage.googleapis.com/docci/data/docci_descriptions.jsonlines",
+   "head_mb": 20,
+   "key_col": "example_id",
+   "caption_cols": [
+    "description"
+   ]
+  },
+  "caption_cols": [
+   "description"
+  ],
+  "note": "15k photos with very detailed human-written descriptions (~136 words). Tiny but the gold standard for caption quality."
+ },
+ {
+  "name": "SA-1B @512\u00b2 + Qwen2.5-VL (BLIP3o)",
+  "kind": "tar_head",
+  "repo": "BLIP3o/BLIP3o-Pretrain-Long-Caption",
+  "url": "https://huggingface.co/datasets/BLIP3o/BLIP3o-Pretrain-Long-Caption/resolve/main/sa_000254.tar",
+  "head_mb": 20,
+  "image_col": "image",
+  "caption_cols": [
+   "txt"
+  ],
+  "note": "The 11M SA-1B (Segment Anything) licensed stock photographs, centre-cropped to 512\u00b2, with Qwen2.5-VL-7B captions. 1,000 tars, 565 GB. Meta's SA-1B terms are research-only."
+ },
+ {
+  "name": "Megalith-10M mirror (moondream mdqa)",
+  "repo": "moondream/megalith-mdqa",
+  "file": "data/train-00000-of-00353.parquet",
+  "image_col": "image",
+  "caption_cols": [
+   "caption"
+  ],
+  "extra_cols": [
+   "key"
+  ],
+  "note": "5.46M Megalith Flickr photos as bytes in parquet (1.06 TB, 1024 px max side) with one-sentence Moondream captions. Richer captions (Qwen3-VL-30B, InternVL2, Florence-2) exist as separate join tables."
+ },
+ {
+  "name": "Open Images + Qwen3-VL captions",
+  "repo": "Fhrozen/openimages-narratives-v2",
+  "file": "data/train_0-00000-of-00100.parquet",
+  "image_col": "image",
+  "caption_cols": [
+   "caption"
+  ],
+  "note": "1.76M Open Images V7 photos (Flickr CC-BY) as bytes in parquet (580 GB, up to 1024 px) with object-focused Qwen3-VL-30B captions capped at 256 tokens."
+ },
+ {
+  "name": "Pexels 2.8M @256\u00b2 (i1 TFRecord)",
+  "kind": "tfrecord_head",
+  "repo": "zlab-princeton/i1-pexels-tfrecord",
+  "url": "https://huggingface.co/datasets/zlab-princeton/i1-pexels-tfrecord/resolve/main/dataset-train.tfrecord-00000-of-00128",
+  "head_mb": 25,
+  "image_col": "image",
+  "caption_cols": [
+   "caption",
+   "caption_alt"
+  ],
+  "extra_cols": [
+   "n_captions",
+   "image_name"
+  ],
+  "note": "Pexels stock photos already centre-cropped and resized to 256\u00b2 (PNG) by the i1 authors, 128 shards, 269 GB, MIT tag. Each record carries five Qwen3-VL-30B captions. Same photographer pool as photo-concept-bucket but 5x larger and ready at training resolution."
+ }
+]

@@ -5,12 +5,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 :root{--bg:#F1F3F4;--surf:#FFF;--surf2:#E9ECEE;--line:#DCE1E4;--tx:#14171A;--tx2:#5C6A70;--tx3:#93A0A6;
---accent:#D6006E;--c128:#0093B0;--c256:#D6006E;--c384:#6A4FB6;--ok:#0F7B6C;--warn:#B7791F;--vio:#6A4FB6;
+--accent:#D6006E;--c128:#0093B0;--c256:#D6006E;--c384:#6A4FB6;--ok:#0F7B6C;--warn:#B7791F;--vio:#6A4FB6;--bad:#C2413A;
 --d:'Archivo',system-ui,sans-serif;--m:'JetBrains Mono',ui-monospace,monospace}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1113;--surf:#171B1E;--surf2:#20262A;--line:#2B3237;
---tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#FF3D8F;--c128:#3BC9DB;--c256:#FF3D8F;--c384:#A78BFA;--ok:#3BC9AE;--warn:#E0A030;--vio:#A78BFA}}
+--tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#FF3D8F;--c128:#3BC9DB;--c256:#FF3D8F;--c384:#A78BFA;--ok:#3BC9AE;--warn:#E0A030;--vio:#A78BFA;--bad:#F06A60}}
 :root[data-theme="dark"]{--bg:#0E1113;--surf:#171B1E;--surf2:#20262A;--line:#2B3237;
---tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#FF3D8F;--c128:#3BC9DB;--c256:#FF3D8F;--c384:#A78BFA;--ok:#3BC9AE;--warn:#E0A030;--vio:#A78BFA}
+--tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#FF3D8F;--c128:#3BC9DB;--c256:#FF3D8F;--c384:#A78BFA;--ok:#3BC9AE;--warn:#E0A030;--vio:#A78BFA;--bad:#F06A60}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--d);-webkit-font-smoothing:antialiased;font-size:15px}
 .wrap{max-width:1680px;margin:0 auto;padding:0 22px}
@@ -46,26 +46,44 @@ margin:0 0 10px;font-weight:500}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media (max-width:1200px){.grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){.grid{grid-template-columns:1fr}}
-.card{background:var(--surf);border:1px solid var(--line);border-radius:4px;padding:12px 13px 8px}
-.ch{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
-.ct{font-size:12.5px;font-weight:600;display:flex;align-items:center;gap:6px}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:4px;padding:12px 13px 8px;position:relative}
+.ch{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;padding-right:24px}
+.ct{font-size:12.5px;font-weight:600}
 .cv{font-family:var(--m);font-size:13px;font-weight:500;font-variant-numeric:tabular-nums}
-.sub{font-family:var(--m);font-size:9.5px;color:var(--tx3);margin-bottom:6px;height:12px}
+.lg{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:var(--m);font-size:9.5px;color:var(--tx3);margin-bottom:6px;min-height:12px;line-height:12px}
+.lg i{display:inline-block;width:12px;height:0;border-top:2px solid var(--tx3);margin-right:4px;vertical-align:middle;font-style:normal}
+.lg i.dash{border-top-style:dashed}
+.lg b{color:var(--tx2);font-weight:500}
 canvas{width:100%;height:150px;display:block}
-/* info tooltip */
-.i{width:14px;height:14px;border-radius:50%;border:1px solid var(--tx3);color:var(--tx3);
-font-size:9.5px;line-height:12px;text-align:center;cursor:help;position:relative;flex:none;font-family:var(--m)}
-.i:hover{border-color:var(--accent);color:var(--accent)}
-.i .tip{display:none;position:absolute;left:50%;transform:translateX(-50%);top:20px;width:280px;
-background:var(--tx);color:var(--bg);padding:9px 11px;border-radius:4px;font-size:11.5px;
-line-height:1.55;font-family:var(--d);z-index:50;text-align:left;font-weight:400;box-shadow:0 6px 18px rgba(0,0,0,.22)}
-.i:hover .tip{display:block}
+/* info button: sits in the top-right corner of a card; opens on hover, focus, or tap */
+button.i,.i{width:16px;height:16px;padding:0;border-radius:50%;border:1px solid var(--tx3);color:var(--tx3);background:transparent;
+font-size:10px;line-height:14px;text-align:center;cursor:help;position:relative;flex:none;font-family:var(--m);font-weight:600;display:inline-block}
+.i:hover,.i.open,.i:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.i:focus-visible{box-shadow:0 0 0 2px var(--surf),0 0 0 4px var(--accent)}
+.card>.i.tr{position:absolute;top:9px;right:9px;z-index:2}
+.i .tip{display:none;position:absolute;left:50%;transform:translateX(-50%);top:22px;width:300px;
+background:var(--tx);color:var(--bg);padding:10px 12px;border-radius:4px;font-size:11.5px;
+line-height:1.55;font-family:var(--d);z-index:60;text-align:left;font-weight:400;box-shadow:0 6px 18px rgba(0,0,0,.22);cursor:default}
+.i.tr .tip{left:auto;right:0;transform:none}
+.i:hover .tip,.i:focus-visible .tip,.i.open .tip{display:block}
 .i .tip b{color:var(--bg)}
-/* legend */
+.i .tip .dir{display:block;margin-top:6px;font-family:var(--m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+/* legend strip above the charts */
 .lgd{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:10px;font-family:var(--m);font-size:10.5px;color:var(--tx2)}
-.lgd i{width:14px;height:3px;display:inline-block;margin-right:5px;vertical-align:middle;font-style:normal}
-.sw128{background:var(--c128)}.sw256{background:var(--c256)}.sw384{background:var(--c384)}
-.swd{border-top:2px dashed var(--tx3);height:0}
+.lgd i{width:14px;height:0;display:inline-block;margin-right:5px;vertical-align:middle;font-style:normal;border-top:3px solid var(--c256)}
+.lgd i.swd{border-top:2px dashed var(--c256)}
+.lgd i.swt{border-top:1.5px solid var(--vio)}
+/* latest-evaluation table */
+.evtab{width:100%;border-collapse:collapse;font-family:var(--m);font-size:11.5px;background:var(--surf);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.evtab th{text-align:left;font-weight:500;color:var(--tx3);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surf2)}
+.evtab td{padding:7px 12px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+.evtab tr:last-child td{border-bottom:0}
+.evtab td.n{text-align:right}
+.evtab th.n{text-align:right}
+.evtab td.name{font-family:var(--d);font-size:12.5px;color:var(--tx)}
+.evtab .good{color:var(--ok)}.evtab .badd{color:var(--bad)}.evtab .flat{color:var(--tx3)}
+.evtab .dirn{color:var(--tx3);font-size:9.5px;margin-left:6px}
+.tw{overflow-x:auto}
 /* film + big image */
 .scrub{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .scrub input[type=range]{flex:1;accent-color:var(--accent);height:20px;cursor:pointer}
@@ -78,17 +96,19 @@ line-height:1.55;font-family:var(--d);z-index:50;text-align:left;font-weight:400
 .fr span{display:block;font-family:var(--m);font-size:9px;color:var(--tx3);padding:2px 6px;text-align:center}
 .fr.lbl{padding:9px 13px;min-width:56px;display:flex;align-items:center}
 .fr.lbl span{padding:0;color:var(--tx2)}
+/* composite images scroll inside their own box; click toggles fit-to-width vs native pixels */
 .big{background:var(--surf);border:1px solid var(--line);border-radius:4px;padding:8px;margin-top:10px;overflow:auto;max-height:78vh}
-.big img{display:block;max-width:100%;height:auto}
+.big img{display:block;max-width:100%;height:auto;cursor:zoom-in}
+.big.zoom img{max-width:none;cursor:zoom-out}
 .evsec{margin-top:14px}
 .evhd{display:flex;justify-content:space-between;align-items:baseline;background:var(--accent);
-color:#fff;padding:6px 11px;font-family:var(--m);font-size:11px;letter-spacing:.04em}
+color:#fff;padding:6px 11px;font-family:var(--m);font-size:11px;letter-spacing:.04em;gap:12px;flex-wrap:wrap}
 .evgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:9px;margin-top:9px}
 .evcard{background:var(--surf);border:1px solid var(--line);display:flex;flex-direction:column}
-.evcard img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--surf2);cursor:zoom-in}
+.evcard img{width:100%;aspect-ratio:1;object-fit:contain;display:block;background:var(--surf2);cursor:zoom-in}
 .evcard figcaption{padding:6px 8px 8px;font-size:11.5px;line-height:1.4;color:var(--tx2);
 display:flex;flex-direction:column;gap:4px}
-.evcard .sc{font-family:var(--m);font-size:10px;color:var(--ok)}
+.evcard .sc{font-family:var(--m);font-size:10px;color:var(--ok);display:flex;gap:8px;flex-wrap:wrap}
 .evcard a{color:var(--tx3);font-family:var(--m);font-size:9.5px;text-decoration:none}
 .evcard a:hover{color:var(--accent)}
 .cfg{display:flex;flex-wrap:wrap;gap:7px}
@@ -121,26 +141,30 @@ padding:3px 8px;border-radius:3px;color:var(--tx2)}
   <div class="sec">
     <h2>Metrics</h2>
     <div class="lgd">
-      <span><i class="sw128"></i>128² stage</span>
-      <span><i class="sw256"></i>256² stage</span>
-      <span><i class="sw384"></i>384² + buckets</span>
-      <span><i class="swd"></i>resolution switch</span>
-      <span class="i">i<span class="tip"><b>Loss is not comparable across colours.</b>
-        Each resolution has its own per-channel latent whitening, so the regression target has a
-        different scale. Compare within a colour only.</span></span>
+      <span><i></i>primary series</span>
+      <span><i class="swt"></i>per-source / component</span>
+      <span><i class="swd"></i>novel prompts (dashed)</span>
+      <span class="mono" style="color:var(--tx3)">hover a chart for exact values · ⓘ explains each metric</span>
+      <button class="i" type="button" aria-label="How to read the charts"><span aria-hidden="true">i</span><span class="tip" role="tooltip">
+        <b>One run, one scale.</b> Every aspect-ratio bucket holds ~256 tokens and shares one latent whitening, so loss
+        curves are comparable across the whole run. Evaluation metrics land every few thousand steps and are drawn as
+        dots until there are enough points for a line. <b>unseen</b> = captions of held-out images the model never saw;
+        <b>novel</b> = hand-written prompts of compositions absent from the data.</span></button>
     </div>
     <div class="grid" id="charts"></div>
+    <div class="tw" id="evtable" style="display:none;margin-top:14px"></div>
   </div>
 
   <div class="sec">
-    <h2>Evaluation — seen vs unseen <span id="evinfo" class="pill"></span></h2>
+    <h2>Evaluation — held-out vs novel prompts <span id="evinfo" class="pill"></span></h2>
     <div class="scrub"><input type="range" id="evrange" min="0" max="0" value="0" step="1">
       <span class="mono" id="evlab">—</span></div>
     <div class="film" id="evfilm"></div>
     <div id="evgrid"></div>
     <div class="big" id="evfallback" style="display:none"><img id="evimg" alt="evaluation grid"></div>
-    <div class="hint">Regenerated from the newest checkpoint on three prompt sets. If SEEN and UNSEEN
-      look alike, the model generalises rather than memorises.</div>
+    <div class="hint">Regenerated from the EMA weights on held-out captions (UNSEEN) and hand-written prompts (NOVEL),
+      in all five bucket shapes. If NOVEL tracks UNSEEN, the model composes rather than recites. Click a composite to
+      toggle native size; wide grids scroll inside their box.</div>
   </div>
 
   <div class="sec">
@@ -148,35 +172,108 @@ padding:3px 8px;border-radius:3px;color:var(--tx2)}
     <div class="scrub"><input type="range" id="samprange" min="0" max="0" value="0" step="1">
       <span class="mono" id="samplab">—</span></div>
     <div class="film" id="film"></div>
-    <div class="big"><img id="bigimg" alt="samples"></div>
+    <div class="big" id="bigbox"><img id="bigimg" alt="samples"></div>
     <div class="hint" id="prompts"></div>
   </div>
 </div></main>
 
 <script>
 const $=id=>document.getElementById(id);
+// Each chart draws N series on one y-scale. series[i]: {key, label, c (css var), dash, thin}.
+// A series without `c` is coloured by training stage (res), like the original single-line charts.
+// better: 'lower' | 'higher' drives the arrow colours in the evaluation table.
 const CHARTS=[
- {id:'loss', key:'loss', t:'Loss', log:true, fmt:4,
-  tip:'Flow-matching MSE between the predicted velocity and <b>z − e</b>, averaged over the log interval. Starts near 2.0 — the variance of the target when latents are whitened — and falls.'},
- {id:'val', key:'val_loss', t:'Held-out loss', log:true, fmt:4, opt:true,
-  tip:'Same objective on images excluded from training entirely. If this separates upward from the train curve, the model is memorising.'},
- {id:'tq', key:'loss_t_hi', key2:'loss_t_lo', t:'Loss by timestep', fmt:3, opt:true, c:'--warn', c2:'--vio',
-  tip:'Loss split at t=0.5. <b>lo</b> is near pure noise (hard: the image must come from text alone), <b>hi</b> is near clean data (easier).'},
- {id:'gn', key:'gnorm', t:'Gradient norm', fmt:3,
-  tip:'Global L2 norm over <b>all</b> parameters, sqrt(Σ grad²), on the batch-averaged gradient. Clipped at 1.0. Spikes mean instability; a flat low value means settled optimisation.'},
- {id:'clip', key:'clip_unseen', key2:'clip_seen', t:'CLIP score', fmt:3, opt:true, c:'--ok', c2:'--tx3',
-  tip:'Cosine similarity between each generated image and its prompt. The only metric here measuring <b>prompt adherence</b> rather than fit. Typical range 0.15–0.35; only relative movement matters.'},
- {id:'ips', key:'ips', t:'Throughput', fmt:0, unit:' img/s',
-  tip:'Images/second, cumulative average <b>since the current process started</b> — it resets each stage. So the headline is the current stage while the chart’s upper range is history from cheaper 128² steps.'},
+ {id:'loss', t:'Loss', log:true, fmt:4, better:'lower',
+  series:[{key:'loss',label:'total'},{key:'loss_mse',label:'mse',c:'--c128',thin:1},
+          {key:'loss_cos',label:'cos',c:'--vio',thin:1},{key:'loss_disp',label:'disp',c:'--warn',thin:1}],
+  tip:'The training objective per log interval, up to four lines. <b>total</b> is what the optimiser minimises. '
+     +'<b>mse</b>: flow-matching mean-squared error between the predicted velocity and the true velocity z − e on whitened latents; '
+     +'it starts near 2.0 (the variance of the target) and falls. <b>cos</b>: 1 − cosine similarity between predicted and true velocity, '
+     +'the direction term from LightningDiT; falls from ~1 toward 0. <b>disp</b>: dispersive repulsion on block-5 features (Wang &amp; He 2025) '
+     +'that keeps internal representations spread out; its absolute value is arbitrary, only its trend matters. All buckets share one whitening, '
+     +'so the curve is comparable across the whole run.<span class="dir">lower is better · log scale</span>'},
+ {id:'val', t:'Held-out loss', log:true, fmt:4, opt:true, better:'lower',
+  series:[{key:'val_loss',label:'all',c:'--c256'},{key:'val_loss_coco',label:'coco',c:'--c128',thin:1},
+          {key:'val_loss_pexels',label:'pexels',c:'--vio',thin:1},{key:'val_loss_flux',label:'flux',c:'--warn',thin:1}],
+  tip:'The same objective on 1,000 held-out rows per source that are never trained on. <b>all</b> is the mix; '
+     +'<b>coco</b>, <b>pexels</b> and <b>flux</b> are per source. If <b>all</b> rises while the training loss keeps falling, the model is memorising. '
+     +'If one source separates from the others, the model over- or under-fits that source; flux is expected to sit lowest because synthetic images are cleaner.'
+     +'<span class="dir">lower is better · log scale</span>'},
+ {id:'tq', t:'Loss by timestep', fmt:3, opt:true,
+  series:[{key:'loss_t_hi',label:'t > 0.5 · near data',c:'--warn'},{key:'loss_t_lo',label:'t < 0.5 · near noise',c:'--vio',dash:1}],
+  tip:'Training loss split at t = 0.5. <b>near noise</b> is the hard half: the image layout must come from the text alone. '
+     +'<b>near data</b> is the easy half: denoising fine detail. Both fall together in a healthy run; if only the easy half improves, '
+     +'the model is polishing texture and not learning composition.<span class="dir">lower is better</span>'},
+ {id:'gn', t:'Gradient norm', fmt:3, series:[{key:'gnorm',label:'‖g‖₂'}],
+  tip:'Global L2 norm over <b>all</b> parameters, sqrt(Σ grad²), on the batch-averaged gradient, before clipping at 1.0. '
+     +'A flat low value means settled optimisation. Isolated spikes are normal early on; repeated spikes or a rising trend mean instability '
+     +'(too high a learning rate, a bad batch, or a numerical issue).<span class="dir">stable and low is good</span>'},
+ {id:'lr', t:'Learning rate', fmt:2, exp:true, opt:true, series:[{key:'lr',label:'lr',c:'--tx3'}],
+  tip:'The learning rate actually applied at each step: linear warmup, then the schedule. Peak 2e-4. '
+     +'Read it next to the loss chart: a kink in the loss that lines up with a change here is the schedule, not the data.<span class="dir">reference only</span>'},
+ {id:'ips', t:'Throughput', fmt:0, unit:' img/s', series:[{key:'ips',label:'img/s',c:'--ok'}],
+  tip:'Images per second, cumulative average <b>since the current process started</b>, so it dips after a restart and recovers. '
+     +'The compiled 896×16 model does ~460 img/s at batch 256 on this GPU. A persistent drop means the data feed or an evaluation is stealing time.'
+     +'<span class="dir">higher is better</span>'},
+ {id:'clip', t:'CLIP score', fmt:3, opt:true, better:'higher',
+  series:[{key:'clip_unseen',label:'unseen',c:'--ok'},{key:'clip_novel',label:'novel',c:'--ok',dash:1}],
+  tip:'Cosine similarity between the CLIP embedding of each generated image and of its prompt, averaged over the prompt set. '
+     +'Measures <b>prompt adherence</b> only, not image quality. Typical 0.15–0.35 and only the relative movement matters. '
+     +'<b>unseen</b> = captions of held-out images; <b>novel</b> (dashed) = hand-written prompts absent from the data. '
+     +'A widening gap between the two means the model leans on memorised phrasing.<span class="dir">higher is better</span>'},
+ {id:'pick', t:'PickScore', fmt:2, opt:true, better:'higher',
+  series:[{key:'pickscore_unseen',label:'unseen',c:'--c256'},{key:'pickscore_novel',label:'novel',c:'--c256',dash:1}],
+  tip:'PickScore is a CLIP-H model fine-tuned on ~500k human pairwise preferences (Pick-a-Pic). It predicts which of two images a person '
+     +'would prefer for the prompt, so it mixes quality and adherence the way people do. Typical 18–23. This is the kind of model that becomes '
+     +'the reward in the later Flow-GRPO stage, so this curve is the baseline that stage starts from. unseen / novel as in CLIP score.'
+     +'<span class="dir">higher is better</span>'},
+ {id:'hps', t:'HPSv2.1', fmt:4, opt:true, better:'higher',
+  series:[{key:'hpsv2_unseen',label:'unseen',c:'--c384'},{key:'hpsv2_novel',label:'novel',c:'--c384',dash:1}],
+  tip:'Human Preference Score v2.1: CLIP-H fine-tuned on ~800k human choices (Human Preference Dataset v2). Typical 0.20–0.30. '
+     +'A second candidate RL reward, trained on different judgements than PickScore; when the two disagree, look at the grids rather than trusting either.'
+     +'<span class="dir">higher is better</span>'},
+ {id:'fid', t:'FID', fmt:1, opt:true, better:'lower', series:[{key:'fid',label:'FID',c:'--vio'}],
+  tip:'Fréchet Inception Distance: Inception-v3 pool features of 3,000 images generated from held-out captions (20 Euler steps, CFG 4) '
+     +'versus the 3,000 held-out real images; the distance between the two feature distributions. With only 3k samples the absolute value is biased '
+     +'upward, so only the trend matters; small 256² models typically land in 20–60.<span class="dir">lower is better</span>'},
+ {id:'fdd', t:'FD-DINOv2', fmt:1, opt:true, better:'lower', series:[{key:'fd_dino',label:'FD',c:'--vio'}],
+  tip:'The same Fréchet distance computed in DINOv2-B feature space instead of Inception. DINOv2 features track human judgement of realism '
+     +'more closely (Stein et al. 2023), so this is the better of the two distribution metrics. It lives on a different scale from FID: compare it only with itself.'
+     +'<span class="dir">lower is better</span>'},
+ {id:'obj', t:'Object accuracy', fmt:1, pct:true, unit:'%', opt:true, better:'higher', series:[{key:'obj_acc',label:'detected',c:'--ok'}],
+  tip:'Prompts "a photo of a {class}" for all 80 COCO classes × 4 seeds. A COCO-trained Faster R-CNN must detect that class in the generated image '
+     +'with confidence ≥ 0.5. Shown as the fraction of images that pass. The most direct measure of "does it draw the object", and a verifiable '
+     +'reward for the RL stage later.<span class="dir">higher is better</span>'},
+];
+// rows of the latest-evaluation table, in display order
+const EVAL_ROWS=[
+ {key:'fid',label:'FID',fmt:1,better:'lower'},
+ {key:'fd_dino',label:'FD-DINOv2',fmt:1,better:'lower'},
+ {key:'pickscore_unseen',label:'PickScore · unseen',fmt:2,better:'higher'},
+ {key:'pickscore_novel',label:'PickScore · novel',fmt:2,better:'higher'},
+ {key:'hpsv2_unseen',label:'HPSv2.1 · unseen',fmt:4,better:'higher'},
+ {key:'hpsv2_novel',label:'HPSv2.1 · novel',fmt:4,better:'higher'},
+ {key:'clip_unseen',label:'CLIP score · unseen',fmt:3,better:'higher'},
+ {key:'clip_novel',label:'CLIP score · novel',fmt:3,better:'higher'},
+ {key:'obj_acc',label:'Object accuracy',fmt:1,pct:true,better:'higher'},
+ {key:'val_loss',label:'Held-out loss',fmt:4,better:'lower'},
 ];
 let RUN=new URLSearchParams(location.search).get('run')||null, META=null, ROWS=[], ALL=[];
 let SAMP=[], SEL=-1, sampSig='', EVS=[], EVSEL=-1, evSig='';
 let lastGrow=0, lastLen=-1;
 
 $('charts').innerHTML=CHARTS.map(c=>`<div class="card" id="card_${c.id}"${c.opt?' style="display:none"':''}>
-  <div class="ch"><span class="ct">${c.t}<span class="i">i<span class="tip">${c.tip}</span></span></span>
-  <span class="cv" id="v_${c.id}">—</span></div>
-  <div class="sub" id="s_${c.id}"></div><canvas id="c_${c.id}"></canvas></div>`).join('');
+  <button class="i tr" type="button" aria-label="About ${c.t}" aria-expanded="false"><span aria-hidden="true">i</span><span class="tip" role="tooltip">${c.tip}</span></button>
+  <div class="ch"><span class="ct">${c.t}</span><span class="cv" id="v_${c.id}">—</span></div>
+  <div class="lg" id="s_${c.id}"></div><canvas id="c_${c.id}"></canvas></div>`).join('');
+
+// info buttons: hover shows the tip (CSS); tap/click toggles it open for touch users; Escape or an outside click closes
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.i');
+  document.querySelectorAll('.i.open').forEach(o=>{if(o!==b){o.classList.remove('open');o.setAttribute('aria-expanded','false');}});
+  if(b&&!e.target.closest('.tip')){const on=!b.classList.contains('open');b.classList.toggle('open',on);b.setAttribute('aria-expanded',on?'true':'false');}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.i.open').forEach(o=>{o.classList.remove('open');o.setAttribute('aria-expanded','false');});});
 
 function attachHover(){
   CHARTS.forEach(c=>{const cv=$('c_'+c.id); if(!cv||cv._hooked)return; cv._hooked=1;
@@ -186,71 +283,71 @@ function attachHover(){
     cv.style.cursor='crosshair';});
 }
 const fmt=(n,d=2)=>n==null||isNaN(n)?'—':(+n).toFixed(d);
+const fmtV=(c,v)=>{if(v==null||isNaN(v))return '—'; if(c.pct)return (100*v).toFixed(c.fmt)+'%'; if(c.exp)return (+v).toExponential(c.fmt); return (+v).toFixed(c.fmt)+(c.unit||'');};
 const hms=s=>{s=Math.max(0,Math.round(s));const h=(s/3600)|0,m=((s%3600)/60)|0;return h?`${h}h ${m}m`:`${m}m ${s%60}s`;};
+const stageVar=res=>res<=128?'--c128':(res>=384?'--c384':'--c256');
 
-function draw(cid,rows,key,{log=false,color=null,key2=null,c2=null}={}){
-  const cv=$(cid),dpr=devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;
+function draw(c,rows){
+  const cv=$('c_'+c.id),dpr=devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;
   if(!W){return;} cv.width=W*dpr;cv.height=H*dpr;
   const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);
-  const cs=getComputedStyle(document.documentElement);
-  const keys=key2?[key,key2]:[key];
-  const series=keys.map(k=>rows.filter(r=>r[k]!=null&&isFinite(r[k])).map(r=>({x:r.step,y:log?Math.log10(Math.max(r[k],1e-6)):r[k],res:r.res||256})));
-  if(!series[0]||!series[0].length){g.fillStyle=cs.getPropertyValue('--tx3');g.font='11px monospace';
+  const cs=getComputedStyle(document.documentElement), col=v=>cs.getPropertyValue(v).trim();
+  const log=!!c.log;
+  const series=c.series.map(s=>rows.filter(r=>r[s.key]!=null&&isFinite(r[s.key]))
+    .map(r=>({x:r.step,y:log?Math.log10(Math.max(r[s.key],1e-6)):r[s.key],res:r.res||256})));
+  if(!series.some(p=>p.length)){g.fillStyle=col('--tx3');g.font='11px monospace';
     g.fillText('no data yet',8,H/2);cv._st=null;return;}
   const allp=series.flat();
   const x0=Math.min(...allp.map(p=>p.x)),x1=Math.max(...allp.map(p=>p.x));
   let y0=Math.min(...allp.map(p=>p.y)),y1=Math.max(...allp.map(p=>p.y));
   if(y1-y0<1e-9){y0-=.5;y1+=.5;} const pd=(y1-y0)*.1;y0-=pd;y1+=pd;
-  const PL=42,PR=6,PT=6,PB=16;
+  const PL=44,PR=6,PT=6,PB=16;
   const X=v=>PL+(v-x0)/Math.max(x1-x0,1)*(W-PL-PR), Y=v=>H-PB-(v-y0)/(y1-y0)*(H-PT-PB);
-  g.strokeStyle=cs.getPropertyValue('--line');g.lineWidth=1;
-  g.font='9px monospace';g.fillStyle=cs.getPropertyValue('--tx3');
+  g.strokeStyle=col('--line');g.lineWidth=1;
+  g.font='9px monospace';g.fillStyle=col('--tx3');
+  const tick=yv=>{const raw=log?Math.pow(10,yv):yv;
+    if(c.pct)return (100*raw).toFixed(0)+'%'; if(c.exp)return raw.toExponential(0);
+    if(log)return '1e'+yv.toFixed(1); return Math.abs(yv)>=1000?yv.toExponential(1):yv.toPrecision(3);};
   for(let i=0;i<=3;i++){const yv=y0+(y1-y0)*i/3,y=Y(yv);
     g.beginPath();g.moveTo(PL,y);g.lineTo(W-PR,y);g.stroke();
-    g.fillText(log?('1e'+yv.toFixed(1)):(Math.abs(yv)>=1000?yv.toExponential(1):yv.toPrecision(3)),3,y+3);}
+    g.fillText(tick(yv),3,y+3);}
   series.forEach((pts,si)=>{
-    const fixed = si===0?color:c2;
-    if(pts.length===1){                      // single sample: show a marker, not nothing
-      const col=fixed?cs.getPropertyValue(fixed):cs.getPropertyValue('--c256');
-      g.fillStyle=col;g.beginPath();g.arc(X(pts[0].x),Y(pts[0].y),3.5,0,7);g.fill();return;}
-    if(pts.length<8){                        // sparse: mark each point so it is visible
-      const col=fixed?cs.getPropertyValue(fixed):cs.getPropertyValue('--c256');
-      g.fillStyle=col;pts.forEach(q=>{g.beginPath();g.arc(X(q.x),Y(q.y),2.5,0,7);g.fill();});}
+    const s=c.series[si]; if(!pts.length)return;
+    const fixed=s.c?col(s.c):null, lw=s.thin?1.1:(si?1.2:1.6);
+    if(pts.length<8){                        // sparse (evaluation metrics): mark each point so it is visible
+      pts.forEach(q=>{g.fillStyle=fixed||col(stageVar(q.res));g.beginPath();g.arc(X(q.x),Y(q.y),pts.length===1?3.5:2.5,0,7);g.fill();});}
     let prev=null;
     for(let i=1;i<pts.length;i++){
-      const col = fixed?cs.getPropertyValue(fixed):cs.getPropertyValue(pts[i].res<=128?'--c128':(pts[i].res>=384?'--c384':'--c256'));
-      g.strokeStyle=col;g.lineWidth=si?1.1:1.5;
-      if(si)g.setLineDash([3,2]);
+      g.strokeStyle=fixed||col(stageVar(pts[i].res));g.lineWidth=lw;
+      if(s.dash)g.setLineDash([4,3]);
       g.beginPath();g.moveTo(X(pts[i-1].x),Y(pts[i-1].y));g.lineTo(X(pts[i].x),Y(pts[i].y));g.stroke();
       g.setLineDash([]);
-      if(!fixed&&prev!==null&&prev!==pts[i].res){
-        g.strokeStyle=cs.getPropertyValue('--tx3');g.setLineDash([3,3]);
+      if(!fixed&&prev!==null&&prev!==pts[i].res){          // resolution switch marker (kept for older runs)
+        g.strokeStyle=col('--tx3');g.setLineDash([3,3]);
         g.beginPath();g.moveTo(X(pts[i].x),PT);g.lineTo(X(pts[i].x),H-PB);g.stroke();g.setLineDash([]);}
       prev=pts[i].res;}
   });
-  g.fillStyle=cs.getPropertyValue('--tx3');
+  g.fillStyle=col('--tx3');
   g.fillText(x0.toLocaleString(),PL,H-4);
   const lb=x1.toLocaleString();g.fillText(lb,W-PR-lb.length*5.4,H-4);
-  cv._st={series,X,Y,keys,log,W,H,PL,PR,PT,PB};
-  if(cv._hx!=null){
-    const st=cv._st, near=[];
-    st.series.forEach((pts,si)=>{
-      let b=null,bd=1e9;
+  cv._st={series,X,Y};
+  if(cv._hx!=null){                          // crosshair readout: nearest point of every series
+    const near=[];
+    series.forEach((pts,si)=>{let b=null,bd=1e9;
       pts.forEach(q=>{const d=Math.abs(X(q.x)-cv._hx); if(d<bd){bd=d;b=q;}});
-      if(b)near.push({si,q:b});});
+      if(b&&bd<40)near.push({si,q:b});});
     if(near.length){
       const px=X(near[0].q.x);
-      g.strokeStyle=cs.getPropertyValue('--tx3');g.setLineDash([2,3]);g.lineWidth=1;
+      g.strokeStyle=col('--tx3');g.setLineDash([2,3]);g.lineWidth=1;
       g.beginPath();g.moveTo(px,PT);g.lineTo(px,H-PB);g.stroke();g.setLineDash([]);
-      near.forEach(({si,q})=>{g.fillStyle=cs.getPropertyValue(si===0?(color||'--c256'):(c2||'--c128'));
-        g.beginPath();g.arc(px,Y(q.y),3,0,7);g.fill();});
-      const vals=near.map(({si,q})=>{const raw=log?Math.pow(10,q.y):q.y;
-        return (st.keys[si].replace(/^(loss_t_|clip_)/,''))+' '+(Math.abs(raw)>=1000?raw.toFixed(0):raw.toPrecision(4));});
+      near.forEach(({si,q})=>{const s=c.series[si];g.fillStyle=s.c?col(s.c):col(stageVar(q.res));
+        g.beginPath();g.arc(X(q.x),Y(q.y),3,0,7);g.fill();});
+      const vals=near.map(({si,q})=>{const raw=log?Math.pow(10,q.y):q.y;return c.series[si].label+' '+fmtV(c,raw);});
       const txt='step '+near[0].q.x.toLocaleString()+'  ·  '+vals.join('  ·  ');
       g.font='10px monospace';const tw=g.measureText(txt).width+10;
-      let tx=Math.min(Math.max(px-tw/2,PL),W-PR-tw);
-      g.fillStyle=cs.getPropertyValue('--tx');g.fillRect(tx,PT,tw,16);
-      g.fillStyle=cs.getPropertyValue('--bg');g.fillText(txt,tx+5,PT+11);
+      let tx=Math.min(Math.max(px-tw/2,PL),Math.max(PL,W-PR-tw));
+      g.fillStyle=col('--tx');g.fillRect(tx,PT,tw,16);
+      g.fillStyle=col('--bg');g.fillText(txt,tx+5,PT+11);
     }
   }
 }
@@ -259,31 +356,54 @@ function renderStats(){
   const last=ROWS.slice(-1)[0]||{}, tot=META&&META.config?META.config.steps:null;
   const bs=META&&META.config?META.config.bs:256;
   const eta=(last.ips&&tot)?((tot-last.step)*bs/last.ips):null;
+  const shape=last.bucket?String(last.bucket).replace('_',':'):(last.res?last.res+'²':'—');
   $('stats').innerHTML=[
     ['step',(last.step||0).toLocaleString()],['of',tot?tot.toLocaleString():'—'],
-    ['loss',fmt(last.loss,4)],['res',(last.res||'—')+'²'],['img/s',fmt(last.ips,0)],
+    ['loss',fmt(last.loss,4)],['last bucket',shape],['tokens',last.tokens!=null?last.tokens:'—'],['img/s',fmt(last.ips,0)],
     ['elapsed',last.secs?hms(last.secs):'—'],['eta',eta?hms(eta):'—'],
-    ['params',META?META.params_m+'M':'—'],
+    ['params',META&&META.params_m!=null?META.params_m+'M':'—'],
   ].map(([k,v])=>`<div class="st"><b>${v}</b><i>${k}</i></div>`).join('');
   if(tot&&last.step)$('prog').style.width=(100*last.step/tot).toFixed(1)+'%';
   if(META&&META.config){const c=META.config;
-    $('cfg').innerHTML=[['dataset',c.dataset],['ae',c.ae],['config',c.config],['batch',c.bs],
-      ['lr',(+c.lr).toExponential(0)],['warmup',c.warmup],['ema',c.ema],['cfg-drop',c.cfg_drop],
-      ['sample cfg',c.cfg],['held out',c.val_n!=null?c.val_n:'—'],['eval every',c.eval_every!=null?c.eval_every:'—']]
-      .map(([k,v])=>`<span class="kv">${k} <b>${v}</b></span>`).join('');}
+    const want=[['cache','cache'],['dataset','dataset'],['ae','ae'],['config','config'],['batch','bs'],['lr','lr'],['warmup','warmup'],
+      ['ema','ema'],['shift','shift'],['cfg-drop','cfg_drop'],['sample cfg','cfg'],['max tokens','max_len'],['registers','registers'],
+      ['held out','val_n'],['eval every','eval_every'],['compile','compile']];
+    $('cfg').innerHTML=want.filter(([,k])=>c[k]!=null).map(([lab,k])=>{let v=c[k];
+      if(k==='lr')v=(+v).toExponential(0); if(Array.isArray(v))v=v.join(',');
+      return `<span class="kv">${lab} <b>${v}</b></span>`;}).join('');}
 }
 function renderCharts(){
-  const last=ROWS.slice(-1)[0]||{};
   CHARTS.forEach(c=>{
-    const has=ROWS.some(r=>r[c.key]!=null);
+    const has=c.series.some(s=>ROWS.some(r=>r[s.key]!=null));
     if(c.opt)$('card_'+c.id).style.display=has?'':'none';
     if(!has&&c.opt)return;
-    draw('c_'+c.id,ROWS,c.key,{log:!!c.log,color:c.c,key2:c.key2,c2:c.c2});
-    const lv=[...ROWS].reverse().find(r=>r[c.key]!=null);
-    $('v_'+c.id).textContent=lv?fmt(lv[c.key],c.fmt)+(c.unit||''):'—';
-    if(c.key2){const l2=[...ROWS].reverse().find(r=>r[c.key2]!=null);
-      $('s_'+c.id).textContent=l2?`${c.key2.replace(/^(loss_t_|clip_)/,'')} ${fmt(l2[c.key2],c.fmt)} (dashed)`:'';}
+    draw(c,ROWS);
+    const latest=k=>{for(let i=ROWS.length-1;i>=0;i--)if(ROWS[i][k]!=null)return ROWS[i][k];return null;};
+    $('v_'+c.id).textContent=fmtV(c,latest(c.series[0].key));
+    const live=c.series.filter(s=>ROWS.some(r=>r[s.key]!=null));
+    $('s_'+c.id).innerHTML=live.length>1?live.map(s=>{const st=s.c?`border-top-color:var(${s.c})`:`border-top-color:var(--c256)`;
+      return `<span><i class="${s.dash?'dash':''}" style="${st}"></i>${s.label} <b>${fmtV(c,latest(s.key))}</b></span>`;}).join(''):'';
   });
+  renderEvalTable();
+}
+function renderEvalTable(){
+  const rows=EVAL_ROWS.map(m=>{
+    const pts=ALL.filter(r=>r[m.key]!=null&&isFinite(r[m.key])).map(r=>({step:r.step,v:+r[m.key]}));
+    if(!pts.length)return null;
+    const cur=pts[pts.length-1], prev=pts.length>1?pts[pts.length-2]:null;
+    const f=v=>m.pct?(100*v).toFixed(m.fmt)+'%':v.toFixed(m.fmt);
+    let d='—',cls='flat',arrow='';
+    if(prev){const diff=cur.v-prev.v;
+      if(Math.abs(diff)>1e-12){const good=m.better==='higher'?diff>0:diff<0;cls=good?'good':'badd';arrow=diff>0?'▲ ':'▼ ';}
+      d=arrow+(m.pct?(100*Math.abs(diff)).toFixed(m.fmt)+' pt':Math.abs(diff).toFixed(m.fmt));}
+    return `<tr><td class="name">${m.label}<span class="dirn">${m.better==='higher'?'↑ better':'↓ better'}</span></td>`
+         +`<td class="n">${f(cur.v)}</td><td class="n">${prev?f(prev.v):'—'}</td><td class="n ${cls}">${d}</td>`
+         +`<td class="n">${cur.step.toLocaleString()}</td></tr>`;
+  }).filter(Boolean);
+  const box=$('evtable');
+  if(!rows.length){box.style.display='none';box.innerHTML='';return;}
+  box.style.display='';
+  box.innerHTML=`<table class="evtab"><thead><tr><th>latest evaluation</th><th class="n">latest</th><th class="n">previous</th><th class="n">change</th><th class="n">step</th></tr></thead><tbody>${rows.join('')}</tbody></table>`;
 }
 function renderFilm(){
   const sig=SAMP.map(s=>s.step).join(',');
@@ -310,6 +430,7 @@ function renderEv(){
     [...$('evfilm').querySelectorAll('.fr')].forEach(f=>f.onclick=()=>{EVSEL=+f.dataset.e;paintEv();});}
   paintEv();
 }
+const SCORE_KEYS=[['clip','CLIP',3],['pickscore','Pick',2],['hpsv2','HPS',4]];
 function paintEv(){
   if(!EVS.length)return;
   if(EVSEL<0||EVSEL>=EVS.length)EVSEL=EVS.length-1;
@@ -319,15 +440,18 @@ function paintEv(){
     .then(r=>r.ok?r.json():Promise.reject())
     .then(man=>{
       $('evfallback').style.display='none';
+      const scores=o=>SCORE_KEYS.filter(([k])=>o[k]!=null).map(([k,l,d])=>`<span>${l} ${(+o[k]).toFixed(d)}</span>`).join('');
       $('evgrid').innerHTML=man.sets.map(sec=>{
         const cards=sec.items.map(it=>{
           const u=`out/runs/${RUN}/evals/${st}/${it.file}`;
+          const sc=scores(it);
           return `<figure class="evcard"><a href="${u}" target="_blank"><img loading="lazy" src="${u}" alt=""></a>`
-               + `<figcaption>${it.clip!=null?`<span class="sc">CLIP ${it.clip.toFixed(3)}</span>`:''}`
-               + `<span>${it.prompt.replace(/</g,'&lt;')}</span>`
+               + `<figcaption>${sc?`<span class="sc">${sc}</span>`:''}`
+               + `<span>${String(it.prompt||'').replace(/</g,'&lt;')}${it.shape?` <span class="mono" style="color:var(--tx3)">· ${it.shape}</span>`:''}</span>`
                + `<a href="${u}" download>download</a></figcaption></figure>`;}).join('');
+        const summ=SCORE_KEYS.filter(([k])=>sec[k]!=null).map(([k,l,d])=>`${l} ${(+sec[k]).toFixed(d)}`).join(' · ');
         return `<div class="evsec"><div class="evhd"><span>${sec.label}</span>`
-             + `<span>${sec.clip!=null?`CLIP ${sec.clip.toFixed(3)} · n=${sec.n}`:''}</span></div>`
+             + `<span>${summ}${sec.n!=null?` · n=${sec.n}`:''}</span></div>`
              + `<div class="evgrid">${cards}</div></div>`;}).join('');
     })
     .catch(()=>{   // older evals only have the composite PNG
@@ -344,6 +468,7 @@ async function listRuns(){
     return [...t.matchAll(/href="([^"\/]+)\/"/g)].map(m=>m[1]).filter(n=>n!=='.'&&n!=='..');}
   catch(e){return[];}
 }
+const SKIP_MERGE=new Set(['step','sample','eval','secs','ips','res','bucket','tokens']);
 async function poll(){
   if(!RUN)return;
   try{
@@ -352,35 +477,36 @@ async function poll(){
     const rows=t.trim().split('\n').filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(Boolean);
     if(rows.length!==lastLen){lastLen=rows.length;lastGrow=Date.now();}
     ALL=rows;
-    // merge sparse series (val/clip appear on their own rows) onto the metric timeline
+    // the timeline is the rows with a training loss; sparse rows (val / eval metrics land on their own lines)
+    // are merged onto the last timeline row at or before their step so every chart shares one x-axis
     ROWS=rows.filter(r=>r.loss!=null);
-    const sparse=rows.filter(r=>r.loss==null&&(r.clip_seen!=null||r.clip_unseen!=null));
-    sparse.forEach(sp=>{let best=null;
-      for(const r of ROWS) if(r.step<=sp.step) best=r; else break;
-      if(best)Object.keys(sp).forEach(k=>{if(k.startsWith('clip_'))best[k]=sp[k];});});
+    rows.filter(r=>r.loss==null).forEach(sp=>{let best=null;
+      for(const r of ROWS){ if(r.step<=sp.step) best=r; else break; }
+      if(best)Object.keys(sp).forEach(k=>{if(!SKIP_MERGE.has(k)&&typeof sp[k]==='number'&&isFinite(sp[k]))best[k]=sp[k];});});
     const ns=rows.filter(r=>r.sample);
     const follow=$('follow').checked;
     const wasEnd=(SEL===SAMP.length-1||SEL<0);
     SAMP=ns; if(follow&&wasEnd)SEL=SAMP.length-1;
     $('runname').textContent=RUN;
-    // rows only land every log_every steps (~80s at 256²), so judge liveness by age
+    // rows only land every log_every steps, so judge liveness by age
     const age=(Date.now()-lastGrow)/1000, live=age<240;
     $('status').textContent=live?'live':`idle ${Math.round(age)}s`;
     $('status').className='pill '+(live?'live':'idle');
     renderStats();renderCharts();renderFilm();
-    if(META)$('prompts').innerHTML=(META.prompts||[]).map((p,i)=>`${i}. ${p}`).join(' &nbsp;·&nbsp; ');
+    if(META)$('prompts').innerHTML=(META.prompts||[]).map((p,i)=>`${i}. ${String(p).replace(/</g,'&lt;')}`).join(' &nbsp;·&nbsp; ');
   }catch(e){$('status').textContent='no data';$('status').className='pill idle';}
 }
 async function pollEv(){
   if(!RUN)return;
+  const sec=document.querySelectorAll('.sec')[2];
   try{
     const idx=await (await fetch(`out/runs/${RUN}/evals/index.json`,{cache:'no-store'})).json();
-    if(!Array.isArray(idx)||!idx.length){document.querySelectorAll('.sec')[2].style.display='none';EVS=[];return;}
-    document.querySelectorAll('.sec')[2].style.display='';
+    if(!Array.isArray(idx)||!idx.length){sec.style.display='none';EVS=[];return;}
+    sec.style.display='';
     const wasEnd=(EVSEL===EVS.length-1||EVSEL<0), follow=$('follow').checked;
     EVS=idx; if(follow&&wasEnd)EVSEL=EVS.length-1;
     renderEv();
-  }catch(e){document.querySelectorAll('.sec')[2].style.display='none';EVS=[];}
+  }catch(e){sec.style.display='none';EVS=[];}
 }
 (async()=>{
   const runs=await listRuns();
@@ -392,6 +518,7 @@ async function pollEv(){
   let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(renderCharts,150);});
   $('samprange').oninput=e=>{SEL=+e.target.value;$('follow').checked=false;paintFilm();};
   $('evrange').oninput=e=>{EVSEL=+e.target.value;$('follow').checked=false;paintEv();};
+  document.querySelectorAll('.big').forEach(b=>b.addEventListener('click',()=>b.classList.toggle('zoom')));
   addEventListener('keydown',e=>{
     if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;
     if(e.key==='ArrowLeft'||e.key==='ArrowRight'){

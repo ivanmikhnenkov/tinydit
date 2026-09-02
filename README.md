@@ -1,267 +1,205 @@
 # tinydit
 
-A small text-to-image diffusion transformer, trained from scratch on one GPU, built to
-understand how modern image generation actually works rather than to compete with anything.
+A small text-to-image diffusion transformer trained from scratch on one GPU, built to understand how
+modern image generation works. Frozen pretrained autoencoder + frozen pretrained text encoder +
+a **~210M-parameter DiT trained from scratch** on rectified flow, at 256²-area with aspect-ratio
+buckets. After pretraining it becomes the base model for RL practice (Flow-GRPO and friends).
 
-Frozen pretrained autoencoder + frozen pretrained text encoder + a **custom DiT trained
-from scratch** on rectified flow.
-
-## Results
-COCO 2017 - is a good dataset. Many others which have >1M images are of mediocre quality corresponding to random internet scraping. I believe it spoilt training. So, next time work more on quality of dataset.
+Everything heavy (weights, latent caches, runs, shards) lives under `out/` and is git-ignored; the
+repo holds code, prompts, notes and the Docker recipe, so the whole thing is reproducible from a clone.
 
 ---
 
-## Architecture
+## Decisions (September 2026 re-plan)
+
+Every choice below was checked against current papers and shipping models; the evidence with URLs is
+in `notes/2026-09-02_architecture_research.md`, the dataset survey in `notes/2026-09-02_dataset_research.md`,
+throughput measurements in `notes/2026-09-02_benchmarks.md`. Interfaces between ingest, training and the
+dashboard are pinned in `notes/CONTRACTS.md`.
 
 ### The three pieces
 
 | Piece | What | Trained? | Params |
 |---|---|---|---|
-| Autoencoder | FLUX.2 AE (`AutoencoderKLFlux2`) — RGB ↔ 32-channel latent, ÷8 per side | frozen | 84.0M |
-| Text encoder | `flan-t5-base` encoder → `(B, L, 768)` token states | frozen | 109.6M |
-| **DiT** | our model: predicts the flow velocity in latent space | **trained** | **~158M** |
+| Autoencoder | FLUX.2 AE (`AutoencoderKLFlux2`), RGB ↔ 32-channel latent, ÷8 per side | frozen | 84M |
+| Text encoder | `flan-t5-base` encoder → per-token states (768-d), run live every batch | frozen | 110M |
+| **DiT** | `run1` config: dim 896, 16 blocks, 14 heads of 64 | **trained** | **209M** |
 
-**Why T5 and not CLIP.** CLIP's text tower is trained contrastively against whole images,
-which makes its per-token states weak at compositional detail ("a *black* dog chasing a
-*white* dog"). PixArt and SANA both use T5 encoders for cross-attention for exactly this
-reason. `d_model=768` also matches our DiT width, so K/V projections stay square.
+**Why FLUX.2's AE.** Its 32-channel latent was trained with semantic regularisation and, at DiT-XL on
+ImageNet-256, beats FLUX.1's 16 channels (gFID 3.70 vs 10.13, BFL tech blog). Latents are whitened per
+channel with statistics from our own cache: the official FLUX.2 code applies BatchNorm statistics after
+patchify and diffusers' encoder does not, so this is what the reference pipeline does, not a deviation.
 
-**Why FLUX.2's AE.** Measured at 256²: `3×256×256 → 32×32×32`, i.e. 32,768 latent values,
-6× compression. It reconstructs at ~36 dB PSNR (see `../flux2_ae_casestudy/`). The open
-question is whether 32 channels is *harder to generate in* than SD 1.5's 4 — which is why
-the SD 1.5 AE is cached alongside for a controlled comparison.
+**Why flan-t5-base.** Text-encoder size buys little at this scale (SANA: T5-Large ≈ T5-XXL on FID;
+FLUX.1 with T5-Base is within 2 FID of T5-XXL, losses concentrated in text rendering). Caption quality
+matters far more, which is why the data work below is about captions. Encoding live costs 4–9% of a step
+after the long/short sub-batching in `text.py`; caching embeddings would cost 400 GB of disk.
 
 ### DiT block
 
-`base` config: **dim 768, depth 12, heads 12** (head_dim 64), ~158M params.
-
 ```
-t ──► sinusoidal ──► MLP ──► per-block (shift, scale, gate) × 2
+t ──► sinusoidal ──► MLP ──► shared Linear(dim, 6·dim)  + per-block table  ──► (shift, scale, gate) × 2   [adaLN-single]
 
-x = x + gate₁ · SelfAttn( RMSNorm(x)·(1+scale₁) + shift₁ )    2D RoPE + QK-norm
-x = x +         CrossAttn( RMSNorm(x), K/V = T5 tokens )      zero-init out-proj
+x = x + gate₁ · SelfAttn( RMSNorm(x)·(1+scale₁) + shift₁ )     2D RoPE + QK-norm, 16 register tokens from block 3
+x = x +         CrossAttn( RMSNorm(x), K/V = T5 tokens ++ 2 learned null slots )   zero-init out-proj
 x = x + gate₂ · SwiGLU(   RMSNorm(x)·(1+scale₂) + shift₂ )
 ```
 
-- **Patchify** `Conv2d(latent_ch, dim, k=2, s=2)` → 256 tokens at 256², 64 at 128².
-- **Depatchify** adaLN-modulated `Linear` + `pixel_shuffle`, zero-initialised.
-- **Cross-attention in every block** (PixArt-Σ / SANA style), text padded to 32 tokens with
-  padding masked out of attention.
+- **adaLN-single** (PixArt-α): one shared modulation MLP plus a 6·dim table per block, instead of a
+  6·dim×dim linear per block. Per-block adaLN was 27% of the old model's parameters for zero compute;
+  the saving is spent on depth (12 → 16 blocks at the same parameter count).
+- **Registers.** 16 learnable tokens appended to the image sequence from block 3 and dropped before
+  unpatchify, with identity RoPE. DiTs have no high-norm outlier tokens yet still gain from registers
+  (VAE-latent DiT-B FID 10.40 → 9.40; a T2I model +4 GenEval). Plus 2 learned null key/value slots per
+  cross-attention block, so a query that wants "nothing in particular" no longer has to lean on T5's EOS.
+- **No pooled text into adaLN.** With cross-attention present it slightly hurts alignment (Deep Fusion).
+- **Patchify** `Conv2d(32, dim, k=2, s=2)`; **depatchify** adaLN-modulated linear + pixel shuffle, zero-init.
+- **RMSNorm with weights cast to the activation dtype**: the stock module falls back to an unfused
+  kernel under bf16 autocast (PyTorch warns about it).
 
-Every choice above was verified against shipping SOTA rather than recalled. From
-`diffusers/models/transformers/transformer_flux2.py`:
-
-| Choice | Evidence it is current |
-|---|---|
-| adaLN-Zero modulation | FLUX.2: `(shift_msa, scale_msa, gate_msa), (shift_mlp, scale_mlp, gate_mlp)`; `x = x + gate_mlp * ff_output` |
-| SwiGLU FFN | FLUX.2 ships a `Flux2SwiGLU` class — *not* an LLM-only idea |
-| QK-norm | FLUX.2 `norm_q`/`norm_k` are `torch.nn.RMSNorm`; Z-Image config sets `qk_norm: true` |
-| RMSNorm | used throughout FLUX.2 |
-| 2D RoPE | FLUX.2 `axes_dims_rope: [32,32,32,32]`; Z-Image `axes_dims: [32,48,48]` |
-
-Two deliberate divergences: SOTA uses `head_dim=128` (we use 64, better at our smaller
-width), and FLUX.2/Z-Image use **MMDiT** joint attention rather than cross-attention. MMDiT
-lets the text representation evolve through the network; with a *frozen* encoder and
-32-token captions that buys much less, and cross-attention is what the efficiency-focused
-models (SANA, PixArt-Σ) use.
-
-### Objective — rectified flow
-
-With `e ~ N(0,I)` at t=0 and `z` the image latent at t=1:
+### Objective
 
 ```
-x_t    = (1-t)·e + t·z
-target = z - e                     # the velocity; constant in t
-loss   = mse( v_θ(x_t, t, text), z - e )
+x_t    = (1-t)·e + t·z          e ~ N(0,I) at t=0, z the whitened latent at t=1
+loss   = mse(v, z-e) + 1.0·(1 - cos(v, z-e)) + 0.5·dispersive(block-5 features)
+t      ~ sigmoid(N(0,1) - ln 2.8)        logit-normal with the SD3 shift toward high noise
 ```
 
-Sampling integrates `dx/dt = v_θ` from t=0 → t=1 with Euler steps.
+- **Timestep shift** α = 2.8 (the SD3/RAE rule √(32·32·32/4096)) for training and sampling: a 32-channel
+  latent needs more of the budget at high noise than SD's 4 channels.
+- **Cosine velocity term** (LightningDiT): MSE is dominated by magnitude at high noise; this keeps the
+  direction honest. ~10% FID in their ablation chain.
+- **Dispersive loss** (Wang & He 2025): repel different samples' block-5 features; no external encoder,
+  no extra data. REPA would add another ~20% but needs the clean image or DINOv2 features for every
+  training sample (~150 KB each, 700 GB here), so it is deferred.
+- **10% caption dropout** to the empty string for classifier-free guidance; sampling uses 20 Euler steps
+  with the same shift schedule and CFG 4.
 
-- **t is sampled logit-normal**, not uniform — SD3 showed uniform is measurably worse.
-- **10% caption dropout** (swap in the embedding of `""`) to enable classifier-free guidance.
-- Latents are **whitened per channel** using statistics computed from the cache itself.
-  We deliberately do *not* reuse FLUX.2's `vae.bn`, whose statistics were fitted for its own
-  packed 128-channel latents, not for a DiT trained from scratch.
+### Training recipe
 
----
+| | value | why |
+|---|---|---|
+| optimizer | fused AdamW, lr 2e-4, betas (0.9, 0.95), wd 0, warmup 2k, clip 1.0 | LightningDiT / Lumina-2 |
+| precision | bf16 autocast, **fp32 master weights and optimizer state** | bf16 weights alone lose the tiny updates (PRX: FID 18.2 → 21.9) |
+| EMA | 0.9999 with (1+t)/(10+t) warm-up, multi-tensor update | 0.999 has a 1k-step horizon, far too short for a 100k+ run |
+| batch | 256, one aspect bucket per batch | ~256 tokens per sample in every bucket |
+| compile | `torch.compile`, one static graph per bucket shape | 2.4× over eager, half the memory (measured) |
+| checkpoints | `ckpt_last.pt` fp32 (weights+opt+EMA) rotated every 2.5k steps; `ema_<step>.safetensors` bf16 every 10k | exact resume vs. small shareable weights |
 
-## Training plan
+Measured on the RTX PRO 6000 Blackwell (300 W): `run1` at batch 192 compiled runs 461 img/s at 70% MFU
+(`notes/2026-09-02_benchmarks.md`), so 110M samples (~27 epochs of 4.1M images) take about 2.8 days.
 
-### Phase A — CUB-200 sanity check (~1–2h)
-11,788 bird photos. Captions are the template `"A photo of a {species}"` — only **183
-unique captions per 500 sampled**, vocabulary 223. This is a 200-way class problem wearing
-a sentence costume, so it does *not* exercise cross-attention. It is here to prove the
-pipeline end-to-end and put images on screen quickly.
+### Data
 
-Gate before moving on: overfit-on-8-images must reach near-zero loss and reproduce those
-8 images. If it does not, the objective is wired wrong.
+Real photos with accurate captions, aspect ratios preserved, one synthetic mix-in for prompt adherence.
+Twenty real rows from every candidate were inspected before choosing (`scripts/hfpeek.py`,
+`scripts/preview_gallery.py`; the survey notes list what was rejected and why).
 
-### Phase B — COCO 2017, the real run (~8–20h)
-123,353 images, 5 genuine captions each, vocabulary an order of magnitude larger. The only
-one of the candidates big enough that a 158M model will not simply memorise it inside the
-budget. **Random 1-of-5 caption per sample per epoch** — text-side augmentation that teaches
-the model which content is invariant and which phrasing is incidental.
-
-### Resolution curriculum
-Both phases run 128² first, then 256². Tokens = `(res/16)²`:
-
-| res | latent | tokens | cost vs 256² | s/step (base, bs 256) |
-|---|---|---|---|---|
-| 128² | 16×16 | 64 | 0.25× | ~0.045 |
-| 256² | 32×32 | 256 | 1× | ~0.178 |
-| 384² | 48×48 | 576 | ~2.4× | ~0.42 |
-| 512² | 64×64 | 1024 | ~4.8× | ~0.85 |
-
-Scaling is *mostly linear* in token count — at dim 768 attention is only ~6% of cost at 256
-tokens, rising to ~24% at 1024. The cheap 128² stage learns layout, colour and composition;
-the 256² stage learns texture.
-
-**256² is the ceiling because the data says so**, not for want of GPU. Measured short sides:
-CUB 325/357/433, Flickr30k 332/**360**/375, COCO 360/**427**/481 (p10/p50/p90). Over 90% of
-Flickr30k cannot even supply a 384² crop. Training above 256 would mean learning from
-upscaled blur. Higher output resolution is a job for a separate upscaler afterwards.
-
-### Phase C — the autoencoder comparison
-Same DiT config, same steps, same seeds — once on FLUX.2 latents (32ch), once on SD 1.5
-latents (4ch). FLUX.2 reconstructs far better, but the DiT must model 8× more values, so
-SD 1.5 may well produce *cleaner samples* despite the worse reconstruction ceiling. This is
-the direct sequel to the compression study next door.
-
-### Phase D — aspect-ratio bucketing
-Square-only until the pipeline is proven, then buckets. This costs a dataloader change and
-no retraining, because **2D RoPE derives position from `(row, col)`** and works on any grid;
-learned absolute embeddings would have locked us to one shape permanently.
-
-Buckets sized to hold ~256 tokens each, chosen to match the measured aspect distribution
-(p50 ≈ 1.4; common native sizes 500×375, 500×333, 640×480):
-
-| bucket | pixels | latent | tokens |
+| source | images | share of batches | captions long / short |
 |---|---|---|---|
-| 1:1 | 256×256 | 32×32 | 256 |
-| 4:3 | 288×224 | 36×28 | 252 |
-| 3:4 | 224×288 | 28×36 | 252 |
-| 3:2 | 320×208 | 40×26 | 260 |
-| 2:3 | 208×320 | 26×40 | 260 |
+| Pexels `bghira/photo-concept-bucket` (CDN at 640 px, full frame) | 568k, or 2.8M via the gated `animetimm/pexels-tagger-v0-w640-ws-full` | 60% | Qwen3-VL-30B (i1-captions, by Pexels id) / CogVLM |
+| FLUX-Reason-6M, Aesthetics parts, filtered by clarity+structure score | 1.2M | 25% | caption_detail / caption_entity |
+| COCO 2017 train + GPT-4V captions (`laion/220k-GPT4Vision-captions-from-LIVIS`) | 118k | 15% | GPT-4V / 5 human captions |
 
-**16:9 and 9:16 are deliberately absent** — at aspect 1.78 they would be near-empty for
-these corpora. RoPE still lets you *sample* at aspect ratios never trained on, with some
-quality loss, so an empty bucket is not a hard limit on output shape.
+- **Buckets.** Five shapes of ~256 tokens: 256×256, 288×224, 224×288, 320×208, 208×320. Nearest bucket
+  for real photos (mean crop 3–5%); 4:3 and 3:4 frames go square half the time, and FLUX squares are spread
+  over all five shapes (45% stay square), so no bucket is dominated by one source. Anything wider than 2:1
+  is dropped (≈1%). Position comes from RoPE, so shapes cost nothing architecturally.
+- **Captions.** Per sample: 50% a long caption cut at 128 T5 tokens, 40% a short one, 10% empty.
+  Long/short are encoded as separate sub-batches padded to their own longest (`text.embed_mixed`).
+- **Storage.** Images are never kept: each shard is streamed, bucketed, encoded to a 64 KB latent and
+  deleted (`ingest.py`). 4.1M images ≈ 265 GB of fp16 latents.
+- **Held out.** The first 1,000 ingested rows of each source are `val` and never trained on; they provide
+  the validation loss, the unseen-caption grids and the FID references. `prompts/novel.txt` holds
+  hand-written compositions absent from the data.
 
-Bucketing also recovers real data: centre-cropping a 640×480 to square **discards ~30% of
-every frame**, frequently including objects the caption names.
+### Evaluation (automatic, on the dashboard)
+
+| metric | what it measures | cadence |
+|---|---|---|
+| loss, mse / cos / disp, grad norm, lr, img/s | optimisation | every 20 steps |
+| held-out loss, per source | fit vs. memorisation, per data source | every 500 steps |
+| sample filmstrip (fixed prompts, fixed noise) | qualitative progress | every 500 steps |
+| CLIP score, **PickScore**, **HPSv2.1** on held-out and novel prompts | adherence and learned human preference; PickScore/HPS are the reward-model family the RL stage will use | every 5k steps |
+| **FID** and **FD-DINOv2** vs 3,000 held-out images, **object accuracy** (80 COCO classes × 4 seeds, Faster R-CNN) | realism, and "does it draw the object" | every 10k steps |
+
+Each dashboard chart has an ⓘ in its top-right corner explaining the metric, its direction and range.
+SSIM is deliberately absent: it needs a pixel-aligned target, which a text-to-image sample does not have.
 
 ---
 
-## Monitoring
+## Running it
 
-`dashboard.html` polls the run directory every 5s and redraws — no build step, no
-external libraries. Serve the parent directory and open it:
+Everything runs in the Docker image (CUDA 12.8 for Blackwell, torch 2.11, a C compiler for
+`torch.compile`); the repo and `out/` are bind-mounted from `/home/ivan/volume`.
 
 ```bash
-cd /home/ivan/volume/learning && python3 -m http.server 7180 --bind 127.0.0.1
-# then http://localhost:7180/tinydit/dashboard.html
+docker/run.sh build                     # once; docker/Dockerfile + requirements.txt
+docker/run.sh up                        # long-lived container `tinydit`
+docker/run.sh exec 'python -m tinydit.ae'                     # fetch the frozen AEs (needs the HF token file)
+docker/run.sh exec 'python -c "from tinydit import text; text.fetch(\"out/models/t5\")"'
+docker/run.sh exec 'python scripts/fetch_metric_models.py'    # CLIP, PickScore, HPSv2.1, DINOv2, Inception, Faster R-CNN
+
+# data (see `python -m tinydit.ingest --help`; each source is resumable, run them in parallel)
+docker/run.sh exec 'python -m tinydit.ingest coco   --cache out/cache/run1'
+docker/run.sh exec 'python -m tinydit.ingest pexels --cache out/cache/run1'
+docker/run.sh exec 'python -m tinydit.ingest flux   --cache out/cache/run1 --target 1200000'
+docker/run.sh exec 'python -m tinydit.ingest merge  --cache out/cache/run1'
+
+# train + monitor
+docker/run.sh exec 'python -m tinydit.train --run run1 --cache out/cache/run1 --config run1'
+cd /home/ivan/volume/learning && python3 -m http.server 7180 --bind 127.0.0.1   # then http://localhost:7180/tinydit/dashboard.html?run=run1
+
+# sample from a checkpoint
+docker/run.sh exec 'python -m tinydit.sample --ckpt out/runs/run1/ema_0100000.safetensors --sets NOVEL=prompts/novel.txt --out out/novel.png --shape 320x208'
 ```
 
-Six charts, each with an ⓘ explaining what it measures:
-
-| chart | source | cadence |
-|---|---|---|
-| Loss | `loss` | every `--log-every` (100) steps |
-| Held-out loss | `val_loss` on `--val-n` (2048) images never trained on | every `--val-every` (500) |
-| Loss by timestep | `loss_t_lo` / `loss_t_hi`, split at t=0.5 | every log interval |
-| Gradient norm | `gnorm`, global L2, clipped at 1.0 | every log interval |
-| CLIP score | `clip_seen` / `clip_unseen` / `clip_novel` | every `--eval-every` (5000) |
-| Throughput | `ips`, cumulative since process start | every log interval |
-
-Lines are coloured by resolution (blue 128², magenta 256²) with a dashed marker at the
-switch. **Loss is not comparable across colours** — each resolution has its own latent
-whitening, so the target has a different scale.
-
-Below the charts: an **evaluation** filmstrip (seen / unseen / novel grids) and a
-**samples** filmstrip, both with a scrub slider and ← → keys. "Follow latest" auto-advances
-to new snapshots only if you were already on the newest; dragging a slider switches it off
-so polling never interrupts you.
-
-### Evaluating generalisation
-
-The samples grid uses *training* captions, so it tracks optimisation only. The evaluation
-grid is the one that shows generalisation, over three sets of 128 prompts:
-
-- **SEEN** — training captions
-- **UNSEEN** — COCO val2017 captions (val images were never cached or trained on)
-- **NOVEL** — systematic compositions absent from COCO, built from an axis grid
-  (`{animal} in {place}`, `{colour} {object} on {surface}`)
-
-CLIP scores all 128; only `--eval-render` (12) are drawn. At n=128 the 95% CI on the mean
-is ±0.007, so differences below that are noise — the SEEN↔UNSEEN gap has stayed inside it,
-which is the evidence for "generalising, not memorising".
-
-Checkpoints (model + EMA + optimizer + step) every `--ckpt-every` steps, plus one on
-SIGTERM — so the GPU can be freed and the run resumed exactly with `--resume`.
+The HF token is read from `/home/ivan/volume/.tinydit_token` (`HF_TOKEN=...`, mode 0600, outside the
+repo and outside the HTTP-served tree); it is needed for the gated FLUX.2 AE and the gated Pexels set.
 
 ## Layout
 
 ```
 src/tinydit/
-  ae.py         frozen autoencoders (FLUX.2, SD 1.5): fetch, load, encode, decode
-  text.py       frozen flan-t5-base encoder
-  clipscore.py  CLIP prompt-adherence scoring
-  data.py       download + cache images / latents / text embeddings
+  ae.py         frozen autoencoders: fetch, load, encode, decode
+  text.py       frozen flan-t5-base; long/short sub-batch encoding
+  model.py      the DiT (adaLN-single, registers, null K/V, 2D RoPE, QK-norm, SwiGLU)
+  flow.py       rectified flow + cosine + dispersive losses, shifted timestep sampling
+  schedule.py   step schedules (shift, karras, ...) and ODE solvers
+  sample.py     Euler+CFG sampler for any grid shape, labelled grids, EMA/bf16 checkpoint loading
+  metrics.py    CLIP, PickScore, HPSv2.1, FID, FD-DINOv2, object accuracy
+  ingest.py     streaming download → bucket → encode → memmap cache
+  train.py      bucketed loop, live T5, compile, EMA, checkpoints, periodic evaluation
   rope.py       2D rotary embeddings
-  model.py      the DiT
-  flow.py       rectified-flow training objective
-  sample.py     Euler sampler with CFG, labelled comparison grids  (the only sampler)
-  train.py      loop, EMA, checkpoints, live metrics, periodic evaluation
+  data.py       legacy single-resolution caching (CUB / COCO), kept for reference
 scripts/
-  preview_datasets.py   dataset survey -> preview_data.json
-  test_model.py         shape / zero-init / non-square checks
-  lr_range_test.py      LR range test (Smith 2015)
-  eval_watch.py         out-of-process evaluation for runs predating --eval-every
-  curriculum_chain.sh   128² -> 256² stage chaining
-out/            models, caches, runs (gitignored)
+  hfpeek.py             sample any HF dataset shard through HTTP range requests
+  preview_gallery.py    dataset contact sheets
+  bench_step.py         training-step throughput benchmark
+  bench_text.py         T5 live-encoding cost
+  fetch_metric_models.py
+  tfrecord_peek.py      minimal TFRecord/Example reader (no TensorFlow)
+docker/                 Dockerfile, run.sh
+prompts/novel.txt       hand-written evaluation prompts
+notes/                  research notes with sources, benchmarks, dataset preview spec, contracts
+dashboard.html          live monitor (polls out/runs/<run>/metrics.jsonl)
+out/                    models, caches, runs — git-ignored
 ```
 
-Compute runs in the `ivan_dev` container (torch 2.8 + cu128); files live on the host bind
-mount, so both sides see the same paths. The HF token is read from
-`/root/volume/.tinydit_token` (mode 0600, deliberately outside the HTTP-served tree) and is
-never passed on a command line.
+## Machine notes
 
-```bash
-D="docker exec -w /root/volume/learning/tinydit ivan_dev bash -lc"
-$D 'PYTHONPATH=src /opt/venv/bin/python -m tinydit.data prepare --dataset coco'
-$D 'PYTHONPATH=src /opt/venv/bin/python -m tinydit.data latents --dataset coco --ae flux2 --res 256'
-$D 'PYTHONPATH=src /opt/venv/bin/python -m tinydit.data text    --dataset coco'
-$D 'PYTHONPATH=src /opt/venv/bin/python -m tinydit.train --run coco_flux2 --dataset coco --ae flux2 --res 256'
-$D 'PYTHONPATH=src /opt/venv/bin/python -m tinydit.sample --ckpt out/runs/coco_flux2/ckpt_last.pt \
-     --sets SEEN=out/prompts_seen.txt UNSEEN=out/prompts_heldout.txt --out out/eval.png'
-```
+RTX PRO 6000 Blackwell Max-Q (96 GB, 300 W), 48 cores, 251 GB RAM, 1.7 TB NVMe RAID-1. IPv6 is
+configured but unrouted on this host: Python networking hangs unless forced to IPv4 (see
+`scripts/hfpeek.py`); inside Docker (IPv4 bridge) this is not an issue. The Pexels 2.8M set requires
+accepting its terms once on Hugging Face (auto-approved).
 
 ## Status
 
-| stage | state | result |
-|---|---|---|
-| Dataset survey | done | `dataset_preview.html` — CUB has 183 unique captions per 500; COCO/Flickr ~all unique |
-| Frozen components | done | FLUX.2 AE 84.0M · SD 1.5 AE 83.7M · T5 enc 109.6M · CLIP ViT-B/32 |
-| Model + flow | done | 158.0M params, zero-init exact, non-square grids OK |
-| **Overfit-8 gate** | **passed** | loss 2.0 → 0.029; recon 2.65/255 vs the AE's own 2.37 floor |
-| Phase A — CUB | done, 6,010 steps | recognisable birds, correct per-species habitats |
-| Phase B — COCO | 45k @128² + 30k @256² | prompts followed on held-out captions |
-| Phase C — SD 1.5 AE | **next** | latents already cached at both resolutions |
-| Phase D — bucketing | pending | 5 buckets specced; RoPE means no retrain |
-
-### Measured
-
-| res | tokens | img/s | s/step (bs 256) |
-|---|---|---|---|
-| 128² | 64 | ~1390 | 0.184 |
-| 256² | 256 | ~320 | 0.800 |
-
-The 4.3× gap matches the 4× token ratio — cost is near-linear in sequence length at this width.
-
-**Curriculum transfer**: resuming a 128²-trained checkpoint at 256² moved loss 0.990 → 1.037
-and back under 1.002 within 100 steps. RoPE plus a convolutional patchify means no weight is
-resolution-bound.
-
-**Learning rate**: an LR range test from the step-70k checkpoint put the loss minimum at
-1.39e-4 and divergence onset at 3.5e-3, against the 1e-4 in use — near-optimal, no change
-warranted. Gradient clipping fired 3 times in the whole run, all inside warmup.
+| stage | state |
+|---|---|
+| Dataset survey (18 candidates sampled) | done — `notes/2026-09-02_dataset_research.md` |
+| Architecture and recipe decisions | done — this README |
+| Throughput benchmarks | done — `notes/2026-09-02_benchmarks.md` |
+| Ingest run 1 | in progress |
+| Pretraining run 1 | pending ingest |
+| Flow-GRPO practice | after pretraining |

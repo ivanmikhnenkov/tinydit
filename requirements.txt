@@ -1,0 +1,17 @@
+# Python deps for tinydit. torch comes from the cu128 index (see docker/Dockerfile); everything else from PyPI.
+torch==2.11.0
+transformers>=4.57
+diffusers>=0.36
+accelerate>=1.0
+safetensors>=0.5
+sentencepiece>=0.2
+huggingface_hub>=0.30
+pyarrow>=19
+numpy>=2.0
+pillow>=11
+requests>=2.32
+# evaluation metrics
+pytorch-fid>=0.3
+open_clip_torch>=2.24
+torchvision==0.26.0
+scipy>=1.11
