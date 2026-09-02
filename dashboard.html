@@ -186,7 +186,7 @@ const CHARTS=[
  {id:'loss', t:'Loss', log:true, fmt:4, better:'lower',
   series:[{key:'loss',label:'total'},{key:'loss_mse',label:'mse',c:'--c128',thin:1},
           {key:'loss_cos',label:'cos',c:'--vio',thin:1},{key:'loss_disp',label:'disp',c:'--warn',thin:1}],
-  tip:'The training objective per log interval, up to four lines. <b>total</b> is what the optimiser minimises. '
+  tip:'Total training objective = mse + 1.0·cos + 0.5·disp, averaged over the log interval. <b>mse</b> is the flow-matching error on whitened latents (starts near 2.0, the variance of the target); <b>cos</b> is 1 − cosine(v̂, v); <b>disp</b> is the dispersive repulsion, which is <i>negative</i> (about −4), so the total sits ~2 below mse and goes below zero. Watch mse for fit; the total only for smoothness.'
      +'<b>mse</b>: flow-matching mean-squared error between the predicted velocity and the true velocity z − e on whitened latents; '
      +'it starts near 2.0 (the variance of the target) and falls. <b>cos</b>: 1 − cosine similarity between predicted and true velocity, '
      +'the direction term from LightningDiT; falls from ~1 toward 0. <b>disp</b>: dispersive repulsion on block-5 features (Wang &amp; He 2025) '

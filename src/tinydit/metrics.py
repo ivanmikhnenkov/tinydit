@@ -95,7 +95,7 @@ def hpsv2(images_u8, prompts, device="cuda", batch=32):
 @torch.no_grad()
 def _inception_feats(images_u8, device, batch=64):
     if "inc" not in _M:
-        from pytorch_fid.inception import InceptionV3, FID_WEIGHTS_URL  # noqa: F401
+        from pytorch_fid.inception import InceptionV3
         import pytorch_fid.inception as pfi
         w = os.path.join(MODELS, "fid", "pt_inception-2015-12-05-6726825d.pth")
         if os.path.exists(w):   # use the local copy instead of downloading

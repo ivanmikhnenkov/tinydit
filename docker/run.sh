@@ -16,7 +16,7 @@ case "${1:-}" in
   up)    docker rm -f tinydit >/dev/null 2>&1 || true
          docker run -d --name tinydit --gpus all --shm-size 32g --ipc=host \
            -v "$VOL":"$VOL" -w "$HERE" "${ENV[@]}" tinydit:latest sleep infinity ;;
-  exec)  shift; docker exec --user "$(id -u):$(id -g)" "${ENV[@]}" -w "$HERE" tinydit bash -c "$*" ;;
-  shell) docker exec -it --user "$(id -u):$(id -g)" "${ENV[@]}" -w "$HERE" tinydit bash ;;
+  exec)  shift; exec docker exec --user "$(id -u):$(id -g)" "${ENV[@]}" -w "$HERE" tinydit bash -c "$*" ;;
+  shell) exec docker exec -it --user "$(id -u):$(id -g)" "${ENV[@]}" -w "$HERE" tinydit bash ;;
   *) sed -n '2,8p' "$0"; exit 1 ;;
 esac

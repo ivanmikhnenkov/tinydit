@@ -8,11 +8,11 @@ log() { echo "$(date +%H:%M:%S) $*"; }
 while pgrep -f "tinydit.ingest pexels2 " > /dev/null; do sleep 120; done
 log "pexels2 ingest finished: $(tail -1 out/logs/ingest_pexels2.log 2>/dev/null | cut -c1-120)"
 # wait until training is actually running (launch_run1.sh may still be merging)
-until pgrep -f "tinydit.train --run run1" > /dev/null; do sleep 60; done
+until pgrep -f "^python -m tinydit.train --run run1" > /dev/null; do sleep 60; done
 sleep 600   # let it get past compile and write at least one checkpoint interval
-PID=$(pgrep -f "python -m tinydit.train --run run1" | head -1)
+PID=$(pgrep -f "^python -m tinydit.train --run run1")   # the python process itself, not its bash/docker wrappers
 log "stopping trainer pid $PID (SIGTERM -> checkpoint)"; kill -TERM "$PID"
-while pgrep -f "tinydit.train --run run1" > /dev/null; do sleep 10; done
+while pgrep -f "^python -m tinydit.train --run run1" > /dev/null; do sleep 10; done
 log "trainer stopped; appending src_pexels2"
 docker/run.sh exec 'python -m tinydit.ingest merge --cache out/cache/run1 --append src_pexels2' || { log "append failed; restarting trainer on the old cache"; }
 docker/run.sh exec 'python -m tinydit.ingest check --cache out/cache/run1'

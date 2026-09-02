@@ -24,3 +24,9 @@ Eager RMSNorm warns "Mismatch dtype between input and weight … cannot dispatch
 `scripts/bench_text.py`: live flan-t5-base encoding of a 256-caption batch, bf16, fixed max_length padding:
 L=32 22.7 ms · L=64 36.8 ms · L=128 100.5 ms · L=192 175 ms (54% of the L=128 tokens were padding).
 At a 0.43 s compiled step, 100 ms is 23% → encode long and short captions as separate sub-batches at their own lengths and use SDPA/compile for T5.
+
+
+## Run 1 measured (2026-09-02 21:00)
+`run1` config, bs 256, compiled, live T5, cos+dispersive losses: **0.758 s/step = 338 img/s** with the GPU to itself;
+1.47 s/step while the pexels2 ingest (FLUX.2 AE encode, 14–56% SM) shared the GPU. Validation at step 500 with the compiled
+model triggered 5 extra graph compilations (bs 128 per bucket, ~9 min stall) → val now runs the eager model.
