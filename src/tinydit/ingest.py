@@ -17,13 +17,18 @@ makes the same choices.
 
     python -m tinydit.ingest coco   --cache out/cache/run1
     python -m tinydit.ingest pexels --cache out/cache/run1
+    python -m tinydit.ingest pexels2 --cache out/cache/run1
     python -m tinydit.ingest flux   --cache out/cache/run1 --target 1200000
     python -m tinydit.ingest merge  --cache out/cache/run1 [--remove-src]
+    python -m tinydit.ingest merge  --cache out/cache/run1 --append src_pexels2   # add a source later; stats.json untouched
     python -m tinydit.ingest check  --cache out/cache/run1
 
 coco   train2017 (zip if complete, else image URLs), human captions = short, GPT-4V = long
 pexels bghira/photo-concept-bucket via the Pexels CDN at 640 px wide, CogVLM = short,
        zlab-princeton/i1-captions (Qwen3-VL) joined by Pexels id = long
+pexels2 animetimm/pexels-tagger-v0-w640-ws-full (gated, 127 WebDataset tars, 640 px wide), the
+       ids NOT in photo-concept-bucket; long = i1 Qwen3-VL captions, short = their first sentence;
+       rows without an i1 caption are skipped; src is "pexels" so both sets share one weight
 flux   LucasFang/FLUX-Reason-6M Aesthetics parts, clarity>=9 & structure>=9,
        caption_detail = long (caption_entity if cropped >20%), caption_entity = short
 """
@@ -33,7 +38,7 @@ from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 
 BUCKETS = {"1_1": (256, 256), "4_3": (288, 224), "3_4": (224, 288), "3_2": (320, 208), "2_3": (208, 320)}
-SOURCES = ("coco", "pexels", "flux")
+SOURCES = ("coco", "pexels", "pexels2", "flux")
 AE_NAME, LATENT_CH, F = "flux2", 32, 8
 VAL_PER_SOURCE = 1000
 HF = "https://huggingface.co"
@@ -377,6 +382,143 @@ def ingest_pexels(cache_root, limit=0, capacity=600_000, workers=32, batch=64):
     _log(f"[pexels] done: {cache.total:,} rows " + str(cache.n))
 
 
+# ------------------------------------------------------------------ pexels2 -------------
+PEXELS2_REPO = "animetimm/pexels-tagger-v0-w640-ws-full"
+
+
+def _pexels2_shards():
+    import requests
+    h = dict(UA); tok = _token()
+    if tok: h["Authorization"] = f"Bearer {tok}"
+    r = requests.get(f"{HF}/api/datasets/{PEXELS2_REPO}/tree/main", headers=h, timeout=60,
+                     params={"recursive": "true"}); r.raise_for_status()
+    tars = sorted(x["path"] for x in r.json() if x["path"].endswith(".tar"))
+    order = {"train": 0, "val": 1, "test": 2}
+    return sorted(tars, key=lambda p: (order.get(p.split("/")[0], 9), p))
+
+
+def _iter_tar_pairs(path):
+    """Stream a WebDataset tar: yield (key, webp_bytes, json_dict) for each complete pair."""
+    import tarfile
+    buf = {}
+    with tarfile.open(path, mode="r|") as tf:
+        for m in tf:
+            if not m.isfile(): continue
+            base, _, ext = os.path.basename(m.name).rpartition(".")
+            data = tf.extractfile(m).read()
+            d = buf.setdefault(base, {}); d[ext.lower()] = data
+            if "webp" in d and "json" in d:
+                buf.pop(base)
+                try: meta = json.loads(d["json"])
+                except Exception: continue
+                yield base, d["webp"], meta
+
+
+def ingest_pexels2(cache_root, limit=0, capacity=2_300_000, workers=24, batch=64, prefetch=2):
+    """The gated 2.8M-image Pexels pool (640 px wide, aspect kept), minus the ids already covered
+    by the CDN `pexels` source. Captions come only from the i1 Qwen3-VL join; rows without one are
+    skipped. Rows carry src="pexels" so training weights treat both Pexels sets as one source."""
+    from PIL import Image
+    import pyarrow.parquet as pq
+    raw = os.path.join("out", "cache", "pexels2", "raw"); os.makedirs(raw, exist_ok=True)
+    tmp = os.path.join("out", "cache", "pexels2", "_tar"); os.makedirs(tmp, exist_ok=True)
+    tok = _token()
+    # ids already ingested through the CDN list -> skip here
+    pcb = _curl(f"{HF}/datasets/bghira/photo-concept-bucket/resolve/main/photo-concept-bucket.parquet",
+                os.path.join("out", "cache", "pexels", "raw", "photo-concept-bucket.parquet"), tok)
+    skip = {str(i) for i in pq.read_table(pcb, columns=["id"]).column("id").to_pylist()}
+    meta = json.load(open(_curl(f"{HF}/datasets/{PEXELS2_REPO}/resolve/main/meta.json",
+                                os.path.join(raw, "meta.json"), tok)))
+    all_ids = {str(i) for i in meta["exist_ids"]}
+    need = all_ids - skip
+    _log(f"[pexels2] {len(all_ids):,} ids in the repo, {len(all_ids & skip):,} already covered by the CDN set, "
+         f"{len(need):,} to ingest")
+    shards = _pexels2_shards()
+    _log(f"[pexels2] {len(shards)} tar shards")
+
+    cache = SubCache(cache_root, "pexels2", capacity); enc = Encoder(cache, batch)
+    done = set(cache.prog.get("done_shards", []))
+    want_rows = limit or len(need)
+    prog = Progress("pexels2", want_rows if limit else None); prog.ok = cache.total; prog.last = cache.total
+    stats = cache.prog.get("stats", {"skip_cdn": 0, "no_caption": 0})
+
+    q: queue.Queue = queue.Queue(maxsize=prefetch)
+    stop = threading.Event()
+    def producer():
+        for i, rel in enumerate(shards):
+            if stop.is_set(): break
+            if i in done: continue
+            local = os.path.join(tmp, rel.replace("/", "_"))
+            try:
+                _curl(f"{HF}/datasets/{PEXELS2_REPO}/resolve/main/{rel}", local, tok)
+            except Exception as ex:
+                _log(f"[pexels2] !! download {rel}: {ex}"); continue
+            while not stop.is_set():
+                try: q.put((i, local), timeout=5); break
+                except queue.Full: continue
+        q.put((None, None))
+    threading.Thread(target=producer, daemon=True).start()
+
+    long_caps = None                      # loaded after the first shard when --limit (smoke) is set
+    if not limit:
+        long_caps = _load_i1_pexels(os.path.join("out", "cache", "pexels", "raw"), need)
+        _log(f"[pexels2] Qwen3-VL captions for {len(long_caps):,} of {len(need):,} ids ({100*len(long_caps)/max(1,len(need)):.1f}%)")
+
+    def work(item):
+        pid, b, w, h = item
+        try:
+            bucket, crop = assign_bucket(w, h, True, f"pexels{pid}")
+            if bucket is None: return item, None, "aspect"
+            pil = Image.open(io.BytesIO(b))
+            return (pid, w, h), (bucket, crop, fit_to_bucket(pil, bucket)), None
+        except Exception as ex:
+            return item, None, type(ex).__name__
+
+    with ThreadPoolExecutor(workers) as ex:
+        while cache.total < want_rows:
+            i, local = q.get()
+            if i is None: break
+            t0 = time.time(); n_shard = 0
+            try:
+                pairs = []
+                for key, wb, meta_j in _iter_tar_pairs(local):
+                    pid = str(meta_j.get("id", key))
+                    if pid in skip: stats["skip_cdn"] += 1; continue
+                    pairs.append((pid, wb, int(meta_j.get("width", 0)) or 640, int(meta_j.get("height", 0)) or 640))
+                if long_caps is None:     # smoke mode: captions only for this shard's ids
+                    long_caps = _load_i1_pexels(os.path.join("out", "cache", "pexels", "raw"), {p[0] for p in pairs})
+                    _log(f"[pexels2] (smoke) captions for {len(long_caps):,} of {len(pairs):,} ids in the first shard")
+                items = []
+                for p in pairs:
+                    if p[0] in long_caps: items.append(p)
+                    else: stats["no_caption"] += 1
+                for c0 in range(0, len(items), 1024):
+                    for meta_t, res, err in ex.map(work, items[c0:c0 + 1024]):
+                        if res is None:
+                            prog.tick(fail=err != "aspect", drop=err == "aspect"); continue
+                        pid, w, h = meta_t; bucket, crop, arr = res
+                        caps = long_caps[pid]
+                        val = cache.total + sum(len(v) for v in enc.pending.values()) < VAL_PER_SOURCE
+                        row = _row("pexels", pid, caps, [first_sentence(caps[0])], crop, w, h, val)
+                        if row is None: prog.tick(fail=1); continue
+                        enc.add(bucket, arr, row); prog.tick(ok=1); n_shard += 1
+                        if cache.total + sum(len(v) for v in enc.pending.values()) >= want_rows: break
+                    if cache.total + sum(len(v) for v in enc.pending.values()) >= want_rows: break
+                enc.flush()
+            except Exception as ex:
+                _log(f"[pexels2] !! shard {local}: {type(ex).__name__}: {str(ex)[:120]}")
+            try: os.remove(local)
+            except FileNotFoundError: pass
+            done.add(i)
+            cache.save_progress(done_shards=sorted(done), n_shards=len(shards), stats=stats)
+            _log(f"[pexels2] shard {i+1}/{len(shards)} -> {n_shard:,} rows in {time.time()-t0:.0f}s "
+                 f"(skipped cdn {stats['skip_cdn']:,}, no caption {stats['no_caption']:,})")
+    stop.set(); enc.flush()
+    cache.save_progress(done_shards=sorted(done), stats=stats, done=len(done) >= len(shards) or bool(limit))
+    prog.tick(force=True)
+    _log(f"[pexels2] done: {cache.total:,} rows " + str(cache.n))
+
+
 # ------------------------------------------------------------------ flux ----------------
 def _flux_shards():
     import requests
@@ -475,8 +617,12 @@ def ingest_flux(cache_root, limit=0, target=1_200_000, capacity=1_300_000, worke
 
 
 # ------------------------------------------------------------------ merge / check -------
-def merge(cache_root, remove_src=False, stats_rows=40_000):
-    srcs = [d for d in sorted(os.listdir(cache_root)) if d.startswith("src_") and os.path.isdir(os.path.join(cache_root, d))]
+def merge(cache_root, remove_src=False, stats_rows=40_000, exclude=()):
+    """exclude: sub-cache names still being written (e.g. src_pexels2) that must be left alone and
+    added later with --append."""
+    srcs = [d for d in sorted(os.listdir(cache_root)) if d.startswith("src_") and os.path.isdir(os.path.join(cache_root, d))
+            and d not in set(exclude)]
+    if exclude: print(f"  merge: excluding {sorted(set(exclude))}", flush=True)
     if not srcs: raise SystemExit("no src_* sub-caches found")
     _log(f"[merge] sources: {srcs}")
     tot_sum = np.zeros(LATENT_CH, np.float64); tot_sq = np.zeros(LATENT_CH, np.float64); cnt = 0
@@ -515,11 +661,97 @@ def merge(cache_root, remove_src=False, stats_rows=40_000):
     mean = tot_sum / max(cnt, 1); std = np.sqrt(np.maximum(tot_sq / max(cnt, 1) - mean ** 2, 1e-8))
     json.dump({"mean": mean.tolist(), "std": std.tolist()}, open(os.path.join(cache_root, "stats.json"), "w"), indent=1)
     json.dump({"ae": AE_NAME, "latent_ch": LATENT_CH, "buckets": {k: list(v) for k, v in BUCKETS.items()},
-               "sources": [s[4:] for s in srcs]}, open(os.path.join(cache_root, "meta.json"), "w"), indent=1)
+               "sources": sorted(_row_sources(cache_root)), "merged": [s[4:] for s in srcs]},
+              open(os.path.join(cache_root, "meta.json"), "w"), indent=1)
     _log(f"[merge] stats: std range {std.min():.3f}-{std.max():.3f}; wrote meta.json, stats.json")
     if remove_src:
         for s in srcs: shutil.rmtree(os.path.join(cache_root, s))
         _log("[merge] removed sub-caches")
+
+
+def _row_sources(cache_root):
+    """Distinct `src` values present in the final rows.jsonl files (cheap string scan)."""
+    out = set()
+    for b in BUCKETS:
+        rp = os.path.join(cache_root, b, "rows.jsonl")
+        if not os.path.exists(rp): continue
+        for line in open(rp):
+            i = line.find('"src": "')
+            if i >= 0:
+                j = line.find('"', i + 8); out.add(line[i + 8:j])
+    return out
+
+
+def _count_lines(p):
+    return sum(1 for l in open(p) if l.strip()) if os.path.exists(p) else 0
+
+
+def append_subcache(cache_root, src_dir, headroom=0, force=False):
+    """Append one sub-cache (e.g. `src_pexels2`) to an already merged cache without touching
+    stats.json or the order of existing rows. Per bucket: latents go into free capacity of
+    lat.npy (rows beyond the current rows.jsonl line count) or, if there is not enough, the
+    memmap is rewritten into a larger file (old rows first, unchanged); rows.jsonl gets the new
+    lines; val_images.npy gets the new val images after the existing ones, so it stays aligned
+    with the val rows in rows.jsonl order. Run only while no trainer has the cache open."""
+    sd = os.path.join(cache_root, src_dir)
+    if not os.path.isdir(sd): raise SystemExit(f"{sd} not found")
+    meta_p = os.path.join(cache_root, "meta.json")
+    if not os.path.exists(meta_p): raise SystemExit("cache has no meta.json: run a plain merge first")
+    meta = json.load(open(meta_p))
+    name = src_dir[4:] if src_dir.startswith("src_") else src_dir
+    if name in meta.get("merged", []) and not force:
+        raise SystemExit(f"{name} is already merged into {cache_root} (use --force to append again)")
+    _log(f"[append] {src_dir} -> {cache_root} (stats.json left untouched)")
+    total_new = 0
+    for b, (bw, bh) in BUCKETS.items():
+        d = os.path.join(sd, b); rp_new = os.path.join(d, "rows.jsonl")
+        n_new = _count_lines(rp_new)
+        od = os.path.join(cache_root, b); os.makedirs(od, exist_ok=True)
+        rp_old = os.path.join(od, "rows.jsonl"); lp_old = os.path.join(od, "lat.npy"); vp_old = os.path.join(od, "val_images.npy")
+        n_old = _count_lines(rp_old)
+        if n_new == 0:
+            _log(f"[append] {b}: nothing to add ({n_old:,} rows stay)"); continue
+        lat_new = np.load(os.path.join(d, "lat.npy"), mmap_mode="r")
+        shape_tail = (LATENT_CH, bh // F, bw // F)
+        if os.path.exists(lp_old):
+            lat_old = np.load(lp_old, mmap_mode="r+")
+            assert lat_old.shape[1:] == shape_tail and lat_old.shape[0] >= n_old, f"{lp_old} inconsistent with rows.jsonl"
+        else:
+            lat_old = None
+        cap_old = lat_old.shape[0] if lat_old is not None else 0
+        if cap_old >= n_old + n_new:                          # free capacity: write in place
+            for c0 in range(0, n_new, 4096):
+                c1 = min(n_new, c0 + 4096); lat_old[n_old + c0:n_old + c1] = lat_new[c0:c1]
+            lat_old.flush(); grown = False
+        else:                                                  # grow: rewrite into a larger file
+            tmp = lp_old + ".growing"
+            big = np.lib.format.open_memmap(tmp, mode="w+", dtype=np.float16, shape=(n_old + n_new + headroom, *shape_tail))
+            for c0 in range(0, n_old, 4096):
+                c1 = min(n_old, c0 + 4096); big[c0:c1] = lat_old[c0:c1]
+            for c0 in range(0, n_new, 4096):
+                c1 = min(n_new, c0 + 4096); big[n_old + c0:n_old + c1] = lat_new[c0:c1]
+            big.flush(); del big, lat_old
+            os.replace(tmp, lp_old); grown = True
+        # val images: existing ones first (rows order), then the new sub-cache's val rows
+        nv_new = 0
+        for line in open(rp_new):
+            if '"val": true' in line: nv_new += 1
+        vi_new = np.load(os.path.join(d, "val_images.npy"), mmap_mode="r")
+        nv_new = min(nv_new, vi_new.shape[0])
+        vi_old = np.load(vp_old, mmap_mode="r") if os.path.exists(vp_old) else np.zeros((0, 3, bh, bw), np.uint8)
+        v = np.concatenate([np.asarray(vi_old), np.asarray(vi_new[:nv_new])]) if (vi_old.shape[0] or nv_new) else np.zeros((0, 3, bh, bw), np.uint8)
+        np.save(vp_old + ".tmp.npy", v); os.replace(vp_old + ".tmp.npy", vp_old)
+        # rows last, so a crash before this point leaves the line count (= valid rows) unchanged
+        with open(rp_old, "a") as fo:
+            for line in open(rp_new):
+                if line.strip(): fo.write(line if line.endswith("\n") else line + "\n")
+        total_new += n_new
+        _log(f"[append] {b}: {n_old:,} + {n_new:,} rows ({'grew memmap' if grown else 'in place'}), "
+             f"val images {vi_old.shape[0]} + {nv_new}")
+    meta["merged"] = meta.get("merged", []) + [name]
+    meta["sources"] = sorted(_row_sources(cache_root))
+    json.dump(meta, open(meta_p, "w"), indent=1)
+    _log(f"[append] done: +{total_new:,} rows; meta.json updated (sources {meta['sources']}, merged {meta['merged']})")
 
 
 def check(cache_root, k=4, models="out/models"):
@@ -559,15 +791,22 @@ if __name__ == "__main__":
     ap.add_argument("--workers", type=int, default=0)
     ap.add_argument("--batch", type=int, default=64)
     ap.add_argument("--remove-src", action="store_true")
+    ap.add_argument("--append", default=None, help="merge: append this sub-cache (e.g. src_pexels2) to an already merged cache")
+    ap.add_argument("--headroom", type=int, default=0, help="merge --append: extra free rows when a memmap must be grown")
+    ap.add_argument("--force", action="store_true")
+    ap.add_argument("--exclude", default="", help="merge: comma-separated sub-caches to leave alone (still being written)")
     a = ap.parse_args()
     os.makedirs(a.cache, exist_ok=True)
     if a.cmd == "coco":
         ingest_coco(a.cache, a.limit, a.capacity or (a.limit + 64 if a.limit else 130_000), a.workers or 24, a.batch)
     elif a.cmd == "pexels":
         ingest_pexels(a.cache, a.limit, a.capacity or (a.limit + 64 if a.limit else 600_000), a.workers or 32, a.batch)
+    elif a.cmd == "pexels2":
+        ingest_pexels2(a.cache, a.limit, a.capacity or (a.limit + 64 if a.limit else 2_300_000), a.workers or 24, a.batch)
     elif a.cmd == "flux":
         ingest_flux(a.cache, a.limit, a.target, a.capacity or ((a.limit or a.target) + 5064), a.workers or 24, a.batch)
     elif a.cmd == "merge":
-        merge(a.cache, a.remove_src)
+        if a.append: append_subcache(a.cache, a.append, a.headroom, a.force)
+        else: merge(a.cache, a.remove_src, exclude=[x for x in a.exclude.split(",") if x])
     elif a.cmd == "check":
         check(a.cache)

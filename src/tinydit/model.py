@@ -155,20 +155,18 @@ class TinyDiT(nn.Module):
         self.out = nn.Linear(dim, patch * patch * latent_ch)
         nn.init.zeros_(self.ada_out.weight); nn.init.zeros_(self.ada_out.bias)
         nn.init.zeros_(self.out.weight); nn.init.zeros_(self.out.bias)   # v_theta == 0 at init
-        self._cache: dict = {}
 
     def _rope(self, h, w, device):
-        """cos/sin for the h*w image grid, plus identity rows (cos=1, sin=0) for registers."""
-        key = (h, w, device)
-        if key not in self._cache:
-            cos, sin = rope.freqs_2d(h, w, self.head_dim, self.rope_theta, device, torch.float32)
-            if self.n_registers:
-                cos_r = torch.cat([cos, torch.ones(self.n_registers, cos.shape[1], device=device)])
-                sin_r = torch.cat([sin, torch.zeros(self.n_registers, sin.shape[1], device=device)])
-            else:
-                cos_r, sin_r = cos, sin
-            self._cache[key] = (cos, sin, cos_r, sin_r)
-        return self._cache[key]
+        """cos/sin for the h*w image grid, plus identity rows (cos=1, sin=0) for registers.
+        Computed functionally every call (a handful of tiny ops): a Python dict cache here made
+        torch.compile re-guard on the dict and recompile every shape again and again."""
+        cos, sin = rope.freqs_2d(h, w, self.head_dim, self.rope_theta, device, torch.float32)
+        if self.n_registers:
+            cos_r = torch.cat([cos, torch.ones(self.n_registers, cos.shape[1], device=device)])
+            sin_r = torch.cat([sin, torch.zeros(self.n_registers, sin.shape[1], device=device)])
+        else:
+            cos_r, sin_r = cos, sin
+        return cos, sin, cos_r, sin_r
 
     def forward(self, z, t, ctx, ctx_mask=None, return_feat=False):
         """z: (B,C,H,W) noisy latent | t: (B,) in [0,1] | ctx: (B,L,ctx_dim) | ctx_mask: (B,L) bool

@@ -20,6 +20,7 @@ Bucket assignment (real = coco, pexels; synthetic = flux), aspect a = w/h, crop(
 - flux (all 1024x1024): 1_1 with p = 0.45, else one of the other four uniformly (crop 22% for 4:3/3:4, 35% for 3:2/2:3)
 - resize so the image covers the bucket, centre-crop the residual, LANCZOS. Encode with FLUX.2 AE posterior mean, store fp16.
 - caption rule for flux: long = caption_detail unless crop > 0.20, then caption_entity; short = caption_entity. coco: long = GPT-4V caption(s), short = the 5 human captions. pexels: long = i1 Qwen3-VL captions (join by Pexels id), short = cogvlm_caption; if the join misses, long = short.
+- pexels2 (the gated `animetimm/pexels-tagger-v0-w640-ws-full` tars, 2.8M at 640 px): ids already in photo-concept-bucket are skipped; long = i1 Qwen3-VL captions by Pexels id, short = first sentence of one of them; rows without an i1 caption are skipped; `src` is "pexels" so it shares that source weight.
 - val: the first 1000 successfully ingested rows of each source are flagged val (spread over buckets naturally). Never train on val rows.
 
 ## Training sampling

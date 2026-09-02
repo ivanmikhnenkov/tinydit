@@ -97,7 +97,7 @@ Twenty real rows from every candidate were inspected before choosing (`scripts/h
 
 | source | images | share of batches | captions long / short |
 |---|---|---|---|
-| Pexels `bghira/photo-concept-bucket` (CDN at 640 px, full frame) | 568k, or 2.8M via the gated `animetimm/pexels-tagger-v0-w640-ws-full` | 60% | Qwen3-VL-30B (i1-captions, by Pexels id) / CogVLM |
+| Pexels: `bghira/photo-concept-bucket` (CDN at 640 px) + the gated `animetimm/pexels-tagger-v0-w640-ws-full` tars, deduplicated by Pexels id | 2.8M | 60% | Qwen3-VL-30B (i1-captions, by Pexels id) / CogVLM or first sentence |
 | FLUX-Reason-6M, Aesthetics parts, filtered by clarity+structure score | 1.2M | 25% | caption_detail / caption_entity |
 | COCO 2017 train + GPT-4V captions (`laion/220k-GPT4Vision-captions-from-LIVIS`) | 118k | 15% | GPT-4V / 5 human captions |
 
@@ -108,7 +108,8 @@ Twenty real rows from every candidate were inspected before choosing (`scripts/h
 - **Captions.** Per sample: 50% a long caption cut at 128 T5 tokens, 40% a short one, 10% empty.
   Long/short are encoded as separate sub-batches padded to their own longest (`text.embed_mixed`).
 - **Storage.** Images are never kept: each shard is streamed, bucketed, encoded to a 64 KB latent and
-  deleted (`ingest.py`). 4.1M images ≈ 265 GB of fp16 latents.
+  deleted (`ingest.py`). 4.1M images ≈ 265 GB of fp16 latents. `scripts/launch_run1.sh` waits for the
+  four ingest processes, merges, checks and starts the run.
 - **Held out.** The first 1,000 ingested rows of each source are `val` and never trained on; they provide
   the validation loss, the unseen-caption grids and the FID references. `prompts/novel.txt` holds
   hand-written compositions absent from the data.
@@ -131,7 +132,8 @@ SSIM is deliberately absent: it needs a pixel-aligned target, which a text-to-im
 ## Running it
 
 Everything runs in the Docker image (CUDA 12.8 for Blackwell, torch 2.11, a C compiler for
-`torch.compile`); the repo and `out/` are bind-mounted from `/home/ivan/volume`.
+`torch.compile`). The volume is bind-mounted at the same path as on the host and commands run as the
+host user, so paths, logs and file ownership are identical inside and outside the container.
 
 ```bash
 docker/run.sh build                     # once; docker/Dockerfile + requirements.txt
@@ -142,9 +144,11 @@ docker/run.sh exec 'python scripts/fetch_metric_models.py'    # CLIP, PickScore,
 
 # data (see `python -m tinydit.ingest --help`; each source is resumable, run them in parallel)
 docker/run.sh exec 'python -m tinydit.ingest coco   --cache out/cache/run1'
-docker/run.sh exec 'python -m tinydit.ingest pexels --cache out/cache/run1'
+docker/run.sh exec 'python -m tinydit.ingest pexels --cache out/cache/run1 --workers 64'
+docker/run.sh exec 'python -m tinydit.ingest pexels2 --cache out/cache/run1'   # gated 2.8M tars, accept terms on HF first
 docker/run.sh exec 'python -m tinydit.ingest flux   --cache out/cache/run1 --target 1200000'
-docker/run.sh exec 'python -m tinydit.ingest merge  --cache out/cache/run1'
+docker/run.sh exec 'python -m tinydit.ingest merge  --cache out/cache/run1 --remove-src'
+docker/run.sh exec 'python -m tinydit.ingest check  --cache out/cache/run1'   # counts, crops, decoded check strip
 
 # train + monitor
 docker/run.sh exec 'python -m tinydit.train --run run1 --cache out/cache/run1 --config run1'
@@ -156,6 +160,8 @@ docker/run.sh exec 'python -m tinydit.sample --ckpt out/runs/run1/ema_0100000.sa
 
 The HF token is read from `/home/ivan/volume/.tinydit_token` (`HF_TOKEN=...`, mode 0600, outside the
 repo and outside the HTTP-served tree); it is needed for the gated FLUX.2 AE and the gated Pexels set.
+Long-running jobs are started with `nohup docker/run.sh exec '...' > out/logs/<name>.log &` and are
+resumable (`ingest` per source via `progress.json`, `train` via `--resume out/runs/<run>/ckpt_last.pt`).
 
 ## Layout
 

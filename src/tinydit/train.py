@@ -44,6 +44,7 @@ class BucketCache:
         self.names = [b for b in self.buckets if b in self.rows]
         assert self.names, f"no buckets with rows under {root}"
         self.sources = [s for s in weights if any(len(self.train_idx[b][s]) for b in self.names)]
+        assert self.sources, f"no training rows under {root} (all rows flagged val?)"
         w = np.array([weights[s] for s in self.sources]); w = w / w.sum()
         cnt = np.array([[len(self.train_idx[b][s]) for b in self.names] for s in self.sources], dtype=np.float64)
         p_b_given_s = cnt / np.maximum(cnt.sum(1, keepdims=True), 1)                  # (S, B)
@@ -211,6 +212,10 @@ def main():
         ck = torch.load(a.resume, map_location="cuda", weights_only=False)
         model.load_state_dict(ck["model"]); opt.load_state_dict(ck["opt"]); ema.load_state_dict(ck["ema"]); step0 = ck["step"]
         print(f"  resumed from {a.resume} at step {step0}", flush=True)
+    if not a.no_compile:   # one graph per bucket shape (5) plus val/eval variants; default limit is 8
+        import torch._dynamo
+        for attr in ("recompile_limit", "cache_size_limit"):
+            if hasattr(torch._dynamo.config, attr): setattr(torch._dynamo.config, attr, 64)
     net = model if a.no_compile else torch.compile(model, dynamic=False)
     t_mean = flow.shift_mean(a.shift)
 
@@ -256,21 +261,23 @@ def main():
         def go():
             secs = []
             # UNSEEN: held-out captions, 4 per bucket, in their own bucket shape
-            vp = C.val_prompts(4, rng_seed=7 + step)
+            vp = C.val_prompts(4, rng_seed=7)                       # fixed set: same held-out captions every eval
             unseen_imgs, unseen_txt = [], []
             for b in C.names:
                 ps = [c for bb, c, _ in vp if bb == b]
                 if not ps: continue
                 img = gen_images(ps, tuple(C.buckets[b]), 1234)
                 sc = metrics.clip_score(img, ps)
-                secs.append((f"UNSEEN {b} — held-out captions", ps, img, sc, sc))
+                secs.append((f"UNSEEN {b.replace('_', ':')} · held-out captions ({C.buckets[b][0]}x{C.buckets[b][1]})", ps, img, sc, sc))
                 unseen_imgs += list(img); unseen_txt += ps
             # NOVEL: hand-written prompts, square
             if novel:
                 img = gen_images(novel, (256, 256), 4321); sc = metrics.clip_score(img, novel)
-                secs.append((f"NOVEL — hand-written prompts", novel[:12], img[:12], sc[:12], sc))
+                secs.append((f"NOVEL · hand-written prompts", novel[:12], img[:12], sc[:12], sc))
             render_sections(secs, os.path.join(out, "evals", f"{step}.png"), step, a.cfg, a.eval_steps)
             write_eval_assets(secs, os.path.join(out, "evals"), step, a.cfg, a.eval_steps)
+            idx = sorted(int(f[:-4]) for f in os.listdir(os.path.join(out, "evals")) if f.endswith(".png") and f[:-4].isdigit())
+            json.dump(idx, open(os.path.join(out, "evals", "index.json"), "w"))
             def per_shape(fn, imgs, txt):
                 out_ = []
                 by = {}
@@ -292,7 +299,7 @@ def main():
                     for b in C.names:
                         vi = C.val_images(b)
                         if vi is None or len(vi) == 0: continue
-                        vp_b = [(c, j) for bb, c, j in C.val_prompts(per_b, rng_seed=11 + step) if bb == b]
+                        vp_b = [(c, j) for bb, c, j in C.val_prompts(per_b, rng_seed=11) if bb == b]   # fixed FID set
                         if not vp_b: continue
                         img = gen_images([c for c, _ in vp_b], tuple(C.buckets[b]), 777)
                         gen += list(img); ref += [np.asarray(vi[j]) for _, j in vp_b if j < len(vi)]
