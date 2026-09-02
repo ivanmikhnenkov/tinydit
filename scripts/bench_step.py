@@ -12,9 +12,9 @@ from tinydit.model import TinyDiT
 from tinydit import flow
 
 SIZES = {  # name: (dim, depth, heads)
-    "768x12 (current base)": (768, 12, 12),
+    "768x12 (old base)": (768, 12, 12),
     "768x16": (768, 16, 12),
-    "896x16": (896, 16, 14),
+    "896x16 (run1)": (896, 16, 14),
     "1024x16": (1024, 16, 16),
 }
 
@@ -32,7 +32,7 @@ def bench(dim, depth, heads, bs, L, compile_, steps=20, warm=5):
     torch.cuda.reset_peak_memory_stats()
     def step():
         with torch.autocast("cuda", dtype=torch.bfloat16):
-            l, _, _ = flow.loss(net, z, ctx, msk)
+            l, _, _, _ = flow.loss(net, z, ctx, msk, t_mean=-1.03)   # same step as train.py (mse + cos + dispersive)
         opt.zero_grad(set_to_none=True); l.backward()
         torch.nn.utils.clip_grad_norm_(m.parameters(), 1.0); opt.step()
     t0 = time.time()
