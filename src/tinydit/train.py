@@ -97,8 +97,11 @@ def main():
     net = model if a.no_compile else torch.compile(model, dynamic=False)
     t_mean = flow.shift_mean(a.shift)
 
-    # fixed prompts/noise for the filmstrip: 8 held-out captions, square
-    fixed = [c for _, c, _ in C.val_prompts(2)][:8] or ["a photo"]
+    # fixed prompts/noise for the filmstrip: 8 held-out captions, square; frozen in eval_prompts.json
+    ep_path = os.path.join(out, "eval_prompts.json")
+    EP = json.load(open(ep_path)) if os.path.exists(ep_path) else {}
+    if "fixed" not in EP: EP["fixed"] = [c for _, c, _ in C.val_prompts(2)][:8] or ["a photo"]
+    fixed = EP["fixed"]
     fixed_ctx, fixed_msk = C.text_for(fixed)
     null_ctx, null_msk = C.null()
     novel = [l.strip() for l in open(a.novel) if l.strip()] if os.path.exists(a.novel) else []
@@ -134,11 +137,9 @@ def main():
 
     # Evaluation prompts are frozen in the run directory so every eval uses identical prompts even if
     # the cache changes (rows appended later). Created on first use, never rewritten.
-    ep_path = os.path.join(out, "eval_prompts.json")
-    EP = json.load(open(ep_path)) if os.path.exists(ep_path) else {}
     if "grid" not in EP: EP["grid"] = C.val_prompts(4, rng_seed=7)
     if "fid" not in EP: EP["fid"] = C.val_prompts(max(1, a.fid_n // len(C.names)), rng_seed=11)
-    EP = {k: [tuple(x) for x in v] for k, v in EP.items()}
+    EP = {k: ([tuple(x) for x in v] if k != "fixed" else v) for k, v in EP.items()}
     json.dump(EP, open(ep_path, "w"))
     print(f"  eval prompts: {len(EP['grid'])} grid + {len(EP['fid'])} fid from {ep_path}", flush=True)
 

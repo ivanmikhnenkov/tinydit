@@ -186,7 +186,7 @@ const $=id=>document.getElementById(id);
 // A series without `c` is coloured by training stage (res), like the original single-line charts.
 // better: 'lower' | 'higher' drives the arrow colours in the evaluation table.
 const CHARTS=[
- {id:'loss', t:'Loss', log:true, fmt:4, better:'lower',
+ {id:'loss', t:'Loss', log:false, fmt:4, better:'lower',
   series:[{key:'loss',label:'total'},{key:'loss_mse',label:'mse',c:'--c128',thin:1},
           {key:'loss_cos',label:'cos',c:'--vio',thin:1},{key:'loss_disp',label:'disp',c:'--warn',thin:1}],
   tip:'Total training objective = mse + 1.0·cos + 0.5·disp, averaged over the log interval. <b>mse</b> is the flow-matching error on whitened latents (starts near 2.0, the variance of the target); <b>cos</b> is 1 − cosine(v̂, v); <b>disp</b> is the dispersive repulsion, which is <i>negative</i> (about −4), so the total sits ~2 below mse and goes below zero. Watch mse for fit; the total only for smoothness.'
@@ -194,7 +194,7 @@ const CHARTS=[
      +'it starts near 2.0 (the variance of the target) and falls. <b>cos</b>: 1 − cosine similarity between predicted and true velocity, '
      +'the direction term from LightningDiT; falls from ~1 toward 0. <b>disp</b>: dispersive repulsion on block-5 features (Wang &amp; He 2025) '
      +'that keeps internal representations spread out; its absolute value is arbitrary, only its trend matters. All buckets share one whitening, '
-     +'so the curve is comparable across the whole run.<span class="dir">lower is better · log scale</span>'},
+     +'so the curve is comparable across the whole run.<span class="dir">lower is better</span>'},
  {id:'val', t:'Held-out loss', log:true, fmt:4, opt:true, better:'lower',
   series:[{key:'val_loss',label:'all',c:'--c256'},{key:'val_loss_coco',label:'coco',c:'--c128',thin:1},
           {key:'val_loss_pexels',label:'pexels',c:'--vio',thin:1},{key:'val_loss_flux',label:'flux',c:'--warn',thin:1}],
