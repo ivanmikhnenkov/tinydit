@@ -47,8 +47,13 @@ class EMA:
         return {k: v.to(torch.bfloat16).cpu().contiguous() for k, v in zip(self.keys, self.shadow)}
 
 
-def lr_at(step, base, warmup):
-    return base * min(1.0, (step + 1) / max(warmup, 1))
+def lr_at(step, base, warmup, total=None, decay_start=None):
+    """Warm-up, then constant, then a linear decay to zero over the last stretch of the run
+    (warmup-stable-decay; the EMA weights are what get used, so ending at zero is fine)."""
+    lr = base * min(1.0, (step + 1) / max(warmup, 1))
+    if total and decay_start is not None and step >= decay_start:
+        lr *= max(0.0, (total - step) / max(total - decay_start, 1))
+    return lr
 
 
 def main():
@@ -58,6 +63,7 @@ def main():
     p.add_argument("--config", default="run1")
     p.add_argument("--steps", type=int, default=400000); p.add_argument("--bs", type=int, default=256)
     p.add_argument("--lr", type=float, default=2e-4); p.add_argument("--warmup", type=int, default=2000)
+    p.add_argument("--decay-start", type=int, default=300000, help="step where the linear decay to zero begins (-1 = none)")
     p.add_argument("--cfg-drop", type=float, default=0.10); p.add_argument("--p-long", type=float, default=0.50)
     p.add_argument("--ema", type=float, default=0.9999)
     p.add_argument("--shift", type=float, default=2.8, help="timestep shift alpha for training and sampling")
@@ -228,7 +234,7 @@ def main():
           f"lr {a.lr}, shift {a.shift} -> {out}", flush=True)
     model.train(); t0 = time.time(); seen = 0; acc = {}; nacc = 0; t_lo = t_hi = 0.0; n_lo = n_hi = 0
     for step in range(step0, a.steps):
-        for g in opt.param_groups: g["lr"] = lr_at(step, a.lr, a.warmup)
+        for g in opt.param_groups: g["lr"] = lr_at(step, a.lr, a.warmup, a.steps, a.decay_start if a.decay_start >= 0 else None)
         b, z, ctx, msk = C.batch()
         with torch.autocast("cuda", dtype=torch.bfloat16):
             l, tt, per, parts = flow.loss(net, z, ctx, msk, t_mean=t_mean, w_cos=a.w_cos, w_disp=a.w_disp)

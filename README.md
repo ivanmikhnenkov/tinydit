@@ -42,7 +42,7 @@ loss = mse(v, z−e) + 1.0·(1 − cos(v, z−e)) + 0.5·dispersive(block-5 feat
 
 | | |
 |---|---|
-| optimizer | fused AdamW, lr 2e-4, betas (0.9, 0.95), wd 0, warmup 2k, grad clip 1.0 |
+| optimizer | fused AdamW, lr 2e-4, betas (0.9, 0.95), wd 0, warmup 2k, grad clip 1.0; constant, then linear decay to zero over the last 25% of steps (`--decay-start`) |
 | precision | bf16 autocast with fp32 master weights and optimizer state |
 | EMA | 0.9999, warmed up; bf16 snapshots every 10k steps (`ema_<step>.safetensors`, 420 MB) |
 | batch | 256, one aspect bucket per batch |
@@ -51,7 +51,22 @@ loss = mse(v, z−e) + 1.0·(1 − cos(v, z−e)) + 0.5·dispersive(block-5 feat
 
 Measured on an RTX PRO 6000 Blackwell (300 W): the real run does 0.76 s/step at batch 256 (338 img/s,
 including live T5 encoding and the extra losses), so 400k steps take ~3.5 days; a concurrent ingest
-sharing the GPU halves that rate (`notes/2026-09-02_benchmarks.md`). Full fp32 checkpoints
+sharing the GPU halves that rate (`notes/2026-09-02_benchmarks.md`).
+
+### Run 1 result (2 → 6 September 2026)
+
+400k steps, 102M samples (24 epochs of 4.2M images), 3.5 days on one GPU. Held-out metrics from the
+frozen prompt set (`out/runs/run1/eval_prompts.json`), sampled with 20 steps, CFG 4, shift 2.8:
+
+| step | FID | FD-DINOv2 | object acc. | CLIP held-out / novel | PickScore held-out / novel | HPSv2.1 held-out / novel |
+|---|---|---|---|---|---|---|
+| 10k | 33.7 | 570 | 65% | 0.300 / 0.333 | 19.5 / 20.2 | 0.199 / 0.213 |
+| 100k | 28.1 | 274 | 88% | 0.323 / 0.359 | 20.6 / 22.0 | 0.238 / 0.264 |
+| 300k | 27.1 | 229 | 92% | 0.322 / 0.361 | 20.8 / 22.5 | 0.251 / 0.276 |
+| 400k | 27.0 | 218 | 90% | 0.322 / 0.361 | 20.9 / 22.6 | 0.254 / 0.277 |
+
+Final validation loss 0.754 (train/held-out gap zero throughout). Weights: `out/runs/run1/ema_0400000.safetensors`
+(bf16 EMA, 418 MB) plus 39 earlier EMA snapshots every 10k steps and the fp32 resume checkpoint. Full fp32 checkpoints
 (`ckpt_last.pt`, ~3.4 GB, rotated) exist only for exact resume; everything else uses the EMA snapshots.
 
 ## Data
@@ -110,6 +125,11 @@ cd .. && python3 -m http.server 7180 --bind 127.0.0.1        # http://localhost:
 docker/run.sh exec 'python -m tinydit.sample --ckpt out/runs/run1/ema_0100000.safetensors --sets NOVEL=prompts/novel.txt --out out/novel.png --shape 320x208'
 ```
 
+`python -m tinydit.playground --run run1 --port 7181` (host venv, next to the trainer) serves
+`playground.html` at http://localhost:7181/: generate from any prompt with the newest EMA snapshot, watch
+the intermediate states and predictions along the sampling schedule, and inspect cross-attention per word
+(including the learned null slots) and the register tokens, per block and per step.
+
 `scripts/launch_run1.sh` waits for the ingests, merges, checks and starts the run; `scripts/append_pexels2.sh`
 adds a source that finished later (`merge --append`, whitening statistics untouched) and resumes from
 `ckpt_last.pt`. Long jobs: `nohup docker/run.sh exec '...' > out/logs/<name>.log &`.
@@ -118,7 +138,7 @@ The HF token is read from `/home/ivan/volume/.tinydit_token` (`HF_TOKEN=...`, mo
 ## Layout
 
 ```
-src/tinydit/   ae.py text.py model.py flow.py schedule.py data.py train.py sample.py metrics.py ingest.py rope.py
+src/tinydit/   ae.py text.py model.py flow.py schedule.py data.py train.py sample.py metrics.py ingest.py rope.py playground.py
 scripts/       hfpeek.py preview_gallery.py tfrecord_peek.py  (dataset survey)   bench_step.py   fetch_metric_models.py
                launch_run1.sh append_pexels2.sh
 docker/        Dockerfile run.sh          prompts/novel.txt          dashboard.html          notes/          out/ (ignored)

@@ -1,0 +1,453 @@
+<meta charset="utf-8">
+<title>tinydit Playground</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F1F3F4;--surf:#FFF;--surf2:#E9ECEE;--line:#DCE1E4;--tx:#14171A;--tx2:#5C6A70;--tx3:#93A0A6;
+--accent:#D6006E;--ok:#0F7B6C;--warn:#B7791F;--vio:#6A4FB6;--bad:#C2413A;--cyan:#0093B0;
+--d:'Archivo',system-ui,sans-serif;--m:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1113;--surf:#171B1E;--surf2:#20262A;--line:#2B3237;
+--tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#FF3D8F;--ok:#3BC9AE;--warn:#E0A030;--vio:#A78BFA;--bad:#F06A60;--cyan:#3BC9DB}}
+:root[data-theme="dark"]{--bg:#0E1113;--surf:#171B1E;--surf2:#20262A;--line:#2B3237;
+--tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#FF3D8F;--ok:#3BC9AE;--warn:#E0A030;--vio:#A78BFA;--bad:#F06A60;--cyan:#3BC9DB}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--d);-webkit-font-smoothing:antialiased;font-size:14px}
+.wrap{max-width:1680px;margin:0 auto;padding:0 22px}
+.mono{font-family:var(--m)}
+header{border-bottom:1px solid var(--line);background:var(--surf);position:sticky;top:0;z-index:40}
+.hd{display:flex;align-items:center;gap:14px;padding:11px 0;flex-wrap:wrap}
+.brand{font-weight:800;font-size:17px;letter-spacing:-.02em}
+.brand span{color:var(--accent)}
+.brand small{font-weight:500;color:var(--tx3);font-size:12px;margin-left:8px}
+.grow{flex:1}
+a{color:var(--accent)}
+select,button,input,textarea{font-family:var(--m);font-size:12px;padding:6px 10px;border:1px solid var(--line);
+background:var(--bg);color:var(--tx);border-radius:3px}
+button{cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600;font-size:13px;padding:9px 14px}
+button.primary[disabled]{opacity:.6;cursor:progress}
+button.chip{padding:4px 9px;font-size:11px}
+button.chip.on{border-color:var(--accent);color:var(--accent);background:var(--surf)}
+.pill{font-family:var(--m);font-size:10.5px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--tx2)}
+.pill.live{color:#fff;background:var(--ok);border-color:var(--ok)}
+.pill.warn{color:var(--warn);border-color:var(--warn)}
+main{padding:18px 0 60px}
+.layout{display:grid;grid-template-columns:350px minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:980px){.layout{grid-template-columns:1fr}}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:4px;padding:12px 13px 12px;position:relative;margin-bottom:14px}
+.ct{font-size:12px;font-family:var(--m);letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);margin:0 0 10px;font-weight:500;padding-right:26px}
+.ct b{color:var(--tx);font-weight:600;letter-spacing:0;text-transform:none;font-family:var(--d);font-size:13px;margin-left:6px}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:9px}
+label.f{display:flex;flex-direction:column;gap:4px;font-family:var(--m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--tx3)}
+label.f input{width:88px}
+label.f input.w{width:112px}
+textarea{width:100%;min-height:96px;resize:vertical;line-height:1.45;font-size:12.5px}
+.hint{font-family:var(--m);font-size:10.5px;color:var(--tx3);line-height:1.5}
+.hint.err{color:var(--bad)}
+.sizes{display:flex;flex-wrap:wrap;gap:6px}
+.imgs{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start}
+.imgs img{display:block;image-rendering:auto;border:1px solid var(--line);background:var(--surf2)}
+.tw{overflow-x:auto;max-width:100%}
+/* info button + tooltip, same as the dashboard */
+button.i{width:16px;height:16px;padding:0;border-radius:50%;border:1px solid var(--tx3);color:var(--tx3);background:transparent;
+font-size:10px;line-height:14px;text-align:center;cursor:help;position:absolute;top:9px;right:9px;z-index:2;font-family:var(--m);font-weight:600}
+button.i:hover,button.i.open,button.i:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.tip{display:none;position:absolute;right:0;top:22px;width:320px;background:var(--tx);color:var(--bg);padding:10px 12px;border-radius:4px;
+font-size:11.5px;line-height:1.55;font-family:var(--d);z-index:60;text-align:left;font-weight:400;box-shadow:0 6px 18px rgba(0,0,0,.22);cursor:default}
+.tip b{color:var(--bg)}
+button.i:hover .tip,button.i.open .tip,button.i:focus-visible .tip{display:block}
+/* schedule strip */
+.sched{height:34px}
+/* trajectory */
+.traj{border-collapse:separate;border-spacing:6px 4px}
+.traj th{font-family:var(--m);font-size:10px;color:var(--tx3);text-align:left;font-weight:500;white-space:nowrap;padding-right:6px}
+.traj td{text-align:center;vertical-align:top}
+.traj img{display:block;width:112px;height:auto;border:1px solid var(--line);cursor:zoom-in;background:var(--surf2)}
+.traj img.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.traj .t{font-family:var(--m);font-size:10px;color:var(--tx2);margin-top:3px}
+.bigpair{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.bigpair figure{margin:0}
+.bigpair img{display:block;border:1px solid var(--line)}
+.bigpair figcaption{font-family:var(--m);font-size:10.5px;color:var(--tx3);margin-top:4px}
+/* attention */
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.tokens{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.tok{font-family:var(--m);font-size:11.5px;padding:3px 7px;border:1px solid var(--line);border-radius:3px;cursor:pointer;background:var(--surf);position:relative;color:var(--tx)}
+.tok:hover,.tok.sel{border-color:var(--accent)}
+.tok.sel{box-shadow:0 0 0 1px var(--accent)}
+.tok.null{border-style:dashed;color:var(--vio)}
+.tok .bg{position:absolute;inset:0;background:var(--accent);border-radius:3px;z-index:0;pointer-events:none}
+.tok span{position:relative;z-index:1}
+.attwrap{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:1200px){.attwrap{grid-template-columns:1fr}}
+.stage{position:relative;display:inline-block;border:1px solid var(--line);background:var(--surf2)}
+.stage img,.stage canvas{display:block}
+.stage canvas{position:absolute;left:0;top:0}
+.small{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px}
+.small figure{margin:0}
+.small canvas{width:100%;height:auto;display:block;border:1px solid var(--line);image-rendering:pixelated}
+.small figcaption{font-family:var(--m);font-size:10px;color:var(--tx2);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.small figure.null figcaption{color:var(--vio)}
+.regs{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px}
+.regs canvas{width:100%;height:auto;display:block;border:1px solid var(--line);image-rendering:pixelated}
+.regs figure{margin:0}
+.regs figcaption{font-family:var(--m);font-size:9.5px;color:var(--tx3);text-align:center}
+canvas.chart{width:100%;height:120px;display:block}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:1200px){.two{grid-template-columns:1fr}}
+.sub{font-family:var(--m);font-size:10.5px;color:var(--tx3);margin:4px 0 6px}
+input[type=range]{accent-color:var(--accent);padding:0;height:20px;border:0;background:transparent}
+.kbd{font-family:var(--m);font-size:10px;border:1px solid var(--line);border-bottom-width:2px;border-radius:3px;padding:0 5px;color:var(--tx2)}
+[hidden]{display:none!important}
+</style>
+
+<header><div class="wrap hd">
+  <div class="brand">tiny<span>dit</span> playground<small id="modelinfo">connecting…</small></div>
+  <span class="pill" id="statuspill">idle</span>
+  <span class="grow"></span>
+  <button id="reload">Reload newest checkpoint</button>
+  <a href="dashboard.html?run=run1" class="mono" style="font-size:12px">← training dashboard</a>
+</div></header>
+
+<main><div class="wrap layout">
+<div>
+  <div class="card">
+    <div class="ct">Generate</div>
+    <textarea id="prompt" placeholder="a red tractor parked next to a blue rowing boat on a sandy beach"></textarea>
+    <div class="hint" id="tokcount">0 words · ≈0 of 128 tokens</div>
+    <div class="ct" style="margin-top:12px">Size <b id="sizelabel"></b></div>
+    <div class="sizes" id="sizes"></div>
+    <div class="row" style="margin-top:8px">
+      <label class="f">width <input class="w" id="w" type="number" min="128" max="512" step="16"></label>
+      <label class="f">height <input class="w" id="h" type="number" min="128" max="512" step="16"></label>
+    </div>
+    <div class="ct" style="margin-top:12px">Sampling</div>
+    <div class="row">
+      <label class="f">steps <input id="steps" type="number" min="1" max="200" step="1"></label>
+      <label class="f">cfg <input id="cfg" type="number" min="0" max="20" step="0.5"></label>
+      <label class="f">shift <input id="shift" type="number" min="0.2" max="10" step="0.1"></label>
+    </div>
+    <div class="row">
+      <label class="f">seed <input id="seed" type="number" min="0" step="1"></label>
+      <button id="rand" style="margin-top:14px">random</button>
+      <label class="f">images <input id="n" type="number" min="1" max="4" step="1"></label>
+    </div>
+    <div class="ct" style="margin-top:12px">Inspection</div>
+    <div class="row">
+      <label class="f">trajectory frames <input id="traj" type="number" min="0" max="12" step="1"></label>
+      <label class="f" style="flex-direction:row;align-items:center;gap:6px;margin-top:14px"><input id="attn" type="checkbox" style="width:auto"> capture attention</label>
+    </div>
+    <div class="row" id="attnsteps_row">
+      <label class="f">at sampling steps (0-based, comma-separated) <input id="attnsteps" class="w" style="width:220px" placeholder="auto"></label>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <button class="primary" id="go">Generate</button>
+      <span class="hint" id="elapsed"></span>
+      <span class="hint"><span class="kbd">Ctrl</span>+<span class="kbd">Enter</span></span>
+    </div>
+    <div class="hint" id="msg"></div>
+    <div class="hint" style="margin-top:8px">Defaults are the training settings: 20 steps, cfg 4, shift 2.8. The shift bends the step grid toward high noise, where the layout is decided.</div>
+  </div>
+</div>
+
+<div>
+  <div class="card" id="results">
+    <div class="ct">Result <b id="reslabel"></b></div>
+    <button class="i" type="button" aria-label="info">i<span class="tip">Final samples from the EMA weights, decoded by the FLUX.2 autoencoder. Images are shown at 2× their pixel size; toggle native size below. The strip underneath shows where the sampler's steps sit on the 0→1 timeline: with shift 2.8 most of them are near t=0 (pure noise), where global structure is decided.</span></button>
+    <div class="imgs" id="imgs"><div class="hint">nothing generated yet</div></div>
+    <div class="row" style="margin-top:8px"><button class="chip" id="native">native size</button><span class="hint" id="resmeta"></span></div>
+    <div class="sub">sampling schedule · t from 0 (noise) to 1 (image)</div>
+    <svg class="sched" id="sched" width="100%" viewBox="0 0 600 34" preserveAspectRatio="none"></svg>
+  </div>
+
+  <div class="card" id="trajcard" hidden>
+    <div class="ct">Trajectory</div>
+    <button class="i" type="button" aria-label="info">i<span class="tip">How the sample forms. <b>state x_t</b> is the actual noisy latent at that step, decoded as is. <b>prediction x̂₁</b> is what the model believes the finished image will be, computed from the current velocity: x̂₁ = x_t + (1−t)·v. Early predictions are blurry averages; they sharpen as t grows.</span></button>
+    <div class="sub">top row: the noisy state the sampler is in · bottom row: the model's current guess of the final image · click a column to enlarge</div>
+    <div class="tw"><table class="traj" id="trajtab"></table></div>
+    <div class="bigpair" id="trajbig"></div>
+  </div>
+
+  <div class="card" id="attcard" hidden>
+    <div class="ct">Cross-attention <b>which words each patch reads</b></div>
+    <button class="i" type="button" aria-label="info">i<span class="tip">Every image patch (one token per 16×16 pixels) attends over the prompt's T5 tokens plus two learned <b>null slots</b>, keys that mean "nothing in particular" so a patch need not force its attention onto a random word. Pick a token to see where in the image it is read; chip shading shows each token's share of the total attention. Maps are averaged over heads and normalised per patch, then per token for display.</span></button>
+    <div class="tabs" id="steptabs"></div>
+    <div class="row">
+      <label class="f">block <input id="blk" type="range" min="0" max="15" step="1" style="width:200px"></label>
+      <span class="mono" id="blklabel" style="font-size:12px;margin-top:12px"></span>
+      <label class="f" style="flex-direction:row;align-items:center;gap:6px;margin-top:12px"><input id="avg" type="checkbox" style="width:auto"> average over blocks</label>
+      <label class="f">overlay opacity <input id="alpha" type="range" min="0" max="1" step="0.05" value="0.7" style="width:140px"></label>
+      <button class="chip" id="maponly" style="margin-top:12px">map only</button>
+    </div>
+    <div class="tokens" id="tokens"></div>
+    <div class="attwrap">
+      <div><div class="stage" id="stage"><img id="stageimg" alt=""><canvas id="stagecv"></canvas></div>
+        <div class="sub" id="tokinfo">hover or click a token</div></div>
+      <div><div class="sub">all tokens at this block</div><div class="small" id="alltok"></div></div>
+    </div>
+  </div>
+
+  <div class="card" id="regcard" hidden>
+    <div class="ct">Registers <b>the 16 scratch tokens</b></div>
+    <button class="i" type="button" aria-label="info">i<span class="tip">Sixteen learned tokens join the image sequence at block 3, carry no position, take part in every attention and MLP, and are dropped before the output. They are scratch space for global state. <b>image → registers</b>: the fraction of each patch's self-attention that goes to registers (where the image reads its notes). <b>register → image</b>: what each register looks at. Norms compare a register's activation size with the average image token at that block.</span></button>
+    <div class="two">
+      <div>
+        <div class="sub">image → registers · where patches read the scratch tokens</div>
+        <div class="stage" id="regstage"><img id="regimg" alt=""><canvas id="regcv"></canvas></div>
+      </div>
+      <div>
+        <div class="sub">register → image · what each register looks at</div>
+        <div class="regs" id="regmaps"></div>
+      </div>
+    </div>
+    <div class="two" style="margin-top:12px">
+      <div><div class="sub">register norm / mean image-token norm · this step, this block</div><canvas class="chart" id="normchart"></canvas></div>
+      <div><div class="sub">mean image → register attention per block · this step</div><canvas class="chart" id="i2rchart"></canvas></div>
+    </div>
+  </div>
+</div>
+</div></main>
+
+<script>
+'use strict';
+const $=id=>document.getElementById(id);
+const MOCK=new URLSearchParams(location.search).get('mock')==='1';
+let INFO=null, RES=null, STEPI=0, BLK=0, TOK=-1, MAPONLY=false, NATIVE=false;
+
+// ---------- utilities ----------
+const b64u8=s=>{const b=atob(s),a=new Uint8Array(b.length);for(let i=0;i<b.length;i++)a[i]=b.charCodeAt(i);return a;};
+const col=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const VIR=[[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]];
+function viridis(x){x=Math.max(0,Math.min(1,x));const p=x*4,i=Math.min(3,Math.floor(p)),f=p-i,a=VIR[i],b=VIR[i+1];
+  return [a[0]+(b[0]-a[0])*f,a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f];}
+function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmtTok(t){return t.replace(/^▁/,'␣').replace(/ /g,'␣');}
+function setMsg(t,err){$('msg').textContent=t||'';$('msg').className='hint'+(err?' err':'');}
+
+// Draw a gh×gw map (Uint8Array, row-major) onto canvas cv at W×H, bilinear-upscaled, viridis, alpha.
+function drawMap(cv,map,gh,gw,W,H,alpha,normalise=true){
+  cv.width=W;cv.height=H;const g=cv.getContext('2d');g.clearRect(0,0,W,H);
+  if(!map){return;}
+  let mx=1;if(normalise){mx=0;for(let i=0;i<map.length;i++)mx=Math.max(mx,map[i]);mx=mx||1;}
+  const sm=document.createElement('canvas');sm.width=gw;sm.height=gh;const sg=sm.getContext('2d');
+  const id=sg.createImageData(gw,gh);
+  for(let i=0;i<gh*gw;i++){const v=(normalise?map[i]/mx:map[i]/255);const c=viridis(v);
+    id.data[i*4]=c[0];id.data[i*4+1]=c[1];id.data[i*4+2]=c[2];id.data[i*4+3]=Math.round(255*alpha);}
+  sg.putImageData(id,0,0);
+  g.imageSmoothingEnabled=true;g.imageSmoothingQuality='high';g.drawImage(sm,0,0,W,H);
+}
+
+// ---------- API ----------
+async function api(path,body){
+  if(MOCK)return mock(path,body);
+  const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{method:path.includes('reload')?'POST':'GET'});
+  const j=await r.json().catch(()=>({error:'bad json'}));
+  if(!r.ok)throw new Error(j.error||('HTTP '+r.status));
+  return j;
+}
+
+// ---------- mock backend (?mock=1) ----------
+function gradPng(W,H,seed,noise){const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');
+  const gr=g.createLinearGradient(0,0,W,H);gr.addColorStop(0,`hsl(${(seed*47)%360} 70% 55%)`);gr.addColorStop(1,`hsl(${(seed*47+120)%360} 60% 35%)`);
+  g.fillStyle=gr;g.fillRect(0,0,W,H);
+  if(noise>0){const id=g.getImageData(0,0,W,H);for(let i=0;i<id.data.length;i+=4){const n=(Math.random()-.5)*255*noise;id.data[i]+=n;id.data[i+1]+=n;id.data[i+2]+=n;}g.putImageData(id,0,0);}
+  g.fillStyle='rgba(255,255,255,.8)';g.beginPath();g.arc(W*.5,H*.55,Math.min(W,H)*.2,0,7);g.fill();return c.toDataURL('image/png');}
+function u8b64(a){let s='';for(let i=0;i<a.length;i++)s+=String.fromCharCode(a[i]);return btoa(s);}
+function mock(path,body){
+  const info={run:'run1',step:120000,snapshot:'ema_0120000.safetensors',defaults:{steps:20,cfg:4.0,shift:2.8,width:256,height:256,seed:0},
+    sizes:[[256,256],[288,224],[224,288],[320,208],[208,320]],max_tokens:128,n_registers:16,register_block:3,n_null:2,depth:16};
+  if(path.endsWith('info')||path.endsWith('reload'))return new Promise(r=>setTimeout(()=>r(info),200));
+  const W=body.width,H=body.height,gh=H/16,gw=W/16,N=gh*gw;
+  const words=body.prompt.trim().split(/\s+/).filter(Boolean);
+  const tokens=words.flatMap(w=>w.length>6?['▁'+w.slice(0,4),w.slice(4)]:['▁'+w]).concat(['</s>','<null 1>','<null 2>']);
+  const T=tokens.length;
+  const sched=[];for(let i=0;i<=body.steps;i++){const u=i/body.steps,tau=1-u,s=body.shift,t2=s*tau/(1+(s-1)*tau);sched.push(1-t2);}
+  const images=[];for(let k=0;k<body.n_images;k++)images.push(gradPng(W,H,body.seed+k,0));
+  const traj=[];if(body.trajectory>0){for(let f=0;f<body.trajectory;f++){const i=Math.round(f*(body.steps-1)/Math.max(1,body.trajectory-1));
+    traj.push({step:i,t:sched[i],x_t:gradPng(W,H,body.seed,1-sched[i]),x1_hat:gradPng(W,H,body.seed,(1-sched[i])*.4)});}}
+  const steps=(body.attention_steps&&body.attention_steps.length)?body.attention_steps:[1,Math.floor(body.steps/3),Math.floor(2*body.steps/3)];
+  const attention=[],register_stats=[];
+  if(body.attention){for(const i of steps){const blocks=[];for(let b=0;b<info.depth;b++){
+      const cross=new Uint8Array(N*T);const mass=new Array(T).fill(0);
+      for(let p=0;p<N;p++){const py=Math.floor(p/gw)/gh,px=(p%gw)/gw;for(let j=0;j<T;j++){const cx=(j+.5)/T,d=Math.hypot(px-cx,py-.5);cross[p*T+j]=Math.round(255*Math.max(0,1-d*2)*(0.5+0.5*Math.random()));mass[j]+=cross[p*T+j];}}
+      const ms=mass.reduce((a,b)=>a+b,0)||1;
+      const hasReg=b>=info.register_block;
+      const img2reg=hasReg?new Uint8Array(N).map((_,p)=>Math.round(255*((p%gw)/gw)*Math.random())):null;
+      const reg2img=hasReg?new Uint8Array(info.n_registers*N).map(()=>Math.round(Math.random()*255)):null;
+      blocks.push({block:b,cross:u8b64(cross),cross_mass:mass.map(m=>m/ms),img2reg:img2reg?u8b64(img2reg):null,reg2img:reg2img?u8b64(reg2img):null});
+      register_stats.push({step:i,block:b,norms:Array.from({length:16},()=>0.5+Math.random()*(hasReg?3:0)),img_norm:1.0,img2reg_mean:hasReg?0.05+0.1*Math.random():0});}
+    attention.push({step:i,t:sched[i],blocks});}}
+  return new Promise(r=>setTimeout(()=>r({images,ms:900,schedule:sched,grid:[gh,gw],tokens,trajectory:traj,attention,register_stats}),600));
+}
+
+// ---------- controls ----------
+const FIELDS=['prompt','w','h','steps','cfg','shift','seed','n','traj','attnsteps'];
+function saveCtl(){try{const o={};FIELDS.forEach(k=>o[k]=$(k).value);o.attn=$('attn').checked;localStorage.setItem('pg-ctl',JSON.stringify(o));}catch(e){}}
+function loadCtl(){try{const o=JSON.parse(localStorage.getItem('pg-ctl')||'null');if(!o)return false;FIELDS.forEach(k=>{if(o[k]!=null)$(k).value=o[k];});$('attn').checked=!!o.attn;return true;}catch(e){return false;}}
+function applyDefaults(d){$('w').value=d.width;$('h').value=d.height;$('steps').value=d.steps;$('cfg').value=d.cfg;$('shift').value=d.shift;$('seed').value=d.seed;$('n').value=1;$('traj').value=8;$('attn').checked=true;$('attnsteps').value='';}
+function renderSizes(){$('sizes').innerHTML=INFO.sizes.map(([w,h])=>`<button class="chip" data-w="${w}" data-h="${h}">${w}×${h}</button>`).join('')
+  ;[...$('sizes').children].forEach(b=>b.onclick=()=>{$('w').value=b.dataset.w;$('h').value=b.dataset.h;syncSize();});syncSize();}
+function syncSize(){const w=+$('w').value,h=+$('h').value;[...$('sizes').children].forEach(b=>b.classList.toggle('on',+b.dataset.w===w&&+b.dataset.h===h));
+  const ar=w/h;$('sizelabel').textContent=`${w}×${h} · ${Math.round(w/16)}×${Math.round(h/16)} = ${Math.round(w/16)*Math.round(h/16)} tokens`;
+  const isB=INFO.sizes.some(([a,b])=>a===w&&b===h);$('sizelabel').style.color=isB?'':'var(--warn)';$('sizelabel').title=isB?'a training bucket':'not a training shape (RoPE lets the model try it)';}
+function tokCount(){const n=$('prompt').value.trim().split(/\s+/).filter(Boolean).length;const t=Math.round(n*1.35);const mx=INFO?INFO.max_tokens:128;
+  $('tokcount').textContent=`${n} words · ≈${t} of ${mx} tokens`+(t>mx?' · will be cut':'');$('tokcount').className='hint'+(t>mx?' err':'');}
+function autoSteps(){const s=+$('steps').value;return [1,Math.floor(s/3),Math.floor(2*s/3)].map(x=>Math.max(0,Math.min(s-1,x)));}
+function attnSteps(){const v=$('attnsteps').value.trim();if(!v)return autoSteps();const s=+$('steps').value;
+  return [...new Set(v.split(/[,\s]+/).map(x=>parseInt(x,10)).filter(x=>!isNaN(x)&&x>=0&&x<s))].sort((a,b)=>a-b);}
+function clampSize(id){const el=$(id);let v=Math.round((+el.value||256)/16)*16;v=Math.max(128,Math.min(512,v));el.value=v;}
+['w','h'].forEach(id=>$(id).addEventListener('change',()=>{clampSize(id);syncSize();saveCtl();}));
+$('prompt').addEventListener('input',()=>{tokCount();saveCtl();});
+['steps','cfg','shift','seed','n','traj','attnsteps'].forEach(id=>$(id).addEventListener('change',saveCtl));
+$('attn').addEventListener('change',()=>{$('attnsteps_row').hidden=!$('attn').checked;saveCtl();});
+$('rand').onclick=()=>{$('seed').value=Math.floor(Math.random()*1e6);saveCtl();};
+$('steps').addEventListener('change',()=>{$('attnsteps').placeholder='auto: '+autoSteps().join(', ');});
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();generate();}});
+$('native').onclick=()=>{NATIVE=!NATIVE;$('native').classList.toggle('on',NATIVE);renderImages();};
+$('maponly').onclick=()=>{MAPONLY=!MAPONLY;$('maponly').classList.toggle('on',MAPONLY);paintStage();};
+$('alpha').addEventListener('input',paintStage);
+$('blk').addEventListener('input',()=>{BLK=+$('blk').value;$('avg').checked=false;renderAttention();});
+$('avg').addEventListener('change',renderAttention);
+document.querySelectorAll('button.i').forEach(b=>{b.onclick=e=>{e.stopPropagation();document.querySelectorAll('button.i.open').forEach(o=>{if(o!==b)o.classList.remove('open');});b.classList.toggle('open');};});
+document.addEventListener('click',()=>document.querySelectorAll('button.i.open').forEach(o=>o.classList.remove('open')));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('button.i.open').forEach(o=>o.classList.remove('open'));});
+
+// ---------- info / reload ----------
+function showInfo(){$('modelinfo').textContent=`${INFO.run} · step ${INFO.step.toLocaleString()} · ${INFO.snapshot}`;
+  $('blk').max=INFO.depth-1;$('attnsteps').placeholder='auto: '+autoSteps().join(', ');}
+async function init(){
+  try{INFO=await api('/api/info');}catch(e){$('modelinfo').textContent='server not reachable: '+e.message;$('statuspill').textContent='offline';$('statuspill').className='pill warn';
+    INFO={run:'?',step:0,snapshot:'',defaults:{steps:20,cfg:4,shift:2.8,width:256,height:256,seed:0},sizes:[[256,256],[288,224],[224,288],[320,208],[208,320]],max_tokens:128,n_registers:16,register_block:3,n_null:2,depth:16};}
+  if(!loadCtl())applyDefaults(INFO.defaults);
+  if(!$('prompt').value)$('prompt').value='a red tractor parked next to a blue rowing boat on a sandy beach';
+  $('attnsteps_row').hidden=!$('attn').checked;
+  renderSizes();tokCount();showInfo();BLK=Math.floor(INFO.depth/2);
+  if(INFO.step)$('statuspill').textContent='ready';
+}
+$('reload').onclick=async()=>{$('reload').disabled=true;$('reload').textContent='reloading…';
+  try{INFO=await api('/api/reload');showInfo();setMsg(`loaded ${INFO.snapshot}`);}catch(e){setMsg('reload failed: '+e.message,true);}
+  $('reload').disabled=false;$('reload').textContent='Reload newest checkpoint';};
+
+// ---------- generate ----------
+let timer=null;
+async function generate(){
+  if($('go').disabled)return;
+  clampSize('w');clampSize('h');syncSize();
+  const body={prompt:$('prompt').value,width:+$('w').value,height:+$('h').value,steps:+$('steps').value,cfg:+$('cfg').value,shift:+$('shift').value,
+    seed:+$('seed').value,n_images:+$('n').value,trajectory:+$('traj').value,attention:$('attn').checked,attention_steps:attnSteps()};
+  if(!body.prompt.trim()){setMsg('enter a prompt',true);return;}
+  $('go').disabled=true;$('go').textContent='Generating…';$('statuspill').textContent='busy';$('statuspill').className='pill live';setMsg('');
+  const t0=performance.now();timer=setInterval(()=>{$('elapsed').textContent=((performance.now()-t0)/1000).toFixed(1)+' s';},100);
+  try{RES=await api('/api/generate',body);RES.req=body;STEPI=0;TOK=-1;BLK=Math.min(BLK,INFO.depth-1);
+    renderAll();setMsg(`done in ${(RES.ms/1000).toFixed(1)} s on the server`);}
+  catch(e){setMsg('generation failed: '+e.message,true);}
+  clearInterval(timer);$('elapsed').textContent='';$('go').disabled=false;$('go').textContent='Generate';$('statuspill').textContent='ready';$('statuspill').className='pill';
+}
+$('go').onclick=generate;
+
+// ---------- render ----------
+function renderAll(){renderImages();renderSchedule();renderTrajectory();renderAttention(true);}
+function imgW(){return NATIVE?RES.req.width:RES.req.width*2;}
+function renderImages(){
+  if(!RES){return;}
+  $('imgs').innerHTML=RES.images.map((u,i)=>`<a href="${u}" target="_blank"><img src="${u}" style="width:${imgW()}px" alt="sample ${i}"></a>`).join('');
+  $('reslabel').textContent=`${RES.req.width}×${RES.req.height} · ${RES.req.steps} steps · cfg ${RES.req.cfg} · shift ${RES.req.shift} · seed ${RES.req.seed}`;
+  $('resmeta').textContent=`${RES.grid[0]}×${RES.grid[1]} image tokens · ${RES.tokens.length-INFO.n_null} text tokens + ${INFO.n_null} null slots`;
+}
+function renderSchedule(){
+  const s=RES.schedule,W=600,H=34;
+  let h=`<line x1="20" y1="20" x2="580" y2="20" stroke="${col('--line')}" stroke-width="1"/>`;
+  s.forEach((t,i)=>{const x=20+560*t;const cap=(RES.attention||[]).some(a=>a.step===i);
+    h+=`<circle cx="${x}" cy="20" r="${cap?4.5:3}" fill="${cap?col('--vio'):col('--accent')}"><title>step ${i} · t=${t.toFixed(3)}</title></circle>`;});
+  h+=`<text x="20" y="9" font-size="9" font-family="JetBrains Mono,monospace" fill="${col('--tx3')}">t=0 noise</text><text x="580" y="9" text-anchor="end" font-size="9" font-family="JetBrains Mono,monospace" fill="${col('--tx3')}">t=1 image</text>`;
+  $('sched').innerHTML=h;
+}
+function renderTrajectory(){
+  const tr=RES.trajectory||[];$('trajcard').hidden=!tr.length;if(!tr.length)return;
+  $('trajtab').innerHTML=`<tr><th></th>${tr.map(f=>`<td class="t">step ${f.step}<br>t=${f.t.toFixed(2)}</td>`).join('')}</tr>`
+    +`<tr><th>state x_t</th>${tr.map((f,i)=>`<td><img data-i="${i}" src="${f.x_t}" alt=""></td>`).join('')}</tr>`
+    +`<tr><th>prediction x̂₁</th>${tr.map((f,i)=>`<td><img data-i="${i}" src="${f.x1_hat}" alt=""></td>`).join('')}</tr>`;
+  const sel=i=>{[...$('trajtab').querySelectorAll('img')].forEach(im=>im.classList.toggle('sel',+im.dataset.i===i));const f=tr[i];
+    $('trajbig').innerHTML=`<figure><img src="${f.x_t}" style="width:${RES.req.width*2}px" alt=""><figcaption>state x_t · step ${f.step} · t=${f.t.toFixed(3)}</figcaption></figure>`
+      +`<figure><img src="${f.x1_hat}" style="width:${RES.req.width*2}px" alt=""><figcaption>prediction x̂₁ at the same step</figcaption></figure>`;};
+  [...$('trajtab').querySelectorAll('img')].forEach(im=>im.onclick=()=>sel(+im.dataset.i));
+  sel(Math.min(tr.length-1,Math.floor(tr.length/2)));
+}
+
+// attention state helpers
+function curStep(){return (RES.attention||[])[STEPI];}
+function blockMaps(){   // -> {cross:Float32Array[N*T], mass:[T], img2reg:Float32Array|null, reg2img:Float32Array|null}
+  const st=curStep();if(!st)return null;const N=RES.grid[0]*RES.grid[1],T=RES.tokens.length,R=INFO.n_registers;
+  const pick=$('avg').checked?st.blocks:[st.blocks[Math.min(BLK,st.blocks.length-1)]];
+  const cross=new Float32Array(N*T),mass=new Array(T).fill(0),i2r=new Float32Array(N),r2i=new Float32Array(R*N);let nr=0;
+  for(const b of pick){const c=b.cross?b64u8(b.cross):null;if(c)for(let i=0;i<N*T;i++)cross[i]+=c[i]/pick.length;
+    (b.cross_mass||[]).forEach((m,j)=>mass[j]+=m/pick.length);
+    if(b.img2reg){const a=b64u8(b.img2reg);for(let i=0;i<N;i++)i2r[i]+=a[i];}
+    if(b.reg2img){const a=b64u8(b.reg2img);for(let i=0;i<R*N;i++)r2i[i]+=a[i];}
+    if(b.img2reg)nr++;}
+  return {cross,mass,img2reg:nr?i2r:null,reg2img:nr?r2i:null,N,T,R};
+}
+function tokenMap(m,j){const out=new Uint8Array(m.N);let mx=0;for(let p=0;p<m.N;p++){const v=m.cross[p*m.T+j];out[p]=v;mx=Math.max(mx,v);}
+  if(mx>0)for(let p=0;p<m.N;p++)out[p]=Math.round(255*out[p]/mx);return out;}
+function renderAttention(reset){
+  const att=RES.attention||[];$('attcard').hidden=!att.length;$('regcard').hidden=!att.length;if(!att.length)return;
+  if(reset){STEPI=0;}
+  $('steptabs').innerHTML=att.map((a,i)=>`<button class="chip ${i===STEPI?'on':''}" data-i="${i}">step ${a.step} · t=${a.t.toFixed(2)}</button>`).join('');
+  [...$('steptabs').children].forEach(b=>b.onclick=()=>{STEPI=+b.dataset.i;renderAttention();});
+  $('blk').value=BLK;$('blklabel').textContent=$('avg').checked?'avg':`block ${BLK}`;
+  const m=blockMaps();
+  $('tokens').innerHTML=RES.tokens.map((t,j)=>{const isNull=t.startsWith('<null');const mx=Math.max(...m.mass)||1;
+    return `<button class="tok ${isNull?'null':''} ${j===TOK?'sel':''}" data-j="${j}" title="share of attention ${(100*m.mass[j]).toFixed(1)}%"><span class="bg" style="opacity:${(0.55*m.mass[j]/mx).toFixed(3)}"></span><span>${esc(fmtTok(t))}</span></button>`;}).join('');
+  [...$('tokens').children].forEach(b=>{b.onmouseenter=()=>{paintStage(+b.dataset.j);};b.onmouseleave=()=>paintStage();b.onclick=()=>{TOK=+b.dataset.j;[...$('tokens').children].forEach(x=>x.classList.toggle('sel',+x.dataset.j===TOK));paintStage();};});
+  $('stageimg').src=RES.images[0];$('stageimg').style.width=(RES.req.width*2)+'px';$('stageimg').style.height=(RES.req.height*2)+'px';
+  paintStage();
+  // all tokens
+  const [gh,gw]=RES.grid;
+  $('alltok').innerHTML=RES.tokens.map((t,j)=>`<figure class="${t.startsWith('<null')?'null':''}"><canvas data-j="${j}" width="${gw}" height="${gh}"></canvas><figcaption title="${esc(t)}">${esc(fmtTok(t))} · ${(100*m.mass[j]).toFixed(1)}%</figcaption></figure>`).join('');
+  [...$('alltok').querySelectorAll('canvas')].forEach(cv=>{const j=+cv.dataset.j;drawMap(cv,tokenMap(m,j),gh,gw,gw*6,gh*6,1);cv.onclick=()=>{TOK=j;renderAttention();};});
+  renderRegisters(m);
+}
+function paintStage(hoverJ){
+  const m=blockMaps();if(!m)return;const j=hoverJ!=null?hoverJ:TOK;const [gh,gw]=RES.grid;const W=RES.req.width*2,H=RES.req.height*2;
+  $('stageimg').style.visibility=MAPONLY?'hidden':'visible';
+  const alpha=MAPONLY?1:+$('alpha').value;
+  drawMap($('stagecv'),j>=0?tokenMap(m,j):null,gh,gw,W,H,alpha);
+  $('tokinfo').textContent=j>=0?`${fmtTok(RES.tokens[j])} · ${(100*m.mass[j]).toFixed(1)}% of attention mass at ${$('avg').checked?'the average block':'block '+BLK} · step ${curStep().step}, t=${curStep().t.toFixed(2)}`:'hover or click a token';
+}
+function renderRegisters(m){
+  const [gh,gw]=RES.grid,W=RES.req.width*2,H=RES.req.height*2,R=INFO.n_registers;
+  $('regimg').src=RES.images[0];$('regimg').style.width=W+'px';$('regimg').style.height=H+'px';
+  if(!m.img2reg){drawMap($('regcv'),null,gh,gw,W,H,0);$('regmaps').innerHTML=`<div class="hint">registers join at block ${INFO.register_block}; pick a block ≥ ${INFO.register_block}</div>`;}
+  else{
+    const i2=new Uint8Array(m.N);let mx=0;for(let i=0;i<m.N;i++)mx=Math.max(mx,m.img2reg[i]);for(let i=0;i<m.N;i++)i2[i]=Math.round(255*m.img2reg[i]/(mx||1));
+    drawMap($('regcv'),i2,gh,gw,W,H,+$('alpha').value);
+    $('regmaps').innerHTML=Array.from({length:R},(_,r)=>`<figure><canvas data-r="${r}" width="${gw}" height="${gh}"></canvas><figcaption>reg ${r}</figcaption></figure>`).join('');
+    [...$('regmaps').querySelectorAll('canvas')].forEach(cv=>{const r=+cv.dataset.r;const a=new Uint8Array(m.N);let mm=0;
+      for(let p=0;p<m.N;p++){a[p]=m.reg2img[r*m.N+p];mm=Math.max(mm,a[p]);}for(let p=0;p<m.N;p++)a[p]=Math.round(255*a[p]/(mm||1));drawMap(cv,a,gh,gw,gw*6,gh*6,1);});
+  }
+  // charts
+  const st=curStep();const stats=(RES.register_stats||[]).filter(s=>s.step===st.step);
+  const cur=stats.find(s=>s.block===($('avg').checked?INFO.register_block:BLK))||stats[stats.length-1];
+  drawBars($('normchart'),cur?cur.norms.map(n=>n/(cur.img_norm||1)):[],'reg');
+  drawLine($('i2rchart'),stats.sort((a,b)=>a.block-b.block).map(s=>s.img2reg_mean),INFO.register_block);
+}
+function prep(cv){const dpr=devicePixelRatio||1,W=cv.clientWidth||400,H=cv.clientHeight||120;cv.width=W*dpr;cv.height=H*dpr;const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);return [g,W,H];}
+function drawBars(cv,vals,lab){const [g,W,H]=prep(cv);if(!vals.length){g.fillStyle=col('--tx3');g.font='10px monospace';g.fillText('no register stats for this block',8,H/2);return;}
+  const mx=Math.max(1,...vals),PL=28,PB=16,bw=(W-PL-8)/vals.length;
+  g.strokeStyle=col('--line');g.beginPath();const y1=H-PB-(H-PB-8)*(1/mx);g.moveTo(PL,y1);g.lineTo(W-4,y1);g.stroke();
+  g.fillStyle=col('--tx3');g.font='9px monospace';g.fillText('1.0',2,y1+3);
+  vals.forEach((v,i)=>{const h=(H-PB-8)*v/mx;g.fillStyle=col('--vio');g.fillRect(PL+i*bw+2,H-PB-h,Math.max(2,bw-4),h);
+    if(vals.length<=16){g.fillStyle=col('--tx3');g.fillText(String(i),PL+i*bw+bw/2-3,H-4);}});
+  g.fillStyle=col('--tx2');g.font='10px monospace';g.fillText(`max ${mx.toFixed(2)}× image-token norm`,PL,10);}
+function drawLine(cv,vals,from){const [g,W,H]=prep(cv);if(!vals.length)return;const mx=Math.max(...vals,1e-6),PL=34,PB=16;
+  g.strokeStyle=col('--line');g.beginPath();g.moveTo(PL,H-PB);g.lineTo(W-4,H-PB);g.stroke();
+  const X=i=>PL+(W-PL-8)*i/Math.max(1,vals.length-1),Y=v=>H-PB-(H-PB-10)*v/mx;
+  g.strokeStyle=col('--accent');g.lineWidth=1.5;g.beginPath();vals.forEach((v,i)=>{i?g.lineTo(X(i),Y(v)):g.moveTo(X(i),Y(v));});g.stroke();
+  vals.forEach((v,i)=>{g.fillStyle=i>=from?col('--accent'):col('--tx3');g.beginPath();g.arc(X(i),Y(v),2.5,0,7);g.fill();});
+  g.fillStyle=col('--tx3');g.font='9px monospace';g.fillText((100*mx).toFixed(1)+'%',2,12);g.fillText('0',PL-8,H-PB+3);g.fillText('block 0',PL,H-3);g.fillText('block '+(vals.length-1),W-46,H-3);}
+
+init();
+</script>
