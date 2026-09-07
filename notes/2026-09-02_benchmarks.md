@@ -30,3 +30,12 @@ At a 0.43 s compiled step, 100 ms is 23% → encode long and short captions as s
 `run1` config, bs 256, compiled, live T5, cos+dispersive losses: **0.758 s/step = 338 img/s** with the GPU to itself;
 1.47 s/step while the pexels2 ingest (FLUX.2 AE encode, 14–56% SM) shared the GPU. Validation at step 500 with the compiled
 model triggered 5 extra graph compilations (bs 128 per bucket, ~9 min stall) → val now runs the eager model.
+
+
+## Sampler settings on the final weights (2026-09-07, `scripts/eval_steps.py`, 2,456 held-out prompts)
+| steps | shift | FID | FD-DINOv2 | CLIP | PickScore | HPSv2.1 | s/2456 imgs |
+|---|---|---|---|---|---|---|---|
+| 8 | 2.8 | 28.4 | 234.2 | 0.330 | 20.81 | 0.243 | 115 |
+| 20 | 2.8 | 27.0 | 218.4 | 0.330 | 20.84 | 0.247 | 184 |
+| 50 | 2.8 | 26.6 | 216.1 | 0.330 | 20.82 | 0.247 | 374 |
+| 20 | 1.0 | 27.3 | 228.2 | 0.330 | 20.76 | 0.243 | 184 |

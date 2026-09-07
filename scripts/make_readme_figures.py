@@ -65,12 +65,12 @@ def grid(items, cols, cell_w, out, cap_lines=2, pad=8, title=None):
     canvas.save(out, "JPEG", quality=84, optimize=True); print("wrote", out, canvas.size, f"{os.path.getsize(out)/1e3:.0f} KB", flush=True)
 
 
-def make_images(run, cache, out):
+def make_images(run, cache, out, steps=20, grids_only=False):
     from tinydit.playground import Engine
     from safetensors.torch import load_file
     E = Engine(run, cache)
     dec = lambda u: Image.open(io.BytesIO(base64.b64decode(u.split(",")[1]))).convert("RGB")
-    def gen(prompt, w=256, h=256, steps=20, cfg=4.0, shift=2.8, seed=0):
+    def gen(prompt, w=256, h=256, steps=steps, cfg=4.0, shift=2.8, seed=0):
         return dec(E.generate(prompt, width=w, height=h, steps=steps, cfg=cfg, shift=shift, seed=seed, n_images=1, trajectory=0)["images"][0])
     for name, prompts in SETS.items():
         grid([(gen(p, seed=11 + i), p) for i, p in enumerate(prompts)], 4, 224, os.path.join(out, f"grid_{name}.jpg"), cap_lines=4 if name == "long" else 2)
@@ -78,6 +78,7 @@ def make_images(run, cache, out):
     shapes = [(256, 256), (288, 224), (224, 288), (320, 208), (208, 320), (448, 256)]
     grid([(gen(P, w, h, seed=5), f"{w}x{h}" + ("  (not a training shape)" if (w, h) == (448, 256) else "")) for w, h in shapes],
          6, 150, os.path.join(out, "grid_aspect.jpg"), cap_lines=2, title=P)
+    if grids_only: return
     snaps = [10000, 50000, 100000, 200000, 300000, 400000]
     prog = ["a red tractor parked next to a blue rowing boat on a sandy beach", "three green apples on a white plate next to a black coffee cup",
             "a lighthouse on a rocky cliff during a storm"]
@@ -139,8 +140,9 @@ def make_charts(run, out):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(); ap.add_argument("--run", default="run1"); ap.add_argument("--cache", default="out/cache/run1")
-    ap.add_argument("--out", default="docs"); ap.add_argument("--charts-only", action="store_true"); a = ap.parse_args()
+    ap.add_argument("--out", default="docs"); ap.add_argument("--charts-only", action="store_true")
+    ap.add_argument("--steps", type=int, default=20); ap.add_argument("--grids-only", action="store_true"); a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
-    if not a.charts_only: make_images(a.run, a.cache, a.out)
-    make_charts(a.run, a.out)
+    if not a.charts_only: make_images(a.run, a.cache, a.out, a.steps, a.grids_only)
+    if not a.grids_only: make_charts(a.run, a.out)
     print("TOTAL docs size:", round(sum(os.path.getsize(os.path.join(a.out, f)) for f in os.listdir(a.out)) / 1e6, 2), "MB")
