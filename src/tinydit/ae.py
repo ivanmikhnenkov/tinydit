@@ -14,9 +14,8 @@ SPECS = {
                   cls="AutoencoderKLQwenImage", f=8, ch=16, gated=True, temporal=True),
 }
 TOKEN_PATHS = (
-    "/root/volume/.tinydit_token",        # inside ivan_dev
-    "/home/ivan/volume/.tinydit_token",   # on the host
-    "/home/ivan/visual-services/.env",    # original source
+    os.path.expanduser("~/volume/.tinydit_token"),   # HF_TOKEN=... in a 0600 file outside the repo
+    "/home/ivan/volume/.tinydit_token",              # same file as seen from the container
 )
 
 
