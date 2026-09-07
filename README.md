@@ -55,19 +55,86 @@ sharing the GPU halves that rate (`notes/2026-09-02_benchmarks.md`).
 
 ### Run 1 result (2 → 6 September 2026)
 
-400k steps, 102M samples (24 epochs of 4.2M images), 3.5 days on one GPU. Held-out metrics from the
-frozen prompt set (`out/runs/run1/eval_prompts.json`), sampled with 20 steps, CFG 4, shift 2.8:
+400k steps, 102M samples (24 epochs of 4.2M images), 3.5 days on one GPU. Everything below is generated
+by the final EMA weights with the training-time sampler (20 Euler steps, CFG 4, shift 2.8), fixed seeds,
+no cherry-picking within a set (`scripts/make_readme_figures.py` regenerates all of it).
+
+**Objects and animals.** Short COCO-style prompts.
+
+![objects](docs/grid_objects.jpg)
+
+**Scenes.**
+
+![scenes](docs/grid_scenes.jpg)
+
+**Composition: colours, counts, relations.** Most hold; "two red apples and one green pear" comes out as
+two-and-two, the classic small-model counting slip.
+
+![composition](docs/grid_composition.jpg)
+
+**Lighting and style words.**
+
+![style](docs/grid_style.jpg)
+
+**Long captions** in the style of the training data (60–90 words, up to 128 T5 tokens).
+
+![long captions](docs/grid_long.jpg)
+
+**Aspect ratios.** One prompt and seed in the five training shapes, plus a 448×256 frame the model never
+saw: RoPE positions generalise to it.
+
+![aspect ratios](docs/grid_aspect.jpg)
+
+**Where it fails**, honestly: readable text, close faces, dense crowds, exact counts above three, clock
+hands, stacked geometry. These are the usual limits of a 209M model at 256² and the natural targets for
+the RL stage or a larger run.
+
+![failure cases](docs/grid_failures.jpg)
+
+#### Dynamics
+
+Held-out metrics on the frozen prompt set every 10k steps; the vertical line at 300k marks the start of
+the learning-rate decay (dashboard tooltips explain each metric):
+
+![metrics](docs/metrics.png)
 
 | step | FID | FD-DINOv2 | object acc. | CLIP held-out / novel | PickScore held-out / novel | HPSv2.1 held-out / novel |
 |---|---|---|---|---|---|---|
 | 10k | 33.7 | 570 | 65% | 0.300 / 0.333 | 19.5 / 20.2 | 0.199 / 0.213 |
+| 50k | 29.1 | 324 | 83% | 0.322 / 0.349 | 20.3 / 21.6 | 0.231 / 0.251 |
 | 100k | 28.1 | 274 | 88% | 0.323 / 0.359 | 20.6 / 22.0 | 0.238 / 0.264 |
+| 200k | 27.5 | 244 | 90% | 0.319 / 0.359 | 20.8 / 22.3 | 0.248 / 0.272 |
 | 300k | 27.1 | 229 | 92% | 0.322 / 0.361 | 20.8 / 22.5 | 0.251 / 0.276 |
 | 400k | 27.0 | 218 | 90% | 0.322 / 0.361 | 20.9 / 22.6 | 0.254 / 0.277 |
 
+- Layout and object identity are learned in the first 10k steps (1.3M samples); detail and realism
+  (FD-DINOv2, the preference scores) keep improving to the end, while FID and object accuracy saturate
+  around 300k. The linear learning-rate decay over the last 100k steps gave a further 5% on FD-DINOv2
+  and the highest preference scores of the run.
+- The flow-matching loss is a poor progress signal: most of it is the irreducible variance of the
+  velocity target at high noise. It fell only from 0.805 to 0.754 while the images changed completely.
+  Training and held-out loss stayed equal throughout, so nothing was memorised (24 epochs over 4.2M images).
+- Novel hand-written prompts score higher than held-out captions on every preference metric because
+  they are short and concrete; long training-style captions are harder to satisfy in full.
+
+**The same prompt over training**, EMA snapshots, same seed:
+
+![progress](docs/progress.jpg)
+
+**How one sample happens.** The shifted schedule spends 15 of 20 steps below t = 0.5; the model's
+prediction of the final image (bottom row) is already the right layout after 3 steps and only sharpens
+afterwards, which is why 8 steps still work and 50 add little.
+
+![trajectory](docs/trajectory.jpg)
+
+**Inference settings**, same prompt and seed. The shift the model was trained with helps but is not
+critical at 20 steps; guidance is: CFG 1 loses the prompt, CFG 7 over-saturates.
+
+![sampling settings](docs/grid_sampling.jpg)
+
 Final validation loss 0.754 (train/held-out gap zero throughout). Weights: `out/runs/run1/ema_0400000.safetensors`
-(bf16 EMA, 418 MB) plus 39 earlier EMA snapshots every 10k steps and the fp32 resume checkpoint. Full fp32 checkpoints
-(`ckpt_last.pt`, ~3.4 GB, rotated) exist only for exact resume; everything else uses the EMA snapshots.
+(bf16 EMA, 418 MB) plus 39 earlier EMA snapshots every 10k steps and the fp32 resume checkpoint. The
+playground (`tinydit.playground`) serves these weights for interactive prompts, trajectories and attention maps.
 
 ## Data
 
