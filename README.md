@@ -5,7 +5,7 @@ frozen FLUX.2 autoencoder and a frozen flan-t5-base text encoder. Built to learn
 generation works, and as the base model for RL practice next. Everything heavy lives under `out/` and is
 git-ignored; a clone plus the commands below reproduces the run. Sources for each decision are in `notes/`.
 
-🎨 Demo: [huggingface.co/spaces/ivanmikhnenkov/tinydit](https://huggingface.co/spaces/ivanmikhnenkov/tinydit) · 🤗 Weights: [huggingface.co/ivanmikhnenkov/tinydit-256](https://huggingface.co/ivanmikhnenkov/tinydit-256) · 🌐 Author: [ivanmikhnenkov.com](https://ivanmikhnenkov.com) · 🏷️ Pretraining release: [`v1-pretrain`](https://github.com/ivanmikhnenkov/tinydit/releases/tag/v1-pretrain)
+📝 Write-up: [what actually mattered](https://huggingface.co/blog/ivanmikhnenkov/tinydit-text-to-image-from-scratch-one-gpu) · 🎨 Demo: [huggingface.co/spaces/ivanmikhnenkov/tinydit](https://huggingface.co/spaces/ivanmikhnenkov/tinydit) · 🤗 Weights: [huggingface.co/ivanmikhnenkov/tinydit-256](https://huggingface.co/ivanmikhnenkov/tinydit-256) · 🌐 Author: [ivanmikhnenkov.com](https://ivanmikhnenkov.com) · 🏷️ Pretraining release: [`v1-pretrain`](https://github.com/ivanmikhnenkov/tinydit/releases/tag/v1-pretrain)
 
 ## Results
 
