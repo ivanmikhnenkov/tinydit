@@ -1,0 +1,9 @@
+torch
+diffusers>=0.36
+transformers>=4.57
+safetensors
+sentencepiece
+accelerate
+numpy
+pillow
+spaces
