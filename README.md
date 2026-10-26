@@ -7,6 +7,10 @@ git-ignored; a clone plus the commands below reproduces the run. Sources for eac
 
 📝 Write-up: [what actually mattered](https://huggingface.co/blog/ivanmikhnenkov/tinydit-text-to-image-from-scratch-one-gpu) · 🎨 Demo: [huggingface.co/spaces/ivanmikhnenkov/tinydit](https://huggingface.co/spaces/ivanmikhnenkov/tinydit) · 🤗 Weights: [huggingface.co/ivanmikhnenkov/tinydit-256](https://huggingface.co/ivanmikhnenkov/tinydit-256) · 🌐 Author: [ivanmikhnenkov.com](https://ivanmikhnenkov.com) · 🏷️ Pretraining release: [`v1-pretrain`](https://github.com/ivanmikhnenkov/tinydit/releases/tag/v1-pretrain)
 
+🧨 With diffusers: `DiffusionPipeline.from_pretrained("ivanmikhnenkov/tinydit-256", trust_remote_code=True)`, then
+`pipe("a lighthouse on a rocky coast at sunset", width=320, height=208).images[0]`. The transformer and pipeline
+code, the export and a parity check against `tinydit.sample` are in `hub/`.
+
 ## Results
 
 400k steps, 24 epochs over 4.2M images, 3.5 days on one GPU. Final EMA weights, fixed seeds, no
@@ -205,6 +209,7 @@ The HF token is read from `/home/ivan/volume/.tinydit_token` (`HF_TOKEN=...`, mo
 src/tinydit/   ae.py text.py model.py flow.py schedule.py data.py train.py sample.py metrics.py ingest.py rope.py playground.py
 scripts/       hfpeek.py preview_gallery.py tfrecord_peek.py  (dataset survey)   bench_step.py   fetch_metric_models.py
                launch_run1.sh append_pexels2.sh
+hub/           diffusers export of the Hub repo: transformer_tinydit.py pipeline_tinydit.py export.py parity.py model_card.md
 docker/        Dockerfile run.sh          prompts/novel.txt          dashboard.html          notes/          out/ (ignored)
 ```
 
