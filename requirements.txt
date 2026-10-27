@@ -9,6 +9,8 @@ huggingface_hub>=0.30
 pyarrow>=19
 numpy>=2.0
 pillow>=11
+matplotlib==3.11.2  # docs/rl figures
+pytest==9.1.1  # exercises/dgpo
 requests>=2.32
 # evaluation metrics
 pytorch-fid>=0.3
