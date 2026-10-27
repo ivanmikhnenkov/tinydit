@@ -1,0 +1,7748 @@
+[
+{
+"prompt": "a squirrel playing football in a living room",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.09332562237977982
+},
+{
+"prompt": "A white plate containing a casserole and a plate holding a pizza",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.28759321570396423
+},
+{
+"prompt": "a goose sitting in an armchair in a greenhouse",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7774367928504944
+},
+{
+"prompt": "a goat playing chess in a snowy forest",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4998237192630768
+},
+{
+"prompt": "a highway road sign with a cloudy back ground",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6569174528121948
+},
+{
+"prompt": "a sheep holding a balloon at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3982972800731659
+},
+{
+"prompt": "a clock hanging on a building with time at two thirty",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.3477097153663635
+},
+{
+"prompt": "a cow wearing a straw hat on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.749911904335022
+},
+{
+"prompt": "a frog wearing a birthday hat in a greenhouse",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6271438598632812
+},
+{
+"prompt": "a close up of broccoli next to other food",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7508023977279663
+},
+{
+"prompt": "a horse sleeping on a sofa on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6582156419754028
+},
+{
+"prompt": "In a corner over a bed with a zebra print pillow, yellow flowers hang down",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.28356310725212097
+},
+{
+"prompt": "a wolf drinking from a cup in a garden",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7509257793426514
+},
+{
+"prompt": "an otter playing chess at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3640854060649872
+},
+{
+"prompt": "an otter painting on a canvas in a library",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2914729714393616
+},
+{
+"prompt": "a monkey wearing a raincoat in a garden",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12513761222362518
+},
+{
+"prompt": "a red panda painting on a canvas in a library",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6124002933502197
+},
+{
+"prompt": "A cargo train is sitting at a train station",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.355771541595459
+},
+{
+"prompt": "a tiger playing a guitar in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6867038607597351
+},
+{
+"prompt": "a deer carrying a backpack in a train station",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2846214771270752
+},
+{
+"prompt": "a stack of books at a bus stop",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.8015362620353699
+},
+{
+"prompt": "a frog wearing a red scarf in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7382413744926453
+},
+{
+"prompt": "a pig playing the piano in a train station",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.26831236481666565
+},
+{
+"prompt": "a frog riding a skateboard at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5677835941314697
+},
+{
+"prompt": "an elephant playing football on a city street",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.3083195686340332
+},
+{
+"prompt": "A photo of a plane with a Cardinal logo on the back wing",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.36594724655151367
+},
+{
+"prompt": "an otter playing a guitar in a greenhouse",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.38521090149879456
+},
+{
+"prompt": "a rabbit painting on a canvas on a mountain trail",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4874454736709595
+},
+{
+"prompt": "a panda eating ice cream next to a lake",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5322731137275696
+},
+{
+"prompt": "a bear painting on a canvas in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.08825712651014328
+},
+{
+"prompt": "A man is posing next to a fake giraffe",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5853362679481506
+},
+{
+"prompt": "A bowl of corn chowder with broccoli, and a spoon on the side",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6335428953170776
+},
+{
+"prompt": "a hedgehog drinking from a cup in a greenhouse",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7786207795143127
+},
+{
+"prompt": "The couple sleeping in this bed did not make it when they woke up",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.30877751111984253
+},
+{
+"prompt": "A skier is laying on the snow with feet up",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.3929317593574524
+},
+{
+"prompt": "A toilet with its lid raised in a stall",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7521308064460754
+},
+{
+"prompt": "a cow holding a balloon in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5463712811470032
+},
+{
+"prompt": "a goat carrying a backpack in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5298386812210083
+},
+{
+"prompt": "a squirrel holding an umbrella at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.19133278727531433
+},
+{
+"prompt": "an elephant playing a guitar in a greenhouse",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23800405859947205
+},
+{
+"prompt": "the train chugs along, rounding the bend past the old house",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4011823832988739
+},
+{
+"prompt": "an elephant playing chess at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3317985534667969
+},
+{
+"prompt": "Two dogs sitting on the tail gate of a truck",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7434701323509216
+},
+{
+"prompt": "A couple of elephants with people riding on the back of them",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7687544822692871
+},
+{
+"prompt": "Two horses pulling a cart with a man on it",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7664418816566467
+},
+{
+"prompt": "The two giraffes are facing in the same direction",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.12327389419078827
+},
+{
+"prompt": "a person riding a bike with a dog on a leash",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7458589673042297
+},
+{
+"prompt": "A laptop, jacket and bookbag rests on the kitchen counter in a seemingly empty apartment",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7694608569145203
+},
+{
+"prompt": "a yellow car on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7776966094970703
+},
+{
+"prompt": "High heeled shoes are hanging off of a white shelf",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5328661203384399
+},
+{
+"prompt": "people using some small rv beds to lay down or check on something",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5839763879776001
+},
+{
+"prompt": "a camel drinking from a cup on a wooden bridge",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.612825870513916
+},
+{
+"prompt": "a pig playing chess on a city street",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12502384185791016
+},
+{
+"prompt": "A man sitting on a toilet in front of the computer",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6509016156196594
+},
+{
+"prompt": "a turtle playing football on a beach",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12503813207149506
+},
+{
+"prompt": "A small bed has a computer next to it",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.798926591873169
+},
+{
+"prompt": "a koala looking through binoculars in a living room",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.48208093643188477
+},
+{
+"prompt": "a deer sitting in a shopping cart in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.8463209867477417
+},
+{
+"prompt": "an otter wearing a straw hat on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7465510368347168
+},
+{
+"prompt": "a llama sitting at a desk with a laptop on a farm",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7850419282913208
+},
+{
+"prompt": "A man in a striped jacket is skiing backwards down a snow covered flight of stairs",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.29224997758865356
+},
+{
+"prompt": "a cat playing chess in an office",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14386646449565887
+},
+{
+"prompt": "a horse carrying a backpack on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6265183687210083
+},
+{
+"prompt": "a couple of girls walking a horse next to a crowd of people",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6954985857009888
+},
+{
+"prompt": "Three sheep are standing in a field behind a barbed wire fence",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7419110536575317
+},
+{
+"prompt": "Many piles of produce are underneath sale signs",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7866988778114319
+},
+{
+"prompt": "Three surfers are standing in the water on the beach at sundown",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7893885374069214
+},
+{
+"prompt": "a woman on skis standing at the end of a fence",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5283920764923096
+},
+{
+"prompt": "a monkey looking through binoculars in a greenhouse",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5622810125350952
+},
+{
+"prompt": "a horse eating ice cream on a beach",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.15791375935077667
+},
+{
+"prompt": "a train pulled up to an empty train station",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.1708061546087265
+},
+{
+"prompt": "a raccoon wearing a raincoat at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1662215143442154
+},
+{
+"prompt": "A blue quilted bedspread on a small bed",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.13731999695301056
+},
+{
+"prompt": "a zebra drinking from a cup on a mountain trail",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.31552934646606445
+},
+{
+"prompt": "A dog sitting in the back of a parked truck at night",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6591046452522278
+},
+{
+"prompt": "Two men are watching a truck loaded with a large tank",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3991554379463196
+},
+{
+"prompt": "a bear holding a flower next to a lake",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4591829180717468
+},
+{
+"prompt": "Two giraffes cross their necks as the stand near each other",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4998234808444977
+},
+{
+"prompt": "a deer holding an umbrella in a greenhouse",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7233026027679443
+},
+{
+"prompt": "a llama carrying a backpack on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7492571473121643
+},
+{
+"prompt": "a flamingo eating ice cream in an office",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2496861070394516
+},
+{
+"prompt": "an owl standing on a surfboard on a boat",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6955394148826599
+},
+{
+"prompt": "a raccoon carrying a backpack in a kitchen",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5691013932228088
+},
+{
+"prompt": "A laptop computer sitting next to a computer monitor",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7575087547302246
+},
+{
+"prompt": "an owl wearing sunglasses in a train station",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.766406238079071
+},
+{
+"prompt": "a fox playing a guitar in a train station",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6581486463546753
+},
+{
+"prompt": "a cup of coffee on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7568543553352356
+},
+{
+"prompt": "a raccoon painting on a canvas in a garden",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1311204582452774
+},
+{
+"prompt": "a goat looking through binoculars on a farm",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1503888964653015
+},
+{
+"prompt": "a kangaroo playing football in a library",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.241530641913414
+},
+{
+"prompt": "an elephant painting on a canvas on a city street",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5225395560264587
+},
+{
+"prompt": "A boat and a child holding a surfboard on a beach",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.46322253346443176
+},
+{
+"prompt": "an elephant wearing a raincoat in a garden",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12227693945169449
+},
+{
+"prompt": "a giraffe sitting at a desk with a laptop in a meadow",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4063255786895752
+},
+{
+"prompt": "a bear carrying a backpack at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7220840454101562
+},
+{
+"prompt": "a flamingo sleeping on a sofa next to a lake",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7632763385772705
+},
+{
+"prompt": "a panda playing football on a beach",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.40411698818206787
+},
+{
+"prompt": "A man sitting by himself at the dinner table",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7040776610374451
+},
+{
+"prompt": "Four guys with game remotes playing a video game",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7853271961212158
+},
+{
+"prompt": "a few sheep and chickens on a grass field",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4236658215522766
+},
+{
+"prompt": "A lit birthday cake has some penguin candles",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6691831350326538
+},
+{
+"prompt": "Two people who are herding a group of sheep",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7784008979797363
+},
+{
+"prompt": "a giraffe holding an umbrella in a kitchen",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5919787287712097
+},
+{
+"prompt": "a walrus drinking from a cup in a living room",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2583836615085602
+},
+{
+"prompt": "a panda holding a balloon on a boat",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.28638479113578796
+},
+{
+"prompt": "A man leans against an oven in the kitchen",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5006382465362549
+},
+{
+"prompt": "a cow wearing headphones in a garden",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5803164839744568
+},
+{
+"prompt": "a fox holding a balloon next to a lake",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49780693650245667
+},
+{
+"prompt": "a cow holding a balloon in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6059033274650574
+},
+{
+"prompt": "a hedgehog wearing boots in a train station",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.22678963840007782
+},
+{
+"prompt": "a cow sitting in a shopping cart at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.455659419298172
+},
+{
+"prompt": "a red panda wearing headphones on a city street",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5492609739303589
+},
+{
+"prompt": "a sheep playing football in a meadow",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2545047402381897
+},
+{
+"prompt": "a raccoon drinking from a cup in a train station",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6186606287956238
+},
+{
+"prompt": "a duck playing a guitar in a train station",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5983131527900696
+},
+{
+"prompt": "a duck playing football in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.141041100025177
+},
+{
+"prompt": "a koala playing chess on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.37672433257102966
+},
+{
+"prompt": "a hamster carrying a backpack at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5910699963569641
+},
+{
+"prompt": "a turtle sleeping on a sofa in a kitchen",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5296284556388855
+},
+{
+"prompt": "a koala eating ice cream in a living room",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.675313413143158
+},
+{
+"prompt": "a koala wearing a raincoat on a boat",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.42255502939224243
+},
+{
+"prompt": "A pair of scissors next to a writing instrument of some sort",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.35893329977989197
+},
+{
+"prompt": "a wolf wearing sunglasses at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5136231184005737
+},
+{
+"prompt": "a deer reading a newspaper on a wooden bridge",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4893081784248352
+},
+{
+"prompt": "a wolf playing the piano in a supermarket",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4103119969367981
+},
+{
+"prompt": "a seal drinking from a cup on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6245806217193604
+},
+{
+"prompt": "a camel standing on a surfboard on a farm",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7307172417640686
+},
+{
+"prompt": "A horse is trotting past a man on that walks behind him in the pasture",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.39106976985931396
+},
+{
+"prompt": "Beams of light shine on the wall to the downstairs bathroom",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.10150980204343796
+},
+{
+"prompt": "an otter reading a newspaper next to a lake",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5734906196594238
+},
+{
+"prompt": "an elephant playing football on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1408492773771286
+},
+{
+"prompt": "a kangaroo playing the piano in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5983588695526123
+},
+{
+"prompt": "A young man is making preparations to ski down the hill",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.5620086193084717
+},
+{
+"prompt": "a hamster carrying a backpack on a beach",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.45641469955444336
+},
+{
+"prompt": "A little kid standing next to a toilet",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5114532113075256
+},
+{
+"prompt": "A man laying in a bed with a piece of food in his hands",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.38178327679634094
+},
+{
+"prompt": "Here are two generations enjoying Asian cuisine  at a restaurant",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6079957485198975
+},
+{
+"prompt": "Man with knife slicing pizza on cookie sheets while another has a slice",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.25185006856918335
+},
+{
+"prompt": "a pig riding a bicycle on a city street",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49862679839134216
+},
+{
+"prompt": "a pig wearing a bow tie on a beach",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.3185919523239136
+},
+{
+"prompt": "a walrus reading a newspaper at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.18986158072948456
+},
+{
+"prompt": "a deer reading a newspaper in a garden",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.34442171454429626
+},
+{
+"prompt": "a dog playing chess next to a lake",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2817869782447815
+},
+{
+"prompt": "Several giraffe eating the leaves from neighboring trees",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6798597574234009
+},
+{
+"prompt": "Professional baseball players are walking around during practice",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.1837674379348755
+},
+{
+"prompt": "Airport waiting room with large jet parked outside the window",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7757078409194946
+},
+{
+"prompt": "a tiger riding a skateboard at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3596959710121155
+},
+{
+"prompt": "a turtle holding a flower on a wooden bridge",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.28949588537216187
+},
+{
+"prompt": "A wall of umbrellas withe an heading written below the umbrellas",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4216306805610657
+},
+{
+"prompt": "an owl wearing a birthday hat next to a lake",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499881982803345
+},
+{
+"prompt": "A cat sitting on VCR in front of a tv that is turned on",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5665342211723328
+},
+{
+"prompt": "Two servers holding their boards walking towards the water",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4959859251976013
+},
+{
+"prompt": "A person eating food from a white plate next to a glass of wine",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6792731285095215
+},
+{
+"prompt": "A man is lying in the grass and exercising",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2540769875049591
+},
+{
+"prompt": "a seal painting on a canvas in a park in autumn",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3906026780605316
+},
+{
+"prompt": "A white jet airliner flying in blue, cloudy sky",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5501360893249512
+},
+{
+"prompt": "an otter wearing sunglasses in an office",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7488957643508911
+},
+{
+"prompt": "a llama playing football on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.18406331539154053
+},
+{
+"prompt": "a walrus sitting in a shopping cart on a boat",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5120094418525696
+},
+{
+"prompt": "A train locomotive pulls many empty rail cars behind it",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.619718611240387
+},
+{
+"prompt": "a goose wearing a straw hat in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6251930594444275
+},
+{
+"prompt": "An elephant and a rhinoceros stand not far from each other",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.240883007645607
+},
+{
+"prompt": "a flamingo wearing a straw hat in a meadow",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2499316781759262
+},
+{
+"prompt": "a cat playing chess on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4063169062137604
+},
+{
+"prompt": "a panda carrying a backpack in a living room",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4637785851955414
+},
+{
+"prompt": "a hedgehog sitting in a shopping cart on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.8036255836486816
+},
+{
+"prompt": "an elephant sleeping on a sofa in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.8148308992385864
+},
+{
+"prompt": "A british united air plane at the air port",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.16319318115711212
+},
+{
+"prompt": "A steer and a baby brown cow staring into the camera",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6059985160827637
+},
+{
+"prompt": "a wolf wearing a red scarf in a park in autumn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49999743700027466
+},
+{
+"prompt": "a flamingo sleeping on a sofa in a meadow",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3424745500087738
+},
+{
+"prompt": "a tiger painting on a canvas on a farm",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1569753736257553
+},
+{
+"prompt": "Two dogs with hats are tied to a pole by their leashes",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6849604845046997
+},
+{
+"prompt": "a giraffe reading a newspaper in a barn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14195160567760468
+},
+{
+"prompt": "a parrot holding a balloon on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7415245771408081
+},
+{
+"prompt": "there are donuts being made outside on a table",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4926668405532837
+},
+{
+"prompt": "a person on a surf board and a sail rides on the lake",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5218983292579651
+},
+{
+"prompt": "Two black cats sitting on a desk with one on a laptop and one on papers",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6785004138946533
+},
+{
+"prompt": "A very long sub sitting on a table that is too small for it",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2544131278991699
+},
+{
+"prompt": "Three decorated cakes saying \"Best Wishes\" in a bakery",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.08802149444818497
+},
+{
+"prompt": "An old navy aircraft flying over the ocean",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7473177909851074
+},
+{
+"prompt": "a llama holding a flower in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.527053713798523
+},
+{
+"prompt": "a hamster playing the piano in a snowy forest",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4099053144454956
+},
+{
+"prompt": "A baby elephant greeting someone while a woman looks on",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2177271991968155
+},
+{
+"prompt": "a panda playing a guitar in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7234517335891724
+},
+{
+"prompt": "A lion eating a dead animal near elephants",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7616187334060669
+},
+{
+"prompt": "a panda wearing boots on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14644254744052887
+},
+{
+"prompt": "A man looking at something while holding his hot dog up",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6401459574699402
+},
+{
+"prompt": "a fox playing a guitar in a kitchen",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5651258826255798
+},
+{
+"prompt": "Three black cows stand on grass near a white, little barn",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.66053706407547
+},
+{
+"prompt": "A snowboarder is grabbing his board in midair near a Rockstar Energy Drink sign",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5392544269561768
+},
+{
+"prompt": "a koala playing chess in an office",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3799974024295807
+},
+{
+"prompt": "a bear carrying a backpack in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499163150787354
+},
+{
+"prompt": "a wolf wearing sunglasses on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.43640151619911194
+},
+{
+"prompt": "a little cat playing with the edge of a monitor with its paw",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5079836249351501
+},
+{
+"prompt": "The image shows three children eating spaghetti for dinner",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5384535193443298
+},
+{
+"prompt": "a flamingo holding a flower on a beach",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12493303418159485
+},
+{
+"prompt": "a panda playing football in a train station",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3248838186264038
+},
+{
+"prompt": "A cat sits on a serving tray with empty wine and highball glasses",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.32972028851509094
+},
+{
+"prompt": "a lion painting on a canvas at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.46227025985717773
+},
+{
+"prompt": "A vegetarian dish served with fresh cut vegetables",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7278618812561035
+},
+{
+"prompt": "A tennis racket hangs from a street pole",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.50825035572052
+},
+{
+"prompt": "an eagle sleeping on a sofa in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5434108376502991
+},
+{
+"prompt": "A young man with a fro holding a game controller",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.583110511302948
+},
+{
+"prompt": "A kettle sitting over a pile of wood next to several cooking pans",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6160078048706055
+},
+{
+"prompt": "A Volkswagon van sits in the street",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4728761911392212
+},
+{
+"prompt": "a zebra wearing headphones on a boat",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3886946737766266
+},
+{
+"prompt": "a goat playing a guitar in a snowy forest",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5780359506607056
+},
+{
+"prompt": "a cat holding a flower on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7413380146026611
+},
+{
+"prompt": "an otter reading a newspaper in a meadow",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4216325581073761
+},
+{
+"prompt": "a pair of boots on a farm",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.748001217842102
+},
+{
+"prompt": "A laptop computer, water and coffee in a cafe",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.43355122208595276
+},
+{
+"prompt": "A person kneeling behind a dog with words stating the dog is adopted across the picture",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5321952700614929
+},
+{
+"prompt": "a squirrel eating ice cream in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.15066875517368317
+},
+{
+"prompt": "Two dogs play with a Frisbee on a suburban lawn with a man",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7612303495407104
+},
+{
+"prompt": "a toddler listening to someone on a cell phone",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7150231599807739
+},
+{
+"prompt": "a panda playing chess in a barn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.26722240447998047
+},
+{
+"prompt": "a kangaroo looking through binoculars in a train station",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13142681121826172
+},
+{
+"prompt": "A girl holding a racket riding a horse in a pen",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.12503239512443542
+},
+{
+"prompt": "A bicycle leaning against a wall with a seat attachment behind it and two dogs sitting in the attachment",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5046386122703552
+},
+{
+"prompt": "a sheep holding a flower in a barn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2557978630065918
+},
+{
+"prompt": "a hedgehog wearing a red scarf on a city street",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.625013530254364
+},
+{
+"prompt": "an eagle drinking from a cup on a farm",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3077350854873657
+},
+{
+"prompt": "A person stands on a street corner by a fire hydrant",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7441232204437256
+},
+{
+"prompt": "a turtle wearing sunglasses on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23615004122257233
+},
+{
+"prompt": "a black and white cat is sitting in a sink",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.778493344783783
+},
+{
+"prompt": "A bicycle leaning against a white building with four chickens standing nearby",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.42134395241737366
+},
+{
+"prompt": "a deer sitting in an armchair in a greenhouse",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7198595404624939
+},
+{
+"prompt": "a koala wearing sunglasses next to a lake",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7130216360092163
+},
+{
+"prompt": "a hedgehog looking through binoculars in a snowy forest",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4494031071662903
+},
+{
+"prompt": "a turtle sitting in an armchair on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.34138956665992737
+},
+{
+"prompt": "a tiger looking through binoculars in a library",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3755902349948883
+},
+{
+"prompt": "a red panda playing chess in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4213930070400238
+},
+{
+"prompt": "a cow wearing a bow tie in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12971769273281097
+},
+{
+"prompt": "A surfer is riding the waters waves while another man looks on",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5300521850585938
+},
+{
+"prompt": "a kangaroo playing football in a kitchen",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.22112777829170227
+},
+{
+"prompt": "a flamingo playing a guitar in a snowy forest",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.310566782951355
+},
+{
+"prompt": "A pair of hourses drawing a horse carriage in front of a country store",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5377217531204224
+},
+{
+"prompt": "The chair has a set of patio doors behind it",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5750920176506042
+},
+{
+"prompt": "a red panda playing a guitar in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6424431800842285
+},
+{
+"prompt": "A park bench inside a Polynesian styled hut",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7906519770622253
+},
+{
+"prompt": "a frog carrying a backpack in a greenhouse",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5743956565856934
+},
+{
+"prompt": "a lion playing a guitar in a snowy forest",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.28041204810142517
+},
+{
+"prompt": "The three suitcases are sitting together in the floor",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7654563188552856
+},
+{
+"prompt": "a koala wearing a raincoat in a park in autumn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.09183979779481888
+},
+{
+"prompt": "a walrus wearing a red scarf at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.18359200656414032
+},
+{
+"prompt": "Two kids are sitting on the bed with a red chair",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7985407114028931
+},
+{
+"prompt": "a camel wearing sunglasses at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6654906868934631
+},
+{
+"prompt": "an otter eating ice cream in a train station",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6158925294876099
+},
+{
+"prompt": "an elephant wearing sunglasses in a train station",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6369732618331909
+},
+{
+"prompt": "A hot dog with toppings, and a side of garlic fries",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.17882026731967926
+},
+{
+"prompt": "A train moving along a track, approaching a light signal",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7198376059532166
+},
+{
+"prompt": "a turtle looking through binoculars in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.655258059501648
+},
+{
+"prompt": "a parrot riding a skateboard at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14113342761993408
+},
+{
+"prompt": "A smiling man with a goatee sits in the backseat of a vehicle surrounded by luggage",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6447363495826721
+},
+{
+"prompt": "an eagle wearing a straw hat on a farm",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3429454267024994
+},
+{
+"prompt": "a squirrel sleeping on a sofa on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3416658639907837
+},
+{
+"prompt": "A cat sitting on a dresser with a tv and dvd players",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7792521715164185
+},
+{
+"prompt": "a zebra holding an umbrella on a beach",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2521032392978668
+},
+{
+"prompt": "A bathroom with a white toilet with electronic capabilities",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2582012414932251
+},
+{
+"prompt": "A boy hits a baseball at a Little League game",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8089044094085693
+},
+{
+"prompt": "a zebra drinking from a cup in a greenhouse",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3890502154827118
+},
+{
+"prompt": "a squirrel playing chess in a train station",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7686556577682495
+},
+{
+"prompt": "A white toilet in a black bathroom with a phone on the wall",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.33411911129951477
+},
+{
+"prompt": "a parrot playing the piano next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1860354244709015
+},
+{
+"prompt": "a frog wearing a straw hat in a greenhouse",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.37859195470809937
+},
+{
+"prompt": "a cat wearing headphones in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5008611679077148
+},
+{
+"prompt": "a lion carrying a backpack in a library",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6141746640205383
+},
+{
+"prompt": "an elephant sitting at a desk with a laptop next to a lake",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7558455467224121
+},
+{
+"prompt": "A red metro rides over a railway covered in graffiti",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.5951396226882935
+},
+{
+"prompt": "a cat wearing sunglasses in a snowy forest",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5002500414848328
+},
+{
+"prompt": "A woman in white shorts is next to a man in jeans and they both have game remotes",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7547949552536011
+},
+{
+"prompt": "a fox playing chess in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.498362272977829
+},
+{
+"prompt": "a wolf wearing a red scarf at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3793550729751587
+},
+{
+"prompt": "A bench sitting next to a lake and waterfall",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7500022053718567
+},
+{
+"prompt": "a panda holding a flower on a beach",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6496765613555908
+},
+{
+"prompt": "a fox riding a bicycle on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7222444415092468
+},
+{
+"prompt": "a fox wearing a red scarf in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7500255703926086
+},
+{
+"prompt": "a hamster driving a car in a supermarket",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.2607457637786865
+},
+{
+"prompt": "a man on a motor bike drives by a city bus",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.775266170501709
+},
+{
+"prompt": "a tiled bathroom with a toilet and bath tub",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7663124203681946
+},
+{
+"prompt": "a cow holding a flower in a snowy forest",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2824999690055847
+},
+{
+"prompt": "a horse wearing a raincoat in a greenhouse",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2449844777584076
+},
+{
+"prompt": "An elephant holding onto the tail of another elephant with its trunk while walking on a road",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.2159472405910492
+},
+{
+"prompt": "a duck wearing headphones in a snowy forest",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.40340930223464966
+},
+{
+"prompt": "a parrot playing chess in a supermarket",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.27185800671577454
+},
+{
+"prompt": "Four horses stand in the distance in a pasture",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4971354603767395
+},
+{
+"prompt": "a walrus drinking from a cup in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13545483350753784
+},
+{
+"prompt": "a lion eating ice cream in a garden",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2673208713531494
+},
+{
+"prompt": "Collage of a phone store with woman showing features",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.46813899278640747
+},
+{
+"prompt": "a wolf wearing sunglasses next to a lake",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.38976502418518066
+},
+{
+"prompt": "a turtle wearing boots in an office",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2691471576690674
+},
+{
+"prompt": "a lion looking through binoculars on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.22784076631069183
+},
+{
+"prompt": "a goose wearing boots in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4757240116596222
+},
+{
+"prompt": "a cat reading a newspaper in a garden",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6563645601272583
+},
+{
+"prompt": "a hedgehog looking through binoculars in a train station",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.644565761089325
+},
+{
+"prompt": "a hamster riding a skateboard on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.794516921043396
+},
+{
+"prompt": "A squid and a jelly fish on a bike",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.16618123650550842
+},
+{
+"prompt": "a tiger wearing a bow tie next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1116412878036499
+},
+{
+"prompt": "Two girls pose for a picture in front of a bench",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.7216398119926453
+},
+{
+"prompt": "an elephant playing a guitar in a snowy forest",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.26033419370651245
+},
+{
+"prompt": "A table with one white microwave and a black one on top of it",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2962803840637207
+},
+{
+"prompt": "a kangaroo wearing boots on a boat",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.474001944065094
+},
+{
+"prompt": "a parrot wearing a red scarf on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12420473247766495
+},
+{
+"prompt": "a goat looking through binoculars at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23783144354820251
+},
+{
+"prompt": "a zebra drinking from a cup in a living room",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24983201920986176
+},
+{
+"prompt": "a raccoon wearing a birthday hat in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7500016093254089
+},
+{
+"prompt": "A young boy and a woman standing besides each other",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.36632928252220154
+},
+{
+"prompt": "A tropical beach with a banana tree in the forefront",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5001425743103027
+},
+{
+"prompt": "A wooden surface with three frosted doughnuts on the top",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.41361555457115173
+},
+{
+"prompt": "a raccoon playing the piano in a meadow",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5948686003684998
+},
+{
+"prompt": "People snowboarding down a hill in the mountains",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.735441267490387
+},
+{
+"prompt": "a bear wearing headphones in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499951720237732
+},
+{
+"prompt": "A man brushes a baby teeth with a electric toothbrush while holding a toothbrush to his mouth ",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.11842400580644608
+},
+{
+"prompt": "Adult in yellow shirt flying kite in large open grassy field",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7496623992919922
+},
+{
+"prompt": "Two zebras are grazing on skimpy dried up grass",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7500209212303162
+},
+{
+"prompt": "a rabbit playing chess on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6258077025413513
+},
+{
+"prompt": "a horse wearing a straw hat in a park in autumn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49947017431259155
+},
+{
+"prompt": "a sheep sleeping on a sofa at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.21396297216415405
+},
+{
+"prompt": "a dog playing football on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.19363470375537872
+},
+{
+"prompt": "a cow wearing sunglasses on a mountain trail",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.38448524475097656
+},
+{
+"prompt": "a giraffe holding a balloon at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.29559728503227234
+},
+{
+"prompt": "a bear playing football on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1673220694065094
+},
+{
+"prompt": "a bear wearing a straw hat in a meadow",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5006058812141418
+},
+{
+"prompt": "A plane taking off from an airport in 2012",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6203386783599854
+},
+{
+"prompt": "a hedgehog wearing a raincoat on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4612995386123657
+},
+{
+"prompt": "an owl sitting in a shopping cart on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.43664318323135376
+},
+{
+"prompt": "Three men are standing around looking at sports motorcycles",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7628162503242493
+},
+{
+"prompt": "A group of three giraffe walking along a dirt road next to a field",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7532963752746582
+},
+{
+"prompt": "a raccoon wearing headphones at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.28466469049453735
+},
+{
+"prompt": "a koala playing football in an office",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.08393927663564682
+},
+{
+"prompt": "a duck carrying a backpack in a park in autumn",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.37208330631256104
+},
+{
+"prompt": "a horse riding a bicycle in a snowy forest",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6559339165687561
+},
+{
+"prompt": "A hose is connected to a fire hydrant that is near a tree",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7030749320983887
+},
+{
+"prompt": "a flamingo wearing boots on a boat",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13918407261371613
+},
+{
+"prompt": "a giraffe sleeping on a sofa in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.633013904094696
+},
+{
+"prompt": "a zebra holding a flower in a train station",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2450450211763382
+},
+{
+"prompt": "a horse painting on a canvas in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7114776968955994
+},
+{
+"prompt": "a walrus sleeping on a sofa at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10016296058893204
+},
+{
+"prompt": "a penguin playing football in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10927838832139969
+},
+{
+"prompt": "A fallen skier on a slope being tended to",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.208682119846344
+},
+{
+"prompt": "a deer playing the piano in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.16067902743816376
+},
+{
+"prompt": "A television is showing an animal abuse commercial with a sad looking dog",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.17669013142585754
+},
+{
+"prompt": "Three square slices of food and sauce at an oriental restaurant",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5678762197494507
+},
+{
+"prompt": "a flamingo reading a newspaper in a meadow",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23067274689674377
+},
+{
+"prompt": "a goose wearing a birthday hat next to a lake",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.74980628490448
+},
+{
+"prompt": "a rabbit wearing boots in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10639133304357529
+},
+{
+"prompt": "a red panda standing on a surfboard at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49970543384552
+},
+{
+"prompt": "Three giraffes walking around near some wild flowers in a dirt lot",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.47197920083999634
+},
+{
+"prompt": "a pig holding an umbrella in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7779327630996704
+},
+{
+"prompt": "a picture of a street sign painted on a builidng",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.12219945341348648
+},
+{
+"prompt": "a goat playing a guitar on a wooden bridge",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.44392716884613037
+},
+{
+"prompt": "A nice living room and dining set are in a modern house",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7995287775993347
+},
+{
+"prompt": "a dunkin donuts cup and doughnuts with cream cheese",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2439330369234085
+},
+{
+"prompt": "a raccoon carrying a backpack on a boat",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.36626264452934265
+},
+{
+"prompt": "a pig playing a guitar in a snowy forest",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2334452122449875
+},
+{
+"prompt": "The two hotdogs have brown mustard on them",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6361929774284363
+},
+{
+"prompt": "a meme of a little kitten holding tv remotes",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.39473390579223633
+},
+{
+"prompt": "a penguin riding a bicycle on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6466037631034851
+},
+{
+"prompt": "a wolf looking through binoculars at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12315478175878525
+},
+{
+"prompt": "Three photos of men on the tennis court together",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.17638108134269714
+},
+{
+"prompt": "a seal wearing headphones in a kitchen",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.38327884674072266
+},
+{
+"prompt": "a hedgehog painting on a canvas in a greenhouse",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2706828713417053
+},
+{
+"prompt": "Four hounds peek out from behind a latticed gate",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6954774260520935
+},
+{
+"prompt": "a fox drinking from a cup in a library",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5759791135787964
+},
+{
+"prompt": "a frog wearing boots in a kitchen",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.15744000673294067
+},
+{
+"prompt": "a red panda riding a skateboard in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.7149658799171448
+},
+{
+"prompt": "a panda wearing a bow tie in a kitchen",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6249974370002747
+},
+{
+"prompt": "a squirrel wearing a red scarf in a park in autumn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4999561309814453
+},
+{
+"prompt": "a cow sitting at a desk with a laptop in a garden",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4692625403404236
+},
+{
+"prompt": "a wolf carrying a backpack in a park in autumn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24580609798431396
+},
+{
+"prompt": "an elephant playing chess in a living room",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.27747488021850586
+},
+{
+"prompt": "a parrot riding a bicycle on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5857589244842529
+},
+{
+"prompt": "a flamingo playing chess on a beach",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.0678555816411972
+},
+{
+"prompt": "A woman in a blue dress watches birds from a rustic log bench",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8131932020187378
+},
+{
+"prompt": "The two surfers lay atop their surfboards as they ride the waves of the ocean",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.22353221476078033
+},
+{
+"prompt": "a walrus sitting in a shopping cart next to a lake",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5028156638145447
+},
+{
+"prompt": "Two skiers are on the slopes together one guiding the other",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.635537326335907
+},
+{
+"prompt": "a panda wearing a straw hat in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5334588289260864
+},
+{
+"prompt": "a parrot sitting in an armchair on a wooden bridge",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6947212219238281
+},
+{
+"prompt": "a fox sleeping on a sofa on a boat",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499434351921082
+},
+{
+"prompt": "a parrot drinking from a cup at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.44802549481391907
+},
+{
+"prompt": "a fox reading a newspaper in a garden",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7365710139274597
+},
+{
+"prompt": "a lion holding a balloon in a garden",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.43017521500587463
+},
+{
+"prompt": "A wooden wreath with a stuffed penguin and bears sitting inside",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6422475576400757
+},
+{
+"prompt": "a goose sitting in an armchair in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5282275676727295
+},
+{
+"prompt": "a squirrel holding an umbrella in a living room",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.7232445478439331
+},
+{
+"prompt": "a hamster holding a balloon in a snowy forest",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5876424908638
+},
+{
+"prompt": "A man and a woman are using their cell phones",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7404484748840332
+},
+{
+"prompt": "a duck wearing headphones in a meadow",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2498815953731537
+},
+{
+"prompt": "Two donuts in a wooden bowl on a counter",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6679656505584717
+},
+{
+"prompt": "an elephant holding an umbrella in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5088065266609192
+},
+{
+"prompt": "A man with a neutral expression lies on a fluffy bed pillow",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7612941861152649
+},
+{
+"prompt": "a duck riding a skateboard in a garden",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.776553750038147
+},
+{
+"prompt": "A man with his surf board in hand is away from the water",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.14329878985881805
+},
+{
+"prompt": "A kitchen has white cabinets, wood floors, pots above the sink, and black appliances",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.09403911232948303
+},
+{
+"prompt": "A long green grain traveling past a white building",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5172977447509766
+},
+{
+"prompt": "a camel wearing a straw hat on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7723351716995239
+},
+{
+"prompt": "a violin on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7095069289207458
+},
+{
+"prompt": "a koala playing the piano at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4903567433357239
+},
+{
+"prompt": "a hamster carrying a backpack in a snowy forest",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3744876980781555
+},
+{
+"prompt": "A line of elephants sitting on their rears in front of a large audience",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2533537447452545
+},
+{
+"prompt": "a pig holding a flower on a city street",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.571060061454773
+},
+{
+"prompt": "a giraffe playing a guitar in a kitchen",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4810764789581299
+},
+{
+"prompt": "An abstract designed bowl holding a bunch of oranges",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6939987540245056
+},
+{
+"prompt": "a horse reading a newspaper in a library",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1283424198627472
+},
+{
+"prompt": "an eagle sitting in an armchair in a snowy forest",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6832462549209595
+},
+{
+"prompt": "a duck wearing a red scarf on a beach",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6213136315345764
+},
+{
+"prompt": "a panda wearing boots on a beach",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13352198898792267
+},
+{
+"prompt": "a goose wearing headphones in a greenhouse",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3660316467285156
+},
+{
+"prompt": "a cat playing football on a beach",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.25789105892181396
+},
+{
+"prompt": "A black laptop sitting on a desk next to a remote controller",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4098745882511139
+},
+{
+"prompt": "a fox painting on a canvas on a boat",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7774646878242493
+},
+{
+"prompt": "a monkey playing the piano next to a lake",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.50103759765625
+},
+{
+"prompt": "A girl trying to catch a baseball with her mitt while another girl runs pass her",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.38961261510849
+},
+{
+"prompt": "A white plate topped with red rice, broccoli and meat",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4359625577926636
+},
+{
+"prompt": "a goose painting on a canvas in an office",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.28695642948150635
+},
+{
+"prompt": "a cow standing on a surfboard in a garden",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6124867796897888
+},
+{
+"prompt": "a flamingo drinking from a cup in a living room",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.29573968052864075
+},
+{
+"prompt": "a camel playing the piano at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24945011734962463
+},
+{
+"prompt": "a zebra standing on a surfboard on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7500025629997253
+},
+{
+"prompt": "a camel playing the piano in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.22254614531993866
+},
+{
+"prompt": "a wolf sleeping on a sofa in a living room",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3937373459339142
+},
+{
+"prompt": "a fence with a bunch of surfboards lined up on it",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4979531466960907
+},
+{
+"prompt": "Passenger train passing over an ocean on a bridge",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.38913828134536743
+},
+{
+"prompt": "A small dog stands on a stair and looks forward",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7155808210372925
+},
+{
+"prompt": "a lion playing football on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12283925712108612
+},
+{
+"prompt": "A table with a wooden clock and various porcelain animal figures",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7619203329086304
+},
+{
+"prompt": "a flamingo wearing boots in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.6097643971443176
+},
+{
+"prompt": "a fox holding a flower on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7835986614227295
+},
+{
+"prompt": "A family drinking lots of wine with a bread basket",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.37683433294296265
+},
+{
+"prompt": "a cat sitting on a suitcase at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6251023411750793
+},
+{
+"prompt": "An apple is underneath a six on a clock",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.43252137303352356
+},
+{
+"prompt": "Two large birds are in the grass by the water",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.75773686170578
+},
+{
+"prompt": "A gray and white cat has a tie on",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6017451882362366
+},
+{
+"prompt": "a bear playing a guitar in a barn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7788038849830627
+},
+{
+"prompt": "A whited tiled bathroom without a shower curtain",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5017921328544617
+},
+{
+"prompt": "a fox playing a guitar at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5619572401046753
+},
+{
+"prompt": "Two towers are on a church building behind a wall",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.27370837330818176
+},
+{
+"prompt": "a bouquet of tulips in a barn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5464304685592651
+},
+{
+"prompt": "a horse sitting in an armchair in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6611678600311279
+},
+{
+"prompt": "A mother zebra nursing her baby in a fenced in area",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5767709612846375
+},
+{
+"prompt": "A type of sandwich and a bowl with cheese and tomatoes",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6711432933807373
+},
+{
+"prompt": "a rabbit holding a flower on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6681110858917236
+},
+{
+"prompt": "a red panda sitting in an armchair on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7602046132087708
+},
+{
+"prompt": "a hedgehog wearing a raincoat on a boat",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24761168658733368
+},
+{
+"prompt": "a zebra reading a newspaper in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.08406751602888107
+},
+{
+"prompt": "A cat wearing a tie standing around st. patricks day items",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4107946753501892
+},
+{
+"prompt": "a birthday cake in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.8109264969825745
+},
+{
+"prompt": "a llama wearing a raincoat in a train station",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2276957482099533
+},
+{
+"prompt": "a raccoon carrying a backpack in a garden",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12581105530261993
+},
+{
+"prompt": "a tiger sleeping on a sofa on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13411884009838104
+},
+{
+"prompt": "a goose playing the piano in a park in autumn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14617550373077393
+},
+{
+"prompt": "a hamster carrying a backpack on a mountain trail",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.25890859961509705
+},
+{
+"prompt": "a hamster playing chess on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7764338850975037
+},
+{
+"prompt": "an owl playing a guitar in a snowy forest",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.47642087936401367
+},
+{
+"prompt": "a red panda wearing sunglasses in a barn",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.38705408573150635
+},
+{
+"prompt": "Cars crossing a busy intersection while someone stands in the road directing traffic",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.15582974255084991
+},
+{
+"prompt": "a llama sitting in an armchair in a barn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7496670484542847
+},
+{
+"prompt": "a walrus carrying a backpack in a greenhouse",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10198986530303955
+},
+{
+"prompt": "a raccoon wearing boots on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.09134649485349655
+},
+{
+"prompt": "a sheep sitting in a shopping cart in a living room",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.74406898021698
+},
+{
+"prompt": "a frog playing chess on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3701360821723938
+},
+{
+"prompt": "a hedgehog looking through binoculars on a mountain trail",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.35046473145484924
+},
+{
+"prompt": "a rabbit holding a flower in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5218936800956726
+},
+{
+"prompt": "Five sheep lying in the snow with full coats of wool",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7803289294242859
+},
+{
+"prompt": "an owl looking through binoculars on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.11520364135503769
+},
+{
+"prompt": "a sheep painting on a canvas on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.604951024055481
+},
+{
+"prompt": "a fox wearing a bow tie on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6138288974761963
+},
+{
+"prompt": "a lion playing a guitar in a kitchen",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3998628854751587
+},
+{
+"prompt": "a room full of smiling employees posing for a picture",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7232542037963867
+},
+{
+"prompt": "a goat playing football in a supermarket",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.25393998622894287
+},
+{
+"prompt": "Seagulls are all standing around in water during the day",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.811778724193573
+},
+{
+"prompt": "a goose wearing a bow tie in a train station",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2187051773071289
+},
+{
+"prompt": "a red panda wearing boots at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12571947276592255
+},
+{
+"prompt": "Young man pouring a beverage in front of a refrigerator",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.37451842427253723
+},
+{
+"prompt": "a kangaroo eating ice cream in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6919541954994202
+},
+{
+"prompt": "Loaded hot dog in a paper tray being held by someone in bleachers",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6432939171791077
+},
+{
+"prompt": "A bird sitting on top of a wooden framed mirror",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5923767685890198
+},
+{
+"prompt": "a goose drinking from a cup in a kitchen",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4270055294036865
+},
+{
+"prompt": "a wolf sitting in an armchair on a farm",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5123138427734375
+},
+{
+"prompt": "a turtle sitting in an armchair at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5499466061592102
+},
+{
+"prompt": "Snowboarder relaxes in the sun on the snow",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6369225978851318
+},
+{
+"prompt": "a group of people are checking out a cell phone stand",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.23518997430801392
+},
+{
+"prompt": "an owl drinking from a cup in a train station",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4500696063041687
+},
+{
+"prompt": "an elephant has face paint on walking around",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.500225305557251
+},
+{
+"prompt": "a tiger wearing sunglasses on a city street",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.48445582389831543
+},
+{
+"prompt": "a goose looking through binoculars in a train station",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.15865395963191986
+},
+{
+"prompt": "A man with a camouflage umbrella hat is taking a picture",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.14504244923591614
+},
+{
+"prompt": "a giraffe standing on a surfboard on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10619591921567917
+},
+{
+"prompt": "a seal holding a balloon in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14143764972686768
+},
+{
+"prompt": "An elephant at the edge of a small body of water with its foot in the water",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7636028528213501
+},
+{
+"prompt": "a cow wearing a bow tie at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12523795664310455
+},
+{
+"prompt": "a fox carrying a backpack in a park in autumn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24855831265449524
+},
+{
+"prompt": "a deer wearing a straw hat in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499308586120605
+},
+{
+"prompt": "Blurred picture of bench sitting next to street of parked cars",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4459611475467682
+},
+{
+"prompt": "a goat playing a guitar in a garden",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5781852006912231
+},
+{
+"prompt": "a zebra playing a guitar in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.44930151104927063
+},
+{
+"prompt": "a tiger sitting on a suitcase at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5397175550460815
+},
+{
+"prompt": "an elephant wearing a birthday hat in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7598437070846558
+},
+{
+"prompt": "This is a boy, on a baseball team, throwing the ball",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6495581865310669
+},
+{
+"prompt": "a deer playing a guitar on a mountain trail",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.30838167667388916
+},
+{
+"prompt": "A guy on a tennis court holding a racket and ball",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.45772820711135864
+},
+{
+"prompt": "a monkey wearing a red scarf in a park in autumn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6250007748603821
+},
+{
+"prompt": "an owl reading a newspaper in a kitchen",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.47882983088493347
+},
+{
+"prompt": "A motorcyclist in a tuck position on his motorcycle in the desert",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.35187482833862305
+},
+{
+"prompt": "a deer playing chess in a barn",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3683975338935852
+},
+{
+"prompt": "A pretty young girl standing next to a boy in front of a birthday cake",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6283499598503113
+},
+{
+"prompt": "A couple standing in the middle of an old delapitated building",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5429093837738037
+},
+{
+"prompt": "A picture of traintracks with one traintrack with a train on it",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.22667966783046722
+},
+{
+"prompt": "a fox wearing a bow tie in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5000202059745789
+},
+{
+"prompt": "a woman bites into a big sausage",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6004677414894104
+},
+{
+"prompt": "A cat sits in a bathroom sink surrounded by toothpaste and cups",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.3414231538772583
+},
+{
+"prompt": "A woman with a scarf and sunglasses standing next to an human size stuffed dog that has an outfit on",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7509200572967529
+},
+{
+"prompt": "Two hunting knives lying on a pair of jeans,",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.2822830379009247
+},
+{
+"prompt": "2 plates with sandwiches and some tortilla chips , a drink, and a person",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7832045555114746
+},
+{
+"prompt": "a flamingo carrying a backpack next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1535632610321045
+},
+{
+"prompt": "a person stands on a snow board while going over a hill",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.6115503311157227
+},
+{
+"prompt": "The clock on the building is showing 5:00",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.11368324607610703
+},
+{
+"prompt": "a camel wearing a birthday hat on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7261976003646851
+},
+{
+"prompt": "a kangaroo reading a newspaper in a park in autumn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6249779462814331
+},
+{
+"prompt": "a duck drinking from a cup in a snowy forest",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3788522481918335
+},
+{
+"prompt": "a horse riding a bicycle on a wooden bridge",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.41794800758361816
+},
+{
+"prompt": "a red panda carrying a backpack in a garden",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7522749304771423
+},
+{
+"prompt": "a penguin playing chess in a kitchen",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6314306855201721
+},
+{
+"prompt": "a squirrel wearing a bow tie in a greenhouse",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24948200583457947
+},
+{
+"prompt": "a goat playing chess in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4416484534740448
+},
+{
+"prompt": "a bench on the street with some drawn pics",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7260177731513977
+},
+{
+"prompt": "a cow painting on a canvas on a beach",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6866755485534668
+},
+{
+"prompt": "Colorful blown glass humming hang from a ceiling while a cat looks into a fish tank",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2956514060497284
+},
+{
+"prompt": "a koala riding a skateboard at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.37516042590141296
+},
+{
+"prompt": "a walrus playing the piano in a supermarket",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4667310416698456
+},
+{
+"prompt": "a frog reading a newspaper on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.42542675137519836
+},
+{
+"prompt": "an otter riding a bicycle at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.16977107524871826
+},
+{
+"prompt": "a raccoon wearing headphones in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7526625394821167
+},
+{
+"prompt": "a penguin wearing boots in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7846167683601379
+},
+{
+"prompt": "Two yellow boats and one blue one are docked",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5007443428039551
+},
+{
+"prompt": "a guitar in a library",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6191148161888123
+},
+{
+"prompt": "Man watching ball come past him with baseball bat raised",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4336503744125366
+},
+{
+"prompt": "a camel carrying a backpack next to a lake",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.660731852054596
+},
+{
+"prompt": "A white toilet bowl with a blue seat sitting in a bathroom",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5449072122573853
+},
+{
+"prompt": "a cat wearing a raincoat in an office",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.35025259852409363
+},
+{
+"prompt": "a parrot riding a skateboard in a meadow",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.7252834439277649
+},
+{
+"prompt": "a wolf playing a guitar in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1386137306690216
+},
+{
+"prompt": "A para surfer on the water under a blue sky",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4527337849140167
+},
+{
+"prompt": "The man wrestles in the snow with the large red tent",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.373503178358078
+},
+{
+"prompt": "A polar bear sniffing the butt of another bear",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.553123414516449
+},
+{
+"prompt": "a rabbit holding a flower at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6093698740005493
+},
+{
+"prompt": "an owl holding an umbrella on a boat",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2918301522731781
+},
+{
+"prompt": "A beautiful woman laying on her stomach on top of a bed",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7486774325370789
+},
+{
+"prompt": "a lion playing chess in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14840340614318848
+},
+{
+"prompt": "a dog playing the piano at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.43009862303733826
+},
+{
+"prompt": "a flamingo wearing headphones at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14472807943820953
+},
+{
+"prompt": "a seal holding an umbrella next to a lake",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.41417425870895386
+},
+{
+"prompt": "a turtle wearing a straw hat in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5007779002189636
+},
+{
+"prompt": "A lunch box packed with mac and cheese, vegetables and a treat",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.33317339420318604
+},
+{
+"prompt": "a walrus painting on a canvas on a city street",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2771121561527252
+},
+{
+"prompt": "a sheep wearing headphones in a meadow",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5738610029220581
+},
+{
+"prompt": "A giraffe standing underneath a cover at a zoo",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7328503727912903
+},
+{
+"prompt": "A man is using a cell phone to photograph a barn",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5491628646850586
+},
+{
+"prompt": "a panda wearing a raincoat in a train station",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.21267986297607422
+},
+{
+"prompt": "a wolf drinking from a cup at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.43334662914276123
+},
+{
+"prompt": "a goat holding an umbrella on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.770564615726471
+},
+{
+"prompt": "a duck sitting in a shopping cart at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7449119091033936
+},
+{
+"prompt": "a koala eating ice cream in a barn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24774372577667236
+},
+{
+"prompt": "a parrot wearing a bow tie on a beach",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.25065919756889343
+},
+{
+"prompt": "Asian man lays back on a black couch holding a Wii controller",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5375701189041138
+},
+{
+"prompt": "A reflection of a dog in a metal disc on the grass",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7657468318939209
+},
+{
+"prompt": "a penguin eating ice cream on a beach",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5059611797332764
+},
+{
+"prompt": "a goose playing the piano in a snowy forest",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.3145134747028351
+},
+{
+"prompt": "a tiger wearing headphones in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7537133097648621
+},
+{
+"prompt": "Young man on skateboard passing a man in a black shirt",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7768469452857971
+},
+{
+"prompt": "a turtle drinking from a cup in a library",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6271226406097412
+},
+{
+"prompt": "a walrus sitting at a desk with a laptop next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.16162419319152832
+},
+{
+"prompt": "a red panda eating ice cream in an office",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.39554035663604736
+},
+{
+"prompt": "a panda painting on a canvas on a mountain trail",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.40122970938682556
+},
+{
+"prompt": "a monkey wearing a bow tie on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.75
+},
+{
+"prompt": "Two horse riders and a person with a pony standing in a driveway",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.41063958406448364
+},
+{
+"prompt": "a turtle wearing sunglasses in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.11459197849035263
+},
+{
+"prompt": "A colorful sitting room with hardwood floors and a double window",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7562974691390991
+},
+{
+"prompt": "A fuzzy picture of the edge of a dock by a river",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7774428129196167
+},
+{
+"prompt": "a koala playing the piano in a meadow",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.47770676016807556
+},
+{
+"prompt": "a tiger wearing a raincoat in an office",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1029365286231041
+},
+{
+"prompt": "a frog sitting in a shopping cart in a meadow",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6260939240455627
+},
+{
+"prompt": "A striped plate is sitting next to a computer mouse",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7620577216148376
+},
+{
+"prompt": "A couple of giraffe eating from a basket",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.24591538310050964
+},
+{
+"prompt": "a squirrel wearing boots in a barn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.18633413314819336
+},
+{
+"prompt": "An airport field with a plane being boarded",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.40095147490501404
+},
+{
+"prompt": "a monkey driving a car in a supermarket",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7426759600639343
+},
+{
+"prompt": "Two bananas in a basket with words etched onto their peels",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.526798665523529
+},
+{
+"prompt": "a mother husky and pup lying on a white floor with diamond designs",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5673500895500183
+},
+{
+"prompt": "a lantern on a boat",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6355621814727783
+},
+{
+"prompt": "Dessert bread slices, nuts and oranges on a plate",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6150604486465454
+},
+{
+"prompt": "a pig sitting in an armchair on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3582606613636017
+},
+{
+"prompt": "a frog sleeping on a sofa in a greenhouse",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5240206718444824
+},
+{
+"prompt": "a llama eating ice cream in a barn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.18064182996749878
+},
+{
+"prompt": "a kangaroo wearing a red scarf in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5782803893089294
+},
+{
+"prompt": "a duck drinking from a cup in an office",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6345840692520142
+},
+{
+"prompt": "a squirrel wearing a red scarf in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4846777021884918
+},
+{
+"prompt": "a horse playing football on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12449931353330612
+},
+{
+"prompt": "A boat in the deep blue sea with land near the ocean",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3771461546421051
+},
+{
+"prompt": "a cat sleeping on a sofa on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14078128337860107
+},
+{
+"prompt": "A man poses with a young boy who's holding a kite",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5672174692153931
+},
+{
+"prompt": "a bear eating ice cream in an office",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6516623497009277
+},
+{
+"prompt": "a camel standing on a surfboard on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13495178520679474
+},
+{
+"prompt": "a walrus sitting in an armchair on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14210397005081177
+},
+{
+"prompt": "a goat driving a car in a supermarket",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.3464081883430481
+},
+{
+"prompt": "A zebra and its baby walking in the grass",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.48444223403930664
+},
+{
+"prompt": "a pig holding a balloon in a supermarket",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3796188235282898
+},
+{
+"prompt": "a teapot in a train station",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499809265136719
+},
+{
+"prompt": "this is an old photo of military planes dropping packages",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.24158233404159546
+},
+{
+"prompt": "a goose wearing a red scarf in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6223520040512085
+},
+{
+"prompt": "A woman stands, straddling her bike, while a little dog sits in a basket on the handle bars",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4132121205329895
+},
+{
+"prompt": "An old style prop plane flying low near a beach",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8136995434761047
+},
+{
+"prompt": "Grey cat laying under a car with another cat in the background",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7115420699119568
+},
+{
+"prompt": "a wolf wearing headphones on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4202507436275482
+},
+{
+"prompt": "A huge desk with two computers, a lamp, and a television",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3126088082790375
+},
+{
+"prompt": "a seal holding a flower on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5967658162117004
+},
+{
+"prompt": "a red panda drinking from a cup in a barn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5021597743034363
+},
+{
+"prompt": "a monkey driving a car in a garden",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.18198755383491516
+},
+{
+"prompt": "Woman sitting on a bench while a child flies a kite behind her",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8167221546173096
+},
+{
+"prompt": "a raccoon holding an umbrella at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3962322473526001
+},
+{
+"prompt": "The eating car of the train has empty booths",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6527896523475647
+},
+{
+"prompt": "an eagle holding an umbrella in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5278414487838745
+},
+{
+"prompt": "a bowl full of fruit and an onion are set out",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5776076316833496
+},
+{
+"prompt": "A person biking in a roller skating lane during sunset",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.13759048283100128
+},
+{
+"prompt": "a pair of boots in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499957084655762
+},
+{
+"prompt": "The fire hydrant has a over grown bush growing by it",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7515066266059875
+},
+{
+"prompt": "a parrot eating ice cream in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5248580574989319
+},
+{
+"prompt": "a dog painting on a canvas next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.0808744803071022
+},
+{
+"prompt": "a violin in a barn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.464600145816803
+},
+{
+"prompt": "a red panda wearing headphones at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7659461498260498
+},
+{
+"prompt": "a lion reading a newspaper at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5819100737571716
+},
+{
+"prompt": "an elephant sitting at a desk with a laptop in a meadow",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6899000406265259
+},
+{
+"prompt": "Sewing accessories and bowls sitting on a table",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.40868622064590454
+},
+{
+"prompt": "A fire hydrant in the snow is surrounded by poles",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6229377388954163
+},
+{
+"prompt": "a walrus wearing a straw hat at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.5064141154289246
+},
+{
+"prompt": "a squirrel playing a guitar in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6543409824371338
+},
+{
+"prompt": "Three men walk along a sidewalk where several bicycles are locked up",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6389076113700867
+},
+{
+"prompt": "a turtle playing a guitar in a library",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5410131216049194
+},
+{
+"prompt": "A toilet with the lid up filled with toilet paper",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.14751435816287994
+},
+{
+"prompt": "a frog playing a guitar in a greenhouse",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.533667266368866
+},
+{
+"prompt": "A plate of food most likely for breakfast",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7531772255897522
+},
+{
+"prompt": "a rabbit playing the piano on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1230134665966034
+},
+{
+"prompt": "A bright yellow and blue bus has an eagle on it",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.261523962020874
+},
+{
+"prompt": "A male tennis player is swinging for the ball",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7499448657035828
+},
+{
+"prompt": "a red panda wearing sunglasses on a city street",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.40522828698158264
+},
+{
+"prompt": "a hamster holding an umbrella at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3220656216144562
+},
+{
+"prompt": "a lion playing chess at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23129785060882568
+},
+{
+"prompt": "a tiger riding a bicycle in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7529888153076172
+},
+{
+"prompt": "a sheep looking through binoculars in a supermarket",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13754227757453918
+},
+{
+"prompt": "a monkey playing football on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.42170172929763794
+},
+{
+"prompt": "two train engines sit back to back on a track",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5238726139068604
+},
+{
+"prompt": "a panda wearing a red scarf at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6372567415237427
+},
+{
+"prompt": "a goat playing the piano in an office",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6585343480110168
+},
+{
+"prompt": "a goose riding a bicycle in a greenhouse",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6639934182167053
+},
+{
+"prompt": "a goat looking through binoculars in a greenhouse",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3144664168357849
+},
+{
+"prompt": "a rabbit holding a balloon in a kitchen",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.601470947265625
+},
+{
+"prompt": "A plain ascending during take off against a gray sky",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.49222856760025024
+},
+{
+"prompt": "Pancakes on plate being served with sausage. Links",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5015243887901306
+},
+{
+"prompt": "a flamingo playing the piano in an office",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2831375300884247
+},
+{
+"prompt": "a camel holding an umbrella on a farm",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6905843615531921
+},
+{
+"prompt": "a giraffe standing on a surfboard on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.63779616355896
+},
+{
+"prompt": "a llama wearing boots on a beach",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1348964124917984
+},
+{
+"prompt": "a rabbit painting on a canvas in a greenhouse",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4774318337440491
+},
+{
+"prompt": "a turtle wearing a straw hat on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6376987099647522
+},
+{
+"prompt": "a seal reading a newspaper in a supermarket",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.07865580916404724
+},
+{
+"prompt": "a turtle eating ice cream in a barn",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.32170814275741577
+},
+{
+"prompt": "Someone sits on a rock next to a fire hydrant in a big field of dandelions",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5347537398338318
+},
+{
+"prompt": "a hamster holding a balloon next to a lake",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6195346117019653
+},
+{
+"prompt": "a duck riding a bicycle on a boat",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5936344265937805
+},
+{
+"prompt": "An up side down bus sign with an arrow",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.24037007987499237
+},
+{
+"prompt": "an owl playing a guitar in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5738064646720886
+},
+{
+"prompt": "A group of vegetables and fruits including Broccoli",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7781563997268677
+},
+{
+"prompt": "A  black and white dog is in with some sheep",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.62953782081604
+},
+{
+"prompt": "A woman with a child are going down the street with a small umbrella over the child's head",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.30943068861961365
+},
+{
+"prompt": "a lion sitting in a shopping cart at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.33539754152297974
+},
+{
+"prompt": "A male tennis player hits the tennis ball",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.768460750579834
+},
+{
+"prompt": "a goose playing a guitar on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.38132286071777344
+},
+{
+"prompt": "a bear wearing boots in a living room",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2917596101760864
+},
+{
+"prompt": "an eagle reading a newspaper on a mountain trail",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.35942280292510986
+},
+{
+"prompt": "a horse wearing headphones in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10161879658699036
+},
+{
+"prompt": "a cat carrying a backpack on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.18127602338790894
+},
+{
+"prompt": "a person standing next to two upright blue surfboards on a shoreline",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7615779042243958
+},
+{
+"prompt": "a raccoon standing on a surfboard on a farm",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.3059615194797516
+},
+{
+"prompt": "a turtle wearing a bow tie in a supermarket",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10135862976312637
+},
+{
+"prompt": "a goat wearing a bow tie in a garden",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7822961211204529
+},
+{
+"prompt": "a turtle eating ice cream on a city street",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5304973721504211
+},
+{
+"prompt": "Two giraffes are chewing on a branch hanging from a pole",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2649478614330292
+},
+{
+"prompt": "a tiger holding a flower at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.7044960260391235
+},
+{
+"prompt": "a double decker bus driving down the street with a metal railing",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4035114347934723
+},
+{
+"prompt": "a cat wearing a birthday hat on a farm",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5950428247451782
+},
+{
+"prompt": "a camel riding a bicycle on a boat",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.525860071182251
+},
+{
+"prompt": "a turtle wearing sunglasses in a garden",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.38883593678474426
+},
+{
+"prompt": "There is a bag of oranges among some other fruit",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.23119911551475525
+},
+{
+"prompt": "A woman is using her cell phone while a man looks on",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7499334812164307
+},
+{
+"prompt": "a horse holding an umbrella next to a lake",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7480705380439758
+},
+{
+"prompt": "a squirrel sleeping on a sofa at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23887406289577484
+},
+{
+"prompt": "A white bowl filled with oranges, an apple and a banana",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6311986446380615
+},
+{
+"prompt": "a bear drinking from a cup in a kitchen",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6874489784240723
+},
+{
+"prompt": "a bear playing football on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14073626697063446
+},
+{
+"prompt": "Four oranges sitting on top of a juicer",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6162895560264587
+},
+{
+"prompt": "A group of two men standing inside of a bar",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.20927919447422028
+},
+{
+"prompt": "a llama looking through binoculars at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.48145878314971924
+},
+{
+"prompt": "an owl drinking from a cup in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5129509568214417
+},
+{
+"prompt": "a parrot wearing a straw hat at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4742274582386017
+},
+{
+"prompt": "a monkey looking through binoculars in a train station",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.6306622624397278
+},
+{
+"prompt": "a parrot playing a guitar in a library",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7494228482246399
+},
+{
+"prompt": "a fox playing chess in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.08752814680337906
+},
+{
+"prompt": "a sheep holding a balloon on a city street",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3819813132286072
+},
+{
+"prompt": "a camel holding an umbrella on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6302391886711121
+},
+{
+"prompt": "a man making a plate of food on a tray",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6794514060020447
+},
+{
+"prompt": "a flamingo reading a newspaper on a city street",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3819608688354492
+},
+{
+"prompt": "A kitchen with a steel refrigerator, stove and oven and a metal smoke chute above the stove",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8088265061378479
+},
+{
+"prompt": "an owl holding a balloon on a boat",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.48828959465026855
+},
+{
+"prompt": "a hedgehog reading a newspaper on a wooden bridge",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.631023108959198
+},
+{
+"prompt": "a seal eating ice cream in a kitchen",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6142253875732422
+},
+{
+"prompt": "an otter reading a newspaper in a garden",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5338066220283508
+},
+{
+"prompt": "A man delivering important news at a press conference",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.38540929555892944
+},
+{
+"prompt": "Many people stand near a competitive swimming pol",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.37248608469963074
+},
+{
+"prompt": "Four urinals next to each other with visible piping",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5942609906196594
+},
+{
+"prompt": "a lion playing the piano at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2566853165626526
+},
+{
+"prompt": "An oddly shaped cheese pizza on a metal oven plate",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3583846390247345
+},
+{
+"prompt": "a turtle wearing a straw hat on a farm",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.08997699618339539
+},
+{
+"prompt": "A man holding a flying disc in a game",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.17270813882350922
+},
+{
+"prompt": "a flamingo standing on a surfboard on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3498185873031616
+},
+{
+"prompt": "a bear looking through binoculars on a boat",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3558444678783417
+},
+{
+"prompt": "an owl holding an umbrella in a park in autumn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5328481197357178
+},
+{
+"prompt": "Two woman, one holding a chicken and one eating a donut",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.24679434299468994
+},
+{
+"prompt": "A photo of someone's office space with two monitors",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5114587545394897
+},
+{
+"prompt": "a zebra drinking from a cup at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.47538474202156067
+},
+{
+"prompt": "A young boy holding a snow board and a pair of shoes",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2334195077419281
+},
+{
+"prompt": "a turtle sitting in a shopping cart at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5924052000045776
+},
+{
+"prompt": "a parrot carrying a backpack in a kitchen",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5829372406005859
+},
+{
+"prompt": "A city bus parked by the side of the street",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6925457715988159
+},
+{
+"prompt": "a seal playing the piano in a library",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12688693404197693
+},
+{
+"prompt": "a turtle playing chess in a greenhouse",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2511482834815979
+},
+{
+"prompt": "A man riding a kiteboard on top of a ocean",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.639942467212677
+},
+{
+"prompt": "A oven holding two trays of food baking",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.582590639591217
+},
+{
+"prompt": "a cow drinking from a cup next to a lake",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7164652347564697
+},
+{
+"prompt": "A table that is in front of a arm chair",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6373717188835144
+},
+{
+"prompt": "a walrus sitting in a shopping cart in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6838231682777405
+},
+{
+"prompt": "a tiger playing a guitar on a boat",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5779643058776855
+},
+{
+"prompt": "a fox playing the piano next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.0843312069773674
+},
+{
+"prompt": "a horse sitting at a desk with a laptop on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6171308159828186
+},
+{
+"prompt": "a hedgehog wearing sunglasses in a garden",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7632628083229065
+},
+{
+"prompt": "an eagle carrying a backpack in a library",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.216363787651062
+},
+{
+"prompt": "a penguin painting on a canvas on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.623412549495697
+},
+{
+"prompt": "a sheep riding a skateboard at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6340187788009644
+},
+{
+"prompt": "a camel riding a skateboard in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7470269203186035
+},
+{
+"prompt": "a frog holding an umbrella in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.44755828380584717
+},
+{
+"prompt": "a deer wearing a red scarf next to a lake",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6136209964752197
+},
+{
+"prompt": "Airplane boards on an extremely dark and gloomy day",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.49426135420799255
+},
+{
+"prompt": "a tiger looking through binoculars in a greenhouse",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10162851214408875
+},
+{
+"prompt": "Attractive landscape with picture frames and large white vase",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2281556874513626
+},
+{
+"prompt": "a raccoon playing chess in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5622162222862244
+},
+{
+"prompt": "a sheep eating ice cream on a boat",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4424304664134979
+},
+{
+"prompt": "a vintage camera at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.45380017161369324
+},
+{
+"prompt": "a zebra holding a balloon in a kitchen",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.17249128222465515
+},
+{
+"prompt": "an eagle wearing sunglasses in a park in autumn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24485044181346893
+},
+{
+"prompt": "a red panda riding a bicycle at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.46370363235473633
+},
+{
+"prompt": "a camel wearing boots on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.22598698735237122
+},
+{
+"prompt": "a llama wearing headphones on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7897682189941406
+},
+{
+"prompt": "A man and a woman drinking a red wine",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6572450399398804
+},
+{
+"prompt": "a horse holding a balloon in a meadow",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5113735198974609
+},
+{
+"prompt": "a duck carrying a backpack in a barn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.28897443413734436
+},
+{
+"prompt": "a wolf wearing sunglasses in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5655701756477356
+},
+{
+"prompt": "A room that has a couch surrounded by two shelving units",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.40617212653160095
+},
+{
+"prompt": "A three wheeler and a motorcycle stopping at at stop sign",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4612811505794525
+},
+{
+"prompt": "a giraffe holding an umbrella on a mountain trail",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4368910789489746
+},
+{
+"prompt": "A pair of elephants eat from a tree",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.07685438543558121
+},
+{
+"prompt": "A person holding a sandwich in their hand next to another sandwich",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7500182390213013
+},
+{
+"prompt": "a penguin carrying a backpack on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3768788278102875
+},
+{
+"prompt": "a turtle looking through binoculars at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.11844019591808319
+},
+{
+"prompt": "a desk with a cup sits next to a laptop",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6345440745353699
+},
+{
+"prompt": "a horse sitting in an armchair on a farm",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5995989441871643
+},
+{
+"prompt": "a flamingo wearing a straw hat on a boat",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5000013113021851
+},
+{
+"prompt": "an otter playing chess in an office",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.25206899642944336
+},
+{
+"prompt": "A woman in the kitchen drying a wine glass",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.17547667026519775
+},
+{
+"prompt": "a camel wearing a straw hat in a snowy forest",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4369061291217804
+},
+{
+"prompt": "Two hotdogs that are sitting on a counter",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6653841733932495
+},
+{
+"prompt": "A collection of scissors is arranged neatly on a table",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6599385738372803
+},
+{
+"prompt": "an eagle carrying a backpack in a train station",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.26018521189689636
+},
+{
+"prompt": "a llama wearing boots in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4962231516838074
+},
+{
+"prompt": "A young boy cutting a piece of construction paper",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.7194169163703918
+},
+{
+"prompt": "Airliner being maneuvered back from a airport gate",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.410115122795105
+},
+{
+"prompt": "a parrot sitting in an armchair on a farm",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6121631860733032
+},
+{
+"prompt": "a flamingo holding an umbrella on a farm",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.281573623418808
+},
+{
+"prompt": "A laughing woman with an apple ornament dangling closely to her cheek",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6557198762893677
+},
+{
+"prompt": "The red bike is parked near people standing around drinking",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.18798941373825073
+},
+{
+"prompt": "there is a white dog sitting on the ground and a cow walking by",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5312222242355347
+},
+{
+"prompt": "a kid with a bat stands next to home plate",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6599335074424744
+},
+{
+"prompt": "a birthday cake at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2690872848033905
+},
+{
+"prompt": "a flamingo sitting in an armchair in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.666896402835846
+},
+{
+"prompt": "a kangaroo standing on a surfboard in a kitchen",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.7411484122276306
+},
+{
+"prompt": "a rabbit sleeping on a sofa in a library",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7822396755218506
+},
+{
+"prompt": "The elephant is in the field eating next to a person",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4307023584842682
+},
+{
+"prompt": "a deer riding a bicycle at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3164823651313782
+},
+{
+"prompt": "A street sign that is on a street",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7885416150093079
+},
+{
+"prompt": "a zebra playing a guitar at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13953383266925812
+},
+{
+"prompt": "a seal sitting on a suitcase on a farm",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.36532309651374817
+},
+{
+"prompt": "a cow playing a guitar in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5150692462921143
+},
+{
+"prompt": "a giraffe sitting on a suitcase at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5408128499984741
+},
+{
+"prompt": "a fox wearing headphones on a city street",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6477841138839722
+},
+{
+"prompt": "An elephant standing in the middle of a tent",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3802952766418457
+},
+{
+"prompt": "a wolf sleeping on a sofa in a garden",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7031769156455994
+},
+{
+"prompt": "a bear wearing sunglasses in a park in autumn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5000131130218506
+},
+{
+"prompt": "a zebra drinking from a cup in a barn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12496201694011688
+},
+{
+"prompt": "a parrot riding a skateboard in a snowy forest",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.379630446434021
+},
+{
+"prompt": "A skier with a backpack zooming down a snowy slope",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7583826184272766
+},
+{
+"prompt": "a lion riding a bicycle on a farm",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13999801874160767
+},
+{
+"prompt": "A plate has two tacos with vegetables on it",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8121631145477295
+},
+{
+"prompt": "a fox wearing a bow tie in a supermarket",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499235272407532
+},
+{
+"prompt": "a broken lilttle clock sitting on a wall",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.44707876443862915
+},
+{
+"prompt": "A kitchen with white walls and wooden cabinets",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7304241061210632
+},
+{
+"prompt": "a stack of books on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.31789883971214294
+},
+{
+"prompt": "a kangaroo eating ice cream on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7131322622299194
+},
+{
+"prompt": "a zebra sitting in an armchair in a meadow",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23887166380882263
+},
+{
+"prompt": "an eagle carrying a backpack in a supermarket",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.20452702045440674
+},
+{
+"prompt": "an elephant driving a car in a library",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.09879309684038162
+},
+{
+"prompt": "A game of tennis taking place between four individuals",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.31068918108940125
+},
+{
+"prompt": "a cat painting on a canvas in a library",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.36731386184692383
+},
+{
+"prompt": "A persons feet with one foot on top a skateboard",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7194398045539856
+},
+{
+"prompt": "A clock with the alarm icon on it sitting on a table",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.298592209815979
+},
+{
+"prompt": "a red panda wearing a red scarf on a wooden bridge",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5063692331314087
+},
+{
+"prompt": "a pig holding a balloon at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2590690851211548
+},
+{
+"prompt": "A dark view of a bedroom with a dresser and chair",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.76777184009552
+},
+{
+"prompt": "a violin on a mountain trail",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5505325794219971
+},
+{
+"prompt": "A sidecar racing team rounds a turn while spectators look on",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2613923251628876
+},
+{
+"prompt": "The elephant has a large white spot on its abdomen",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.07121933996677399
+},
+{
+"prompt": "A vase of tulips, books, and a stemmed glass on a table",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6689771413803101
+},
+{
+"prompt": "One giraffe hides behind a tree as another giraffe relaxes in some brush",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.305025190114975
+},
+{
+"prompt": "a hedgehog carrying a backpack in an office",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7706198692321777
+},
+{
+"prompt": "The bear is reaching up to smell the flower",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5009759068489075
+},
+{
+"prompt": "a red panda wearing a red scarf in a greenhouse",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12552429735660553
+},
+{
+"prompt": "The cat and apples are near the fence",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7310432195663452
+},
+{
+"prompt": "a red bus that is parked next to a building",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.645051896572113
+},
+{
+"prompt": "a deer painting on a canvas at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7522253394126892
+},
+{
+"prompt": "a lion carrying a backpack on a farm",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1105518713593483
+},
+{
+"prompt": "a llama wearing a red scarf in a library",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499295473098755
+},
+{
+"prompt": "a llama playing the piano in a greenhouse",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.37584760785102844
+},
+{
+"prompt": "A lap top sitting on the corner of a desk un-attended",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7680677175521851
+},
+{
+"prompt": "a panda sleeping on a sofa on a boat",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7388843297958374
+},
+{
+"prompt": "an otter wearing a red scarf on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7642894983291626
+},
+{
+"prompt": "a koala sleeping on a sofa in a kitchen",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3695145547389984
+},
+{
+"prompt": "The corner of this street seems to be empty only two people are out",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.804111123085022
+},
+{
+"prompt": "a frog carrying a backpack in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5017396807670593
+},
+{
+"prompt": "there is a large bowl of broccoli and other foods",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7489328384399414
+},
+{
+"prompt": "an eagle eating ice cream in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5230437517166138
+},
+{
+"prompt": "three red black and white jets on a runway and a white truck",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.23308774828910828
+},
+{
+"prompt": "a raccoon wearing a red scarf on a boat",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7502344846725464
+},
+{
+"prompt": "a lion sleeping on a sofa at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14834269881248474
+},
+{
+"prompt": "a zebra sitting in an armchair in a snowy forest",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5871290564537048
+},
+{
+"prompt": "a hedgehog wearing a red scarf in a snowy forest",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7820233702659607
+},
+{
+"prompt": "a cow holding an umbrella in a library",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7492834329605103
+},
+{
+"prompt": "a hamster holding an umbrella on a farm",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.26300162076950073
+},
+{
+"prompt": "a deer wearing boots on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.09722384065389633
+},
+{
+"prompt": "A tropical marina with many boating vessels and dirty water",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2495681196451187
+},
+{
+"prompt": "a duck drinking from a cup in a meadow",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5420546531677246
+},
+{
+"prompt": "a rabbit painting on a canvas at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.44509488344192505
+},
+{
+"prompt": "A person standing on top of a motorcycle",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.26434844732284546
+},
+{
+"prompt": "an eagle painting on a canvas on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2718912661075592
+},
+{
+"prompt": "a lion holding a flower on a boat",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5414103865623474
+},
+{
+"prompt": "a dog holding a flower on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7899623513221741
+},
+{
+"prompt": "A dog who is sticking its head out of a car window",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7498922944068909
+},
+{
+"prompt": "A surfer is standing on his board just in front of the wave",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8067917823791504
+},
+{
+"prompt": "An older man with long hair carrying a surfboard into the ocean",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7082920670509338
+},
+{
+"prompt": "a dog holding an umbrella on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7503253817558289
+},
+{
+"prompt": "A family of teddy bears sitting in a  display case mounted on the side of a building",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.41449710726737976
+},
+{
+"prompt": "a bear playing the piano on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7498645186424255
+},
+{
+"prompt": "A purple lights is on the nightstand of the small bedroom",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.69380784034729
+},
+{
+"prompt": "a hedgehog sitting in a shopping cart in a barn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4605667293071747
+},
+{
+"prompt": "a zebra sitting in an armchair in an office",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5500116944313049
+},
+{
+"prompt": "a goat wearing a straw hat on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12511585652828217
+},
+{
+"prompt": "a person standing next to a trindle bed",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.39639198780059814
+},
+{
+"prompt": "empty kitchen with  a blue bag hanging on the doorway",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6344326734542847
+},
+{
+"prompt": "A plate full of fried meat with celery and a spoon",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5303812026977539
+},
+{
+"prompt": "an eagle playing the piano in a living room",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.27995559573173523
+},
+{
+"prompt": "an otter playing a guitar at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.39615145325660706
+},
+{
+"prompt": "a llama sleeping on a sofa on a boat",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.478089839220047
+},
+{
+"prompt": "a bear reading a newspaper in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6254042983055115
+},
+{
+"prompt": "a kangaroo playing a guitar on a wooden bridge",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6247652769088745
+},
+{
+"prompt": "a kangaroo wearing sunglasses on a farm",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.39468610286712646
+},
+{
+"prompt": "a horse holding an umbrella on a farm",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.719589114189148
+},
+{
+"prompt": "Group of small sheep following a larger white sheep",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4710128605365753
+},
+{
+"prompt": "A neat bedroom pairs modern chairs with a glass table",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.400426983833313
+},
+{
+"prompt": "a turtle drinking from a cup on a farm",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.29587405920028687
+},
+{
+"prompt": "a pig wearing headphones on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7449723482131958
+},
+{
+"prompt": "a red panda reading a newspaper in a supermarket",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7525072693824768
+},
+{
+"prompt": "One elephant is squirting water out of its mouth and the other is putting water into its mouth",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3653915524482727
+},
+{
+"prompt": "a goose wearing a straw hat on a wooden bridge",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.25041455030441284
+},
+{
+"prompt": "a seal standing on a surfboard on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.44999614357948303
+},
+{
+"prompt": "a pig playing the piano at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.27116039395332336
+},
+{
+"prompt": "A dog sitting under a walkway next to a lush green field",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7020525932312012
+},
+{
+"prompt": "a lion sleeping on a sofa in an office",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2872692048549652
+},
+{
+"prompt": "a goat holding a balloon in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7124818563461304
+},
+{
+"prompt": "a giraffe riding a skateboard on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7502376437187195
+},
+{
+"prompt": "a walrus drinking from a cup on a boat",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.44741272926330566
+},
+{
+"prompt": "a pig riding a bicycle in a snowy forest",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5858722925186157
+},
+{
+"prompt": "there are three animals that can be seen walking in a line",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2880089581012726
+},
+{
+"prompt": "a bear carrying a backpack at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.39560359716415405
+},
+{
+"prompt": "a horse wearing boots in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7161276936531067
+},
+{
+"prompt": "a fox holding a balloon on a wooden bridge",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5260248780250549
+},
+{
+"prompt": "A keychain with a little bear hanging from a key in the door",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.343345046043396
+},
+{
+"prompt": "A vase with designs of horses and men",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7020017504692078
+},
+{
+"prompt": "A photo of an almost empty white fridge",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.760630190372467
+},
+{
+"prompt": "a red panda carrying a backpack on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7274649739265442
+},
+{
+"prompt": "A burnt piece of meat sandwiched in a bun",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.733256459236145
+},
+{
+"prompt": "a sheep carrying a backpack in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12506960332393646
+},
+{
+"prompt": "a goose wearing headphones in a meadow",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5038343667984009
+},
+{
+"prompt": "a cat painting on a canvas at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12135477364063263
+},
+{
+"prompt": "a seal eating ice cream in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5248644351959229
+},
+{
+"prompt": "a monkey looking through binoculars in a meadow",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3799994885921478
+},
+{
+"prompt": "some people sitting on a tram to take them to the top of the mountain",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5097070932388306
+},
+{
+"prompt": "an otter wearing headphones in a meadow",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3491469621658325
+},
+{
+"prompt": "A pizza sitting on top of oven racks dripping lots of cheese",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.13643193244934082
+},
+{
+"prompt": "A young man holding up a camera in the living room while three others watch",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6973839402198792
+},
+{
+"prompt": "A cross on the top of a brick building",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6302834749221802
+},
+{
+"prompt": "A fleet of various food with lettuce carrots and tomato",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7471896409988403
+},
+{
+"prompt": "a horse wearing a red scarf at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7069383263587952
+},
+{
+"prompt": "an elephant sitting in a shopping cart at a bus stop",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7277078628540039
+},
+{
+"prompt": "a raccoon holding an umbrella in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49841147661209106
+},
+{
+"prompt": "a goat wearing sunglasses in a meadow",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5001896023750305
+},
+{
+"prompt": "Someone is lighting a birthday candle on top of a pineapple upside down cake",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.06777617335319519
+},
+{
+"prompt": "A Cathay Pacific plane takes off into the air",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.20612837374210358
+},
+{
+"prompt": "A group of people watching fireworks out a window",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.36352887749671936
+},
+{
+"prompt": "a squirrel wearing a bow tie next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13988550007343292
+},
+{
+"prompt": "a penguin driving a car next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1709156483411789
+},
+{
+"prompt": "A woman looks through the hole of a small cookie while at a restuarant",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.16923485696315765
+},
+{
+"prompt": "A man in white tennis outfit is holding racket with other hand in the air",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6336122155189514
+},
+{
+"prompt": "A white desk has a computer, keyboard, globe and green phone",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.37951451539993286
+},
+{
+"prompt": "a yellow car on a boat",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6819202899932861
+},
+{
+"prompt": "a giraffe reaching up to grab for some leaves",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.583284854888916
+},
+{
+"prompt": "a camel reading a newspaper on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1956465095281601
+},
+{
+"prompt": "a koala holding an umbrella at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.678371787071228
+},
+{
+"prompt": "a seal playing the piano in a garden",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1001729816198349
+},
+{
+"prompt": "a squirrel reading a newspaper in a garden",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.608783483505249
+},
+{
+"prompt": "a penguin sleeping on a sofa in a supermarket",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.759998619556427
+},
+{
+"prompt": "A young boy touching a cow through a metal fence",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7551620006561279
+},
+{
+"prompt": "a kangaroo wearing a bow tie in a train station",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7195138335227966
+},
+{
+"prompt": "a raccoon wearing headphones on a beach",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6202365756034851
+},
+{
+"prompt": "A white plate topped with an omelet and hash browns",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3794940114021301
+},
+{
+"prompt": "a turtle sitting in an armchair in a library",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.631525993347168
+},
+{
+"prompt": "a panda wearing a birthday hat on a mountain trail",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7487457990646362
+},
+{
+"prompt": "a seal wearing sunglasses in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499094605445862
+},
+{
+"prompt": "a rabbit riding a skateboard in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6170668005943298
+},
+{
+"prompt": "A polar bear balances on a blue ball",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.12545877695083618
+},
+{
+"prompt": "The tennis player's hair stands on end while balancing on one leg",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.23647846281528473
+},
+{
+"prompt": "A train car moving down the track at a crossing",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.17240898311138153
+},
+{
+"prompt": "an eagle wearing boots in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4062804877758026
+},
+{
+"prompt": "A blue boat floating next to a sandy shoreline",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6257401704788208
+},
+{
+"prompt": "Four people are standing together holding air rafts",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7299081087112427
+},
+{
+"prompt": "a penguin playing a guitar on a wooden bridge",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6885820627212524
+},
+{
+"prompt": "a frog painting on a canvas in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5420243144035339
+},
+{
+"prompt": "an elephant standing on a surfboard on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6341820955276489
+},
+{
+"prompt": "A train with a James Bond Movie Ad painted on it",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.06972070783376694
+},
+{
+"prompt": "a penguin painting on a canvas in a living room",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7778552770614624
+},
+{
+"prompt": "a tiger playing chess in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.528523862361908
+},
+{
+"prompt": "a dog playing the piano in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7745845317840576
+},
+{
+"prompt": "a horse wearing headphones on a beach",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5801251530647278
+},
+{
+"prompt": "a penguin playing football on a mountain trail",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2432716339826584
+},
+{
+"prompt": "a bear wearing a red scarf in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6569660902023315
+},
+{
+"prompt": "a squirrel carrying a backpack in a kitchen",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.373759925365448
+},
+{
+"prompt": "a rabbit wearing boots in a living room",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.10923025757074356
+},
+{
+"prompt": "A woman standing under an umbrella taking a picture",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.47859930992126465
+},
+{
+"prompt": "a hamster playing the piano on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.47163841128349304
+},
+{
+"prompt": "a hedgehog reading a newspaper in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6979900598526001
+},
+{
+"prompt": "a giraffe painting on a canvas in a train station",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6758567690849304
+},
+{
+"prompt": "a red panda standing on a surfboard in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6498244404792786
+},
+{
+"prompt": "a couple of girafes that are by a tree",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7782058715820312
+},
+{
+"prompt": "A kitchen with a wooden center island under two lights",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5709376335144043
+},
+{
+"prompt": "a wolf sleeping on a sofa on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5839206576347351
+},
+{
+"prompt": "a cat holding an umbrella on a wooden bridge",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.60191410779953
+},
+{
+"prompt": "A man and two cats sit on a bench beside a body of water",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7387144565582275
+},
+{
+"prompt": "a seal holding an umbrella in a train station",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.361821711063385
+},
+{
+"prompt": "a walrus reading a newspaper on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3601999282836914
+},
+{
+"prompt": "an elephant sitting in an armchair in an office",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4621037244796753
+},
+{
+"prompt": "an eagle drinking from a cup in a greenhouse",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7467410564422607
+},
+{
+"prompt": "A woman in a professional kitchen by a wok",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5604907274246216
+},
+{
+"prompt": "a camel carrying a backpack in a meadow",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6374566555023193
+},
+{
+"prompt": "a flamingo holding a balloon at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.21541135013103485
+},
+{
+"prompt": "a zebra sitting in an armchair in a train station",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3980987071990967
+},
+{
+"prompt": "A bed with a pair of glasses sitting on top of it",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6055179238319397
+},
+{
+"prompt": "a pig playing the piano at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2782667279243469
+},
+{
+"prompt": "a pig playing the piano in a library",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.36906635761260986
+},
+{
+"prompt": "A dark skinned man comes out of a place with a bag in one hand and a stalk of bananas in the other",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.29242390394210815
+},
+{
+"prompt": "a zebra standing on a surfboard in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6268567442893982
+},
+{
+"prompt": "a bed in a floor with some food",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6287059187889099
+},
+{
+"prompt": "an eagle sleeping on a sofa in a library",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6199162006378174
+},
+{
+"prompt": "a cat playing chess at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.17344550788402557
+},
+{
+"prompt": "a koala painting on a canvas at a bus stop",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5402830243110657
+},
+{
+"prompt": "a penguin holding a balloon at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7710846066474915
+},
+{
+"prompt": "a koala wearing a bow tie in a train station",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.696986198425293
+},
+{
+"prompt": "a goat holding a flower in a park in autumn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.3121611475944519
+},
+{
+"prompt": "A dinner dish served with broccoli and sesame seed bread sticks",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5100427269935608
+},
+{
+"prompt": "a wolf playing chess on a city street",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6219132542610168
+},
+{
+"prompt": "a fox carrying a backpack on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6947377324104309
+},
+{
+"prompt": "a cat painting on a canvas on a wooden bridge",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.30828750133514404
+},
+{
+"prompt": "a squirrel looking through binoculars in a park in autumn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24506698548793793
+},
+{
+"prompt": "a rabbit eating ice cream at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3170866072177887
+},
+{
+"prompt": "a zebra playing a guitar in a kitchen",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24961638450622559
+},
+{
+"prompt": "a squirrel reading a newspaper in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5327608585357666
+},
+{
+"prompt": "a red panda holding a balloon in a supermarket",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2719810903072357
+},
+{
+"prompt": "a bear sitting on a suitcase on a farm",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49706611037254333
+},
+{
+"prompt": "A large outside clock on what looks to be our courthouse",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7315878868103027
+},
+{
+"prompt": "a turtle wearing a red scarf at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3738386332988739
+},
+{
+"prompt": "Elephants running past a burned heap in a dusty clearing",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4062134623527527
+},
+{
+"prompt": "A young boy wearing team uniform getting ready to throw a baseball",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5305556058883667
+},
+{
+"prompt": "a goose wearing headphones on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.42846953868865967
+},
+{
+"prompt": "there are many people with luggage outside of the bus",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7494354248046875
+},
+{
+"prompt": "a cow sleeping on a sofa in a garden",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5031407475471497
+},
+{
+"prompt": "a man is feeding a small baby in his arms",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.14866147935390472
+},
+{
+"prompt": "a goat playing chess in a kitchen",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.42184314131736755
+},
+{
+"prompt": "a wolf wearing a bow tie in a greenhouse",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7499964237213135
+},
+{
+"prompt": "a frog sitting in an armchair on a farm",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.17882005870342255
+},
+{
+"prompt": "Vases of flowers and lit candles before a painting of  the Christ",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.735594630241394
+},
+{
+"prompt": "A dog sitting on a pile of covers, clothes and a teddy bear",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7501164674758911
+},
+{
+"prompt": "a goose carrying a backpack in a supermarket",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7098111510276794
+},
+{
+"prompt": "an elephant wearing a red scarf in a living room",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7497382164001465
+},
+{
+"prompt": "a goat wearing a bow tie in a snowy forest",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2513501048088074
+},
+{
+"prompt": "a bear carrying a backpack in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.627894401550293
+},
+{
+"prompt": "an elephant playing football in a library",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2502848505973816
+},
+{
+"prompt": "A bus is heading toward a parking lot",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5458922982215881
+},
+{
+"prompt": "Packed and new suitcases are kept in a row",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.09370354562997818
+},
+{
+"prompt": "A plate of food with fries, egg and a loaded baked potato on it",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.22638751566410065
+},
+{
+"prompt": "Woman on a bike taking a picture of other people",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4851328730583191
+},
+{
+"prompt": "A man standing on a sidewalk holding a Frisbee",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.63478684425354
+},
+{
+"prompt": "a lion wearing a bow tie in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.8092009425163269
+},
+{
+"prompt": "a birthday cake on a farm",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.25786590576171875
+},
+{
+"prompt": "A sitting person's leg and hands, both hands holding a flip cell phone with a thumb on a key button, with wood flooring in background",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6515972018241882
+},
+{
+"prompt": "a turtle looking through binoculars next to a lake",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.11481212079524994
+},
+{
+"prompt": "a sheep reading a newspaper in a greenhouse",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2546362578868866
+},
+{
+"prompt": "a bear wearing a bow tie at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6307191848754883
+},
+{
+"prompt": "a turtle looking through binoculars on a beach",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23324400186538696
+},
+{
+"prompt": "A couple of men kiteboarding on top of a large body of water",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.761993944644928
+},
+{
+"prompt": "A red, white and blue train drives down the tracks",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7161946892738342
+},
+{
+"prompt": "a sheep sitting in an armchair in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7680455446243286
+},
+{
+"prompt": "A small simple bedroom with bed, desk, and bookcase",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6510785818099976
+},
+{
+"prompt": "We are looking at a farm style sink",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.10095179826021194
+},
+{
+"prompt": "A blue suitcase sits on a bench with a cushion under it",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.28416869044303894
+},
+{
+"prompt": "a red panda wearing a bow tie in a meadow",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4372158944606781
+},
+{
+"prompt": "an otter sitting on a suitcase in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5294714570045471
+},
+{
+"prompt": "a zebra drinking from a cup in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5020267963409424
+},
+{
+"prompt": "a desk with three electronics stacked on each other",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.35048621892929077
+},
+{
+"prompt": "a monkey holding a flower in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.799074113368988
+},
+{
+"prompt": "a duck wearing a straw hat next to a lake",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5045595765113831
+},
+{
+"prompt": "a llama riding a bicycle on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.8118465542793274
+},
+{
+"prompt": "a parrot standing on a surfboard on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5909531712532043
+},
+{
+"prompt": "a parrot riding a bicycle in a snowy forest",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7827366590499878
+},
+{
+"prompt": "a raccoon holding a balloon at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6062467694282532
+},
+{
+"prompt": "a camel painting on a canvas at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5441169142723083
+},
+{
+"prompt": "a giraffe sitting on a suitcase in an office",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7688025832176208
+},
+{
+"prompt": "a zebra standing on a surfboard at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24474787712097168
+},
+{
+"prompt": "A small child sitting inside a suitcase sitting on their knee's",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5520428419113159
+},
+{
+"prompt": "a pig wearing boots on a farm",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2642671465873718
+},
+{
+"prompt": "Three horses are grazing in a field in front of a small grove of trees",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7653990387916565
+},
+{
+"prompt": "A persons hand cutting into a plate with some scissors",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5369840860366821
+},
+{
+"prompt": "a fox carrying a backpack on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1843446046113968
+},
+{
+"prompt": "A black cat sleeping on a pizza box",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7234090566635132
+},
+{
+"prompt": "A mens gray striped neck tie, shirt collar and jacket lapel",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8435667753219604
+},
+{
+"prompt": "A man with headphones taking wine and also working on a laptop",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8002942800521851
+},
+{
+"prompt": "There are three animals walking down the road",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.34920603036880493
+},
+{
+"prompt": "a duck looking through binoculars in an office",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.38074833154678345
+},
+{
+"prompt": "a pig playing football in a snowy forest",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2464243620634079
+},
+{
+"prompt": "a tiger holding a flower on a boat",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6768300533294678
+},
+{
+"prompt": "An old hand is cutting cigars with scissors",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2561582922935486
+},
+{
+"prompt": "a hamster holding an umbrella next to a lake",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5391055941581726
+},
+{
+"prompt": "a parrot carrying a backpack in a garden",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.2871929705142975
+},
+{
+"prompt": "a wolf holding a balloon on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6156744956970215
+},
+{
+"prompt": "a raccoon painting on a canvas in a supermarket",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.113654725253582
+},
+{
+"prompt": "an otter wearing sunglasses in a park in autumn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6754261255264282
+},
+{
+"prompt": "a monkey looking through binoculars on a wooden bridge",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23111847043037415
+},
+{
+"prompt": "a hedgehog holding an umbrella at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6052491664886475
+},
+{
+"prompt": "a duck playing chess in a greenhouse",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3351004421710968
+},
+{
+"prompt": "a group of men running after a frzby in the sandy lot",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.739980161190033
+},
+{
+"prompt": "a wolf sleeping on a sofa in an office",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6138872504234314
+},
+{
+"prompt": "a penguin carrying a backpack on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5064758658409119
+},
+{
+"prompt": "a train sits on a railroad track as a metal awning covers it",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7163296341896057
+},
+{
+"prompt": "A baseball player wearing a catchers mitt while catching a baseball",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.37867647409439087
+},
+{
+"prompt": "an eagle drinking from a cup next to a lake",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.37671738862991333
+},
+{
+"prompt": "a goat wearing a bow tie on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5137538313865662
+},
+{
+"prompt": "The pantry door of the small kitchen is closed",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5021165013313293
+},
+{
+"prompt": "a pig sitting in an armchair on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5602806806564331
+},
+{
+"prompt": "Electric rail transportation on a deserted city street",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7536482214927673
+},
+{
+"prompt": "A tow truck pulling a large bus",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.15399403870105743
+},
+{
+"prompt": "a red panda wearing a red scarf on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5235838890075684
+},
+{
+"prompt": "a sheep playing the piano at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.0725313201546669
+},
+{
+"prompt": "A chair made of skis sits in an empty field",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.8019762635231018
+},
+{
+"prompt": "An old fashioned typewriter that has a wooden case",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6876363754272461
+},
+{
+"prompt": "a horse holding a balloon in a barn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6361926198005676
+},
+{
+"prompt": "an elephant wearing a straw hat in a train station",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7494854927062988
+},
+{
+"prompt": "a llama riding a bicycle on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7022369503974915
+},
+{
+"prompt": "a pig holding a flower on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4383280575275421
+},
+{
+"prompt": "an elephant looking through binoculars on a city street",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.15313169360160828
+},
+{
+"prompt": "a man is out on the yard about to kick a ball  in the grass",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6817558407783508
+},
+{
+"prompt": "a bear carrying a backpack in a train station",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7559385895729065
+},
+{
+"prompt": "a camel sitting in a shopping cart at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.36665791273117065
+},
+{
+"prompt": "an otter wearing headphones on a wooden bridge",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.25319337844848633
+},
+{
+"prompt": "The back of a persons head sitting in a train cart",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.35775232315063477
+},
+{
+"prompt": "a duck looking through binoculars in a park in autumn",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.48448073863983154
+},
+{
+"prompt": "a penguin wearing a red scarf on a farm",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.36995625495910645
+},
+{
+"prompt": "a hedgehog looking through binoculars in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1342458724975586
+},
+{
+"prompt": "Two skiers stand next to each other outside on a snowy hill",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7627472281455994
+},
+{
+"prompt": "a cat holding a balloon on a wooden bridge",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6039663553237915
+},
+{
+"prompt": "a sheep wearing a raincoat in a kitchen",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.22044692933559418
+},
+{
+"prompt": "a goose playing football in a snowy forest",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.15901459753513336
+},
+{
+"prompt": "Two girls sitting at the table with a personal sized pizza in front of them both",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.1930251270532608
+},
+{
+"prompt": "A laptop computer next to a computer monitor and a pile of papers",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3810710608959198
+},
+{
+"prompt": "a koala playing the piano on a city street",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6017673015594482
+},
+{
+"prompt": "an otter eating ice cream on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4929009974002838
+},
+{
+"prompt": "Toilitries in a bathroom of some sort near a window",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.1260925978422165
+},
+{
+"prompt": "a hamster holding a balloon in a living room",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6436288356781006
+},
+{
+"prompt": "a pig playing the piano on a farm",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.37116795778274536
+},
+{
+"prompt": "a seal playing the piano on a city street",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.15277497470378876
+},
+{
+"prompt": "a giraffe wearing a straw hat in a park in autumn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14755985140800476
+},
+{
+"prompt": "a seal looking through binoculars in a living room",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.23370711505413055
+},
+{
+"prompt": "a bathroom with brick red tile and a sink with a basket underneath",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.4128115177154541
+},
+{
+"prompt": "a seal wearing sunglasses in a snowy forest",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49934983253479004
+},
+{
+"prompt": "a lion sleeping on a sofa in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.685981273651123
+},
+{
+"prompt": "an owl wearing headphones on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3758171498775482
+},
+{
+"prompt": "A train traveling down tracks next to a trailer",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3952893316745758
+},
+{
+"prompt": "a sheep holding a flower in a supermarket",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.30434006452560425
+},
+{
+"prompt": "Looking through a window with small panes into a room",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5971718430519104
+},
+{
+"prompt": "Men on dirt bikes and four wheeler ride together",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5594181418418884
+},
+{
+"prompt": "a raccoon drinking from a cup in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7622459530830383
+},
+{
+"prompt": "a squirrel playing chess in a garden",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.49912014603614807
+},
+{
+"prompt": "A wooden shelf with two gaming systems next to one another",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6190133094787598
+},
+{
+"prompt": "a bear on a branch in front of a cave",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.50652015209198
+},
+{
+"prompt": "a seal wearing headphones on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.47755005955696106
+},
+{
+"prompt": "a squirrel eating ice cream in a park in autumn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.22496330738067627
+},
+{
+"prompt": "a giraffe riding a bicycle in a living room",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7878388166427612
+},
+{
+"prompt": "The game is being played on a baseball field located in a residential area",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6480111479759216
+},
+{
+"prompt": "A pair of bananas are hanging from a drawer handle",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.566460907459259
+},
+{
+"prompt": "a frog playing chess on a mountain trail",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.72187340259552
+},
+{
+"prompt": "an owl wearing a bow tie at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.41598448157310486
+},
+{
+"prompt": "a camel sitting on a suitcase on a boat",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6333754658699036
+},
+{
+"prompt": "a rabbit holding an umbrella at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5537475347518921
+},
+{
+"prompt": "a walrus wearing headphones on a boat",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2474321722984314
+},
+{
+"prompt": "Large garbage truck making trash pick at building in city",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.23112176358699799
+},
+{
+"prompt": "a hamster wearing headphones on a mountain trail",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7418214678764343
+},
+{
+"prompt": "A tall brick tower with a massive clock on it's side",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7253338694572449
+},
+{
+"prompt": "a monkey driving a car next to a lake",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24165989458560944
+},
+{
+"prompt": "a seal standing on a surfboard on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.44499731063842773
+},
+{
+"prompt": "a red panda playing the piano on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.37490910291671753
+},
+{
+"prompt": "a frog wearing a raincoat in a train station",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.1251906156539917
+},
+{
+"prompt": "a camel eating ice cream on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.09252723306417465
+},
+{
+"prompt": "an eagle riding a bicycle in a greenhouse",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7383639812469482
+},
+{
+"prompt": "A person typing on their lap top keyboard while their cat rests besides them",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5990951061248779
+},
+{
+"prompt": "A group of four giraffes near the same tree",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.6360296010971069
+},
+{
+"prompt": "a hedgehog wearing boots at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12442946434020996
+},
+{
+"prompt": "an owl wearing boots in a meadow",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12587232887744904
+},
+{
+"prompt": "a frog sitting at a desk with a laptop in a train station",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6161121129989624
+},
+{
+"prompt": "a cow holding an umbrella on a mountain trail",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6650484204292297
+},
+{
+"prompt": "a camel playing football in a kitchen",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13502667844295502
+},
+{
+"prompt": "A trio of dwarf zebras wander their pen",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6562076210975647
+},
+{
+"prompt": "A train car sitting on the side of train tracks next to a hobo and a horse",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.25476953387260437
+},
+{
+"prompt": "an eagle holding a flower in a living room",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.26243650913238525
+},
+{
+"prompt": "a llama wearing a birthday hat in a meadow",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7632474303245544
+},
+{
+"prompt": "a llama playing football at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.34812289476394653
+},
+{
+"prompt": "A man and boy on baseball field with baseball and mitts",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.34173938632011414
+},
+{
+"prompt": "a turtle playing chess on a mountain trail",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.29302316904067993
+},
+{
+"prompt": "A horse is hooked up to a carriage with a hat on",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6559252142906189
+},
+{
+"prompt": "an old photo of a man with a sun visor hat holding a box of chicken",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5915738940238953
+},
+{
+"prompt": "a kangaroo playing a guitar in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7672438025474548
+},
+{
+"prompt": "a panda sitting at a desk with a laptop on a mountain trail",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6951894760131836
+},
+{
+"prompt": "a deer looking through binoculars in a supermarket",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.18999417126178741
+},
+{
+"prompt": "a deer riding a skateboard next to a lake",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6325350999832153
+},
+{
+"prompt": "a hamster looking through binoculars in a garden",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.26278921961784363
+},
+{
+"prompt": "Two parking meters next to a sign on the side of the road",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5010460615158081
+},
+{
+"prompt": "a seal looking through binoculars at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.18105469644069672
+},
+{
+"prompt": "a frog playing football on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.11709431558847427
+},
+{
+"prompt": "a goat wearing a bow tie at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7397024035453796
+},
+{
+"prompt": "an owl wearing boots on a beach",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.09555733948945999
+},
+{
+"prompt": "A pulled pork sandwich sitting on a table with baked beans and salad",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.09877079725265503
+},
+{
+"prompt": "a turtle holding a flower in a supermarket",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.42396000027656555
+},
+{
+"prompt": "a giraffe sitting in an armchair in a library",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.43483155965805054
+},
+{
+"prompt": "A woman smiles as she prepares food with a mortar and pestle",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.539671003818512
+},
+{
+"prompt": "a big bear sits on top of a tree",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6090501546859741
+},
+{
+"prompt": "a parrot wearing sunglasses in a meadow",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.21346135437488556
+},
+{
+"prompt": "a parrot wearing a straw hat in a meadow",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2500561773777008
+},
+{
+"prompt": "A baseball player holding a ball in his hand",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.14282338321208954
+},
+{
+"prompt": "a walrus wearing a straw hat at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2119942158460617
+},
+{
+"prompt": "a llama drinking from a cup on a mountain trail",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.27737337350845337
+},
+{
+"prompt": "a monkey wearing a red scarf in a garden",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4999985098838806
+},
+{
+"prompt": "Two cats sit in the bathroom around items",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7857698202133179
+},
+{
+"prompt": "a duck wearing headphones on a wooden bridge",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.29632604122161865
+},
+{
+"prompt": "Two zebras and one ostrich standing in a green grass field",
+"source": "real_caption",
+"base_pass": 2,
+"base_p": 0.2495645433664322
+},
+{
+"prompt": "Two men holding six lambs in their arms",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5743674039840698
+},
+{
+"prompt": "The core of an apple and peels with a knife on a cutting board",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6052330732345581
+},
+{
+"prompt": "a zebra carrying a backpack on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12432088702917099
+},
+{
+"prompt": "a deer playing the piano on a boat",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24299509823322296
+},
+{
+"prompt": "A man is snow boarding in winter Olympic",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.19450226426124573
+},
+{
+"prompt": "a hamster playing the piano in a barn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24862435460090637
+},
+{
+"prompt": "a red panda drinking from a cup on a beach",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.6800727248191833
+},
+{
+"prompt": "a zebra wearing sunglasses on a mountain trail",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.08983337879180908
+},
+{
+"prompt": "a panda wearing sunglasses on a boat",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4940033257007599
+},
+{
+"prompt": "a hamster wearing a raincoat in a garden",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.3401474356651306
+},
+{
+"prompt": "a camel painting on a canvas in a meadow",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4649311304092407
+},
+{
+"prompt": "an otter eating ice cream at a bus stop",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.21530777215957642
+},
+{
+"prompt": "a pig playing the piano in a meadow",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.35917794704437256
+},
+{
+"prompt": "Three vases of varying shapes and sizes on a display shelf",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6501233577728271
+},
+{
+"prompt": "a deer wearing a red scarf on a beach",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.40825536847114563
+},
+{
+"prompt": "A group of people sitting around eating pizza and drinking spirits",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6148819923400879
+},
+{
+"prompt": "a seal drinking from a cup in a kitchen",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.20261305570602417
+},
+{
+"prompt": "a cow wearing headphones on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.410909503698349
+},
+{
+"prompt": "A baby in a high chair eats an apple",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6424134969711304
+},
+{
+"prompt": "A person with a tie and some glasses",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7505117058753967
+},
+{
+"prompt": "An empty bottle sitting on the ground next to fruit",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5131875276565552
+},
+{
+"prompt": "a walrus looking through binoculars at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.14270535111427307
+},
+{
+"prompt": "a horse sitting in a shopping cart on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3891042172908783
+},
+{
+"prompt": "A young boy in a blue uniform who just hit a baseball",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.2612704038619995
+},
+{
+"prompt": "a horse sitting in a shopping cart at a caf\u00e9",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.616388201713562
+},
+{
+"prompt": "A street corner has a stoplight and detour sign",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7878687381744385
+},
+{
+"prompt": "a child in a bed with a striped sweater and colorful blanket",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7330531477928162
+},
+{
+"prompt": "a gray and black cat is sitting on a black and brown dog",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.3869689106941223
+},
+{
+"prompt": "Three different stuffed animals are set up beside each other",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7290339469909668
+},
+{
+"prompt": "A brown bear is laying on top of a downed tree",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5077037811279297
+},
+{
+"prompt": "a goose playing the piano in a library",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4781953990459442
+},
+{
+"prompt": "In India, a man rides his elephant to the local store",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5544005036354065
+},
+{
+"prompt": "a turtle wearing a raincoat on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13211922347545624
+},
+{
+"prompt": "a giraffe wearing headphones in a garden",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2501656413078308
+},
+{
+"prompt": "a red panda looking through binoculars in a barn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.17722927033901215
+},
+{
+"prompt": "A giraffe standing ina  fenced area with its front legs extended and eating the grass on the ground",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.4980587661266327
+},
+{
+"prompt": "a bear riding a skateboard on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7394458651542664
+},
+{
+"prompt": "a turtle playing a guitar on a city street",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5207866430282593
+},
+{
+"prompt": "Two young elephants walk on an open field",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6302506923675537
+},
+{
+"prompt": "a rabbit holding an umbrella in a garden",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7670247554779053
+},
+{
+"prompt": "a goose wearing a bow tie on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24989953637123108
+},
+{
+"prompt": "a giraffe holding a flower on a boat",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12758131325244904
+},
+{
+"prompt": "A dog watches an animal on the television",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6551643013954163
+},
+{
+"prompt": "a frog eating ice cream at a bus stop",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12845149636268616
+},
+{
+"prompt": "A group of firemen put down cones in a street",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6598371863365173
+},
+{
+"prompt": "a kangaroo looking through binoculars in a supermarket",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7204153537750244
+},
+{
+"prompt": "a turtle playing a guitar in a garden",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6235828995704651
+},
+{
+"prompt": "a lantern in a train station",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3205139636993408
+},
+{
+"prompt": "a frog playing a guitar in an office",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6463631391525269
+},
+{
+"prompt": "a hamster sitting at a desk with a laptop on a farm",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12503261864185333
+},
+{
+"prompt": "a frog sleeping on a sofa in an office",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6414757370948792
+},
+{
+"prompt": "a goose wearing headphones on a farm",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.2837301790714264
+},
+{
+"prompt": "a sheep sitting on a suitcase at a bus stop",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.752623975276947
+},
+{
+"prompt": "a pig riding a bicycle in an office",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5640161037445068
+},
+{
+"prompt": "a red panda playing the piano on a wooden bridge",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.13397690653800964
+},
+{
+"prompt": "an owl holding a balloon on a wooden bridge",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3690294027328491
+},
+{
+"prompt": "A truck that has a canopy with people under it",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6447062492370605
+},
+{
+"prompt": "Snow clad mountains where people are skating on skating boards",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5274372100830078
+},
+{
+"prompt": "All of the lights are showing yellow and the streets are covered in the snow",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5522217154502869
+},
+{
+"prompt": "Some very pretty looking cans of various teas",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5671275854110718
+},
+{
+"prompt": "Two bright green passenger trains pass by with people standing in the doorways",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.1477615088224411
+},
+{
+"prompt": "Two young baseball players getting ready for a pitch while adults look on",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.5398919582366943
+},
+{
+"prompt": "a monkey playing chess in a park in autumn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.594683825969696
+},
+{
+"prompt": "a goat wearing a bow tie in a greenhouse",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5120977759361267
+},
+{
+"prompt": "a tiger holding a balloon in an office",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7511218786239624
+},
+{
+"prompt": "a duck wearing a bow tie on a boat",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24191837012767792
+},
+{
+"prompt": "A red train sitting at an empty station",
+"source": "real_caption",
+"base_pass": 3,
+"base_p": 0.3899087607860565
+},
+{
+"prompt": "a red panda carrying a backpack next to a lake",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.39831283688545227
+},
+{
+"prompt": "a cow carrying a backpack in a kitchen",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5009008049964905
+},
+{
+"prompt": "a fox wearing headphones in a living room",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6204054355621338
+},
+{
+"prompt": "a camel wearing a birthday hat on a farm",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7972316145896912
+},
+{
+"prompt": "A cup of foamy coffee next to a egg sandwich",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6523367762565613
+},
+{
+"prompt": "A man dressed for cold weather doing a jump on a skeateboard",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7644000053405762
+},
+{
+"prompt": "an eagle drinking from a cup in a park in autumn",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.28088775277137756
+},
+{
+"prompt": "an otter wearing headphones in a park in autumn",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7961776852607727
+},
+{
+"prompt": "an elephant eating ice cream in a park in autumn",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.2046808898448944
+},
+{
+"prompt": "a parrot playing the piano in an office",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12000023573637009
+},
+{
+"prompt": "a kangaroo sitting in an armchair on a wooden bridge",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7695202827453613
+},
+{
+"prompt": "The young man has returned the tennis ball",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.13467831909656525
+},
+{
+"prompt": "a seal sitting at a desk with a laptop on a city street",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7024369239807129
+},
+{
+"prompt": "a parrot sleeping on a sofa in a snowy forest",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5844957232475281
+},
+{
+"prompt": "a dog wearing boots in an office",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3320480287075043
+},
+{
+"prompt": "a goose wearing headphones in a living room",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.3684237003326416
+},
+{
+"prompt": "a cat reading a newspaper in a supermarket",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6335676908493042
+},
+{
+"prompt": "a penguin eating ice cream in a barn",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6323161125183105
+},
+{
+"prompt": "A cop standing next to a couple or parked motorcycles",
+"source": "real_caption",
+"base_pass": 6,
+"base_p": 0.7476358413696289
+},
+{
+"prompt": "A silhouette of a blender in a living room area",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.664880096912384
+},
+{
+"prompt": "A woman using ear buds seated on a sofa near a table",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.6885133385658264
+},
+{
+"prompt": "a frog riding a skateboard on a farm",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.5301759243011475
+},
+{
+"prompt": "a raccoon wearing headphones in a train station",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.630294919013977
+},
+{
+"prompt": "a cow eating ice cream on a mountain trail",
+"source": "synthetic",
+"base_pass": 2,
+"base_p": 0.24819472432136536
+},
+{
+"prompt": "Clean towels are sitting near a shower in a bathroom",
+"source": "real_caption",
+"base_pass": 5,
+"base_p": 0.5348740816116333
+},
+{
+"prompt": "a pig painting on a canvas at a bus stop",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.518377423286438
+},
+{
+"prompt": "a koala drinking from a cup in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5169858932495117
+},
+{
+"prompt": "a llama driving a car on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.12921588122844696
+},
+{
+"prompt": "a koala playing the piano at a bus stop",
+"source": "synthetic",
+"base_pass": 3,
+"base_p": 0.4143661558628082
+},
+{
+"prompt": "a horse sitting in a shopping cart in a kitchen",
+"source": "synthetic",
+"base_pass": 6,
+"base_p": 0.7691074013710022
+},
+{
+"prompt": "a kangaroo wearing boots in a supermarket",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.5270079374313354
+},
+{
+"prompt": "A Medieval style tower with a clock on top",
+"source": "real_caption",
+"base_pass": 1,
+"base_p": 0.16481074690818787
+},
+{
+"prompt": "A busy family kitchen with a painted wooden floor",
+"source": "real_caption",
+"base_pass": 4,
+"base_p": 0.46512359380722046
+},
+{
+"prompt": "a walrus wearing a bow tie in a train station",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.11580818146467209
+},
+{
+"prompt": "a giraffe reading a newspaper in a living room",
+"source": "synthetic",
+"base_pass": 4,
+"base_p": 0.4662776589393616
+},
+{
+"prompt": "a panda playing a guitar on a city street",
+"source": "synthetic",
+"base_pass": 5,
+"base_p": 0.6149905920028687
+},
+{
+"prompt": "a goat painting on a canvas on a rooftop at sunset",
+"source": "synthetic",
+"base_pass": 1,
+"base_p": 0.15138880908489227
+}
+]

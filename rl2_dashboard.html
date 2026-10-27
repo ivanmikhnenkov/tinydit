@@ -1,0 +1,272 @@
+<meta charset="utf-8">
+<title>tinydit RL stage 2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F1F3F4;--surf:#FFF;--surf2:#E9ECEE;--line:#DCE1E4;--tx:#14171A;--tx2:#5C6A70;--tx3:#93A0A6;
+--accent:#0093B0;--al:#0093B0;--re:#0F7B6C;--qu:#6A4FB6;--an:#B7791F;--st:#D6006E;--j:#14171A;--ok:#0F7B6C;--warn:#B7791F;--bad:#C2413A;
+--d:'Archivo',system-ui,sans-serif;--m:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1113;--surf:#171B1E;--surf2:#20262A;--line:#2B3237;
+--tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#3BC9DB;--al:#3BC9DB;--re:#3BC9AE;--qu:#A78BFA;--an:#E0A030;--st:#FF3D8F;--j:#E9EDEF;--ok:#3BC9AE;--warn:#E0A030;--bad:#F06A60}}
+:root[data-theme="dark"]{--bg:#0E1113;--surf:#171B1E;--surf2:#20262A;--line:#2B3237;
+--tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#3BC9DB;--al:#3BC9DB;--re:#3BC9AE;--qu:#A78BFA;--an:#E0A030;--st:#FF3D8F;--j:#E9EDEF;--ok:#3BC9AE;--warn:#E0A030;--bad:#F06A60}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--d);-webkit-font-smoothing:antialiased;font-size:15px}
+.wrap{max-width:1680px;margin:0 auto;padding:0 22px}
+.mono{font-family:var(--m)}
+header{border-bottom:1px solid var(--line);background:var(--surf);position:sticky;top:0;z-index:40}
+.hd{display:flex;align-items:center;gap:16px;padding:12px 0;flex-wrap:wrap}
+.brand{font-weight:800;font-size:17px;letter-spacing:-.02em}.brand span{color:var(--accent)}
+.brand em{font-style:normal;font-weight:500;color:var(--tx2);font-size:13px;margin-left:8px}
+.grow{flex:1}
+select,button{font-family:var(--m);font-size:12px;padding:6px 10px;border:1px solid var(--line);background:var(--bg);color:var(--tx);cursor:pointer;border-radius:3px}
+button:hover{border-color:var(--accent)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+a.lnk{font-family:var(--m);font-size:11px;color:var(--tx2);text-decoration:none}a.lnk:hover{color:var(--accent)}
+.pill{font-family:var(--m);font-size:10.5px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--tx2)}
+.pill.live{color:#fff;background:var(--ok);border-color:var(--ok)}.pill.idle{color:var(--warn);border-color:var(--warn)}.pill.done{background:var(--surf2)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));border-bottom:1px solid var(--line);background:var(--surf)}
+.st{padding:11px 14px;border-right:1px solid var(--line)}.st:last-child{border-right:0}
+.st b{display:block;font-size:19px;font-weight:700;line-height:1.15;font-variant-numeric:tabular-nums}
+.st i{display:block;font-family:var(--m);font-style:normal;font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--tx3);margin-top:4px}
+.bar{height:3px;background:var(--surf2)}.bar>div{height:100%;background:var(--accent);transition:width .4s}
+main{padding:20px 0 60px}
+.sec{margin-bottom:24px}
+h2{font-size:12px;font-family:var(--m);letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);margin:0 0 10px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:1200px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:4px;padding:12px 13px 8px;position:relative}
+.ch{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;padding-right:24px}
+.ct{font-size:12.5px;font-weight:600}.cv{font-family:var(--m);font-size:13px;font-weight:500;font-variant-numeric:tabular-nums}
+.lg{display:flex;flex-wrap:wrap;gap:4px 12px;font-family:var(--m);font-size:9.5px;color:var(--tx3);margin-bottom:6px;min-height:12px;line-height:12px}
+.lg i{display:inline-block;width:12px;height:0;border-top:2px solid var(--tx3);margin-right:4px;vertical-align:middle;font-style:normal}
+.lg i.dash{border-top-style:dashed}.lg b{color:var(--tx2);font-weight:500}
+canvas{width:100%;height:160px;display:block}
+button.i,.i{width:16px;height:16px;padding:0;border-radius:50%;border:1px solid var(--tx3);color:var(--tx3);background:transparent;font-size:10px;line-height:14px;text-align:center;cursor:help;position:relative;flex:none;font-family:var(--m);font-weight:600;display:inline-block}
+.i:hover,.i.open,.i:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.card>.i.tr{position:absolute;top:9px;right:9px;z-index:2}
+.i .tip{display:none;position:absolute;left:50%;transform:translateX(-50%);top:22px;width:320px;background:var(--tx);color:var(--bg);padding:10px 12px;border-radius:4px;font-size:11.5px;line-height:1.55;font-family:var(--d);z-index:60;text-align:left;font-weight:400;box-shadow:0 6px 18px rgba(0,0,0,.22);cursor:default}
+.i.tr .tip{left:auto;right:0;transform:none}.i:hover .tip,.i:focus-visible .tip,.i.open .tip{display:block}
+.i .tip b{color:var(--bg)}.i .tip .dir{display:block;margin-top:6px;font-family:var(--m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.cfg{display:flex;flex-wrap:wrap;gap:7px}.kv{font-family:var(--m);font-size:10.5px;border:1px solid var(--line);background:var(--surf);padding:3px 8px;border-radius:3px;color:var(--tx2)}.kv b{color:var(--tx);font-weight:500}
+.tw{overflow-x:auto}
+table.ev{width:100%;border-collapse:collapse;font-family:var(--m);font-size:11.5px;background:var(--surf);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.ev th{text-align:left;font-weight:500;color:var(--tx3);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surf2)}
+.ev td{padding:6px 12px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ev tr:last-child td{border-bottom:0}.ev td.n,.ev th.n{text-align:right}.ev td.name{font-family:var(--d);font-size:12.5px;color:var(--tx)}
+.ev .good{color:var(--ok)}.ev .badd{color:var(--bad)}.ev .flat{color:var(--tx3)}.ev .dirn{color:var(--tx3);font-size:9.5px;margin-left:6px}
+.scrub{display:flex;align-items:center;gap:12px;margin-bottom:8px}.scrub input[type=range]{flex:1;accent-color:var(--accent);height:20px;cursor:pointer}
+.scrub span{font-size:11px;color:var(--tx2);min-width:230px;text-align:right;font-variant-numeric:tabular-nums}
+.film{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.fr{flex:none;border:1px solid var(--line);background:var(--surf);cursor:pointer;border-radius:3px;overflow:hidden}
+.fr:hover{border-color:var(--accent)}.fr.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.fr img{display:block;height:56px;width:auto}.fr span{display:block;font-family:var(--m);font-size:9px;color:var(--tx3);padding:2px 6px;text-align:center;white-space:nowrap}
+.big{background:var(--surf);border:1px solid var(--line);border-radius:4px;padding:8px;margin-top:10px;overflow:auto;max-height:70vh}
+.big img{display:block;max-width:100%;height:auto;cursor:zoom-in}.big.zoom img{max-width:none;cursor:zoom-out}
+.ctl{display:flex;gap:12px;align-items:center;flex-wrap:wrap;font-family:var(--m);font-size:10.5px;color:var(--tx2);margin-bottom:10px}
+.ctl label{display:inline-flex;gap:5px;align-items:center}.ctl input[type=checkbox]{accent-color:var(--accent);margin:0}
+.evhd{display:flex;justify-content:space-between;align-items:baseline;background:var(--accent);color:#fff;padding:6px 11px;font-family:var(--m);font-size:11px;letter-spacing:.04em;gap:12px;flex-wrap:wrap;margin-top:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:9px;margin-top:9px}
+.evcard{background:var(--surf);border:1px solid var(--line);display:flex;flex-direction:column;border-radius:3px;overflow:hidden}
+.evcard .ims{display:flex}.evcard .ims a{flex:1;display:block}.evcard .ims img{width:100%;height:auto;display:block;background:var(--surf2);cursor:zoom-in}
+.evcard .ims .b{border-right:1px dashed var(--line)}
+.evcard figcaption{padding:6px 8px 8px;font-size:11.5px;line-height:1.4;color:var(--tx2)}
+.evcard .sc{font-family:var(--m);font-size:10px;color:var(--tx2);display:flex;gap:8px;flex-wrap:wrap;margin-top:3px}.evcard .sc b{font-weight:500;color:var(--tx)}
+.evcard .sc .up{color:var(--ok)}.evcard .sc .dn{color:var(--bad)}
+.traj{display:flex;gap:6px;overflow-x:auto;padding:4px 0 8px}
+.tj{flex:none;width:176px;background:var(--surf);border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.tj img{display:block;width:176px;height:176px;object-fit:cover;background:var(--surf2);cursor:zoom-in}
+.tj span{display:block;font-family:var(--m);font-size:9.5px;color:var(--tx2);padding:3px 6px;line-height:1.4}
+.hint{font-family:var(--m);font-size:10px;color:var(--tx3);margin-top:8px;line-height:1.5}
+</style>
+
+<header><div class="wrap"><div class="hd">
+  <div class="brand">tiny<span>dit</span><em>RL stage 2 · alignment · realism · fewer artifacts</em></div>
+  <span id="runname" class="mono" style="font-size:12px;color:var(--tx2)">—</span><span id="status" class="pill">connecting</span>
+  <div class="grow"></div>
+  <label class="mono" style="font-size:10.5px;color:var(--tx3)">x <select id="xsel"><option value="gpu_hours">GPU-hours</option><option value="samples">samples</option><option value="round">rounds</option></select></label>
+  <label class="mono" style="font-size:10.5px;color:var(--tx3)"><input type="checkbox" id="follow" checked> follow latest</label>
+  <select id="runsel"></select>
+  <a class="lnk" href="rl_dashboard.html">stage-1 comparison →</a><a class="lnk" href="dashboard.html">pretraining →</a>
+  <button id="refresh">Refresh</button>
+</div></div>
+<div class="stats" id="stats"></div><div class="bar"><div id="prog" style="width:0%"></div></div>
+</header>
+
+<main><div class="wrap">
+  <div class="sec"><h2>Run configuration</h2><div class="cfg" id="cfg"></div></div>
+  <div class="sec"><h2>Latest evaluation vs baseline</h2><div class="tw" id="evtable"></div></div>
+  <div class="sec">
+    <h2>Reward terms on the training rollouts</h2>
+    <div class="grid" id="charts_train"></div>
+  </div>
+  <div class="sec">
+    <h2>Evaluation · fixed held-out prompts, 20-step sampler, every 10 train-minutes</h2>
+    <div class="grid" id="charts_eval"></div>
+  </div>
+  <div class="sec">
+    <h2>Optimisation and cost</h2>
+    <div class="grid" id="charts_opt"></div>
+  </div>
+  <div class="sec">
+    <h2>One prompt across training <span id="tjinfo" class="pill"></span></h2>
+    <div class="ctl"><span>prompt</span><select id="tjsel"></select><span>seed</span><select id="tjseed"><option value="0">0</option><option value="1">1</option></select></div>
+    <div class="traj" id="traj"></div>
+    <div class="hint">Every evaluation renders the same prompts with the same seeds, so this row is the trajectory of one image through training. Under each: 8B alignment, probe realism, HPSv3, anatomy, and the 9B judge once it has run.</div>
+  </div>
+  <div class="sec">
+    <h2>Evaluation grids <span id="evinfo" class="pill"></span></h2>
+    <div class="scrub"><input type="range" id="evrange" min="0" max="0" value="0" step="1"><span class="mono" id="evlab">—</span></div>
+    <div class="film" id="evfilm"></div>
+    <div class="big" id="bigbox"><img id="bigimg" alt="evaluation grid"></div>
+    <div class="ctl" style="margin-top:12px"><span>per-image cards</span><select id="evsrc"><option value="">all sources</option></select>
+      <label><input type="checkbox" id="evbase" checked> baseline (round 0) next to each image</label><label><input type="checkbox" id="evsort"> sort by change in alignment</label></div>
+    <div id="evgrid"></div>
+  </div>
+</div></main>
+
+<script>
+const $=id=>document.getElementById(id);
+const T={al:'--al',re:'--re',qu:'--qu',an:'--an',st:'--st',j:'--j'};
+const TRAIN=[
+ {id:'terms',t:'Alignment · realism · anatomy',fmt:3,keys:[{key:'align',label:'align P(yes)',c:T.al},{key:'real',label:'real P',c:T.re},{key:'anatomy',label:'anatomy 1−P(err)',c:T.an}],
+  tip:'The three probability-valued reward terms on the 256 training samples of each round: <b>align</b> = Qwen3-VL-8B P(yes) to "does this image show the prompt?", <b>real</b> = the DINOv2 real-vs-render probe, <b>anatomy</b> = 1 − P(yes) to "anatomical or structural errors?". Rising means the policy produces what the reward likes on <i>training</i> prompts; the evaluation section says whether held-out prompts and other judges agree.<span class="dir">higher is better</span>'},
+ {id:'qual',t:'Quality · HPSv3 μ',fmt:2,keys:[{key:'quality',c:T.qu}],tip:'HPSv3 μ on the training samples. It prefers renders, which is why the realism term outweighs it; a fast rise here with a falling probe is the render drift.<span class="dir">higher is better, read with realism</span>'},
+ {id:'style',t:'Style-drift guard',fmt:3,keys:[{key:'style',c:T.st}],tip:'Mean of the fifth term: 0 while saturation, contrast and sharpness sit inside the base model\'s range, negative beyond its 90th percentile (in base-std units). Base ≈ −0.4 because the top decile of each statistic is beyond by construction. A slide well below that means the policy is pushing into the preference model\'s exits.<span class="dir">stable is healthy</span>'},
+ {id:'gstd',t:'Spread inside a group · per term',fmt:3,keys:[{key:'gstd_align',label:'align',c:T.al},{key:'gstd_real',label:'real',c:T.re},{key:'gstd_anatomy',label:'anatomy',c:T.an}],
+  tip:'Standard deviation of each term over the 16 samples of one prompt, averaged over the round\'s 16 prompts: the signal each term contributes to the advantages. A term whose spread collapses has stopped teaching.<span class="dir">reference only</span>'},
+ {id:'gstdq',t:'Spread inside a group · HPSv3',fmt:2,keys:[{key:'gstd_quality',c:T.qu}],tip:'Same for HPSv3 μ, on its own scale.<span class="dir">reference only</span>'},
+ {id:'veto',t:'Vetoed samples',fmt:1,pct:true,keys:[{key:'veto',c:T.st}],tip:'Fraction of rollout samples that hit the veto (blank or noise image, or alignment P(yes) below 0.02) and got the group minimum. Base ≈ 16 % on training prompts: strongly off-prompt samples.<span class="dir">falling is good</span>'},
+];
+const EVAL=[
+ {id:'e_al',t:'Alignment by prompt family (8B)',fmt:3,keys:[{key:'eval_align',label:'all',c:T.al,dots:1},{key:'eval_align_hand_unusual',label:'unusual',c:T.al,dots:1,dash:1},{key:'eval_align_heldout_real',label:'held-out captions',c:T.an,dots:1,dash:1},{key:'eval_align_animal',label:'45 animals',c:T.re,dots:1,dash:1},{key:'eval_align_hand_usual',label:'usual',c:T.qu,dots:1,dash:1}],
+  tip:'The training-time alignment judge on the fixed evaluation prompts (never trained on). Base: usual 0.99, animals 0.92, unusual 0.64, held-out captions 0.60. The unusual prompts and the long captions are where the headroom is.<span class="dir">higher is better</span>'},
+ {id:'e_j',t:'Alignment by prompt family (9B judge)',fmt:3,keys:[{key:'j_align',label:'all',c:T.j,dots:1},{key:'j_align_hand_unusual',label:'unusual',c:T.al,dots:1,dash:1},{key:'j_align_heldout_real',label:'held-out captions',c:T.an,dots:1,dash:1},{key:'j_align_animal',label:'animals',c:T.re,dots:1,dash:1}],
+  tip:'Qwen3.5-9B\'s answer to the same question on the same images, added post hoc by scripts/rl/judge_evals.py and never used as a reward. If this tracks the 8B curve the gain is real; if the 8B rises and the 9B does not, the 8B is being gamed.<span class="dir">higher is better</span>'},
+ {id:'e_re',t:'Realism',fmt:3,keys:[{key:'eval_real',label:'DINO probe P(real)',c:T.re,dots:1},{key:'j_real',label:'9B "real photograph?"',c:T.j,dots:1,dash:1},{key:'j_aislop',label:'9B "AI look?"',c:T.st,dots:1,dash:1}],
+  tip:'Realism on the evaluation images: the probe the reward uses, and the held-out 9B questions. "AI look?" should go <i>down</i>. The probe rising while the 9B disagrees means the policy is gaming the probe.<span class="dir">probe and "real" up · "AI look" down</span>'},
+ {id:'e_qa',t:'Quality and anatomy',fmt:3,keys:[{key:'eval_anatomy',label:'anatomy 1−P(err)',c:T.an,dots:1},{key:'eval_quality',label:'HPSv3 μ ÷ 10',c:T.qu,dots:1,scale:0.1}],tip:'The two weak terms on evaluation images; HPSv3 μ divided by 10 to share the axis (base 4.4 → 0.44).<span class="dir">higher is better</span>'},
+ {id:'e_px',t:'Saturation and contrast',fmt:3,keys:[{key:'eval_px_sat',label:'mean saturation',c:T.st,dots:1},{key:'eval_px_contrast',label:'contrast',c:T.an,dots:1}],tip:'Pixel statistics of the evaluation images (HSV saturation mean, grey std), both 0–1. Base 0.35 / 0.20. A climb is the classic preference-model hack.<span class="dir">stable is good</span>'},
+ {id:'e_sh',t:'Sharpness',fmt:0,keys:[{key:'eval_px_sharp',label:'Laplacian variance',c:T.qu,dots:1}],tip:'Laplacian variance of the grey image (base ≈ 2,600). Rising together with saturation means "crunchy" over-sharpening.<span class="dir">stable is good</span>'},
+ {id:'e_fd',t:'FD-DINOv2 vs real photos',fmt:0,keys:[{key:'eval_fd_dino',c:T.re,dots:1}],tip:'Fréchet distance in DINOv2 space between the 250 evaluation images and 2,000 real photographs (COCO val 2017 + Pexels). Prompts are not caption-matched, so only the trend matters.<span class="dir">lower is better</span>'},
+ {id:'e_fid',t:'FID vs real photos',fmt:1,keys:[{key:'eval_fid',c:T.re,dots:1}],tip:'Same in Inception space; trend only.<span class="dir">lower is better</span>'},
+ {id:'e_clip',t:'CLIP score',fmt:3,keys:[{key:'eval_clip',c:T.al,dots:1}],tip:'CLIP ViT-B/32 cosine on the evaluation images: the floor against subject drift; it should not fall.<span class="dir">higher is better</span>'},
+ {id:'e_veto',t:'Vetoed on eval',fmt:1,pct:true,keys:[{key:'eval_veto',c:T.st,dots:1}],tip:'Fraction of evaluation images with alignment P(yes) below 0.02 (or blank). Base 16 %, concentrated in the unusual prompts and long captions.<span class="dir">falling is good</span>'},
+ {id:'e_27',t:'27B flags an error on the grid',fmt:1,pct:true,keys:[{key:'j_describe_flagged',c:T.j,dots:1}],tip:'Fraction of the 16 grid images for which Qwen3.8-27B\'s free-form description names an error (post hoc). Noisy: it flags something on about half of clean images too; read the texts under the cards.<span class="dir">reference only</span>'},
+];
+const OPT=[
+ {id:'w',t:'DGPO gate σ(margin)',fmt:3,keys:[{key:'w',c:T.al}],tip:'The sigmoid in front of the preference gradient, averaged over groups: 0.5 at the start, falling as the policy separates positives from negatives more than the reference does. With KL 0.001 it should close more slowly than in stage 1 and the run should not relax.<span class="dir">reference only</span>'},
+ {id:'kl',t:'Velocity gap to the reference',fmt:4,log:true,keys:[{key:'kl',c:T.qu}],tip:'‖v − v_ref‖² at the re-noised training timestep (weight 0.001).<span class="dir">log scale</span>'},
+ {id:'loss',t:'Loss',fmt:4,keys:[{key:'loss',label:'total',c:T.al},{key:'loss_pref',label:'preference',c:T.re,thin:1}],tip:'DGPO loss: gated Σ A·L_dsm plus KL. Watch for spikes.<span class="dir">reference only</span>'},
+ {id:'cf',t:'Trust-region clipping',fmt:1,pct:true,keys:[{key:'clipfrac',c:T.an}],tip:'Fraction of samples whose implicit ratio exp(L_old − L_θ) crossed 1e-2 in the advantage\'s direction within the round.<span class="dir">low is healthy</span>'},
+ {id:'gn',t:'Gradient norm',fmt:3,keys:[{key:'gnorm',c:T.qu}],tip:'Before clipping at 1.0.<span class="dir">stable is good</span>'},
+ {id:'time',t:'Seconds per round',fmt:1,keys:[{key:'t_rollout',label:'rollout',c:T.al},{key:'t_reward',label:'decode + reward',c:T.st},{key:'t_update',label:'update',c:T.re}],tip:'Reward dominates: two 8B questions, HPSv3, the probe and pixel statistics on 256 images.<span class="dir">reference only</span>'},
+];
+let RUN=new URLSearchParams(location.search).get('run')||null, X='gpu_hours', META=null, ROWS=[], ALL=[], EVS=[], EVSEL=-1, MAN={}, lastGrow=0, lastLen=-1, evSig='';
+function mk(list,box){$(box).innerHTML=list.map(c=>`<div class="card" id="card_${c.id}"><button class="i tr" type="button" aria-label="About ${c.t}"><span aria-hidden="true">i</span><span class="tip" role="tooltip">${c.tip}</span></button>
+  <div class="ch"><span class="ct">${c.t}</span><span class="cv" id="v_${c.id}">—</span></div><div class="lg" id="s_${c.id}"></div><canvas id="c_${c.id}"></canvas></div>`).join('');}
+mk(TRAIN,'charts_train');mk(EVAL,'charts_eval');mk(OPT,'charts_opt');
+document.addEventListener('click',e=>{const b=e.target.closest('.i');document.querySelectorAll('.i.open').forEach(o=>{if(o!==b)o.classList.remove('open');});if(b&&!e.target.closest('.tip'))b.classList.toggle('open');});
+const cs=()=>getComputedStyle(document.documentElement),col=v=>cs().getPropertyValue(v).trim();
+const fmtV=(c,v)=>v==null||isNaN(v)?'—':c.pct?(100*v).toFixed(c.fmt)+'%':(+v).toFixed(c.fmt);
+const fmtX=v=>X==='gpu_hours'?(+v).toFixed(2)+' h':X==='samples'?(+v).toLocaleString():'round '+v;
+const hms=s=>{s=Math.max(0,Math.round(s));const h=(s/3600)|0,m=((s%3600)/60)|0;return h?`${h}h ${m}m`:`${m}m`;};
+function draw(c){
+  const cv=$('c_'+c.id),dpr=devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;if(!W)return;cv.width=W*dpr;cv.height=H*dpr;
+  const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,H);
+  const S=c.keys.map(k=>({...k,pts:ROWS.filter(r=>r[k.key]!=null&&isFinite(r[k.key])&&r[X]!=null).map(r=>({x:+r[X],y:c.log?Math.log10(Math.max(r[k.key]*(k.scale||1),1e-9)):r[k.key]*(k.scale||1)}))})).filter(s=>s.pts.length);
+  if(!S.length){g.fillStyle=col('--tx3');g.font='11px monospace';g.fillText('no data yet',8,H/2);return;}
+  const all=S.flatMap(s=>s.pts),x0=0,x1=Math.max(...all.map(p=>p.x),1e-6);let y0=Math.min(...all.map(p=>p.y)),y1=Math.max(...all.map(p=>p.y));
+  if(y1-y0<1e-9){y0-=.5;y1+=.5;}const pd=(y1-y0)*.1;y0-=pd;y1+=pd;const PL=44,PR=8,PT=8,PB=16;
+  const Xp=v=>PL+(v-x0)/(x1-x0)*(W-PL-PR),Yp=v=>H-PB-(v-y0)/(y1-y0)*(H-PT-PB);
+  g.strokeStyle=col('--line');g.lineWidth=1;g.font='9px monospace';g.fillStyle=col('--tx3');
+  const tick=yv=>{const raw=c.log?Math.pow(10,yv):yv;if(c.pct)return(100*raw).toFixed(0)+'%';if(c.log)return raw.toExponential(0);return Math.abs(yv)>=1000?yv.toExponential(1):yv.toPrecision(3);};
+  for(let i=0;i<=3;i++){const yv=y0+(y1-y0)*i/3,y=Yp(yv);g.beginPath();g.moveTo(PL,y);g.lineTo(W-PR,y);g.stroke();g.fillText(tick(yv),3,y+3);}
+  S.forEach(s=>{const cc=col(s.c);g.strokeStyle=cc;g.fillStyle=cc;g.lineWidth=s.thin?1:1.6;if(s.dash)g.setLineDash([4,3]);
+    g.beginPath();s.pts.forEach((p,i)=>i?g.lineTo(Xp(p.x),Yp(p.y)):g.moveTo(Xp(p.x),Yp(p.y)));g.stroke();g.setLineDash([]);
+    if(s.dots||s.pts.length<8)s.pts.forEach(p=>{g.beginPath();g.arc(Xp(p.x),Yp(p.y),2.6,0,7);g.fill();});});
+  g.fillStyle=col('--tx3');g.fillText(fmtX(x0),PL,H-4);const lb=fmtX(x1);g.fillText(lb,W-PR-lb.length*5.4,H-4);
+  if(cv._hx!=null){const near=[];S.forEach((s,si)=>{let b=null,bd=1e9;s.pts.forEach(p=>{const d=Math.abs(Xp(p.x)-cv._hx);if(d<bd){bd=d;b=p;}});if(b&&bd<40)near.push({si,p:b});});
+    if(near.length){const px=Xp(near[0].p.x);g.strokeStyle=col('--tx3');g.setLineDash([2,3]);g.beginPath();g.moveTo(px,PT);g.lineTo(px,H-PB);g.stroke();g.setLineDash([]);
+      const lines=[fmtX(near[0].p.x)].concat(near.map(({si,p})=>(S[si].label||c.keys[0].key)+'  '+fmtV(c,c.log?Math.pow(10,p.y):p.y)));
+      g.font='10px monospace';const LH=13,bw=Math.max(...lines.map(l=>g.measureText(l).width))+12,bh=lines.length*LH+6;let bx=px+8;if(bx+bw>W-PR)bx=px-8-bw;if(bx<PL)bx=PL;
+      g.fillStyle=col('--tx');g.fillRect(bx,PT,bw,bh);lines.forEach((l,i)=>{g.fillStyle=i?col(S[near[i-1].si].c):col('--bg');g.fillText(l,bx+6,PT+LH*(i+1)-2);});}}
+}
+function renderCharts(){[...TRAIN,...EVAL,...OPT].forEach(c=>{draw(c);
+  const latest=k=>{for(let i=ROWS.length-1;i>=0;i--)if(ROWS[i][k]!=null)return ROWS[i][k]*(c.keys.find(x=>x.key===k).scale||1);return null;};
+  $('v_'+c.id).textContent=fmtV(c,latest(c.keys[0].key));
+  const live=c.keys.filter(k=>ROWS.some(r=>r[k.key]!=null));
+  $('s_'+c.id).innerHTML=live.length>1?live.map(k=>`<span><i class="${k.dash?'dash':''}" style="border-top-color:var(${k.c})"></i>${k.label||k.key} <b>${fmtV(c,latest(k.key))}</b></span>`).join(''):'';});}
+function attachHover(){[...TRAIN,...EVAL,...OPT].forEach(c=>{const cv=$('c_'+c.id);if(cv._hooked)return;cv._hooked=1;cv.style.cursor='crosshair';
+  cv.addEventListener('mousemove',e=>{cv._hx=e.clientX-cv.getBoundingClientRect().left;draw(c);});cv.addEventListener('mouseleave',()=>{cv._hx=null;draw(c);});});}
+const EVROWS=[['eval_align','alignment (8B) · all',3,1],['eval_align_hand_unusual','alignment · unusual prompts',3,1],['eval_align_heldout_real','alignment · held-out captions',3,1],['eval_align_animal','alignment · 45 animals',3,1],['eval_align_hand_usual','alignment · usual prompts',3,1],
+ ['j_align','alignment (9B judge)',3,1],['eval_real','realism · DINO probe',3,1],['j_real','realism · 9B "real photograph?"',3,1],['j_aislop','9B "AI look?"',3,-1],['eval_quality','HPSv3 μ',2,1],['eval_anatomy','anatomy 1−P(err)',3,1],
+ ['eval_px_sat','mean saturation',3,0],['eval_px_contrast','contrast',3,0],['eval_px_sharp','sharpness',0,0],['eval_fd_dino','FD-DINOv2',0,-1],['eval_fid','FID',1,-1],['eval_clip','CLIP score',3,1],['eval_veto','vetoed on eval',3,-1]];
+function renderTable(){const ev=ALL.filter(r=>r.eval||r.j_align!=null);if(!ev.length){$('evtable').innerHTML='';return;}
+  const base=ev[0],last=ev[ev.length-1];const prev=ev.length>1?ev[ev.length-2]:null;
+  const rows=EVROWS.map(([k,l,d,dir])=>{const b=base[k],v=last[k],p=prev?prev[k]:null;if(v==null&&b==null)return '';
+    const f=x=>x==null?'—':(+x).toFixed(d);const cls=(a,c)=>a==null||c==null||dir===0?'flat':((a-c)*dir>0?'good':((a-c)*dir<0?'badd':'flat'));
+    const dl=(a,c)=>a==null||c==null?'—':((a-c)>=0?'+':'')+(a-c).toFixed(d);
+    return `<tr><td class="name">${l}<span class="dirn">${dir>0?'↑ better':dir<0?'↓ better':'stable'}</span></td><td class="n">${f(b)}</td><td class="n">${f(p)}</td><td class="n">${f(v)}</td><td class="n ${cls(v,b)}">${dl(v,b)}</td><td class="n">${last.round??'—'}</td></tr>`;}).join('');
+  $('evtable').innerHTML=`<table class="ev"><thead><tr><th>metric</th><th class="n">baseline</th><th class="n">previous</th><th class="n">latest</th><th class="n">vs baseline</th><th class="n">round</th></tr></thead><tbody>${rows}</tbody></table>`;}
+function renderStats(){const last=ROWS.filter(r=>r.align!=null).slice(-1)[0]||{},ev=ALL.filter(r=>r.eval).slice(-1)[0]||{};const hours=META&&META.config?META.config.hours:null;
+  $('stats').innerHTML=[['round',(last.round||0).toLocaleString()],['samples',(last.samples||0).toLocaleString()],['GPU-h',last.gpu_hours!=null?(+last.gpu_hours).toFixed(2)+(hours?' / '+hours:''):'—'],
+    ['s / round',last.t_rollout!=null?(last.t_rollout+last.t_reward+last.t_update).toFixed(0):'—'],['align · train',last.align!=null?(+last.align).toFixed(3):'—'],['eval align',ev.eval_align!=null?(+ev.eval_align).toFixed(3):'—'],
+    ['eval real',ev.eval_real!=null?(+ev.eval_real).toFixed(3):'—'],['eval HPSv3',ev.eval_quality!=null?(+ev.eval_quality).toFixed(2):'—'],['gate σ(m)',last.w!=null?(+last.w).toFixed(3):'—'],['evals',EVS.length]].map(([k,v])=>`<div class="st"><b>${v}</b><i>${k}</i></div>`).join('');
+  if(hours&&last.gpu_hours!=null)$('prog').style.width=(100*Math.min(1,last.gpu_hours/hours)).toFixed(1)+'%';
+  if(META&&META.config){const c=META.config;const want=[['alg','alg'],['reward','reward'],['w align','w_align'],['w real','w_real'],['w quality','w_qual'],['w anatomy','w_anat'],['w style','w_style'],['quality model','quality'],['KL β','beta'],['β_dpo','beta_dpo'],['trunc','trunc'],['prompts/round','prompts_per_round'],['group','group'],['lr','lr'],['minibatch','minibatch'],['steps','steps'],['cfg','cfg'],['eval every','eval_every_min'],['base','base']];
+    $('cfg').innerHTML=want.filter(([,k])=>c[k]!=null).map(([l,k])=>`<span class="kv">${l} <b>${String(c[k]).replace(/^out\/runs\//,'')}</b></span>`).join('');}}
+async function fetchMan(rd){const k=RUN+'/'+rd;if(MAN[k]===undefined){try{MAN[k]=await (await fetch(`out/runs/${RUN}/evals/${rd}/manifest.json`,{cache:'no-store'})).json();}catch(e){MAN[k]=null;}}return MAN[k];}
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+async function renderTraj(){if(!EVS.length){$('traj').innerHTML='';return;}
+  const mans=(await Promise.all(EVS.map(e=>fetchMan(e.round)))).map((m,i)=>({m,e:EVS[i]})).filter(x=>x.m&&x.m.items);if(!mans.length)return;
+  const ids=[...new Set(mans[0].m.items.map(it=>it.id))];const cur=$('tjsel').value||ids[0];
+  if($('tjsel').options.length!==ids.length)$('tjsel').innerHTML=ids.map(id=>{const it=mans[0].m.items.find(x=>x.id===id);return `<option value="${id}"${id===cur?' selected':''}>${id} · ${esc(it.prompt).slice(0,60)}</option>`;}).join('');
+  const seed=+$('tjseed').value;const f=(v,d)=>v==null?'—':(+v).toFixed(d);
+  $('traj').innerHTML=mans.map(({m,e})=>{const it=m.items.find(x=>x.id===cur&&x.seed===seed);if(!it)return '';const u=`out/runs/${RUN}/evals/${e.round}/${it.file}`;
+    return `<div class="tj"><a href="${u}" target="_blank"><img loading="lazy" src="${u}" alt=""></a><span>r${e.round} · ${(e.gpu_hours||0).toFixed(2)}h<br>a ${f(it.align,2)} r ${f(it.real,2)} q ${f(it.quality,1)} n ${f(it.anatomy,2)}${it.j_align!=null?' j '+f(it.j_align,2):''}</span></div>`;}).join('');
+  $('tjinfo').textContent=`${mans.length} evals`;}
+async function renderEv(){if(!EVS.length){$('evfilm').innerHTML='';return;}
+  if(EVSEL<0||EVSEL>=EVS.length)EVSEL=EVS.length-1;const sig=EVS.map(e=>e.round).join(',');
+  if(sig!==evSig){evSig=sig;$('evfilm').innerHTML=EVS.map((e,i)=>`<div class="fr" data-e="${i}"><img loading="lazy" src="out/runs/${RUN}/${e.file}" alt=""><span>r${e.round} · ${(e.gpu_hours||0).toFixed(2)}h</span></div>`).join('');
+    [...$('evfilm').querySelectorAll('.fr')].forEach(x=>x.onclick=()=>{EVSEL=+x.dataset.e;$('follow').checked=false;renderEv();});}
+  [...$('evfilm').children].forEach((el,i)=>el.classList.toggle('sel',i===EVSEL));const e=EVS[EVSEL];
+  $('bigimg').src=`out/runs/${RUN}/${e.file}`;$('evinfo').textContent=`${EVS.length} evals`;const rg=$('evrange');rg.max=EVS.length-1;rg.value=EVSEL;
+  $('evlab').textContent=`round ${e.round} · ${(e.gpu_hours||0).toFixed(2)} GPU-h · align ${(e.eval_align||0).toFixed(3)} · real ${(e.eval_real||0).toFixed(3)}`;
+  const el=$('evfilm').children[EVSEL];if(el)$('evfilm').scrollLeft=el.offsetLeft-$('evfilm').clientWidth/2+el.offsetWidth/2;
+  const man=await fetchMan(e.round),base=$('evbase').checked&&e.round!==EVS[0].round?await fetchMan(EVS[0].round):null;
+  if(!man||!man.items){$('evgrid').innerHTML='';return;}
+  const srcs=[...new Set(man.items.map(it=>it.source))],cur=$('evsrc').value;
+  if($('evsrc').options.length!==srcs.length+1)$('evsrc').innerHTML='<option value="">all sources</option>'+srcs.map(s=>`<option value="${s}"${s===cur?' selected':''}>${s}</option>`).join('');
+  const bmap={};if(base)base.items.forEach(it=>bmap[it.id+'_'+it.seed]=it);const f=(v,d)=>v==null?'—':(+v).toFixed(d);
+  const arrow=(v,b,dir)=>b==null||v==null||Math.abs(v-b)<1e-6?'':((v-b)*dir>0?'<span class="up">▲</span>':'<span class="dn">▼</span>');
+  $('evgrid').innerHTML=srcs.filter(s=>!cur||s===cur).map(s=>{let its=man.items.filter(it=>it.source===s);
+    if($('evsort').checked)its=its.slice().sort((a,b)=>{const ba=bmap[a.id+'_'+a.seed],bb=bmap[b.id+'_'+b.seed];return ((b.align-(bb?bb.align:0))-(a.align-(ba?ba.align:0)));});
+    const mean=k=>its.some(it=>it[k]!=null)?its.reduce((a,it)=>a+(+it[k]||0),0)/its.length:null;
+    const cards=its.map(it=>{const b=bmap[it.id+'_'+it.seed],u=`out/runs/${RUN}/evals/${e.round}/${it.file}`,ub=b?`out/runs/${RUN}/evals/${EVS[0].round}/${b.file}`:null;
+      const sc=[['a','align',1,2],['r','real',1,2],['q','quality',1,1],['n','anatomy',1,2],['j','j_align',1,2],['sat','px_sat',0,2]].filter(([l,k])=>it[k]!=null).map(([l,k,dir,d])=>`<span>${l} <b>${f(it[k],d)}</b>${dir?arrow(it[k],b&&b[k],dir):''}</span>`).join('');
+      return `<figure class="evcard"><div class="ims">${ub?`<a class="b" href="${ub}" target="_blank" title="baseline"><img loading="lazy" src="${ub}" alt=""></a>`:''}<a href="${u}" target="_blank"><img loading="lazy" src="${u}" alt=""></a></div><figcaption><span class="sc">${sc}</span><div title="${esc(it.prompt)}">${esc(it.prompt).slice(0,110)}${it.prompt.length>110?' …':''}</div>${it.describe_27b?`<div class="mono" style="font-size:10px;color:var(--tx3);margin-top:4px">27B: ${esc(it.describe_27b).slice(0,160)}</div>`:''}</figcaption></figure>`;}).join('');
+    return `<div class="evhd"><span>${s} · ${its.length} images</span><span>align ${f(mean('align'),3)} · real ${f(mean('real'),3)} · HPSv3 ${f(mean('quality'),2)} · anatomy ${f(mean('anatomy'),3)}${mean('j_align')!=null?' · 9B '+f(mean('j_align'),3):''}</span></div><div class="cards">${cards}</div>`;}).join('');}
+async function listRuns(){try{const t=await (await fetch('out/runs/',{cache:'no-store'})).text();return [...t.matchAll(/href="([^"\/]+)\/"/g)].map(m=>m[1]).filter(n=>n.startsWith('rl2'));}catch(e){return[];}}
+async function poll(){if(!RUN)return;
+  try{if(!META)META=await (await fetch(`out/runs/${RUN}/meta.json`,{cache:'no-store'})).json();
+    const t=await (await fetch(`out/runs/${RUN}/metrics.jsonl`,{cache:'no-store'})).text();
+    const rows=t.trim().split('\n').filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(Boolean);
+    try{const jt=await fetch(`out/runs/${RUN}/judges.jsonl`,{cache:'no-store'});if(jt.ok){(await jt.text()).trim().split('\n').filter(Boolean).forEach(l=>{let j;try{j=JSON.parse(l)}catch(e){return;}const tgt=rows.find(r=>r.round===j.round&&r.eval)||rows.find(r=>r.round===j.round);if(tgt)Object.assign(tgt,j);else rows.push(j);});}}catch(e){}
+    rows.sort((a,b)=>(a.round-b.round)||((a.eval?1:0)-(b.eval?1:0)));
+    if(rows.length!==lastLen){lastLen=rows.length;lastGrow=Date.now();}
+    ALL=rows;ROWS=rows;
+    const idx=await fetch(`out/runs/${RUN}/evals/index.json`,{cache:'no-store'});const evs=idx.ok?await idx.json():[];const wasEnd=EVSEL===EVS.length-1||EVSEL<0;EVS=evs;if($('follow').checked&&wasEnd)EVSEL=EVS.length-1;
+    let done=false;try{done=(await fetch(`out/runs/${RUN}/policy_final.safetensors`,{method:'HEAD',cache:'no-store'})).ok;}catch(e){}
+    const age=(Date.now()-lastGrow)/1000,live=!done&&age<300;$('status').textContent=done?'finished':live?'live':`idle ${Math.round(age/60)}m`;$('status').className='pill '+(done?'done':live?'live':'idle');
+    $('runname').textContent=RUN;renderStats();renderTable();renderCharts();renderEv();renderTraj();
+  }catch(e){$('status').textContent='no data';$('status').className='pill idle';}}
+(async()=>{const runs=await listRuns();$('runsel').innerHTML=runs.map(r=>`<option${r===RUN?' selected':''}>${r}</option>`).join('');if(!RUN&&runs.length){RUN=runs[runs.length-1];$('runsel').value=RUN;}
+  $('runsel').onchange=e=>{RUN=e.target.value;META=null;EVS=[];EVSEL=-1;evSig='';MAN={};history.replaceState({},'',`?run=${RUN}`);poll();};
+  $('xsel').onchange=e=>{X=e.target.value;renderCharts();};$('refresh').onclick=poll;
+  $('evrange').oninput=e=>{EVSEL=+e.target.value;$('follow').checked=false;renderEv();};$('evsrc').onchange=renderEv;$('evbase').onchange=renderEv;$('evsort').onchange=renderEv;$('tjsel').onchange=renderTraj;$('tjseed').onchange=renderTraj;
+  $('bigbox').addEventListener('click',()=>$('bigbox').classList.toggle('zoom'));
+  let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(renderCharts,150);});attachHover();poll();setInterval(poll,10000);})();
+</script>
