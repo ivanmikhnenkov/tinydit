@@ -1,0 +1,431 @@
+<meta charset="utf-8">
+<title>tinydit RL</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--bg:#F1F3F4;--surf:#FFF;--surf2:#E9ECEE;--line:#DCE1E4;--tx:#14171A;--tx2:#5C6A70;--tx3:#93A0A6;
+--accent:#D6006E;--grpo:#D6006E;--dgpo:#0093B0;--ok:#0F7B6C;--warn:#B7791F;--vio:#6A4FB6;--bad:#C2413A;
+--d:'Archivo',system-ui,sans-serif;--m:'JetBrains Mono',ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1113;--surf:#171B1E;--surf2:#20262A;--line:#2B3237;
+--tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#FF3D8F;--grpo:#FF3D8F;--dgpo:#3BC9DB;--ok:#3BC9AE;--warn:#E0A030;--vio:#A78BFA;--bad:#F06A60}}
+:root[data-theme="dark"]{--bg:#0E1113;--surf:#171B1E;--surf2:#20262A;--line:#2B3237;
+--tx:#E9EDEF;--tx2:#98A6AC;--tx3:#66757C;--accent:#FF3D8F;--grpo:#FF3D8F;--dgpo:#3BC9DB;--ok:#3BC9AE;--warn:#E0A030;--vio:#A78BFA;--bad:#F06A60}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:var(--d);-webkit-font-smoothing:antialiased;font-size:15px}
+.wrap{max-width:1680px;margin:0 auto;padding:0 22px}
+.mono{font-family:var(--m)}
+header{border-bottom:1px solid var(--line);background:var(--surf);position:sticky;top:0;z-index:40}
+.hd{display:flex;align-items:center;gap:16px;padding:12px 0;flex-wrap:wrap}
+.brand{font-weight:800;font-size:17px;letter-spacing:-.02em}
+.brand span{color:var(--accent)}
+.brand em{font-style:normal;font-weight:500;color:var(--tx2);font-size:14px;margin-left:6px}
+.grow{flex:1}
+select,button{font-family:var(--m);font-size:12px;padding:6px 10px;border:1px solid var(--line);
+background:var(--bg);color:var(--tx);cursor:pointer;border-radius:3px}
+button:hover{border-color:var(--accent)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+a.lnk{font-family:var(--m);font-size:11px;color:var(--tx2);text-decoration:none}
+a.lnk:hover{color:var(--accent)}
+.pill{font-family:var(--m);font-size:10.5px;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--tx2)}
+.pill.live{color:#fff;background:var(--ok);border-color:var(--ok)}
+.pill.idle{color:var(--warn);border-color:var(--warn)}
+.pill.done{color:var(--tx2);background:var(--surf2)}
+/* run toggles */
+.runs{display:flex;gap:8px;flex-wrap:wrap;padding:0 0 12px}
+.rt{display:flex;align-items:center;gap:7px;font-family:var(--m);font-size:11px;padding:5px 10px;border:1px solid var(--line);
+border-radius:3px;background:var(--bg);cursor:pointer;user-select:none}
+.rt input{accent-color:var(--accent);margin:0}
+.rt i{width:14px;height:0;border-top:3px solid;display:inline-block}
+.rt i.dash{border-top-style:dashed;border-top-width:2px}
+.rt.off{opacity:.45}
+main{padding:20px 0 60px}
+.sec{margin-bottom:26px}
+h2{font-size:12px;font-family:var(--m);letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);margin:0 0 10px;font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:1200px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surf);border:1px solid var(--line);border-radius:4px;padding:12px 13px 8px;position:relative}
+.card.wide{grid-column:span 1}
+.ch{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px;padding-right:24px}
+.ct{font-size:12.5px;font-weight:600}
+.cd{font-family:var(--m);font-size:9.5px;color:var(--tx3);letter-spacing:.06em;text-transform:uppercase}
+.lg{display:flex;flex-wrap:wrap;gap:3px 12px;font-family:var(--m);font-size:9.5px;color:var(--tx3);margin-bottom:6px;min-height:12px;line-height:12px}
+.lg i{display:inline-block;width:12px;height:0;border-top:2px solid var(--tx3);margin-right:4px;vertical-align:middle;font-style:normal}
+.lg i.dash{border-top-style:dashed}
+.lg b{color:var(--tx2);font-weight:500}
+canvas{width:100%;height:170px;display:block}
+button.i,.i{width:16px;height:16px;padding:0;border-radius:50%;border:1px solid var(--tx3);color:var(--tx3);background:transparent;
+font-size:10px;line-height:14px;text-align:center;cursor:help;position:relative;flex:none;font-family:var(--m);font-weight:600;display:inline-block}
+.i:hover,.i.open,.i:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
+.card>.i.tr{position:absolute;top:9px;right:9px;z-index:2}
+.i .tip{display:none;position:absolute;left:50%;transform:translateX(-50%);top:22px;width:320px;
+background:var(--tx);color:var(--bg);padding:10px 12px;border-radius:4px;font-size:11.5px;
+line-height:1.55;font-family:var(--d);z-index:60;text-align:left;font-weight:400;box-shadow:0 6px 18px rgba(0,0,0,.22);cursor:default}
+.i.tr .tip{left:auto;right:0;transform:none}
+.i:hover .tip,.i:focus-visible .tip,.i.open .tip{display:block}
+.i .tip b{color:var(--bg)}
+.i .tip .dir{display:block;margin-top:6px;font-family:var(--m);font-size:10px;letter-spacing:.06em;text-transform:uppercase;opacity:.75}
+.lgd{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:10px;font-family:var(--m);font-size:10.5px;color:var(--tx2)}
+.lgd i{width:14px;height:0;display:inline-block;margin-right:5px;vertical-align:middle;border-top:3px solid var(--tx3)}
+.lgd i.g{border-top-color:var(--grpo)}.lgd i.d{border-top-color:var(--dgpo)}
+.lgd i.dsh{border-top:2px dashed var(--tx2)}
+.lgd i.dot{width:6px;height:6px;border:0;border-radius:50%;background:var(--tx2)}
+/* run table */
+.tw{overflow-x:auto}
+table.rt2{width:100%;border-collapse:collapse;font-family:var(--m);font-size:11.5px;background:var(--surf);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.rt2 th{text-align:left;font-weight:500;color:var(--tx3);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--surf2);white-space:nowrap}
+.rt2 td{padding:7px 12px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+.rt2 tr:last-child td{border-bottom:0}
+.rt2 td.n,.rt2 th.n{text-align:right}
+.rt2 td.name{font-family:var(--d);font-size:12.5px}
+.rt2 td.name i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:8px;vertical-align:-1px}
+/* side-by-side strip */
+.scrub{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.scrub input[type=range]{flex:1;accent-color:var(--accent);height:20px;cursor:pointer}
+.scrub span{font-size:11px;color:var(--tx2);min-width:200px;text-align:right;font-variant-numeric:tabular-nums}
+.strip{display:flex;flex-direction:column;gap:8px}
+.srow{background:var(--surf);border:1px solid var(--line);border-radius:4px;padding:8px}
+.srow .lab{display:flex;justify-content:space-between;gap:12px;font-family:var(--m);font-size:11px;color:var(--tx2);margin-bottom:6px;flex-wrap:wrap}
+.srow .lab b{color:var(--tx);font-weight:600}
+.srow .lab i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.srow img{display:block;width:100%;height:auto;background:var(--surf2);cursor:zoom-in}
+.srow.zoom{overflow:auto}.srow.zoom img{width:auto;max-width:none;cursor:zoom-out}
+.film{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.fr{flex:none;border:1px solid var(--line);background:var(--surf);cursor:pointer;border-radius:3px;overflow:hidden}
+.fr:hover{border-color:var(--accent)}.fr.sel{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.fr img{display:block;height:54px;width:auto}
+.fr span{display:block;font-family:var(--m);font-size:9px;color:var(--tx3);padding:2px 6px;text-align:center;white-space:nowrap}
+.evgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:9px;margin-top:10px}
+.evcard{background:var(--surf);border:1px solid var(--line);display:flex;flex-direction:column;border-radius:3px;overflow:hidden}
+.evcard .ims{display:flex}.evcard .ims a{flex:1;display:block}.evcard .ims img{width:100%;height:auto;display:block;background:var(--surf2);cursor:zoom-in}
+.evcard .ims .b{border-right:1px dashed var(--line)}
+.evcard figcaption{padding:6px 8px 8px;font-size:11.5px;line-height:1.4;color:var(--tx2)}
+.evcard .sc{font-family:var(--m);font-size:10px;color:var(--tx2);display:flex;gap:8px;flex-wrap:wrap;margin-top:3px}
+.evcard .sc b{font-weight:500;color:var(--tx)}
+.evcard .sc .up{color:var(--ok)}.evcard .sc .dn{color:var(--bad)}
+.evhd{display:flex;justify-content:space-between;align-items:baseline;background:var(--accent);color:#fff;padding:6px 11px;font-family:var(--m);font-size:11px;letter-spacing:.04em;gap:12px;flex-wrap:wrap;margin-top:12px}
+select{font-family:var(--m);font-size:12px;padding:5px 9px;border:1px solid var(--line);background:var(--bg);color:var(--tx);border-radius:3px}
+.hint{font-family:var(--m);font-size:10px;color:var(--tx3);margin-top:8px;line-height:1.5}
+.empty{font-family:var(--m);font-size:11px;color:var(--tx3);padding:20px;border:1px dashed var(--line);border-radius:4px}
+</style>
+
+<header><div class="wrap"><div class="hd">
+  <div class="brand">tiny<span>dit</span><em>RL post-training</em></div>
+  <span id="status" class="pill">connecting</span>
+  <div class="grow"></div>
+  <label class="mono" style="font-size:10.5px;color:var(--tx3)">x-axis
+    <select id="xsel"><option value="gpu_hours">GPU-hours</option><option value="samples">samples</option><option value="round">rounds</option></select></label>
+  <a class="lnk" href="rl2_dashboard.html">stage 2 →</a>
+  <a class="lnk" href="dashboard.html">pretraining dashboard →</a>
+  <button id="refresh">Refresh</button>
+</div>
+<div class="runs" id="runs"></div>
+</div></header>
+
+<main><div class="wrap">
+  <div class="sec">
+    <h2>Runs</h2>
+    <div class="tw" id="runtable"></div>
+    <div class="hint">Every run starts from the same pretrained weights (400k-step EMA) and the same optimiser settings; only the
+      sampler and the update rule differ. <b>GPU-hours</b> is CUDA-synchronised train time (rollout + decode/reward + update);
+      evaluation is off the clock. Rollout kB is measured on the training sampler (SDE for Flow-GRPO, ODE for DGPO); eval kB on
+      the deployment sampler (20-step ODE, CFG 4) over all 45 prompts, so eval is what a user of the weights would get.</div>
+  </div>
+
+  <div class="sec">
+    <h2>Metrics</h2>
+    <div class="lgd">
+      <span><i class="g"></i>Flow-GRPO</span><span><i class="d"></i>DGPO</span>
+      <span><i></i>compressibility</span><span><i class="dsh"></i>incompressibility</span>
+      <span><i class="dot"></i>evaluation points</span>
+      <span class="mono" style="color:var(--tx3)">hover a chart for values · ⓘ explains each metric</span>
+    </div>
+    <div class="grid" id="charts"></div>
+  </div>
+
+  <div class="sec" id="evsec">
+    <h2>Fixed held-out prompts over training <span id="evinfo" class="pill"></span></h2>
+    <div class="lgd"><span>run</span><select id="evrun"></select><span>source</span><select id="evsrc"><option value="">all</option></select>
+      <label class="mono" style="font-size:10.5px"><input type="checkbox" id="evbase" checked> show the baseline (round 0) next to each image</label>
+      <span class="mono" style="color:var(--tx3)">a = 8B alignment · r = probe realism · q = HPSv3 · n = anatomy · j = 9B judge (post hoc)</span></div>
+    <div class="scrub"><input type="range" id="evrange" min="0" max="0" value="0" step="1"><span class="mono" id="evlab">—</span></div>
+    <div class="film" id="evfilm"></div>
+    <div id="evgrid"></div>
+    <div class="hint">Every evaluation renders the same 125 prompts (45 animals, 40 hand-written, 40 held-out captions) with the same seeds and the 20-step sampler, so a
+      card shows exactly what changed for that prompt. Scores under each image are the reward's own terms on that image; the 9B judge appears once
+      scripts/rl/judge_evals.py has run. Click an image for full size.</div>
+  </div>
+
+  <div class="sec">
+    <h2>Same GPU-hours, side by side <span id="stripinfo" class="pill"></span></h2>
+    <div class="scrub"><input type="range" id="hrange" min="0" max="0" value="0" step="0.01"><span class="mono" id="hlab">—</span></div>
+    <div class="strip" id="strip"></div>
+    <div class="hint">The 16 fixed prompts (one seed) rendered with the 20-step ODE sampler by each run's latest evaluation at or before the
+      selected GPU-hours, so the rows compare equal compute, not equal rounds. The first row is the base model before any RL.
+      Click a row to see it at native size.</div>
+  </div>
+</div></main>
+
+<script>
+const $=id=>document.getElementById(id);
+const ALG={grpo:{label:'Flow-GRPO',v:'--grpo'},dgpo:{label:'DGPO',v:'--dgpo'}};
+const OBJ={compress:{label:'compress',dash:0},incompress:{label:'incompress',dash:1}};
+const XL={gpu_hours:'GPU-hours',samples:'samples',round:'rounds'};
+const CHARTS=[
+ {id:'kbc',t:'Compressibility · JPEG kB',obj:'compress',fmt:1,keys:[{key:'kb',label:'rollout'},{key:'eval_kb',label:'eval · 20-step ODE',dots:1}],
+  tip:'The objective: JPEG size at quality 95 of the decoded 256×256 image, in kB (reward = −kB). <b>rollout</b> is the mean over the 256 images a round '
+     +'trains on, drawn with the algorithm\'s own sampler (Flow-GRPO\'s SDE adds noise and inflates the number a little). <b>eval</b> (dots) is the 20-step '
+     +'ODE sampler over all 45 prompts, what a user of the weights would get. The pretrained model sits around 25–35 kB; a flat grey square is ~2 kB.'
+     +'<span class="dir">lower is the goal · x = GPU-hours by default</span>'},
+ {id:'kbi',t:'Incompressibility · JPEG kB',obj:'incompress',fmt:1,keys:[{key:'kb',label:'rollout'},{key:'eval_kb',label:'eval · 20-step ODE',dots:1}],
+  tip:'Same measurement, opposite sign (reward = +kB). Texture, noise and high-frequency detail push it up; DDPO reports images turning into '
+     +'busy, high-contrast textures. Same rollout / eval split as the compressibility chart.<span class="dir">higher is the goal</span>'},
+ {id:'gstd',t:'Reward spread inside a group',fmt:2,keys:[{key:'group_std'}],
+  tip:'Standard deviation of kB among the 16 images of one prompt, averaged over the 16 prompts of the round. This is the signal both algorithms feed on: '
+     +'advantages are differences inside a group. When it collapses the policy has become deterministic for the prompt and learning stalls; '
+     +'when it grows the policy is exploring.<span class="dir">reference only</span>'},
+ {id:'pick',t:'PickScore · eval prompts',fmt:2,keys:[{key:'eval_pickscore',dots:1}],
+  tip:'PickScore of the evaluation images (20-step ODE, 45 prompts × 2 seeds). Neither objective rewards it, so this is the price of the reward: '
+     +'how much human-preference quality each algorithm gives up per kB gained. Compare runs at equal GPU-hours <i>and</i> equal kB.'
+     +'<span class="dir">higher is better</span>'},
+ {id:'clip',t:'CLIP score · eval prompts',fmt:3,keys:[{key:'eval_clip',dots:1}],
+  tip:'CLIP ViT-B/32 image–text cosine on the evaluation images: does the animal still show up? A run that reaches 3 kB by drawing grey squares '
+     +'loses this; one that draws a flat cartoon of the animal keeps it.<span class="dir">higher is better</span>'},
+ {id:'kl',t:'Distance to the reference',fmt:4,log:true,keys:[{key:'kl'}],
+  tip:'The regulariser each algorithm carries, as computed in its own loss. <b>Flow-GRPO</b>: Gaussian KL between the current and the reference step '
+     +'means, ‖μ−μ_ref‖²/(2σ²), averaged over dimensions and the 10 steps (weight 0.004). <b>DGPO</b>: ‖v−v_ref‖² at the re-noised training timestep '
+     +'(weight 0.02). Different quantities, so compare the shape of each curve with itself, not the two levels.<span class="dir">log scale</span>'},
+ {id:'loss',t:'Update loss',fmt:4,keys:[{key:'loss'}],
+  tip:'Flow-GRPO: the clipped PPO surrogate plus KL, averaged over the 10 steps; it hovers near zero by construction (advantages are zero-mean) and '
+     +'its level says little. DGPO: sigmoid-gated Σ A·L_dsm plus KL. Watch for spikes, not the trend.<span class="dir">reference only</span>'},
+ {id:'cf',t:'Trust-region clipping',fmt:1,pct:true,keys:[{key:'clipfrac'}],
+  tip:'Fraction of samples the trust region switched off. Flow-GRPO: |ratio − 1| > 1e-4 on the per-step density ratio. DGPO: implicit ratio '
+     +'exp(L_old − L_θ) past 1e-2 in the advantage\'s direction. Each sample is used once per round, so clipping only comes from drift within the '
+     +'round\'s four optimizer steps; a high fraction means the learning rate is too aggressive for that algorithm.<span class="dir">low is healthy</span>'},
+ {id:'w',t:'DGPO gate σ(margin)',fmt:3,opt:true,keys:[{key:'w'}],
+  tip:'The sigmoid in front of DGPO\'s gradient, averaged over groups. 0.5 at the start (policy = reference); it falls toward 0 as the policy separates '
+     +'positive from negative samples more than the reference does, which is the DPO mechanism that slows learning once the preference is satisfied.'
+     +'<span class="dir">reference only</span>'},
+ {id:'ratio',t:'GRPO density ratio',fmt:5,opt:true,keys:[{key:'ratio'}],
+  tip:'Mean exp(log π_θ − log π_old) over samples and steps, with log-densities averaged over the 32×32×32 latent dimensions. Should sit at 1.0000 ± '
+     +'a few 1e-4; the clip range is 1e-4.<span class="dir">≈ 1 is healthy</span>'},
+ {id:'gn',t:'Gradient norm',fmt:3,keys:[{key:'gnorm'}],
+  tip:'Global L2 norm of the gradient before clipping at 1.0, averaged over the round\'s optimizer steps.<span class="dir">stable is good</span>'},
+ {id:'terms',t:'Reward terms · rollout',fmt:3,opt:true,keys:[{key:'align',label:'align P(yes)'},{key:'real',label:'real P'},{key:'anatomy',label:'anatomy 1−P(err)'}],
+  tip:'Stage-2 reward terms on the 256 training samples of each round, before normalisation: <b>align</b> = Qwen3-VL-8B P(yes) to "does this image show the prompt?", <b>real</b> = the DINOv2 real-vs-render probe, <b>anatomy</b> = 1 − P(yes) to "anatomical errors?". Rising means the policy finds images the reward likes; the eval charts say whether a human would agree.<span class="dir">higher is better</span>'},
+ {id:'qual',t:'Quality term · rollout (HPSv3 μ)',fmt:2,opt:true,keys:[{key:'quality'}],
+  tip:'HPSv3 μ on the training samples (or HPSv2.1 if that quality model was chosen). Remember it prefers renders: watch it together with the realism term.<span class="dir">higher is better</span>'},
+ {id:'gstd2',t:'Spread inside a group · per term',fmt:3,opt:true,keys:[{key:'gstd_align',label:'align'},{key:'gstd_real',label:'real'},{key:'gstd_anatomy',label:'anatomy'}],
+  tip:'Standard deviation of each term over the 16 samples of a prompt, averaged over the 16 prompts. The signal each term contributes; when one collapses it stops teaching.<span class="dir">reference only</span>'},
+ {id:'style',t:'Style-drift guard · rollout',fmt:3,opt:true,keys:[{key:'style'}],
+  tip:'The fifth reward term: 0 while a sample\'s saturation, contrast and sharpness stay inside the base model\'s range, negative beyond its 90th percentile (in base-std units). Its mean over the round: 0 is healthy; a slide below −0.2 means the policy is pushing into the preference model\'s exits and the guard is holding.<span class="dir">0 is healthy</span>'},
+ {id:'veto',t:'Vetoed samples',fmt:1,pct:true,opt:true,keys:[{key:'veto'}],
+  tip:'Fraction of rollout samples that hit the veto (blank / noise image, or alignment P(yes) below 0.02) and were given the group minimum.<span class="dir">0 is healthy</span>'},
+ {id:'ev_align',t:'Eval · alignment by prompt source',fmt:3,opt:true,keys:[{key:'eval_align',label:'all',dots:1},{key:'eval_align_animal',label:'45 animals',dots:1},{key:'eval_align_hand_usual',label:'usual',dots:1},{key:'eval_align_hand_unusual',label:'unusual',dots:1},{key:'eval_align_heldout_real',label:'held-out captions',dots:1}],
+  tip:'The 8B alignment probability on the fixed, never-trained-on evaluation prompts (20-step ODE, 2 seeds), split by prompt family. The unusual prompts and the long held-out captions are where the base model is weakest.<span class="dir">higher is better</span>'},
+ {id:'ev_real',t:'Eval · realism',fmt:3,opt:true,keys:[{key:'eval_real',label:'DINO probe P(real)',dots:1},{key:'j_real',label:'9B "real photograph?"',dots:1,dash:1},{key:'j_aislop',label:'9B "AI look?"',dots:1,dash:1}],
+  tip:'Realism on the evaluation images: the training-time probe, and the held-out Qwen3.5-9B judge (added post hoc by scripts/rl/judge_evals.py). "AI look?" should go <i>down</i>; if the probe rises while the 9B disagrees, the policy is gaming the probe.<span class="dir">probe and "real" up, "AI look" down</span>'},
+ {id:'ev_qa',t:'Eval · quality and anatomy',fmt:3,opt:true,keys:[{key:'eval_anatomy',label:'anatomy 1−P(err)',dots:1},{key:'eval_quality',label:'HPSv3 μ ÷ 10',dots:1,scale:0.1}],
+  tip:'The two weak terms measured on evaluation images. Anatomy is the 8B\'s own question; HPSv3 μ is divided by 10 to share the axis.<span class="dir">higher is better</span>'},
+ {id:'ev_j',t:'Judge (9B) · alignment by source',fmt:3,opt:true,keys:[{key:'j_align',label:'all',dots:1},{key:'j_align_hand_unusual',label:'unusual',dots:1},{key:'j_align_heldout_real',label:'held-out captions',dots:1},{key:'j_align_animal',label:'animals',dots:1}],
+  tip:'Qwen3.5-9B\'s answer to "does this image show the prompt?" on the same evaluation images, never used as a reward. Agreement with the 8B curve means the gain is real; divergence means the 8B is being gamed.<span class="dir">higher is better</span>'},
+ {id:'ev_px',t:'Eval · saturation and contrast',fmt:3,opt:true,keys:[{key:'eval_px_sat',label:'mean saturation',dots:1},{key:'eval_px_contrast',label:'contrast',dots:1}],
+  tip:'Pixel statistics of the evaluation images: mean HSV saturation and grey-level standard deviation, both 0–1. Base model ≈ 0.34 / 0.20. A climb here is the classic preference-model hack (HDR, oversaturation).<span class="dir">stable is good</span>'},
+ {id:'ev_sharp',t:'Eval · sharpness',fmt:0,opt:true,keys:[{key:'eval_px_sharp',label:'Laplacian variance',dots:1}],
+  tip:'Laplacian variance of the grey image, a sharpness proxy (base ≈ 1,900). Rising sharply with rising saturation means "crunchy" over-sharpening.<span class="dir">stable is good</span>'},
+ {id:'ev_fd',t:'Eval · FD-DINOv2 vs real photos',fmt:1,opt:true,keys:[{key:'eval_fd_dino',dots:1}],
+  tip:'Fréchet distance in DINOv2 space between the evaluation images and 2,000 real photographs (COCO val + Pexels). The prompts are not caption-matched, so only the trend matters: down = more photo-like distribution.<span class="dir">lower is better</span>'},
+ {id:'ev_fid',t:'Eval · FID vs real photos',fmt:1,opt:true,keys:[{key:'eval_fid',dots:1}],
+  tip:'Same comparison in Inception space. Trend only.<span class="dir">lower is better</span>'},
+ {id:'ev_clip',t:'Eval · CLIP score',fmt:3,opt:true,keys:[{key:'eval_clip',dots:1}],
+  tip:'CLIP ViT-B/32 cosine on the evaluation images: the floor against subject drift. It should not fall.<span class="dir">higher is better</span>'},
+ {id:'sps',t:'Samples per train-second',fmt:1,keys:[{key:'sps'}],
+  tip:'256 samples divided by the round\'s rollout + reward + update time. This is where DGPO\'s speed claim lives: the ODE rollout is the same '
+     +'cost, but its update touches one timestep per sample instead of ten. The rounds-per-hour ratio between the two algorithms is this ratio.'
+     +'<span class="dir">higher is better</span>'},
+];
+let RUNS=[], X='gpu_hours', H=0, lastGrowAny=0;
+
+$('charts').innerHTML=CHARTS.map(c=>`<div class="card" id="card_${c.id}"${c.opt?' style="display:none"':''}>
+  <button class="i tr" type="button" aria-label="About ${c.t}" aria-expanded="false"><span aria-hidden="true">i</span><span class="tip" role="tooltip">${c.tip}</span></button>
+  <div class="ch"><span class="ct">${c.t}</span><span class="cd" id="x_${c.id}"></span></div>
+  <div class="lg" id="s_${c.id}"></div><canvas id="c_${c.id}"></canvas></div>`).join('');
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.i');
+  document.querySelectorAll('.i.open').forEach(o=>{if(o!==b){o.classList.remove('open');o.setAttribute('aria-expanded','false');}});
+  if(b&&!e.target.closest('.tip')){const on=!b.classList.contains('open');b.classList.toggle('open',on);b.setAttribute('aria-expanded',on?'true':'false');}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.i.open').forEach(o=>{o.classList.remove('open');o.setAttribute('aria-expanded','false');});});
+
+const cs=()=>getComputedStyle(document.documentElement), col=v=>cs().getPropertyValue(v).trim();
+const fmtV=(c,v)=>{if(v==null||isNaN(v))return '—'; if(c.pct)return (100*v).toFixed(c.fmt)+'%'; return (+v).toFixed(c.fmt);};
+const fmtX=v=>X==='gpu_hours'?(+v).toFixed(2)+' h':X==='samples'?(+v).toLocaleString():'round '+v;
+const runLabel=r=>`${ALG[r.alg]?ALG[r.alg].label:r.alg} · ${r.obj}`;
+
+function seriesFor(c){
+  const out=[];
+  RUNS.filter(r=>r.on&&(!c.obj||r.obj===c.obj)).forEach(r=>c.keys.forEach(k=>{
+    const pts=r.rows.filter(row=>row[k.key]!=null&&isFinite(row[k.key])&&row[X]!=null).map(row=>({x:+row[X],y:+row[k.key]*(k.scale||1)}));
+    out.push({run:r,key:k.key,pts,label:(c.obj?ALG[r.alg].label:runLabel(r))+(c.keys.length>1?' · '+k.label:''),
+              c:ALG[r.alg]?ALG[r.alg].v:'--tx2',dash:c.obj?(k.dots?1:0):OBJ[r.obj]?OBJ[r.obj].dash:0,dots:!!k.dots});}));
+  return out;
+}
+function draw(c){
+  const cv=$('c_'+c.id),dpr=devicePixelRatio||1,W=cv.clientWidth,Hh=cv.clientHeight;
+  if(!W)return; cv.width=W*dpr;cv.height=Hh*dpr;
+  const g=cv.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.clearRect(0,0,W,Hh);
+  const S=seriesFor(c).map(s=>({...s,pts:s.pts.map(p=>({x:p.x,y:c.log?Math.log10(Math.max(p.y,1e-6)):p.y}))}));
+  const allp=S.flatMap(s=>s.pts);
+  if(!allp.length){g.fillStyle=col('--tx3');g.font='11px monospace';g.fillText('no data yet',8,Hh/2);cv._st=null;return;}
+  const x0=Math.min(...allp.map(p=>p.x)),x1=Math.max(...allp.map(p=>p.x));
+  let y0=Math.min(...allp.map(p=>p.y)),y1=Math.max(...allp.map(p=>p.y));
+  if(y1-y0<1e-9){y0-=.5;y1+=.5;} const pd=(y1-y0)*.1;y0-=pd;y1+=pd;
+  const PL=46,PR=8,PT=8,PB=16;
+  const Xp=v=>PL+(v-x0)/Math.max(x1-x0,1e-9)*(W-PL-PR), Yp=v=>Hh-PB-(v-y0)/(y1-y0)*(Hh-PT-PB);
+  g.strokeStyle=col('--line');g.lineWidth=1;g.font='9px monospace';g.fillStyle=col('--tx3');
+  const tick=yv=>{const raw=c.log?Math.pow(10,yv):yv; if(c.pct)return (100*raw).toFixed(0)+'%';
+    if(c.log)return raw.toExponential(0); return Math.abs(yv)>=1000?yv.toExponential(1):yv.toPrecision(3);};
+  for(let i=0;i<=3;i++){const yv=y0+(y1-y0)*i/3,y=Yp(yv);g.beginPath();g.moveTo(PL,y);g.lineTo(W-PR,y);g.stroke();g.fillText(tick(yv),3,y+3);}
+  S.forEach(s=>{const pts=s.pts; if(!pts.length)return; const cc=col(s.c);
+    if(s.dots||pts.length<8){pts.forEach(q=>{g.fillStyle=cc;g.beginPath();g.arc(Xp(q.x),Yp(q.y),2.6,0,7);g.fill();});}
+    g.strokeStyle=cc;g.lineWidth=s.dots?1:1.7;if(s.dash)g.setLineDash([5,3]);
+    g.beginPath();pts.forEach((q,i)=>i?g.lineTo(Xp(q.x),Yp(q.y)):g.moveTo(Xp(q.x),Yp(q.y)));g.stroke();g.setLineDash([]);});
+  g.fillStyle=col('--tx3');g.fillText(fmtX(x0),PL,Hh-4);const lb=fmtX(x1);g.fillText(lb,W-PR-lb.length*5.4,Hh-4);
+  if(cv._hx!=null){
+    const near=[];S.forEach((s,si)=>{let b=null,bd=1e9;s.pts.forEach(q=>{const d=Math.abs(Xp(q.x)-cv._hx);if(d<bd){bd=d;b=q;}});if(b&&bd<40)near.push({si,q:b});});
+    if(near.length){const px=Xp(near[0].q.x);
+      g.strokeStyle=col('--tx3');g.setLineDash([2,3]);g.lineWidth=1;g.beginPath();g.moveTo(px,PT);g.lineTo(px,Hh-PB);g.stroke();g.setLineDash([]);
+      near.forEach(({si,q})=>{g.fillStyle=col(S[si].c);g.beginPath();g.arc(Xp(q.x),Yp(q.y),3,0,7);g.fill();});
+      const lines=[fmtX(near[0].q.x)].concat(near.map(({si,q})=>S[si].label+'  '+fmtV(c,c.log?Math.pow(10,q.y):q.y)));
+      g.font='10px monospace';const LH=13,bw=Math.max(...lines.map(l=>g.measureText(l).width))+12,bh=lines.length*LH+6;
+      let bx=px+8;if(bx+bw>W-PR)bx=px-8-bw;if(bx<PL)bx=PL;let by=PT;if(by+bh>Hh-PB)by=Math.max(PT,Hh-PB-bh);
+      g.fillStyle=col('--tx');g.fillRect(bx,by,bw,bh);
+      lines.forEach((l,i)=>{g.fillStyle=i?col(S[near[i-1].si].c):col('--bg');g.fillText(l,bx+6,by+LH*(i+1)-2);});}
+  }
+}
+function renderCharts(){
+  CHARTS.forEach(c=>{
+    const S=seriesFor(c), has=S.some(s=>s.pts.length);
+    if(c.opt)$('card_'+c.id).style.display=has?'':'none';
+    if(c.opt&&!has)return;
+    $('x_'+c.id).textContent='x = '+XL[X];
+    draw(c);
+    $('s_'+c.id).innerHTML=S.filter(s=>s.pts.length).map(s=>{const last=s.pts[s.pts.length-1];
+      return `<span><i class="${s.dash?'dash':''}" style="border-top-color:var(${s.c})"></i>${s.label} <b>${fmtV(c,last.y)}</b></span>`;}).join('');
+  });
+}
+function attachHover(){CHARTS.forEach(c=>{const cv=$('c_'+c.id);if(cv._hooked)return;cv._hooked=1;
+  cv.addEventListener('mousemove',e=>{cv._hx=e.clientX-cv.getBoundingClientRect().left;draw(c);});
+  cv.addEventListener('mouseleave',()=>{cv._hx=null;draw(c);});cv.style.cursor='crosshair';});}
+
+function renderRuns(){
+  $('runs').innerHTML=RUNS.map((r,i)=>`<label class="rt${r.on?'':' off'}"><input type="checkbox" data-i="${i}"${r.on?' checked':''}>
+    <i class="${OBJ[r.obj]&&OBJ[r.obj].dash?'dash':''}" style="border-top-color:var(${ALG[r.alg]?ALG[r.alg].v:'--tx2'})"></i>${r.name}</label>`).join('');
+  [...$('runs').querySelectorAll('input')].forEach(el=>el.onchange=()=>{RUNS[+el.dataset.i].on=el.checked;
+    history.replaceState({},'',`?runs=${RUNS.filter(r=>r.on).map(r=>r.name).join(',')}`);renderRuns();renderAll();});
+  const f=(v,d)=>v==null||isNaN(v)?'—':(+v).toFixed(d);
+  const rows=RUNS.map(r=>{const L=r.rows.filter(x=>x.kb!=null).slice(-1)[0]||{}, E=r.rows.filter(x=>x.eval_kb!=null).slice(-1)[0]||{};
+    const age=(Date.now()-r.lastGrow)/1000, st=r.done?'done':(age<300?'live':`idle ${Math.round(age/60)}m`);
+    return `<tr><td class="name"><i style="background:var(${ALG[r.alg]?ALG[r.alg].v:'--tx2'})"></i>${r.name}</td><td>${ALG[r.alg]?ALG[r.alg].label:r.alg}</td><td>${r.obj}</td>
+      <td class="n">${(L.round||0).toLocaleString()}</td><td class="n">${(L.samples||0).toLocaleString()}</td><td class="n">${f(L.gpu_hours,2)}</td>
+      <td class="n">${L.t_rollout!=null?`${f(L.t_rollout,1)} + ${f(L.t_reward,1)} + ${f(L.t_update,1)}`:'—'}</td>
+      <td class="n">${f(L.kb,1)}</td><td class="n">${f(E.eval_kb,1)}</td><td class="n">${f(E.eval_pickscore,2)}</td><td class="n">${f(E.eval_clip,3)}</td>
+      <td><span class="pill ${st==='done'?'done':(st==='live'?'live':'idle')}">${st}</span></td></tr>`;}).join('');
+  $('runtable').innerHTML=RUNS.length?`<table class="rt2"><thead><tr><th>run</th><th>algorithm</th><th>objective</th><th class="n">rounds</th><th class="n">samples</th>
+    <th class="n">GPU-h</th><th class="n">s / round (rollout + reward + update)</th><th class="n">rollout kB</th><th class="n">eval kB</th><th class="n">PickScore</th><th class="n">CLIP</th><th>status</th></tr></thead><tbody>${rows}</tbody></table>`
+    :'<div class="empty">no RL runs under out/runs/ yet (runs whose meta.json has "rl": true)</div>';
+  const live=RUNS.some(r=>!r.done&&(Date.now()-r.lastGrow)/1000<300);
+  $('status').textContent=RUNS.length?(live?'live':'idle'):'no runs';$('status').className='pill '+(live?'live':'idle');
+}
+function renderStrip(){
+  const on=RUNS.filter(r=>r.on&&r.evals.length);
+  const maxH=Math.max(0,...on.map(r=>r.evals[r.evals.length-1].gpu_hours||0));
+  const rg=$('hrange'); rg.max=maxH.toFixed(2); if(+rg.value>maxH||rg._follow!==false)rg.value=maxH.toFixed(2);
+  H=+rg.value; $('hlab').textContent=`${H.toFixed(2)} GPU-hours`; $('stripinfo').textContent=on.length?`${on.length} runs`:'';
+  const base=on.find(r=>r.evals[0]&&r.evals[0].round===0);
+  const rowsHtml=[];
+  if(base){const e=base.evals[0];rowsHtml.push(row('base model · before RL',null,e,base));}
+  on.forEach(r=>{let e=null;for(const x of r.evals){if((x.gpu_hours||0)<=H+1e-9)e=x;}
+    rowsHtml.push(e?row(runLabel(r),r,e,r):`<div class="srow"><div class="lab"><span><i style="background:var(${ALG[r.alg].v})"></i><b>${runLabel(r)}</b></span><span>no evaluation yet</span></div></div>`);});
+  function row(lbl,r,e,src){const sw=r?`<i style="background:var(${ALG[r.alg].v})"></i>`:'';
+    return `<div class="srow"><div class="lab"><span>${sw}<b>${lbl}</b></span><span>round ${e.round.toLocaleString()} · ${(e.gpu_hours||0).toFixed(2)} h · ${(e.samples||0).toLocaleString()} samples · ${(+e.eval_kb).toFixed(1)} kB${e.eval_pickscore!=null?' · Pick '+(+e.eval_pickscore).toFixed(2):''}${e.eval_clip!=null?' · CLIP '+(+e.eval_clip).toFixed(3):''}</span></div><img loading="lazy" src="out/runs/${src.name}/${e.file}" alt="${lbl}"></div>`;}
+  const html=rowsHtml.join('');
+  if($('strip')._html!==html){$('strip').innerHTML=html;$('strip')._html=html;
+    [...$('strip').querySelectorAll('.srow')].forEach(el=>el.onclick=()=>el.classList.toggle('zoom'));}
+}
+let EVSEL=-1, EVRUN=null, EVMAN={}, EVBASE=null;
+function evRun(){return RUNS.find(r=>r.name===EVRUN&&r.evals.length)||RUNS.find(r=>r.on&&r.evals.length&&r.evals.some(e=>e.eval_align!=null))||RUNS.find(r=>r.on&&r.evals.length);}
+async function renderEval(){
+  const sec=$('evsec'); const cands=RUNS.filter(r=>r.evals.length);
+  $('evrun').innerHTML=cands.map(r=>`<option value="${r.name}"${(evRun()||{}).name===r.name?' selected':''}>${r.name}</option>`).join('');
+  const r=evRun(); if(!r){sec.style.display='none';return;} sec.style.display=''; EVRUN=r.name;
+  const evs=r.evals; if(EVSEL<0||EVSEL>=evs.length)EVSEL=evs.length-1;
+  $('evfilm').innerHTML=evs.map((e,i)=>`<div class="fr${i===EVSEL?' sel':''}" data-e="${i}"><img loading="lazy" src="out/runs/${r.name}/${e.file}" alt=""><span>r${e.round} · ${(e.gpu_hours||0).toFixed(2)}h</span></div>`).join('');
+  [...$('evfilm').querySelectorAll('.fr')].forEach(f=>f.onclick=()=>{EVSEL=+f.dataset.e;renderEval();});
+  const rg=$('evrange'); rg.max=evs.length-1; rg.value=EVSEL; const e=evs[EVSEL];
+  $('evlab').textContent=`round ${e.round} · ${(e.gpu_hours||0).toFixed(2)} GPU-h · ${(e.samples||0).toLocaleString()} samples`; $('evinfo').textContent=`${evs.length} evals`;
+  const load=async rd=>{const k=r.name+'/'+rd; if(!EVMAN[k]){try{EVMAN[k]=await (await fetch(`out/runs/${r.name}/evals/${rd}/manifest.json`,{cache:'no-store'})).json();}catch(x){EVMAN[k]=null;}} return EVMAN[k];};
+  const man=await load(e.round), base=$('evbase').checked&&e.round!==evs[0].round?await load(evs[0].round):null;
+  if(!man||!man.items){$('evgrid').innerHTML='<div class="hint">no per-image manifest for this round (stage-1 runs only have the grid)</div>';return;}
+  const srcs=[...new Set(man.items.map(it=>it.source))]; const cur=$('evsrc').value;
+  $('evsrc').innerHTML='<option value="">all sources</option>'+srcs.map(s_=>`<option value="${s_}"${s_===cur?' selected':''}>${s_}</option>`).join('');
+  const bmap={}; if(base)base.items.forEach(it=>bmap[it.id+'_'+it.seed]=it);
+  const f=(v,d)=>v==null?'—':(+v).toFixed(d), arrow=(v,b,dir)=>b==null||v==null?'':(Math.abs(v-b)<1e-6?'':((v-b)*dir>0?'<span class="up">▲</span>':'<span class="dn">▼</span>'));
+  const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  $('evgrid').innerHTML=srcs.filter(s_=>!cur||s_===cur).map(s_=>{const its=man.items.filter(it=>it.source===s_);
+    const mean=k=>its.some(it=>it[k]!=null)?(its.reduce((a,it)=>a+(+it[k]||0),0)/its.length):null;
+    const cards=its.map(it=>{const b=bmap[it.id+'_'+it.seed]; const u=`out/runs/${r.name}/evals/${e.round}/${it.file}`, ub=b?`out/runs/${r.name}/evals/${evs[0].round}/${b.file}`:null;
+      const sc=[['a','align',1,2],['r','real',1,2],['q','quality',1,1],['n','anatomy',1,2],['j','j_align',1,2]].filter(([l,k])=>it[k]!=null)
+        .map(([l,k,dir,d])=>`<span>${l} <b>${f(it[k],d)}</b>${arrow(it[k],b&&b[k],dir)}</span>`).join('');
+      return `<figure class="evcard"><div class="ims">${ub?`<a class="b" href="${ub}" target="_blank" title="baseline round ${evs[0].round}"><img loading="lazy" src="${ub}" alt=""></a>`:''}<a href="${u}" target="_blank"><img loading="lazy" src="${u}" alt=""></a></div>`
+        +`<figcaption><span class="sc">${sc}</span><div title="${esc(it.prompt)}">${esc(it.prompt).slice(0,110)}${it.prompt.length>110?' …':''}</div>`
+        +(it.describe_27b?`<div class="mono" style="font-size:10px;color:var(--tx3);margin-top:4px">27B: ${esc(it.describe_27b).slice(0,160)}</div>`:'')+`</figcaption></figure>`;}).join('');
+    return `<div class="evhd"><span>${s_} · ${its.length} images</span><span>align ${f(mean('align'),3)} · real ${f(mean('real'),3)} · HPSv3 ${f(mean('quality'),2)} · anatomy ${f(mean('anatomy'),3)}${mean('j_align')!=null?' · 9B align '+f(mean('j_align'),3):''}</span></div><div class="evgrid">${cards}</div>`;}).join('');
+}
+function renderAll(){renderCharts();renderStrip();renderEval();}
+
+async function listRuns(){
+  try{const t=await (await fetch('out/runs/',{cache:'no-store'})).text();
+    return [...t.matchAll(/href="([^"\/]+)\/"/g)].map(m=>m[1]).filter(n=>n!=='.'&&n!=='..');}catch(e){return[];}
+}
+async function discover(){
+  const want=(new URLSearchParams(location.search).get('runs')||'').split(',').filter(Boolean);
+  const names=await listRuns();
+  for(const n of names){
+    if(RUNS.some(r=>r.name===n))continue;
+    try{const m=await (await fetch(`out/runs/${n}/meta.json`,{cache:'no-store'})).json();
+      if(!m.rl)continue;
+      RUNS.push({name:n,alg:m.alg,obj:m.objective,meta:m,rows:[],evals:[],on:!want.length||want.includes(n),lastGrow:0,lastLen:-1,done:false});
+    }catch(e){}
+  }
+  RUNS.sort((a,b)=>a.name.localeCompare(b.name));
+}
+async function poll(){
+  for(const r of RUNS){
+    try{const t=await (await fetch(`out/runs/${r.name}/metrics.jsonl`,{cache:'no-store'})).text();
+      const rows=t.trim().split('\n').filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(Boolean);
+      if(rows.length!==r.lastLen){r.lastLen=rows.length;r.lastGrow=Date.now();}
+      try{const jt=await fetch(`out/runs/${r.name}/judges.jsonl`,{cache:'no-store'});
+        if(jt.ok){const jr=(await jt.text()).trim().split('\n').filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(Boolean);
+          jr.forEach(j=>{const tgt=rows.find(x=>x.round===j.round&&x.eval)||rows.find(x=>x.round===j.round); if(tgt)Object.assign(tgt,j); else rows.push(j);});}}catch(e){}
+      r.rows=rows;
+      const idx=await fetch(`out/runs/${r.name}/evals/index.json`,{cache:'no-store'}); r.evals=idx.ok?await idx.json():[];
+      const fin=await fetch(`out/runs/${r.name}/policy_final.safetensors`,{method:'HEAD',cache:'no-store'}); r.done=fin.ok;
+    }catch(e){}
+  }
+  renderRuns();renderAll();
+}
+(async()=>{
+  X=new URLSearchParams(location.search).get('x')||'gpu_hours';$('xsel').value=X;
+  $('xsel').onchange=e=>{X=e.target.value;const u=new URL(location);u.searchParams.set('x',X);history.replaceState({},'',u);renderCharts();};
+  $('refresh').onclick=async()=>{await discover();poll();};
+  $('hrange').oninput=e=>{e.target._follow=false;renderStrip();};
+  $('evrange').oninput=e=>{EVSEL=+e.target.value;renderEval();}; $('evrun').onchange=e=>{EVRUN=e.target.value;EVSEL=-1;renderEval();};
+  $('evsrc').onchange=()=>renderEval(); $('evbase').onchange=()=>renderEval();
+  $('hrange').ondblclick=e=>{e.target._follow=true;renderStrip();};
+  let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(renderCharts,150);});
+  attachHover();await discover();await poll();
+  setInterval(async()=>{await discover();poll();},10000);
+})();
+</script>

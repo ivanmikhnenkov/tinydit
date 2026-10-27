@@ -1,0 +1,649 @@
+{
+ "prompts": [
+  {
+   "id": "animal00",
+   "prompt": "a photo of a cat",
+   "source": "animal"
+  },
+  {
+   "id": "animal01",
+   "prompt": "a photo of a dog",
+   "source": "animal"
+  },
+  {
+   "id": "animal02",
+   "prompt": "a photo of a horse",
+   "source": "animal"
+  },
+  {
+   "id": "animal03",
+   "prompt": "a photo of a monkey",
+   "source": "animal"
+  },
+  {
+   "id": "animal04",
+   "prompt": "a photo of a rabbit",
+   "source": "animal"
+  },
+  {
+   "id": "animal05",
+   "prompt": "a photo of a zebra",
+   "source": "animal"
+  },
+  {
+   "id": "animal06",
+   "prompt": "a photo of a spider",
+   "source": "animal"
+  },
+  {
+   "id": "animal07",
+   "prompt": "a photo of a bird",
+   "source": "animal"
+  },
+  {
+   "id": "animal08",
+   "prompt": "a photo of a sheep",
+   "source": "animal"
+  },
+  {
+   "id": "animal09",
+   "prompt": "a photo of a deer",
+   "source": "animal"
+  },
+  {
+   "id": "animal10",
+   "prompt": "a photo of a cow",
+   "source": "animal"
+  },
+  {
+   "id": "animal11",
+   "prompt": "a photo of a goat",
+   "source": "animal"
+  },
+  {
+   "id": "animal12",
+   "prompt": "a photo of a lion",
+   "source": "animal"
+  },
+  {
+   "id": "animal13",
+   "prompt": "a photo of a tiger",
+   "source": "animal"
+  },
+  {
+   "id": "animal14",
+   "prompt": "a photo of a bear",
+   "source": "animal"
+  },
+  {
+   "id": "animal15",
+   "prompt": "a photo of a raccoon",
+   "source": "animal"
+  },
+  {
+   "id": "animal16",
+   "prompt": "a photo of a fox",
+   "source": "animal"
+  },
+  {
+   "id": "animal17",
+   "prompt": "a photo of a wolf",
+   "source": "animal"
+  },
+  {
+   "id": "animal18",
+   "prompt": "a photo of a lizard",
+   "source": "animal"
+  },
+  {
+   "id": "animal19",
+   "prompt": "a photo of a beetle",
+   "source": "animal"
+  },
+  {
+   "id": "animal20",
+   "prompt": "a photo of a ant",
+   "source": "animal"
+  },
+  {
+   "id": "animal21",
+   "prompt": "a photo of a butterfly",
+   "source": "animal"
+  },
+  {
+   "id": "animal22",
+   "prompt": "a photo of a fish",
+   "source": "animal"
+  },
+  {
+   "id": "animal23",
+   "prompt": "a photo of a shark",
+   "source": "animal"
+  },
+  {
+   "id": "animal24",
+   "prompt": "a photo of a whale",
+   "source": "animal"
+  },
+  {
+   "id": "animal25",
+   "prompt": "a photo of a dolphin",
+   "source": "animal"
+  },
+  {
+   "id": "animal26",
+   "prompt": "a photo of a squirrel",
+   "source": "animal"
+  },
+  {
+   "id": "animal27",
+   "prompt": "a photo of a mouse",
+   "source": "animal"
+  },
+  {
+   "id": "animal28",
+   "prompt": "a photo of a rat",
+   "source": "animal"
+  },
+  {
+   "id": "animal29",
+   "prompt": "a photo of a snake",
+   "source": "animal"
+  },
+  {
+   "id": "animal30",
+   "prompt": "a photo of a turtle",
+   "source": "animal"
+  },
+  {
+   "id": "animal31",
+   "prompt": "a photo of a frog",
+   "source": "animal"
+  },
+  {
+   "id": "animal32",
+   "prompt": "a photo of a chicken",
+   "source": "animal"
+  },
+  {
+   "id": "animal33",
+   "prompt": "a photo of a duck",
+   "source": "animal"
+  },
+  {
+   "id": "animal34",
+   "prompt": "a photo of a goose",
+   "source": "animal"
+  },
+  {
+   "id": "animal35",
+   "prompt": "a photo of a bee",
+   "source": "animal"
+  },
+  {
+   "id": "animal36",
+   "prompt": "a photo of a pig",
+   "source": "animal"
+  },
+  {
+   "id": "animal37",
+   "prompt": "a photo of a turkey",
+   "source": "animal"
+  },
+  {
+   "id": "animal38",
+   "prompt": "a photo of a fly",
+   "source": "animal"
+  },
+  {
+   "id": "animal39",
+   "prompt": "a photo of a llama",
+   "source": "animal"
+  },
+  {
+   "id": "animal40",
+   "prompt": "a photo of a camel",
+   "source": "animal"
+  },
+  {
+   "id": "animal41",
+   "prompt": "a photo of a bat",
+   "source": "animal"
+  },
+  {
+   "id": "animal42",
+   "prompt": "a photo of a gorilla",
+   "source": "animal"
+  },
+  {
+   "id": "animal43",
+   "prompt": "a photo of a hedgehog",
+   "source": "animal"
+  },
+  {
+   "id": "animal44",
+   "prompt": "a photo of a kangaroo",
+   "source": "animal"
+  },
+  {
+   "id": "usual00",
+   "prompt": "a golden retriever running on a beach",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual01",
+   "prompt": "a red car parked on a city street",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual02",
+   "prompt": "a bowl of fresh strawberries on a wooden table",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual03",
+   "prompt": "a horse grazing in a green meadow",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual04",
+   "prompt": "a cat sleeping on a windowsill in the sun",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual05",
+   "prompt": "a wooden cabin beside a mountain lake",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual06",
+   "prompt": "a cup of coffee and a croissant on a caf\u00e9 table",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual07",
+   "prompt": "a bicycle leaning against a brick wall",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual08",
+   "prompt": "a flock of sheep on a hillside",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual09",
+   "prompt": "a bald eagle perched on a branch",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual10",
+   "prompt": "a bowl of ramen with a soft-boiled egg",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual11",
+   "prompt": "a lighthouse on a rocky coast at sunset",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual12",
+   "prompt": "a brown bear standing in a river",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual13",
+   "prompt": "a tractor in a wheat field",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual14",
+   "prompt": "an old book and reading glasses on a desk",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual15",
+   "prompt": "a monkey sitting on a tree branch",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual16",
+   "prompt": "a fox in the snow",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual17",
+   "prompt": "a sailboat on a calm lake",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual18",
+   "prompt": "two ducks swimming in a pond",
+   "source": "hand_usual"
+  },
+  {
+   "id": "usual19",
+   "prompt": "a stack of pancakes with maple syrup and blueberries",
+   "source": "hand_usual"
+  },
+  {
+   "id": "odd00",
+   "prompt": "a bear playing football on a grass pitch",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd01",
+   "prompt": "a raccoon driving a car",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd02",
+   "prompt": "a cat wearing sunglasses reading a newspaper",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd03",
+   "prompt": "a giraffe standing in a library between bookshelves",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd04",
+   "prompt": "a penguin riding a surfboard on a wave",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd05",
+   "prompt": "an elephant painting on a canvas with its trunk",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd06",
+   "prompt": "a dog sitting at a desk typing on a laptop",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd07",
+   "prompt": "a squirrel holding a tiny umbrella in the rain",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd08",
+   "prompt": "a cow standing on a beach next to a surfboard",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd09",
+   "prompt": "a rabbit wearing a red scarf in the snow",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd10",
+   "prompt": "a fox riding a bicycle down a country road",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd11",
+   "prompt": "an owl wearing a graduation cap",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd12",
+   "prompt": "a hedgehog sitting in a teacup",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd13",
+   "prompt": "a goat standing on top of a car",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd14",
+   "prompt": "a parrot playing a piano",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd15",
+   "prompt": "a pig wearing a bow tie at a dinner table",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd16",
+   "prompt": "a tiger sleeping on a sofa in a living room",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd17",
+   "prompt": "a duck wearing rain boots",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd18",
+   "prompt": "a lion sitting in a barber chair",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "odd19",
+   "prompt": "a kangaroo playing basketball",
+   "source": "hand_unusual"
+  },
+  {
+   "id": "real00",
+   "prompt": "a forested area with a stop sign placed among the trees. There's also a part of a vehicle visible on the right side, with a reflection of a person in the side mirror. The stop sign is located amongst the trees, slightly to the left of the center of the image. The vehicle has a green exterior and is facing the stop sign. The person's reflection in the vehicle's side mirror is to the right of the stop sign. The stop sign might be there to regulate traffic or ensure safety for any pedestrians or vehicles traveling in that area. No other vehicles or people are visible in the image apart from the reflection of a person in the side mirror of the vehicle.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real01",
+   "prompt": "The image presents a close-up, top-down view of a wooden surface, likely a deck or flooring, composed of horizontally aligned planks. The wood is a light, warm-toned natural finish, displaying a consistent pale yellowish-brown hue with subtle variations in shade across the planks. The grain of the wood is clearly visible, featuring distinct patterns of wavy lines and occasional knots that add to its natural character. The planks are laid in parallel, separated by uniform, narrow gaps that run horizontally across the entire frame. The lighting appears even and diffused, highlighting the texture of the wood without casting strong shadows.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real02",
+   "prompt": "A very small bird sitting on a skateboard.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real03",
+   "prompt": "A woman standing next to a dog cake.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real04",
+   "prompt": "A lone, pale-colored sheep with a thick fleece stands on a steep, verdant hillside, its body silhouetted against the dense green grass and scattered grey rocks that cover the slope. The landscape is rugged and uneven, with patches of mossy stone and tufted grass creating a textured, natural tapestry that slopes upward towards the right, where larger, jagged rocks rise prominently. The sheep appears to be grazing, calmly positioned in the middle distance on the grassy incline. The entire scene is set under a heavy, uniform grey sky, which casts a soft, diffused light over the landscape, muting the colors and lending the image a cool, overcast atmosphere characteristic of a damp, wild terrain.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real05",
+   "prompt": "Pair of cats sitting on table watching television together.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real06",
+   "prompt": "a person in a wooded area, likely a forest or park, throwing a frisbee towards the right side of the image. The person is in a dynamic pose, leaning forward with one arm outstretched. The background consists of green shades from vegetation and some brown tones from the forest floor or a path. There is a clear path or trail visible where the person is standing. Near the person's feet, there are a few wooden pegs or markers on the ground. The frisbee and the person appear more saturated or colored, while the rest of the image has a more monochromatic or desaturated look, emphasizing the green and brown tones. The person seems to be participating in disc golf, a sport where players throw a disc or frisbee towards a target.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real07",
+   "prompt": "A man flying through the air while riding a skateboard.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real08",
+   "prompt": "multiple signboards, with one on the right side, another stretching across the middle, and a third one towards the left. Additionally, there is a bench on the far right.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real09",
+   "prompt": "A vibrant kingfisher with turquoise and brown plumage perches on a branch amidst green foliage.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real10",
+   "prompt": "A group of people riding skis on top of a ski slope.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real11",
+   "prompt": "a vintage kitchen with wooden cabinets, a countertop with a mosaic tile backsplash, a green oven, a white sink with a faucet, and a retro-style white refrigerator. The countertop is adorned with various kitchenware such as kettles, pots, and decorative items. There are two blackboards with written items on them. The refrigerator is located to the left of the oven. The oven is green with a stove on top and a black range hood above it. The tiles behind the countertop have a mosaic design with geometric patterns in shades of blue and white. There is a bowl with food items on the countertop close to the stove, and a clock is hanging on the wall, but the exact time is not visible.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real12",
+   "prompt": "A field of cows standing in a pasture.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real13",
+   "prompt": "A plate full of vegetables, potatoes, and meat.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real14",
+   "prompt": "The image presents a stark and atmospheric composition dominated by the silhouetted branches of a leafless tree against a vast, overcast sky. On the left side, a thick, dark trunk extends upwards and outwards, giving way to a complex network of thin, wiry, and twisting branches that stretch across the left and lower portions of the frame. These branches appear bare and intricate, creating a delicate, almost skeletal pattern against the muted background. The sky itself is a uniform, pale greyish-white, with subtle variations in tone suggesting a heavy layer of clouds or mist, contributing to the image's somber and contemplative mood. The overall effect is one of stark contrast between the solid, dark forms of the tree and the expansive, light, and seemingly endless sky, evoking a sense of stillness and quietude characteristic of a late autumn or winter day.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real15",
+   "prompt": "a room with a fireplace, a clock above it, several candles surrounding the fireplace at different heights, a wooden dresser to the right of the fireplace, a ceiling fan above the setting, and multiple chairs in the room, with one closer to the television and two more centrally positioned. The far right chair appears more reclined and spacious.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real16",
+   "prompt": "Large stuffed teddy bear sitting on a table.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real17",
+   "prompt": "This is a stunning high-angle view of a coastal city at either sunrise or sunset, captured from a great height, likely a tall building or hill. The sky is a dramatic canvas of color, with a vibrant band of golden-yellow and orange light illuminating the horizon, which appears to be hazy or overcast. This warm glow radiates upwards, blending into soft peach and light blue tones in the upper atmosphere, which is streaked with delicate, wispy cirrus clouds. In the foreground, the dark, silhouetted skyline of a dense urban area stretches across the bottom of the frame, composed of numerous high-rise buildings of varying heights, creating a jagged black silhouette. Beyond the city, the vast expanse of the ocean lies calm, its surface reflecting the warm light of the sky. Several vessels, including what appear to be large cargo ships and smaller boats, are scattered across the water, appearing as small silhouettes on the tranquil sea. The overall mood is serene and contemplative, emphasizing the beauty of the natural light and the contrast between the dark city and the luminous sky and sea.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real18",
+   "prompt": "In this striking black-and-white photograph, a tall, slender palm tree stands as the central focus, its fronds fanning out gracefully against a vast, empty sky.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real19",
+   "prompt": "A small boat with equipment inside of it washed up on shore.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real20",
+   "prompt": "an owl-shaped candle holder with a softly burning candle inside, casting gentle illumination, and a large, ornate clock with a white decorative frame and traditional Roman numerals on its face.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real21",
+   "prompt": "a man wearing a red-patterned necktie that covers a significant portion of his chest. The shirt has two buttons close to the center and lower part. There are three sections of trousers visible: one on the far left, another that spans the entire bottom, and one on the right. On the right side of the necktie, there's a wristwatch with a metallic strap.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real22",
+   "prompt": "The image captures a young person with curly, orange-toned hair sitting atop a large, white, dome-shaped object on a paved outdoor terrace, likely a rooftop or sun deck. The individual is dressed in athletic wear, including a bright blue sleeveless athletic top with a small white logo on the chest and white shorts, complemented by white sneakers and white socks. They are leaning back with their legs stretched out across the dome, looking off to the side with a pensive expression. The setting is sunlit, with bright daylight and clear skies. In the background, a white railing runs along the edge of the terrace, beyond which lies a backdrop of trees and a large, multi-story brick building. To the right, two folded beach chairs with green patterned seat cushions are visible, adding to the relaxed, leisurely atmosphere of the urban or campus-like environment.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real23",
+   "prompt": "a giraffe in an open grassy field with green grass, under a clear sky on a sunny day. The giraffe is bending down and appears to be grazing or reaching for something on the ground. There are no water sources or trees nearby, and the giraffe is most likely using its height, eyesight, powerful legs, and social nature to protect itself from predators when in a vulnerable position.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real24",
+   "prompt": "two individuals riding a horse through an open field with several cows grazing around. The environment appears to be a grassland with no trees visible. The atmosphere is peaceful and pastoral, evoking a sense of calm and simplicity. The individuals are riding leisurely on a horse, and the horse is in motion, possibly galloping or trotting through the field.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real25",
+   "prompt": "A car with bright headlights coming up the street.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real26",
+   "prompt": "an office setting with multiple computer-related items. It features a large wooden desk with a computer monitor displaying vertical bars, a mouse, a keyboard, and a laptop. There is another mouse and keyboard on a smaller desk section to the left. Above the desks, a bulletin board hangs on the wall with various notes or reminders.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real27",
+   "prompt": "A man in a park has just thrown a frisbee.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real28",
+   "prompt": "A zebra running across a grass covered field.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real29",
+   "prompt": "a group of people trying to hook up an appliance",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real30",
+   "prompt": "a motorcycle on a road, facing away from the viewer, ready to venture into a forested landscape.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real31",
+   "prompt": "The image presents a detailed view of several traditional European buildings, likely in Portugal, characterized by their vibrant colors and architectural details. Dominating the left side is a pale pink building with a facade featuring contrasting white trim; its windows, including two rectangular ones above and two larger multi-paned ones below, are framed with thin red lines. A key architectural element is the prominent white, ornate pediment situated above the upper windows, which displays the initials \"T.A.\" in a serif font at its center, surrounded by delicate scrollwork. To the right and slightly in front, a beige building with a terracotta tile roof is visible, featuring similar white-trimmed windows with white panes and small, black, decorative wrought-iron balconies. The roofs are covered in classic curved terracotta tiles, adding a warm earthy tone to the scene. A dark, overcast sky looms in the background, suggesting an impending or recent rain, while a brief glimpse of green, tree-covered hills can be seen in the far distance, providing a natural backdrop to the urban architecture.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real32",
+   "prompt": "a man in a formal black suit, white shirt, and necktie, with 8 visible buttons, deep in thought with his hand covering his mouth. The background is wooden, and there is a glass filled with water on a table in front of him. The glass is positioned to the man's left side on the table. The image suggests a moment of contemplation or introspection in a formal or professional environment, possibly indicating a business meeting, conference, or interview.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real33",
+   "prompt": "there is a white and beige dog sitting on the floor",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real34",
+   "prompt": "A group of green plastic toy soldiers, each with distinct facial expressions and detailed uniforms, are arranged against a green background.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real35",
+   "prompt": "A toilet at a hospital with several health notifications",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real36",
+   "prompt": "This sun-drenched image captures a charming town square in a classic French village, characterized by its warm, earthy-toned architecture and bright, clear sky. On the right, a prominent three-story building with a peach-colored stucco facade stands as a likely town hall or municipal building, distinguished by its large, dark wooden main door, a central arched window above it, and a balcony adorned with flower boxes and flying French flags. Its upper floors feature numerous windows with distinctive turquoise shutters. To the left, a slightly taller building in a pale yellow stucco is streaked with shadow, its windows punctuated by reddish-brown shutters; three cross-shaped metal brackets are mounted on its upper wall. In the foreground, a paved plaza provides a space for visitors, where a tourist information kiosk displays colorful brochures and maps, a man in a white shirt stands near the entrance, and another person sits on a bench to the far right. Potted plants in large terracotta urns add dots of greenery, and a small evergreen tree stands between the two buildings. The scene is bathed in bright sunlight, casting sharp shadows and emphasizing the rich colors and textures of the stone, stucco, and wood, creating a",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real37",
+   "prompt": "a snowy landscape with a group of approximately 24 sheep scattered across the snow-covered field. There are telephone poles in the middle ground, behind the sheep, and a line of trees and a body of water or river in the distance. The sky appears overcast, suggesting a winter's day. Sheep are well-adapted to cold climates, using their wool and fat layers to retain body heat. They can graze even in snow, using their hooves to push away the snow and access the grass underneath. However, farmers must ensure that sheep have access to shelter, clean water, and supplemental feed during harsh winter conditions.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real38",
+   "prompt": "The giraffe is being kept by itself indoors.",
+   "source": "heldout_real"
+  },
+  {
+   "id": "real39",
+   "prompt": "there is a woman sitting on a boat that carries wood",
+   "source": "heldout_real"
+  }
+ ],
+ "seeds": 2,
+ "grid": [
+  "usual00",
+  "usual03",
+  "usual09",
+  "usual12",
+  "usual16",
+  "usual19",
+  "odd00",
+  "odd01",
+  "odd02",
+  "odd03",
+  "odd04",
+  "odd06",
+  "odd10",
+  "odd13",
+  "odd16",
+  "odd19"
+ ],
+ "grid_seed": 0
+}

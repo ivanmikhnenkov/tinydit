@@ -34,3 +34,14 @@ Every sample interval: step, sample="samples/<step>.png"
 Every eval interval: step, eval="evals/<step>.png", clip_unseen, clip_novel, pickscore_unseen, pickscore_novel, hpsv2_unseen, hpsv2_novel, fid, fd_dino, obj_acc
 Prompt sets: UNSEEN = captions of val rows (never trained on), NOVEL = out/prompts_novel.txt (hand-written).
 Sample grids show all five bucket shapes.
+
+## RL runs: `out/runs/rl_*` (tinydit.rl.train writes, rl_dashboard.html reads)
+```
+meta.json               {"rl":true, "alg":"grpo|dgpo", "objective":"compress|incompress", "config":{...}, "prompts":[16 fixed eval prompts], "params_m"}
+metrics.jsonl           every round: round, samples, gpu_hours, wall_hours, loss, kb, kb_std, reward, group_std, adv_abs, gnorm, lr,
+                          t_rollout, t_reward, t_update, sps          (gpu_hours = CUDA-synchronised train time / 3600, evaluation excluded)
+                          grpo adds loss_pol, ratio, clipfrac, kl;  dgpo adds loss_pref, w, margin, delta, dsm, clipfrac, kl, w_std, w_lo, w_hi (per-group gate spread, fraction of groups with gate < 0.1 and > 0.9)
+                        every eval: round, samples, gpu_hours, wall_hours, eval=true, eval_kb, eval_kb_std, eval_reward, eval_clip, eval_pickscore, eval_secs
+evals/index.json        the eval rows plus "file":"evals/<round>.png" (first 16 prompts, seed 0, 20-step ODE, 8 per row)
+ckpt_last.pt            fp32 policy + optimizer + state (resume with --resume); policy_final.safetensors (bf16) marks a finished run
+```
