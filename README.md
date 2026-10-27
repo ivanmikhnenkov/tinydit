@@ -17,6 +17,10 @@ code, the export and a parity check against `tinydit.sample` are in `hub/`.
 cherry-picking within a set. Grids sampled with 50 steps, CFG 4, shift 2.8; metrics measured with the
 20-step training sampler.
 
+**RL post-training (DGPO).** Alignment pass@1 0.81 -> 0.85 under an independent judge, pass@64 unchanged:
+RL concentrates the samples on what the base could already do. Numbers, figures, negative results and
+commands in [docs/rl/README.md](docs/rl/README.md); code in `src/tinydit/rl/`, `scripts/rl/`, exercise in `exercises/dgpo/`.
+
 **Objects and animals.** Short COCO-style prompts.
 
 ![objects](docs/grid_objects.jpg)
@@ -209,6 +213,9 @@ The HF token is read from `/home/ivan/volume/.tinydit_token` (`HF_TOKEN=...`, mo
 src/tinydit/   ae.py text.py model.py flow.py schedule.py data.py train.py sample.py metrics.py ingest.py rope.py playground.py
 scripts/       hfpeek.py preview_gallery.py tfrecord_peek.py  (dataset survey)   bench_step.py   fetch_metric_models.py
                launch_run1.sh append_pexels2.sh
+src/tinydit/rl/ train.py dgpo.py grpo.py rollout.py rewards.py reward_stage2.py judges.py   (RL post-training, see docs/rl/)
+scripts/rl/    launch_stage2.sh passk.py prompt_band.py judge_evals.py sanity_checks.py summarize_run.py make_figures.py diagnostics*.sh
+exercises/dgpo/ toy.py solution.py test_dgpo.py     prompts/rl_stage2/ train.json train_band.json eval.json
 hub/           diffusers export of the Hub repo: transformer_tinydit.py pipeline_tinydit.py export.py parity.py model_card.md
 docker/        Dockerfile run.sh          prompts/novel.txt          dashboard.html          notes/          out/ (ignored)
 ```
