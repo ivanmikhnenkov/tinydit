@@ -60,7 +60,7 @@ algorithm chosen by this experiment. Same repo, tag `v2-rl`; weights to `tinydit
 | DGPO incompress | 567 | 145,152 | 4.2 + 3.2 + 2.1 = 9.5 | 39.2 → 55.8 (0.09 h) → 47.1 | 0.302 | 20.91 |
 | Flow-GRPO incompress | 220 | 56,320 | 4.2 + 3.4 + 17.0 = 24.6 | 39.2 → 86.0 (1.1 h, noise fields) → 86.0 | 0.215 | 16.33 |
 
-Base: 39.2 kB, CLIP 0.302, PickScore 20.99. Report with curves and grids: https://claude.ai/code/artifact/28eeb94e-ed19-48e2-8a15-1cfd6a30959d
+Base: 39.2 kB, CLIP 0.302, PickScore 20.99.
 
 What happened, and why (same on both objectives):
 - **DGPO** moves in minutes (23 kB / 56 kB at 0.09 GPU-h with CLIP and PickScore unchanged), then relaxes back toward the base. Its gate
@@ -114,8 +114,6 @@ labelled sets, FD-DINOv2. To raise the artifact ceiling: judge at 896^2, label ~
 Qwen3.8-27B (2026-09-30 03:00): best "real photograph?" judge (real vs FLUX 0.89), AI-look 0.90, alignment stricter than the labels
 (failures 0.77, hard-neg 0.97, says no to 26 % of unusual-prompt samples), anatomy 0.75, rubric integrity 0.77, descriptions flag 71 % of
 artifacts but also 53 % of clean images; 10 img/s yes/no, 2.6 rubric, 1.1 describe, 73 GB peak at batch 16, loads in 13 s -> judge only.
-Report final at the "Judges for TinyDiT RL" artifact. The chatbot vLLM container is stopped (docker start chatbot-nebius_vllm_gemma4_vision_dev-1 to restore).
-Explorer artifact (12 images x every judge, per-image / per-scorer / matrix views): https://claude.ai/code/artifact/ff8a63ef-58e6-465e-8bad-b31c9379b3c5 (data from scripts/reward_eval, built in the session scratchpad).
 
 ## Stage 2 build (2026-09-30 evening)
 The latent cache (out/cache/run1) was deleted to free disk, so: whitening stats now read from out/hf_model/stats.json (train.py --stats
